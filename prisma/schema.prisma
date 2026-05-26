@@ -8,20 +8,22 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  username      String?   @unique
-  walletAddress String?   @unique
-  role          UserRole  @default(STUDENT)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id            String   @id @default(cuid())
+  email         String   @unique
+  clerkId       String?  @unique
+  username      String?  @unique
+  walletAddress String?  @unique
+  role          UserRole @default(STUDENT)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-  profile       Profile?
+  profile        Profile?
+  capApplication CAPApplication?
 }
 
 model Profile {
-  id        String   @id @default(cuid())
-  userId    String   @unique
+  id        String  @id @default(cuid())
+  userId    String  @unique
   fullName  String?
   college   String?
   year      Int?
@@ -33,9 +35,33 @@ model Profile {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model CAPApplication {
+  id                  String            @id @default(cuid())
+  userId              String            @unique
+  fullName            String
+  college             String
+  graduationYear      Int
+  city                String
+  socialLinks         String?
+  whyJoin             String
+  communityExperience String?
+  status              ApplicationStatus @default(PENDING)
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 enum UserRole {
   STUDENT
   AMBASSADOR
   ADMIN
   MENTOR
+}
+
+enum ApplicationStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
 }
