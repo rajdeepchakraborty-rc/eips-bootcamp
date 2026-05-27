@@ -32,26 +32,17 @@ export interface CAPFormData {
  * Fetch the current user's CAP application.
  * Returns null when the user has never applied.
  */
-import { apiFetch } from './api';
-
-type UserRecord = { id: string; clerkId?: string };
-
-async function resolveInternalUserId(clerkId: string): Promise<string | null> {
-  try {
-    const user = await apiFetch<UserRecord>(`/users/clerk/${clerkId}`);
-    return user?.id ?? null;
-  } catch {
-    return null;
-  }
-}
 
 export async function fetchCAPApplication(clerkId: string): Promise<CAPApplication | null> {
   try {
-    const internalId = await resolveInternalUserId(clerkId);
-    if (!internalId) return null;
-    const res = await apiFetch<CAPApplication | null>(`/cap/status/${internalId}`);
-    return res ?? null;
-  } catch (err) {
+    const res = await fetch(`/api/cap/status?clerkId=${encodeURIComponent(clerkId)}`, {
+      cache: 'no-store',
+    });
+
+    if (!res.ok) return null;
+
+    return (await res.json()) as CAPApplication | null;
+  } catch {
     return null;
   }
 }
@@ -63,13 +54,10 @@ export async function submitCAPApplication(
   clerkId: string,
   data: CAPFormData
 ): Promise<CAPApplication> {
-  const internalId = await resolveInternalUserId(clerkId);
-  if (!internalId) throw new Error('User not found');
-
-  const res = await fetch(`http://localhost:4000/cap/apply`, {
+  const res = await fetch(`/api/cap/apply`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userId: internalId, ...data }),
+    body: JSON.stringify({ clerkId, ...data }),
   });
 
   if (!res.ok) {

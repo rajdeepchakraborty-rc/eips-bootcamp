@@ -3,7 +3,7 @@
 // app/dashboard/cap/page.tsx
 
 import React, { useEffect, useState } from "react";
-import { useUser } from '@clerk/nextjs';
+import { useUser, UserButton } from '@clerk/nextjs';
 import Link from "next/link";
 import { fetchCAPApplication, CAPApplication } from "../../lib/Cap";
 import CapApplicationForm from "../../components/cap/CapApplicationForm";
@@ -194,25 +194,19 @@ export default function CAPPage() {
             </div>
 
             {/* Avatar */}
-            <button
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-white/5 transition-colors"
-              style={{ border: "1px solid rgba(255,255,255,0.08)" }}
-            >
-              <div
-                className="w-7 h-7 rounded-full"
-                style={{
-                  background: "linear-gradient(135deg, #34d399, #059669)",
-                }}
-              />
+            <div className="flex items-center gap-2.5">
               <div className="text-left hidden sm:block">
                 <p className="text-white text-xs font-medium leading-none">
-                  Subhrajeet
+                  {user?.firstName ?? user?.username ?? 'User'}
                 </p>
                 <p className="text-white/35 text-[10px] leading-none mt-0.5">
                   Student
                 </p>
               </div>
-            </button>
+              <UserButton
+                appearance={{ elements: { avatarBox: 'w-8 h-8 rounded-full ring-2 ring-emerald-500/30' } }}
+              />
+            </div>
           </div>
         </header>
 
