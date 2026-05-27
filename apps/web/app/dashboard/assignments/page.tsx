@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronLeft, Search } from 'lucide-react';
-
-
-import { DashboardShell } from '@/app/components/dashboard/DashboardShell';
+import { AssignmentSidebar } from '@/app/components/assignments/AssignmentSidebar';
 import { AssignmentStats } from '@/app/components/assignments/AssignmentStats';
 import { AssignmentFilters } from '@/app/components/assignments/AssignmentFilters';
 import { AssignmentCard } from '@/app/components/assignments/AssignmentCard';
@@ -12,6 +10,8 @@ import { DeadlineWidget } from '@/app/components/assignments/DeadlineWidget';
 import { FeedbackWidget } from '@/app/components/assignments/FeedbackWidget';
 import { XPProgressWidget } from '@/app/components/assignments/XPProgressWidget';
 import { mockAssignments, mockStats } from '@/app/lib/assignments-data';
+import { Topbar } from '@/app/components/dashboard/Topbar';
+import Link from 'next/link';
 
 export default function AssignmentsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -57,22 +57,24 @@ export default function AssignmentsPage() {
   return (
     <div className="flex h-screen bg-black text-white overflow-hidden">
       {/* Sidebar */}
-      <BootcampSidebar />
+      <AssignmentSidebar />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <BootcampTopbar />
+        <Topbar onMobileMenuOpen={() => {}} />
 
         {/* Page Content */}
         <div className="flex-1 overflow-auto">
           <div className="p-8 max-w-7xl mx-auto">
             {/* Page Header */}
             <div className="mb-12">
+                <Link href="/dashboard">
               <button className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition-colors mb-4">
                 <ChevronLeft size={18} />
                 <span className="text-sm font-medium">Back to Dashboard</span>
               </button>
+              </Link>
 
               <div className="mb-6">
                 <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
