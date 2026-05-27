@@ -1,12 +1,15 @@
 'use client';
 
-import { useUser } from '@clerk/nextjs';
 import { Shield, Compass } from 'lucide-react';
 
-export function WelcomeHero() {
-  const { user } = useUser();
-  const firstName = user?.firstName ?? 'Explorer';
+type WelcomeHeroProps = {
+  user: {
+    username: string;
+    role: string;
+  };
+};
 
+export function WelcomeHero({ user }: WelcomeHeroProps) {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-gradient-to-br from-[#0d1a12] via-[#0a0f0d] to-[#080808] min-h-[200px]">
       {/* Background glow effects */}
@@ -82,7 +85,7 @@ export function WelcomeHero() {
       <div className="relative z-10 px-7 py-8 max-w-[calc(100%-200px)] lg:max-w-[calc(100%-320px)]">
         <p className="text-zinc-400 text-sm font-medium mb-1">Welcome back,</p>
         <h1 className="text-white font-black text-4xl lg:text-5xl tracking-tight mb-2 flex items-center gap-3">
-          {firstName}
+          {user.username}
           <span className="text-3xl select-none" role="img" aria-label="wave">👋</span>
         </h1>
         <p className="text-zinc-400 text-sm mb-6">Continue building Ethereum&apos;s future.</p>
@@ -91,11 +94,11 @@ export function WelcomeHero() {
         <div className="flex flex-wrap items-center gap-2.5">
           <div className="flex items-center gap-1.5 bg-black/40 border border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
             <Shield size={13} className="text-emerald-400" />
-            <span className="text-white text-xs font-semibold">Student</span>
+            <span className="text-white text-xs font-semibold">{user.role}</span>
           </div>
           <div className="flex items-center gap-1.5 bg-black/40 border border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
             <Compass size={13} className="text-emerald-400" />
-            <span className="text-white text-xs font-semibold">Level 4 Explorer</span>
+            <span className="text-white text-xs font-semibold">{user.username}</span>
           </div>
         </div>
       </div>
