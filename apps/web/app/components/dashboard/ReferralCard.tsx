@@ -2,13 +2,19 @@
 
 import { useState } from 'react';
 import { Copy, Check, Share2 } from 'lucide-react';
-import { mockReferral } from '../../lib/dashboard-data';;
 
-export function ReferralCard() {
+type ReferralCardProps = {
+  referralsCount: number;
+  xp: number;
+};
+
+const referralCode = 'EIPS24-SUBHRA';
+
+export function ReferralCard({ referralsCount, xp }: ReferralCardProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(mockReferral.code);
+    navigator.clipboard.writeText(referralCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -24,7 +30,7 @@ export function ReferralCard() {
       <div className="flex items-center gap-2 mb-5">
         <div className="flex-1 bg-black/60 border border-emerald-500/25 rounded-lg px-4 py-2.5 flex items-center">
           <span className="text-emerald-400 font-bold text-sm font-mono tracking-widest">
-            {mockReferral.code}
+            {referralCode}
           </span>
         </div>
         <button
@@ -39,12 +45,12 @@ export function ReferralCard() {
       <div className="flex gap-4 mb-5">
         <div className="flex-1 bg-black/30 border border-white/5 rounded-xl p-3.5">
           <p className="text-zinc-500 text-[10px] uppercase tracking-wider font-medium mb-1.5">Total Referrals</p>
-          <p className="text-white font-black text-2xl leading-none">{mockReferral.totalReferrals}</p>
-          <p className="text-emerald-400 text-xs mt-1 font-medium">+{mockReferral.weeklyReferrals} this week</p>
+          <p className="text-white font-black text-2xl leading-none">{referralsCount}</p>
+          <p className="text-emerald-400 text-xs mt-1 font-medium">+0 this week</p>
         </div>
         <div className="flex-1 bg-black/30 border border-white/5 rounded-xl p-3.5 relative overflow-hidden">
           <p className="text-zinc-500 text-[10px] uppercase tracking-wider font-medium mb-1.5">XP Earned</p>
-          <p className="text-white font-black text-2xl leading-none">{mockReferral.xpEarned.toLocaleString()}</p>
+          <p className="text-white font-black text-2xl leading-none">{xp.toLocaleString()}</p>
           <p className="text-zinc-500 text-xs mt-1">from referrals</p>
           {/* Coin stack placeholder */}
           <div className="absolute right-2 bottom-1 opacity-40">
