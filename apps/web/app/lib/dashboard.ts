@@ -1,6 +1,6 @@
 import { apiFetch } from './api';
 
-type User = {
+export type User = {
   id: string;
   email: string;
   clerkId: string;
@@ -19,14 +19,14 @@ type CapResponse = {
   status: string;
 };
 
-type LeaderboardEntry = {
+export type LeaderboardEntry = {
   userId: string;
   _sum: {
     amount: number;
   };
 };
 
-type DashboardData = {
+export type DashboardData = {
   user: User;
   xp: number;
   referralsCount: number;

@@ -26,6 +26,11 @@ export interface CAPFormData {
   communityExperience: string;
 }
 
+export interface ClerkUserDetails {
+  email?: string;
+  username?: string | null;
+}
+
 // ─── Mock fetch — replace with real API calls ───────────────────────────────
 
 /**
@@ -52,12 +57,20 @@ export async function fetchCAPApplication(clerkId: string): Promise<CAPApplicati
  */
 export async function submitCAPApplication(
   clerkId: string,
-  data: CAPFormData
+  data: CAPFormData,
+  clerkUser?: ClerkUserDetails
 ): Promise<CAPApplication> {
+  const graduationYear = Number(data.graduationYear);
+
   const res = await fetch(`/api/cap/apply`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ clerkId, ...data }),
+    body: JSON.stringify({
+      clerkId,
+      ...data,
+      graduationYear,
+      ...clerkUser,
+    }),
   });
 
   if (!res.ok) {

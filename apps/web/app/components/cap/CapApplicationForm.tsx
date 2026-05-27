@@ -57,7 +57,10 @@ export default function CapApplicationForm({ onSubmitted }: Props) {
           return;
         }
 
-        const app = await submitCAPApplication(userId, form);
+        const app = await submitCAPApplication(userId, form, {
+          email: user.primaryEmailAddress?.emailAddress,
+          username: user.username,
+        });
       onSubmitted(app);
     } catch {
       setSubmitting(false);

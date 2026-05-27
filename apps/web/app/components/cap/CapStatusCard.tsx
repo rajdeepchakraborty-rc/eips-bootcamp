@@ -49,7 +49,7 @@ function PendingCard({ application }: { application: CAPApplication }) {
         Your application is under review.
       </h3>
       <p className="text-white/45 text-sm max-w-sm mx-auto leading-relaxed">
-        We'll notify you once our team reviews your submission. This typically
+        We&apos;ll notify you once our team reviews your submission. This typically
         takes 3–7 working days.
       </p>
 
@@ -206,7 +206,7 @@ function RejectedCard() {
         Application not approved this cycle.
       </h3>
       <p className="text-white/45 text-sm max-w-sm mx-auto leading-relaxed">
-        Don't worry — keep learning and building. You can reapply in a future
+        Don&apos;t worry — keep learning and building. You can reapply in a future
         cycle. Every application improves your chances.
       </p>
 

@@ -38,7 +38,10 @@ async function resolveInternalUserId(clerkId: string) {
 
   if (!res.ok) return null;
 
-  return res.json() as Promise<{ id: string } | null>;
+  const text = await res.text();
+  if (!text.trim()) return null;
+
+  return JSON.parse(text) as { id: string } | null;
 }
 
 export async function GET(request: Request) {
@@ -62,6 +65,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ message: 'Failed to fetch CAP status' }, { status: res.status });
   }
 
-  const data = await res.json();
-  return NextResponse.json(normalizeApplication(data));
+  const text = await res.text();
+  if (!text.trim()) {
+    return NextResponse.json(null, { status: 200 });
+  }
+
+  return NextResponse.json(normalizeApplication(JSON.parse(text)));
 }

@@ -32,23 +32,55 @@ async function resolveInternalUserId(clerkId: string) {
 
   if (!res.ok) return null;
 
-  return res.json() as Promise<{ id: string } | null>;
+  const text = await res.text();
+  if (!text.trim()) return null;
+
+  return JSON.parse(text) as { id: string } | null;
+}
+
+async function syncClerkUser(clerkId: string, email?: string, username?: string | null) {
+  if (!email) {
+    return null;
+  }
+
+  const res = await fetch(`${API_BASE}/auth/sync`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ clerkId, email, username: username ?? undefined }),
+  });
+
+  if (!res.ok) {
+    return null;
+  }
+
+  const text = await res.text();
+  if (!text.trim()) return null;
+
+  return JSON.parse(text) as { id: string } | null;
 }
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { clerkId, ...data } = body as { clerkId?: string; [key: string]: unknown };
+  const { clerkId, graduationYear, email, username, ...data } = body as {
+    clerkId?: string;
+    graduationYear?: string | number;
+    email?: string;
+    username?: string | null;
+    [key: string]: unknown;
+  };
 
   if (!clerkId) {
     return NextResponse.json({ message: 'Missing clerkId' }, { status: 400 });
   }
 
   const user = await resolveInternalUserId(clerkId);
-  if (!user?.id) {
+  const resolvedUser = user ?? (await syncClerkUser(clerkId, email, username));
+
+  if (!resolvedUser?.id) {
     return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
 
-  const existing = await fetch(`${API_BASE}/cap/status/${user.id}`, {
+  const existing = await fetch(`${API_BASE}/cap/status/${resolvedUser.id}`, {
     cache: 'no-store',
   });
 
@@ -62,7 +94,11 @@ export async function POST(request: Request) {
   const res = await fetch(`${API_BASE}/cap/apply`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userId: user.id, ...data }),
+    body: JSON.stringify({
+      userId: resolvedUser.id,
+      graduationYear: Number(graduationYear),
+      ...data,
+    }),
   });
 
   if (!res.ok) {
