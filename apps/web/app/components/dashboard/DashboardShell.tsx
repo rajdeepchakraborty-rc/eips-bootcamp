@@ -12,7 +12,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white">
+    <div className="min-h-screen bg-white text-black dark:bg-[#080808] dark:text-white transition-colors duration-300">
       {/* Sidebar */}
       <Sidebar
         mobileOpen={mobileOpen}

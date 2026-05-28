@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useUser, UserButton } from '@clerk/nextjs';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { navLinks } from '../../lib/landing-data';
+import { ThemeToggle } from '@/app/components/ThemeToggle';
 
 export function Navbar() {
   const { isSignedIn } = useUser();
@@ -74,6 +75,7 @@ export function Navbar() {
                 </Link>
               </>
             )}
+            <ThemeToggle />
           </div>
 
           {/* Mobile hamburger */}

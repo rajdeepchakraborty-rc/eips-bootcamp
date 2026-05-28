@@ -3,6 +3,8 @@
 import { Bell, Search, Menu } from 'lucide-react';
 import { UserButton } from '@clerk/nextjs';
 import { useUser } from '@clerk/nextjs';
+import { ThemeToggle } from '@/app/components/ThemeToggle';
+
 
 interface TopbarProps {
   onMobileMenuOpen: () => void;
@@ -72,6 +74,7 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
             }}
           />
         </div>
+        <ThemeToggle />
       </div>
     </header>
   );
