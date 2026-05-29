@@ -2,6 +2,7 @@
 
 import { useAuth } from '@clerk/nextjs';
 import { useEffect, useState } from 'react';
+import { DashboardShell } from '@/app/components/dashboard/DashboardShell';
 import { ApplicationsHero } from '@/app/components/applications/ApplicationsHero';
 import { ApplicationsStats } from '@/app/components/applications/ApplicationsStats';
 import { ApplicationsFilters } from '@/app/components/applications/ApplicationsFilters';
@@ -190,6 +191,7 @@ export default function ApplicationsPage() {
 //   }
 
   return (
+    <DashboardShell>
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Main Content */}
       <div className="flex-1">
@@ -226,6 +228,7 @@ export default function ApplicationsPage() {
         </div>
       </div>
     </div>
+    </DashboardShell>
   );
 }
 
