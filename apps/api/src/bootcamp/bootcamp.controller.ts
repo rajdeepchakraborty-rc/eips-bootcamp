@@ -10,7 +10,7 @@ export class BootcampController {
     return this.bootcampService.getModules(userId);
   }
 
-  @Post('lessons/:lessonId/complete')
+  @Post('modules/:lessonId/complete')
   async completeLesson(
     @Param('lessonId') lessonId: string,
     @Body('userId') userId: string
@@ -19,5 +19,18 @@ export class BootcampController {
       throw new NotFoundException('User ID is required');
     }
     return this.bootcampService.completeLesson(userId, lessonId);
+  }
+
+  @Post('modules')
+  async createModule(@Body() data: any) {
+    return this.bootcampService.createModule(data);
+  }
+
+  @Post('modules/:moduleId/lessons')
+  async createLesson(
+    @Param('moduleId') moduleId: string,
+    @Body() data: any
+  ) {
+    return this.bootcampService.createLesson(moduleId, data);
   }
 }

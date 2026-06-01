@@ -126,4 +126,38 @@ export class BootcampService {
       progress,
     };
   }
+
+  async createModule(data: any) {
+    return this.prisma.module.create({
+      data: {
+        title: data.title,
+        description: data.description,
+        xpReward: Number(data.xpReward),
+        duration: data.duration,
+        color: data.color,
+        orderIndex: Number(data.orderIndex),
+      },
+    });
+  }
+
+  async createLesson(moduleId: string, data: any) {
+    const moduleExists = await this.prisma.module.findUnique({
+      where: { id: moduleId },
+    });
+    
+    if (!moduleExists) {
+      throw new NotFoundException('Module not found');
+    }
+
+    return this.prisma.lesson.create({
+      data: {
+        moduleId,
+        title: data.title,
+        description: data.description,
+        duration: data.duration,
+        content: data.content,
+        orderIndex: Number(data.orderIndex),
+      },
+    });
+  }
 }

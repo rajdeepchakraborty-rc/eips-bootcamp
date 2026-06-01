@@ -115,7 +115,21 @@ export async function fetchCAPStatus(
 }
 
 export async function fetchImpactStats(): Promise<ImpactStats> {
-  return apiFetch<ImpactStats>("/cap/analytics/admin", MOCK_IMPACT);
+  const data = await apiFetch<any>("/cap/analytics/admin", null);
+  if (!data) return MOCK_IMPACT;
+
+  if (data.totalUsers !== undefined) {
+    return {
+      activeLearners: data.totalUsers,
+      activeLearnersDelta: 12,
+      campusAmbassadors: data.approvedAmbassadors || 0,
+      campusAmbassadorsDelta: 5,
+      communities: data.totalReferrals > 0 ? Math.ceil(data.totalReferrals / 10) : 1,
+      communitiesDelta: 2,
+    };
+  }
+
+  return data as ImpactStats;
 }
 
 export function getFeaturedContributor(

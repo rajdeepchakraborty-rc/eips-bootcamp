@@ -285,8 +285,10 @@ export async function fetchGrowthData() {
     return await apiFetch<any>('/analytics/growth', {
       cache: 'no-store'
     });
-  } catch (error) {
-    console.error('Error fetching growth data:', error);
+  } catch (error: any) {
+    if (!error.message?.includes('404')) {
+      console.error('Error fetching growth data:', error);
+    }
     return generateMockGrowthData();
   }
 }
@@ -296,8 +298,10 @@ export async function fetchActivityFeed() {
     return await apiFetch<any>('/activities/recent', {
       cache: 'no-store'
     });
-  } catch (error) {
-    console.error('Error fetching activity feed:', error);
+  } catch (error: any) {
+    if (!error.message?.includes('404')) {
+      console.error('Error fetching activity feed:', error);
+    }
     return generateMockActivityFeed();
   }
 }

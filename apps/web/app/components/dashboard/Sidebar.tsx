@@ -50,6 +50,8 @@ const capNav: NavItem[] = [
 const adminNav: NavItem[] = [
   { label: 'Admin Analytics', href: '/dashboard/admin/analytics', icon: <BarChart2 size={18} /> },
   { label: 'Applications', href: '/dashboard/admin/applications', icon: <ClipboardList size={18} /> },
+  { label: 'Manage Bootcamp', href: '/dashboard/admin/bootcamp', icon: <Layers size={18} /> },
+  { label: 'Manage Assignments', href: '/dashboard/admin/assignments', icon: <FileText size={18} /> },
 ];
 
 function NavSection({ title, items, pathname, }: { title: string; items: NavItem[], pathname: string; }) {

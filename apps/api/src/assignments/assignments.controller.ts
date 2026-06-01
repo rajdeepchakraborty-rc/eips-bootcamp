@@ -21,4 +21,9 @@ export class AssignmentsController {
     }
     return this.assignmentsService.submitAssignment(userId, assignmentId, content);
   }
+
+  @Post()
+  async createAssignment(@Body() data: any) {
+    return this.assignmentsService.createAssignment(data);
+  }
 }
