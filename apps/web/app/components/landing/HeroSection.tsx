@@ -141,7 +141,7 @@ export function HeroSection() {
   const { isSignedIn } = useUser();
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#080808] pt-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-[#080808] pt-16">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
@@ -186,7 +186,7 @@ export function HeroSection() {
                 <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
               {!isSignedIn && (
-                <div className="text-sm text-zinc-500 leading-snug">
+                <div className="text-sm text-gray-700 dark:text-zinc-500 leading-snug">
                   Sign in or create an account<br />
                   to continue your journey
                 </div>

@@ -126,7 +126,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
                   <div className="flex items-center gap-3">
                     <Avatar name={user.name} />
                     <div>
-                      <p className="text-white font-medium text-sm">
+                      <p className="text-black dark:text-white font-medium text-sm">
                         {user.name}
                       </p>
                       <p className="text-gray-500 text-xs">
@@ -154,7 +154,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
                 <td className="px-6 py-5 text-right">
                   <div className="flex items-center justify-end gap-2">
                     <Flame className="w-4 h-4 text-orange-400" />
-                    <p className="text-gray-300 text-sm">
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">
                       {user.streak} days
                     </p>
                   </div>

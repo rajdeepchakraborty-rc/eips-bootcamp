@@ -2,9 +2,9 @@ import type { ReferralActivity } from "../../lib/referrals";
 
 export default function ReferralActivity({ activities }: { activities?: ReferralActivity[] }) {
   return (
-    <div className="p-4 bg-zinc-900 rounded border border-zinc-800">
-      <h3 className="text-sm font-medium text-gray-200">Activity</h3>
-      <ul className="mt-3 space-y-2 text-sm text-gray-300">
+    <div className="p-4 bg-gray-100 dark:bg-zinc-900 rounded border border-gray-300 dark:border-zinc-800">
+      <h3 className="text-sm font-medium text-gray-800 dark:text-gray-200\">Activity</h3>
+      <ul className="mt-3 space-y-2 text-sm text-gray-700 dark:text-gray-300\">
         {activities?.slice(0, 6).map((a) => (
           <li key={a.id} className="flex items-center justify-between">
             <div>

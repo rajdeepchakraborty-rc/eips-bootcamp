@@ -84,7 +84,7 @@ export function AssignmentFilters({
       <div className="relative">
         <button
           onClick={() => setOpenDropdown(isOpen ? null : dropdownId)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-emerald-500/30 rounded-lg transition-all text-sm font-medium text-gray-300"
+          className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 dark:bg-gray-800/30 hover:bg-gray-200 dark:hover:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 hover:border-emerald-500/30 rounded-lg transition-all text-sm font-medium text-gray-700 dark:text-gray-300"
         >
           <span>{selectedLabel}</span>
           <ChevronDown

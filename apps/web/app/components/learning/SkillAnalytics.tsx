@@ -29,16 +29,16 @@ export const SkillAnalytics: React.FC = () => {
   );
 
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
       <div className="relative z-10 flex-1 flex flex-col">
         <div className="mb-6">
-          <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
+          <p className="text-xs font-medium text-gray-600 dark:text-zinc-500 uppercase tracking-wider">
             Progress Tracking
           </p>
-          <h3 className="text-xl font-bold text-white mt-1">
+          <h3 className="text-xl font-bold text-black dark:text-white mt-1">
             Skill Analytics
           </h3>
         </div>
@@ -46,7 +46,7 @@ export const SkillAnalytics: React.FC = () => {
         {/* Technical Skills */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-semibold text-white">Technical Skills</p>
+            <p className="text-xs font-semibold text-black dark:text-white">Technical Skills</p>
             <p className="text-xs font-bold text-emerald-400">{avgTechnical}%</p>
           </div>
 
@@ -73,7 +73,7 @@ export const SkillAnalytics: React.FC = () => {
         {/* Soft Skills */}
         <div className="flex-1">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-semibold text-white">Soft Skills</p>
+            <p className="text-xs font-semibold text-black dark:text-white">Soft Skills</p>
             <p className="text-xs font-bold text-emerald-400">{avgSoft}%</p>
           </div>
 
@@ -98,7 +98,7 @@ export const SkillAnalytics: React.FC = () => {
         </div>
 
         {/* View Detailed Analytics Button */}
-        <div className="mt-6 pt-4 border-t border-white/8">
+        <div className="mt-6 pt-4 border-t border-gray-300 dark:border-white/8">
           <button className="w-full rounded-lg font-medium text-sm py-2.5 px-4 transition-all duration-200 border border-emerald-500/30 hover:border-emerald-500/60 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 hover:text-emerald-200">
             Detailed Analytics →
           </button>

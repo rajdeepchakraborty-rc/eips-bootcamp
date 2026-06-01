@@ -8,14 +8,14 @@ interface Props {
 
 export default function ImpactCard({ stats }: Props) {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-[#0d0d0d] p-5 relative overflow-hidden">
+    <div className="rounded-2xl border border-gray-300 dark:border-white/[0.06] bg-white dark:bg-[#0d0d0d] p-5 relative overflow-hidden">
       {/* Subtle green glow at top */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{ background: "linear-gradient(90deg, transparent, rgba(16,185,129,0.4), transparent)" }}
       />
 
-      <h3 className="text-white font-semibold text-base mb-1">
+      <h3 className="text-black dark:text-white font-semibold text-base mb-1">
         You&apos;re Making an Impact! 🌱
       </h3>
       <p className="text-gray-400 text-xs leading-relaxed mb-5">
@@ -30,7 +30,7 @@ export default function ImpactCard({ stats }: Props) {
             </svg>
           </div>
           <div>
-            <p className="text-white text-xl font-bold">{stats.peopleInspired}</p>
+            <p className="text-black dark:text-white text-xl font-bold">{stats.peopleInspired}</p>
             <p className="text-gray-500 text-[10px] leading-tight">People inspired</p>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function ImpactCard({ stats }: Props) {
             </svg>
           </div>
           <div>
-            <p className="text-white text-xl font-bold">{stats.communitiesReached}</p>
+            <p className="text-black dark:text-white text-xl font-bold">{stats.communitiesReached}</p>
             <p className="text-gray-500 text-[10px] leading-tight">Communities reached</p>
           </div>
         </div>

@@ -101,7 +101,7 @@ export function RecentActivity({ activities }: RecentActivityProps) {
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <p className="text-white font-medium text-sm truncate">
+                <p className="text-black dark:text-white font-medium text-sm truncate">
                   {activity.title}
                 </p>
                 <p className="text-gray-500 text-sm truncate">

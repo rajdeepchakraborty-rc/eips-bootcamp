@@ -8,7 +8,7 @@ export const RecommendedNextStep: React.FC = () => {
   const reason = 'You should finish Module 6 before tackling Advanced Patterns';
 
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 dark:hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
@@ -18,30 +18,30 @@ export const RecommendedNextStep: React.FC = () => {
             <Lightbulb size={18} className="text-emerald-400" />
           </div>
           <div>
-            <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">Smart Recommendation</p>
-            <h3 className="text-lg font-bold text-white mt-1">Next Step</h3>
+            <p className="text-xs font-medium text-gray-600 dark:text-zinc-500 uppercase tracking-wider">Smart Recommendation</p>
+            <h3 className="text-lg font-bold text-black dark:text-white mt-1">Next Step</h3>
           </div>
         </div>
 
         {/* Recommendation Text */}
         <div className="mb-6 flex-1">
-          <p className="font-semibold text-white mb-2 text-sm">
+          <p className="font-semibold text-black dark:text-white mb-2 text-sm">
             {recommendation}
           </p>
-          <p className="text-xs text-zinc-400 leading-relaxed">
+          <p className="text-xs text-gray-600 dark:text-zinc-400 leading-relaxed">
             {reason}
           </p>
         </div>
 
         {/* Stats */}
-        <div className="mb-6 grid grid-cols-2 gap-3 pt-6 border-t border-white/8">
+        <div className="mb-6 grid grid-cols-2 gap-3 pt-6 border-t border-gray-300 dark:border-white/8">
           <div>
-            <p className="text-xs text-zinc-500 font-medium mb-1">Est. Time</p>
-            <p className="text-lg font-bold text-white">3h 20m</p>
+            <p className="text-xs text-gray-600 dark:text-zinc-500 font-medium mb-1">Est. Time</p>
+            <p className="text-lg font-bold text-black dark:text-white">3h 20m</p>
           </div>
           <div>
-            <p className="text-xs text-zinc-500 font-medium mb-1">XP Reward</p>
-            <p className="text-lg font-bold text-white">250 XP</p>
+            <p className="text-xs text-gray-600 dark:text-zinc-500 font-medium mb-1">XP Reward</p>
+            <p className="text-lg font-bold text-black dark:text-white">250 XP</p>
           </div>
         </div>
 

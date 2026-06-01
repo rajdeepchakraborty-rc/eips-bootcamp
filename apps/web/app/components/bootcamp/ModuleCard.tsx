@@ -55,22 +55,22 @@ export function ModuleCard({ module, onClick }: ModuleCardProps) {
       <p className="text-gray-400 text-sm mb-4 line-clamp-2">{module.description}</p>
 
       {/* Meta Info */}
-      <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-700/50">
+      <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-300 dark:border-gray-700/50">
         <div>
-          <div className="text-xs text-gray-500 mb-1">Lessons</div>
-          <div className="text-lg font-bold text-white">
+          <div className="text-xs text-gray-600 dark:text-gray-500 mb-1">Lessons</div>
+          <div className="text-lg font-bold text-black dark:text-white">
             {module.completed}/{module.lessons}
           </div>
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Duration</div>
-          <div className="flex items-center gap-1 text-white">
+          <div className="text-xs text-gray-600 dark:text-gray-500 mb-1">Duration</div>
+          <div className="flex items-center gap-1 text-black dark:text-white">
             <Clock size={14} className="text-emerald-400" />
             <span className="text-sm font-semibold">{module.duration}</span>
           </div>
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">XP Reward</div>
+          <div className="text-xs text-gray-600 dark:text-gray-500 mb-1">XP Reward</div>
           <div className="flex items-center gap-1 text-emerald-400">
             <Zap size={14} />
             <span className="text-sm font-semibold">{module.xpReward}</span>

@@ -30,20 +30,20 @@ export const EarnXPCard: React.FC = () => {
         <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white mb-6">How to Earn More XP</h3>
+        <h3 className="text-lg font-bold text-black dark:text-white mb-6">How to Earn More XP</h3>
 
         {/* Activities List */}
         <div className="space-y-3 mb-6">
           {XP_ACTIVITIES.map((activity, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-3 rounded-lg bg-slate-800/40 border border-emerald-500/10 hover:border-emerald-500/30 hover:bg-slate-800/60 transition-all duration-200"
+              className="flex items-center justify-between p-3 rounded-lg bg-slate-100 dark:bg-slate-800/40 border border-emerald-300 dark:border-emerald-500/10 hover:border-emerald-400 dark:hover:border-emerald-500/30 hover:bg-slate-200 dark:hover:bg-slate-800/60 transition-all duration-200"
             >
               <div className="flex items-center gap-3">
                 <span className="text-lg">
                   {activity.emoji}
                 </span>
-                <span className="text-sm text-gray-300">
+                <span className="text-sm text-gray-700 dark:text-gray-300">
                   {activity.activity}
                 </span>
               </div>

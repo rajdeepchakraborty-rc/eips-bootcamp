@@ -123,10 +123,10 @@ export function AdminHero({ startDate = 'May 1', endDate = 'May 31, 2024' }: Adm
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         {/* Left side - Text content */}
         <div className="pt-4 lg:pt-8">
-          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-3 tracking-tight">
+          <h1 className="text-5xl lg:text-6xl font-bold text-black dark:text-white mb-3 tracking-tight">
             Admin Analytics
           </h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
             Monitor platform growth, engagement, learning activity, and ecosystem impact.
           </p>
 

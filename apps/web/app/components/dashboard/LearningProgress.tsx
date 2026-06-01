@@ -6,7 +6,7 @@ export function LearningProgress() {
   const { title, progress } = mockLearningModule;
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-white font-bold text-base">Continue Your Learning</h3>
         <Link href="/dashboard/bootcamp">  

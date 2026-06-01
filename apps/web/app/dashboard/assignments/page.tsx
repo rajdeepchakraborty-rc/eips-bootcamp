@@ -106,7 +106,7 @@ export default function AssignmentsPage() {
               {/* Assignments List */}
               <div className="lg:col-span-2">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-white">
+                  <h2 className="text-2xl font-bold text-black dark:text-white">
                     {sortedAssignments.length} Assignments
                   </h2>
                   <p className="text-gray-400 text-sm mt-1">

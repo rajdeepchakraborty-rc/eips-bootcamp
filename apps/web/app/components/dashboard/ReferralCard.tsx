@@ -20,7 +20,7 @@ export function ReferralCard({ referralsCount, xp }: ReferralCardProps) {
   };
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col h-full">
       <div className="mb-4">
         <h3 className="text-white font-bold text-base">Your Referral Code</h3>
         <p className="text-zinc-500 text-xs mt-0.5">Share your code and earn XP</p>

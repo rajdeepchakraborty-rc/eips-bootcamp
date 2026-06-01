@@ -60,7 +60,7 @@ const badges: Badge[] = [
 
 export const AchievementBadges: React.FC = () => {
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 dark:hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
@@ -69,7 +69,7 @@ export const AchievementBadges: React.FC = () => {
           <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
             Achievements
           </p>
-          <h3 className="text-xl font-bold text-white mt-1">
+          <h3 className="text-xl font-bold text-black dark:text-white mt-1">
             Your Badges
           </h3>
         </div>
@@ -91,11 +91,11 @@ export const AchievementBadges: React.FC = () => {
             >
               {/* Content */}
               <div className="relative z-10 w-full">
-                <p className="text-3xl mb-1.5">{badge.icon}</p>
-                <p className="text-xs font-bold text-white mb-0.5">
+                <p className="text-3xl mb-1.5\">{badge.icon}</p>
+                <p className="text-xs font-bold text-black dark:text-white mb-0.5\">
                   {badge.name}
                 </p>
-                <p className="text-xs text-zinc-400 line-clamp-2">
+                <p className="text-xs text-gray-600 dark:text-zinc-400 line-clamp-2\">
                   {badge.description}
                 </p>
 

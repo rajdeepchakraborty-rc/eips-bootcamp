@@ -63,7 +63,7 @@ export const LearningStatsGrid: React.FC = () => {
         const IconComponent = iconMap[card.icon] || Icons.Activity;
 
         return (
-          <div key={card.id} className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col justify-between hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-default overflow-hidden min-h-[160px]">
+          <div key={card.id} className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col justify-between hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-default overflow-hidden min-h-[160px]">
             {/* Hover glow */}
             <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
@@ -73,7 +73,7 @@ export const LearningStatsGrid: React.FC = () => {
                 <IconComponent size={18} className="text-emerald-400/60" />
               </div>
               <div>
-                <p className="font-black text-3xl tracking-tight text-white mb-1">{card.value}</p>
+                <p className="font-black text-3xl tracking-tight text-black dark:text-white mb-1">{card.value}</p>
                 {card.unit && <p className="text-xs font-medium text-zinc-500">{card.unit}</p>}
               </div>
             </div>

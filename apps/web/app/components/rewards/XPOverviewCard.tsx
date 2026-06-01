@@ -82,7 +82,7 @@ export const XPOverviewCard: React.FC<XPOverviewCardProps> = ({ data }) => {
           </div>
 
           {/* Progress Bar */}
-          <div className="relative h-3 bg-slate-800/80 rounded-full overflow-hidden border border-emerald-500/20">
+          <div className="relative h-3 bg-slate-200 dark:bg-slate-800/80 rounded-full overflow-hidden border border-emerald-300 dark:border-emerald-500/20">
             <div
               className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-500 ease-out shadow-lg shadow-emerald-500/50"
               style={{ width: `${(progressRatio * 100).toFixed(1)}%` }}

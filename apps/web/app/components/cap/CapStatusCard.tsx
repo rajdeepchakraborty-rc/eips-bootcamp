@@ -262,10 +262,10 @@ function StatusWrapper({
       <div
         className="relative rounded-2xl overflow-hidden text-center px-8 py-12"
         style={{
-          background: `linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)`,
+          background: `linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.01) 100%) dark:linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)`,
           border: `1px solid ${borderColor}`,
           backdropFilter: "blur(20px)",
-          boxShadow: `0 0 80px ${glowColor}, 0 32px 64px rgba(0,0,0,0.5)`,
+          boxShadow: `0 0 80px ${glowColor}, 0 32px 64px rgba(0,0,0,0.5) dark:rgba(0,0,0,0.5)`,
         }}
       >
         {/* Top accent */}

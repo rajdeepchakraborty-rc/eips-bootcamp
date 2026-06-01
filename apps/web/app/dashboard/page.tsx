@@ -72,7 +72,7 @@ export default function DashboardPage() {
 
   if (!isLoaded || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#080808] text-white">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#080808] text-black dark:text-white">
         Loading dashboard...
       </div>
     );

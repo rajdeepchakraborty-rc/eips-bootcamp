@@ -155,7 +155,7 @@ function NavSection({
 }) {
   return (
     <div>
-      <p className="text-[10px] font-semibold tracking-widest text-white/20 px-3 mb-2">
+      <p className="text-[10px] font-semibold tracking-widest text-gray-400 dark:text-white/20 px-3 mb-2">
         {label}
       </p>
       <ul className="space-y-0.5">

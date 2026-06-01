@@ -83,12 +83,12 @@ export function WelcomeHero({ user }: WelcomeHeroProps) {
 
       {/* Main text content */}
       <div className="relative z-10 px-7 py-8 max-w-[calc(100%-200px)] lg:max-w-[calc(100%-320px)]">
-        <p className="text-zinc-400 text-sm font-medium mb-1">Welcome back,</p>
-        <h1 className="text-white font-black text-4xl lg:text-5xl tracking-tight mb-2 flex items-center gap-3">
+        <p className="text-gray-600 dark:text-zinc-400 text-sm font-medium mb-1">Welcome back,</p>
+        <h1 className="text-black dark:text-white font-black text-4xl lg:text-5xl tracking-tight mb-2 flex items-center gap-3">
           {user.username}
           <span className="text-3xl select-none" role="img" aria-label="wave">👋</span>
         </h1>
-        <p className="text-zinc-400 text-sm mb-6">Continue building Ethereum&apos;s future.</p>
+        <p className="text-gray-600 dark:text-zinc-400 text-sm mb-6">Continue building Ethereum&apos;s future.</p>
 
         {/* Badges */}
         <div className="flex flex-wrap items-center gap-2.5">

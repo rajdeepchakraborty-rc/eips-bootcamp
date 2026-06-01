@@ -20,7 +20,7 @@ export const ProgressCard: React.FC<ProgressCardProps> = ({ percentage }) => {
         <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white mb-6">Your Progress</h3>
+        <h3 className="text-lg font-bold text-black dark:text-white mb-6">Your Progress</h3>
 
         {/* Circular Progress */}
         <div className="flex justify-center mb-6">
@@ -75,7 +75,7 @@ export const ProgressCard: React.FC<ProgressCardProps> = ({ percentage }) => {
         </div>
 
         {/* Message */}
-        <p className="text-center text-gray-300 text-sm mb-6">
+        <p className="text-center text-gray-700 dark:text-gray-300 text-sm mb-6">
           You're doing great!
         </p>
 

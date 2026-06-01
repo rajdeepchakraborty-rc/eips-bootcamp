@@ -40,7 +40,7 @@ export const RewardCard: React.FC<RewardCardProps> = ({
       )}
 
       {/* Card */}
-      <div className="relative h-full bg-gradient-to-br from-slate-800/80 via-slate-900/60 to-slate-900/40 backdrop-blur-xl border border-emerald-500/20 group-hover:border-emerald-500/40 rounded-2xl p-6 transition-all duration-300 flex flex-col shadow-xl overflow-hidden">
+      <div className="relative h-full bg-gradient-to-br from-gray-100 to-gray-50 dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 backdrop-blur-xl border border-gray-300 dark:border-emerald-500/20 group-hover:border-emerald-500/40 rounded-2xl p-6 transition-all duration-300 flex flex-col shadow-xl overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />

@@ -38,7 +38,7 @@ export default function TopCountriesCard({ applications }: { applications: any[]
               >
                 <div className="flex items-center gap-2">
                   <span className="text-lg">{countryEmojis[item.country] || '🌍'}</span>
-                  <span className="text-sm text-gray-300 font-medium">{item.country}</span>
+                  <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{item.country}</span>
                 </div>
                 <span className="text-sm font-bold text-emerald-400">{item.count}</span>
               </div>

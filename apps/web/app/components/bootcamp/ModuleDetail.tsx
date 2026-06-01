@@ -73,7 +73,7 @@ export function ModuleDetail({ module, onBack, lessons }: ModuleDetailProps) {
         {/* Module Progress */}
         <div className="px-6 py-4 border-b border-gray-800">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-gray-300">Progress</span>
+            <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">Progress</span>
             <span className="text-sm font-bold text-emerald-400">
               {module.completed}/{module.lessons}
             </span>
@@ -115,7 +115,7 @@ export function ModuleDetail({ module, onBack, lessons }: ModuleDetailProps) {
                   <h4 className="text-sm font-semibold text-white mt-1 line-clamp-2">
                     {lesson.title}
                   </h4>
-                  <div className="flex items-center gap-1 mt-2 text-xs text-gray-400">
+                  <div className="flex items-center gap-1 mt-2 text-xs text-gray-600 dark:text-gray-400">
                     <Clock size={12} />
                     {lesson.duration}
                   </div>
@@ -128,14 +128,14 @@ export function ModuleDetail({ module, onBack, lessons }: ModuleDetailProps) {
         {/* Module Stats */}
         <div className="p-4 border-t border-gray-800 space-y-3 bg-gradient-to-t from-black to-transparent">
           <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Total Duration</span>
+            <span className="text-gray-600 dark:text-gray-400">Total Duration</span>
             <span className="font-semibold text-white flex items-center gap-1">
               <Clock size={14} className="text-emerald-400" />
               {module.duration}
             </span>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Total XP</span>
+            <span className="text-gray-600 dark:text-gray-400">Total XP</span>
             <span className="font-semibold text-emerald-400 flex items-center gap-1">
               <Zap size={14} />
               {module.xpReward}
@@ -238,7 +238,7 @@ function LessonContent({ lesson, moduleTitle }: { lesson: Lesson; moduleTitle: s
         {/* Description */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">Overview</h2>
-          <p className="text-gray-300 leading-relaxed text-lg">
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
             {lesson.description}
           </p>
         </div>
@@ -255,7 +255,7 @@ function LessonContent({ lesson, moduleTitle }: { lesson: Lesson; moduleTitle: s
             ].map((point, idx) => (
               <li key={idx} className="flex gap-3">
                 <Check size={20} className="text-emerald-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">{point}</span>
+                <span className="text-gray-600 dark:text-gray-300">{point}</span>
               </li>
             ))}
           </ul>

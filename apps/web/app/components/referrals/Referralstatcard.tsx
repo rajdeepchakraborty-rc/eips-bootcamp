@@ -13,7 +13,7 @@ interface Props {
 
 export default function ReferralStatCard({ icon, label, value, growth, growthLabel, isRank }: Props) {
   return (
-    <div className="group relative rounded-2xl border border-white/[0.06] bg-[#0d0d0d] p-5 hover:border-emerald-500/20 hover:bg-[#0f0f0f] transition-all duration-300 overflow-hidden">
+    <div className="group relative rounded-2xl border border-gray-300 dark:border-white/[0.06] bg-white dark:bg-[#0d0d0d] p-5 hover:border-emerald-500/20 dark:hover:bg-[#0f0f0f] transition-all duration-300 overflow-hidden">
       {/* Hover glow */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{ background: "radial-gradient(circle at 50% 0%, rgba(16,185,129,0.05) 0%, transparent 70%)" }} />

@@ -29,17 +29,17 @@ export const RewardsHistoryCard: React.FC = () => {
         <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white mb-6">Rewards History</h3>
+        <h3 className="text-lg font-bold text-black dark:text-white mb-6">Rewards History</h3>
 
         {/* History Items */}
         <div className="space-y-4 mb-6">
           {MOCK_REWARDS_HISTORY.map((item, index) => (
             <div
               key={index}
-              className="p-4 rounded-lg bg-slate-800/40 border border-emerald-500/10 hover:border-emerald-500/30 hover:bg-slate-800/60 transition-all duration-200"
+              className="p-4 rounded-lg bg-slate-100 dark:bg-slate-800/40 border border-emerald-300 dark:border-emerald-500/10 hover:border-emerald-400 dark:hover:border-emerald-500/30 hover:bg-slate-200 dark:hover:bg-slate-800/60 transition-all duration-200"
             >
               <div className="flex items-start justify-between mb-2">
-                <span className="text-sm font-bold text-gray-300">
+                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">
                   {item.title}
                 </span>
                 <span className="text-emerald-400 font-bold text-sm">

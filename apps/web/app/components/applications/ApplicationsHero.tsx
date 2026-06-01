@@ -5,7 +5,7 @@ import { EthereumCrystal } from '@/app/components/applications/EthereumCrystal';
 
 export function ApplicationsHero() {
   return (
-    <div className="relative overflow-hidden border-b border-white/10 px-6 lg:px-8 py-12 lg:py-16">
+    <div className="relative overflow-hidden border-b border-gray-300 dark:border-white/10 px-6 lg:px-8 py-12 lg:py-16">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/5 via-transparent to-transparent pointer-events-none" />
 

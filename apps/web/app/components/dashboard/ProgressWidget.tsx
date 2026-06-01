@@ -7,7 +7,7 @@ export function ProgressWidget() {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col h-full">
       <h3 className="text-white font-bold text-base mb-4">Your Progress</h3>
 
       <div className="flex-1 flex flex-col items-center justify-center gap-4">

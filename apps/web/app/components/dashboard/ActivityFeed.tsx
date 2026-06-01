@@ -22,7 +22,7 @@ const iconConfig: Record<ActivityItem['icon'], { icon: React.ReactNode; bg: stri
 
 export function ActivityFeed() {
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-white font-bold text-base">Recent Activity</h3>
         <button className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors">

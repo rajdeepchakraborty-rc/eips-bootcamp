@@ -56,7 +56,7 @@ export function ApplicationRow({ application, onViewDetails }: ApplicationRowPro
 
       {/* Email */}
       <td className="px-6 py-4">
-        <p className="text-sm text-gray-300 truncate max-w-xs">{application.email}</p>
+        <p className="text-sm text-gray-700 dark:text-gray-300 truncate max-w-xs">{application.email}</p>
       </td>
 
       {/* Track */}
@@ -70,7 +70,7 @@ export function ApplicationRow({ application, onViewDetails }: ApplicationRowPro
 
       {/* Batch */}
       <td className="px-6 py-4">
-        <p className="text-sm text-gray-300">{application.batch}</p>
+        <p className="text-sm text-gray-700 dark:text-gray-300">{application.batch}</p>
       </td>
 
       {/* Status */}
@@ -83,7 +83,7 @@ export function ApplicationRow({ application, onViewDetails }: ApplicationRowPro
 
       {/* Applied Date */}
       <td className="px-6 py-4">
-        <div className="text-sm text-gray-300">
+        <div className="text-sm text-gray-700 dark:text-gray-300">
           <p>{formattedDate}</p>
           <p className="text-xs text-gray-500">{time}</p>
         </div>

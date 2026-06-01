@@ -11,14 +11,14 @@ export const ContinueLearningCard: React.FC = () => {
   const difficulty = 'Intermediate';
 
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
       <div className="relative z-10">
         <div className="mb-6">
           <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">Continue Learning</p>
-          <h2 className="text-2xl font-bold text-white mb-2">{moduleTitle}</h2>
+          <h2 className="text-2xl font-bold text-black dark:text-white mb-2">{moduleTitle}</h2>
           <p className="text-sm text-zinc-400">{description}</p>
         </div>
 

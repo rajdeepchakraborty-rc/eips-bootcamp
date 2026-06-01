@@ -49,16 +49,16 @@ const deadlines: Deadline[] = [
 
 export const UpcomingDeadlines: React.FC = () => {
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 dark:hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
       <div className="relative z-10 flex-1 flex flex-col">
         <div className="mb-6">
-          <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
+          <p className="text-xs font-medium text-gray-600 dark:text-zinc-500 uppercase tracking-wider">
             Timeline
           </p>
-          <h3 className="text-xl font-bold text-white mt-1">
+          <h3 className="text-xl font-bold text-black dark:text-white mt-1">
             Upcoming Deadlines
           </h3>
         </div>
@@ -66,7 +66,7 @@ export const UpcomingDeadlines: React.FC = () => {
         {/* Deadline Items */}
         <div className="space-y-3 flex-1">
             {deadlines.map((deadline) => {
-              let priorityColor = 'bg-white/5 text-zinc-300 border-white/8';
+              let priorityColor = 'bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-zinc-300 border border-gray-300 dark:border-white/8';
               let dayColor = 'text-zinc-400';
 
               if (deadline.priority === 'high') {
@@ -93,7 +93,7 @@ export const UpcomingDeadlines: React.FC = () => {
                 >
                   <div className="flex items-start justify-between gap-3 mb-2.5">
                     <div>
-                      <p className="text-xs font-semibold text-white">
+                      <p className="text-xs font-semibold text-black dark:text-white">
                         {deadline.title}
                       </p>
                       <p className="text-xs text-zinc-500 mt-0.5">
@@ -128,7 +128,7 @@ export const UpcomingDeadlines: React.FC = () => {
           </div>
 
         {/* View All Button */}
-        <div className="mt-6 pt-4 border-t border-white/8">
+        <div className="mt-6 pt-4 border-t border-gray-300 dark:border-white/8">
           <button className="w-full rounded-lg font-medium text-sm py-2.5 px-4 transition-all duration-200 border border-emerald-500/30 hover:border-emerald-500/60 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 hover:text-emerald-200">
             View Calendar →
           </button>

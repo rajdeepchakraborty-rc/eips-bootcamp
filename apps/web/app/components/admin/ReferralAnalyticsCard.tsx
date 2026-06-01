@@ -11,8 +11,8 @@ interface ReferralAnalyticsCardProps {
 
 export function ReferralAnalyticsCard({ data }: ReferralAnalyticsCardProps) {
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
-      <h3 className="text-white font-semibold text-lg mb-6 flex items-center gap-2">
+    <div className="rounded-xl border border-emerald-500/20 bg-gray-50 dark:bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
+      <h3 className="text-black dark:text-white font-semibold text-lg mb-6 flex items-center gap-2">
         <Share2 className="w-5 h-5 text-blue-400" />
         Referral Performance
       </h3>
@@ -24,7 +24,7 @@ export function ReferralAnalyticsCard({ data }: ReferralAnalyticsCardProps) {
             <p className="text-gray-400 text-sm font-medium">Total Referrals</p>
             <Share2 className="w-4 h-4 text-blue-400 opacity-60" />
           </div>
-          <p className="text-white text-3xl font-bold">
+          <p className="text-black dark:text-white text-3xl font-bold">
             {data.totalReferrals.toLocaleString()}
           </p>
           <p className="text-blue-400/70 text-xs mt-2">↑ 8.5% from last month</p>
@@ -36,7 +36,7 @@ export function ReferralAnalyticsCard({ data }: ReferralAnalyticsCardProps) {
             <p className="text-gray-400 text-sm font-medium">Conversion Rate</p>
             <TrendingUp className="w-4 h-4 text-emerald-400 opacity-60" />
           </div>
-          <p className="text-white text-3xl font-bold">
+          <p className="text-black dark:text-white text-3xl font-bold">
             {data.conversionRate}%
           </p>
           <p className="text-emerald-400/70 text-xs mt-2">↑ 3.2% from last month</p>

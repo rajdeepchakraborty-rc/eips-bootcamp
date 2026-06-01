@@ -20,14 +20,14 @@ const timelineModules: TimelineModule[] = [
 
 export const LearningTimeline: React.FC = () => {
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 dark:hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
       <div className="relative z-10 flex-1 flex flex-col">
         <div className="mb-6">
-          <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">Learning Roadmap</p>
-          <h3 className="text-xl font-bold text-white mt-1">Your Timeline</h3>
+          <p className="text-xs font-medium text-gray-600 dark:text-zinc-500 uppercase tracking-wider">Learning Roadmap</p>
+          <h3 className="text-xl font-bold text-black dark:text-white mt-1">Your Timeline</h3>
         </div>
 
         {/* Timeline */}
@@ -35,8 +35,8 @@ export const LearningTimeline: React.FC = () => {
           {timelineModules.map((module, index) => {
             const isLast = index === timelineModules.length - 1;
             let bgColor = 'bg-white/5';
-            let borderColor = 'border-white/8';
-            let iconColor = 'text-zinc-500';
+            let borderColor = 'border-gray-300 dark:border-white/8';
+            let iconColor = 'text-gray-600 dark:text-zinc-500';
 
             if (module.status === 'completed') {
               bgColor = 'bg-emerald-500/10';
@@ -83,8 +83,8 @@ export const LearningTimeline: React.FC = () => {
 
                   {/* Content */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-white">{module.name}</p>
-                    <p className="text-xs text-zinc-500 mt-0.5">
+                    <p className="text-xs font-semibold text-black dark:text-white\">{module.name}</p>
+                    <p className="text-xs text-gray-600 dark:text-zinc-500 mt-0.5\">
                       {module.status === 'completed'
                         ? 'Completed'
                         : module.status === 'current'

@@ -85,7 +85,7 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User' })
       {/* Content */}
       <div className="relative z-10 px-6 py-8 sm:px-8 flex items-start justify-between">
         <div className="max-w-2xl">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Welcome back, {userName}!</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-black dark:text-white mb-3">Welcome back, {userName}!</h1>
           <p className="text-zinc-400 text-sm sm:text-base mb-5">
             You're <span className="font-semibold text-emerald-400">{bootcampCompletion}%</span> through the bootcamp. Keep your{' '}
             <span className="font-semibold text-orange-400">{currentStreak}-day streak</span> alive and unlock your potential.

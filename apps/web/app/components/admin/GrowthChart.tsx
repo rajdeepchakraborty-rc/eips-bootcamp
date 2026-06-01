@@ -159,23 +159,23 @@ export function GrowthChart({ data }: GrowthChartProps) {
   const [period, setPeriod] = useState<'daily' | 'weekly' | 'monthly'>('daily');
 
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
+    <div className="rounded-xl border border-emerald-500/20 bg-gray-50 dark:bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
       {/* Header */}
-      <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
+      <div className="flex items-center justify-between p-6 border-b border-gray-300 dark:border-emerald-500/10">
         <div>
-          <h3 className="text-white font-semibold text-lg mb-1">Platform Growth Overview</h3>
+          <h3 className="text-black dark:text-white font-semibold text-lg mb-1">Platform Growth Overview</h3>
           <div className="flex items-center gap-4 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-emerald-400" />
-              <span className="text-gray-400">Users</span>
+              <span className="text-gray-600 dark:text-gray-400">Users</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-blue-400" />
-              <span className="text-gray-400">Active Learners</span>
+              <span className="text-gray-600 dark:text-gray-400">Active Learners</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-purple-400" />
-              <span className="text-gray-400">XP Awarded</span>
+              <span className="text-gray-600 dark:text-gray-400">XP Awarded</span>
             </div>
           </div>
         </div>

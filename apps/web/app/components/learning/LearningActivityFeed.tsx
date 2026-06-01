@@ -65,7 +65,7 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 
 export const LearningActivityFeed: React.FC = () => {
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-6 hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden h-full flex flex-col">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
@@ -74,7 +74,7 @@ export const LearningActivityFeed: React.FC = () => {
           <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
             Activity Feed
           </p>
-          <h3 className="text-xl font-bold text-white mt-1">
+          <h3 className="text-xl font-bold text-black dark:text-white mt-1">
             Recent Activity
           </h3>
         </div>
@@ -102,10 +102,10 @@ export const LearningActivityFeed: React.FC = () => {
 
                   {/* Content */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-white">
+                    <p className="text-xs font-semibold text-black dark:text-white">
                       {activity.title}
                     </p>
-                    <p className="text-xs text-zinc-400 mt-0.5">
+                    <p className="text-xs text-gray-600 dark:text-zinc-400 mt-0.5">
                       {activity.description}
                     </p>
                     <p className="text-xs text-zinc-600 mt-1">

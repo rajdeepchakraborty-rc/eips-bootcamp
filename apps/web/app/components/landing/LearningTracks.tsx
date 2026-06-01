@@ -17,7 +17,7 @@ const iconMap: Record<LearningTrack['icon'], React.ReactNode> = {
 
 function TrackCard({ track }: { track: LearningTrack }) {
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/7 rounded-2xl p-6 flex flex-col gap-4 hover:border-emerald-500/20 hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden">
+    <div className="group relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/7 rounded-2xl p-6 flex flex-col gap-4 hover:border-emerald-500/20 hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/2 transition-all duration-300 rounded-2xl pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/0 group-hover:via-emerald-500/20 to-transparent transition-all duration-500 pointer-events-none" />
@@ -35,7 +35,7 @@ function TrackCard({ track }: { track: LearningTrack }) {
             {track.level}
           </span>
         </div>
-        <p className="text-zinc-500 text-sm leading-relaxed">{track.description}</p>
+        <p className="text-gray-700 dark:text-zinc-500 text-sm leading-relaxed">{track.description}</p>
       </div>
 
       {/* Tags */}
@@ -66,7 +66,7 @@ export function LearningTracks() {
           <h2 className="text-white font-black text-4xl leading-tight tracking-tight mb-4">
             Your path to Ethereum knowledge starts here
           </h2>
-          <p className="text-zinc-500 text-base leading-relaxed">
+          <p className="text-gray-700 dark:text-zinc-500 text-base leading-relaxed">
             Structured tracks built for learners who want depth — from core Ethereum fundamentals to active protocol participation.
           </p>
         </div>

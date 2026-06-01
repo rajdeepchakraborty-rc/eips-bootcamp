@@ -31,18 +31,18 @@ interface AssignmentCardProps {
 
 const statusConfig = {
   'Not Started': {
-    bg: 'bg-gray-800/30',
-    text: 'text-gray-400',
-    badge: 'bg-gray-700 text-gray-300',
+    bg: 'bg-gray-100 dark:bg-gray-800/30',
+    text: 'text-gray-700 dark:text-gray-400',
+    badge: 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300',
   },
   'In Progress': {
-    bg: 'bg-cyan-500/10',
-    text: 'text-cyan-300',
-    badge: 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30',
+    bg: 'bg-cyan-50 dark:bg-cyan-500/10',
+    text: 'text-cyan-700 dark:text-cyan-300',
+    badge: 'bg-cyan-100 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-500/30',
   },
   Submitted: {
-    bg: 'bg-blue-500/10',
-    text: 'text-blue-300',
+    bg: 'bg-blue-50 dark:bg-blue-500/10',
+    text: 'text-blue-700 dark:text-blue-300',
     badge: 'bg-blue-500/20 text-blue-300 border border-blue-500/30',
   },
   'Under Review': {
@@ -170,7 +170,7 @@ export function AssignmentCard({ assignment }: AssignmentCardProps) {
           {assignment.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-2 py-1 rounded-full bg-gray-800/50 text-gray-300 border border-gray-700/50"
+              className="text-xs px-2 py-1 rounded-full bg-gray-200 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700/50"
             >
               {tag}
             </span>

@@ -61,7 +61,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <DashboardShell>
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
       {/* Main gradient background */}
       <div className="fixed inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent pointer-events-none -z-10" />
       

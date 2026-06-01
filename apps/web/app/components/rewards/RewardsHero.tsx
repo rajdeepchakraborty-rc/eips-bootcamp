@@ -12,12 +12,12 @@ export const RewardsHero: React.FC = () => {
         <div className="z-10">
           <div className="flex items-center gap-3 mb-6">
             <div className="text-4xl">🎁</div>
-            <h1 className="text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            <h1 className="text-5xl lg:text-6xl font-bold text-black dark:text-white tracking-tight">
               Rewards
             </h1>
           </div>
 
-          <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl">
             Redeem your XP for exclusive rewards and unlock new opportunities.
           </p>
         </div>

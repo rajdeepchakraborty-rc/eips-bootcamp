@@ -8,8 +8,8 @@ interface Props {
 
 const BADGE_COLORS: Record<string, { bg: string; border: string; text: string }> = {
   "CAP Ambassador": { bg: "rgba(52,211,153,0.12)", border: "rgba(52,211,153,0.3)", text: "#34d399" },
-  Researcher: { bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.12)", text: "rgba(255,255,255,0.6)" },
-  Educator: { bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.12)", text: "rgba(255,255,255,0.6)" },
+  Researcher: { bg: "rgba(200,200,200,0.08) dark:rgba(255,255,255,0.05)", border: "rgba(150,150,150,0.2) dark:rgba(255,255,255,0.12)", text: "#666 dark:#a0a0a0" },
+  Educator: { bg: "rgba(200,200,200,0.08) dark:rgba(255,255,255,0.05)", border: "rgba(150,150,150,0.2) dark:rgba(255,255,255,0.12)", text: "#666 dark:#a0a0a0" },
   "Community Builder": { bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.12)", text: "rgba(255,255,255,0.6)" },
 };
 

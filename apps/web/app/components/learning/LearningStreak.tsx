@@ -38,7 +38,7 @@ export const LearningStreak: React.FC = () => {
 
   return (
     <div className="relative group">
-      <div className="relative rounded-2xl border border-white/8 bg-[#0d0d0d] p-6 transition-all duration-300 hover:border-emerald-500/20 hover:-translate-y-0.5 overflow-hidden">
+      <div className="relative rounded-2xl border border-gray-300 dark:border-white/8 bg-white dark:bg-[#0d0d0d] p-6 transition-all duration-300 hover:border-emerald-500/20 hover:-translate-y-0.5 overflow-hidden">
         {/* Hover glow */}
         <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
@@ -49,7 +49,7 @@ export const LearningStreak: React.FC = () => {
               <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
                 Consistency
               </p>
-              <h3 className="text-2xl font-bold text-white">Learning Streak</h3>
+              <h3 className="text-2xl font-bold text-black dark:text-white">Learning Streak</h3>
             </div>
 
             {/* Stats */}
@@ -60,7 +60,7 @@ export const LearningStreak: React.FC = () => {
                 </p>
                 <div className="flex items-center justify-center gap-1.5">
                   <Flame className="text-orange-400" size={20} />
-                  <p className="text-2xl font-bold text-white">
+                  <p className="text-2xl font-bold text-black dark:text-white">
                     {currentStreak}
                   </p>
                 </div>
@@ -122,7 +122,7 @@ export const LearningStreak: React.FC = () => {
           </div>
 
           {/* Legend */}
-          <div className="flex items-center justify-center gap-2 text-xs text-zinc-500 border-t border-white/8 pt-4 mb-4">
+          <div className="flex items-center justify-center gap-2 text-xs text-gray-600 dark:text-zinc-500 border-t border-gray-300 dark:border-white/8 pt-4 mb-4">
             <span>Less</span>
             <div className="w-2.5 h-2.5 rounded bg-white/10" />
             <div className="w-2.5 h-2.5 rounded bg-emerald-900/40" />

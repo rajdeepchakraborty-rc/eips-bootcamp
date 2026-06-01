@@ -21,7 +21,7 @@ export function Footer() {
                 <div className="text-emerald-400 text-xs font-semibold">Bootcamp</div>
               </div>
             </div>
-            <p className="text-zinc-500 text-sm mt-4 max-w-sm">Premium education for people who want to understand how Ethereum evolves and how to participate.</p>
+            <p className="text-gray-700 dark:text-zinc-500 text-sm mt-4 max-w-sm">Premium education for people who want to understand how Ethereum evolves and how to participate.</p>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
@@ -58,7 +58,7 @@ export function Footer() {
               </Link>
               <Link href="/sign-in" className="text-zinc-400 text-sm">Sign In</Link>
             </div>
-            <div className="text-zinc-500 text-xs mt-6">© {new Date().getFullYear()} EIPsInsight — All rights reserved.</div>
+            <div className="text-gray-700 dark:text-zinc-500 text-xs mt-6">© {new Date().getFullYear()} EIPsInsight — All rights reserved.</div>
           </div>
         </div>
       </div>

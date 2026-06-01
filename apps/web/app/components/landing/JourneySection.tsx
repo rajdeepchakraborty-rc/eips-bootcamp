@@ -16,12 +16,12 @@ export function JourneySection() {
         <div className="mb-10 max-w-2xl">
           <p className="text-emerald-400 text-sm font-semibold mb-3 tracking-wide">Contributor Journey</p>
           <h2 className="text-white font-black text-3xl sm:text-4xl leading-tight">From learner to contributor</h2>
-          <p className="text-zinc-500 mt-3">A clear progression that takes you from discovery through active participation and contribution.</p>
+          <p className="text-gray-700 dark:text-zinc-500 mt-3">A clear progression that takes you from discovery through active participation and contribution.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
           {journeySteps.map((s, idx) => (
-            <div key={s.id} className="relative bg-[#0d0d0d] border border-white/6 rounded-2xl p-6 flex flex-col items-start gap-4">
+            <div key={s.id} className="relative bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/6 rounded-2xl p-6 flex flex-col items-start gap-4">
               <div className="flex items-center gap-3 w-full">
                 <div className="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
                   {iconMap[s.icon]}
@@ -31,7 +31,7 @@ export function JourneySection() {
                   <h3 className="text-white font-bold mt-1">{s.title}</h3>
                 </div>
               </div>
-              <p className="text-zinc-500 text-sm">{s.description}</p>
+              <p className="text-gray-700 dark:text-zinc-500 text-sm">{s.description}</p>
 
               {idx < journeySteps.length - 1 && (
                 <div className="absolute right-3 bottom-[-18px] hidden md:block">

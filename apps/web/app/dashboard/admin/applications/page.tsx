@@ -172,8 +172,8 @@ export default function ApplicationsPage() {
 
   if (!isLoaded) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black">
-        <div className="text-white">Loading...</div>
+      <div className="flex items-center justify-center h-screen bg-white dark:bg-black">
+        <div className="text-black dark:text-white">Loading...</div>
       </div>
     );
   }
@@ -192,7 +192,7 @@ export default function ApplicationsPage() {
 
   return (
     <DashboardShell>
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden">
       {/* Main Content */}
       <div className="flex-1">
         {/* Hero Section */}
@@ -204,7 +204,7 @@ export default function ApplicationsPage() {
         </div>
 
         {/* Filters */}
-        <div className="px-6 lg:px-8 py-6 border-b border-white/10">
+        <div className="px-6 lg:px-8 py-6 border-b border-gray-300 dark:border-white/10">
           <ApplicationsFilters
             filters={filters}
             onFilterChange={handleFilterChange}
