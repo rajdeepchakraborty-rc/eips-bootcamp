@@ -71,7 +71,7 @@ function NavSection({ title, items, pathname, }: { title: string; items: NavItem
                   ${
                     active
                       ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
-                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                   }`}
               >
               <span className={`transition-colors ${active ? 'text-emerald-400' : 'text-zinc-500 group-hover:text-emerald-400'}`}>
@@ -106,7 +106,7 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-[220px] bg-[#0a0a0a] border-r border-white/5 z-50 flex flex-col transition-transform duration-300
+        className={`fixed top-0 left-0 h-screen w-[220px] bg-background border-r border-white/5 z-50 flex flex-col transition-transform duration-300
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Logo */}
@@ -122,13 +122,13 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
               </svg>
             </div>
             <div>
-              <div className="text-white font-bold text-sm leading-none">EIPsInsight</div>
+              <div className="text-foreground font-bold text-sm leading-none">EIPsInsight</div>
               <div className="text-emerald-400 text-xs font-medium mt-0.5">Academy</div>
             </div>
           </div>
           <button
             onClick={onMobileClose}
-            className="lg:hidden text-zinc-500 hover:text-white transition-colors"
+            className="lg:hidden text-zinc-500 hover:text-black dark:hover:text-white transition-colors"
           >
             <X size={18} />
           </button>

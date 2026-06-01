@@ -13,7 +13,7 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
   const { user } = useUser();
 
   return (
-    <header className="sticky top-0 z-30 h-[60px] bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-gray-200 dark:border-white/5 flex items-center px-4 lg:px-6 gap-4">
+    <header className="sticky top-0 z-30 h-[60px] bg-background text-foreground backdrop-blur-xl border-b border-gray-200 dark:border-white/5 flex items-center px-4 lg:px-6 gap-4">
       {/* Mobile hamburger */}
       <button
         onClick={onMobileMenuOpen}
