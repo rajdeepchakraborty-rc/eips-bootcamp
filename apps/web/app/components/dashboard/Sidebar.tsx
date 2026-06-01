@@ -142,8 +142,8 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
         </nav>
 
         {/* Upgrade CTA */}
-        <div className="px-3 py-4 border-t border-white/5">
-          <div className="bg-gradient-to-br from-emerald-950/80 to-black border border-emerald-500/20 rounded-xl p-4">
+        <div className="px-3 py-4 border-t border-gray-200 dark:border-white/5">
+          <div className="from-emerald-50 to-white dark:from-emerald-950/80 dark:to-black border border-emerald-200 dark:border-emerald-500/20 rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
               <Zap size={16} className="text-emerald-400" />
               <span className="text-emerald-400 font-bold text-sm">Upgrade to Pro</span>
