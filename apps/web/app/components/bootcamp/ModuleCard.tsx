@@ -13,6 +13,7 @@ interface Module {
   xpReward: number;
   duration: string;
   color: string;
+  thumbnailUrl?: string;
 }
 
 interface ModuleCardProps {
@@ -27,8 +28,18 @@ export function ModuleCard({ module, onClick }: ModuleCardProps) {
   return (
     <button
       onClick={onClick}
-      className={`group text-left bg-gradient-to-br ${module.color} border border-gray-800 hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20`}
+      className={`group text-left bg-[#0f0f0f] border border-white/5 hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10 relative overflow-hidden`}
     >
+      {/* Accent Line */}
+      <div className={`absolute top-0 left-0 w-full h-1 ${module.color}`} />
+      
+      {/* Thumbnail (if available) */}
+      {module.thumbnailUrl && (
+        <div className="w-full h-32 mb-4 rounded-xl overflow-hidden bg-black border border-white/5">
+          <img src={module.thumbnailUrl} alt={module.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start gap-3 flex-1">
@@ -36,7 +47,6 @@ export function ModuleCard({ module, onClick }: ModuleCardProps) {
             <Book size={20} className="text-emerald-400" />
           </div>
           <div>
-            <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Module {module.section}</div>
             <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors mt-1">
               {module.title}
             </h3>
