@@ -124,7 +124,7 @@ export const LearningStreak: React.FC = () => {
           {/* Legend */}
           <div className="flex items-center justify-center gap-2 text-xs text-gray-600 dark:text-zinc-500 border-t border-gray-300 dark:border-white/8 pt-4 mb-4">
             <span>Less</span>
-            <div className="w-2.5 h-2.5 rounded bg-white/10" />
+            <div className="w-2.5 h-2.5 rounded bg-black/10 dark:bg-white/10" />
             <div className="w-2.5 h-2.5 rounded bg-emerald-900/40" />
             <div className="w-2.5 h-2.5 rounded bg-emerald-700/60" />
             <div className="w-2.5 h-2.5 rounded bg-emerald-500/80" />
@@ -134,7 +134,7 @@ export const LearningStreak: React.FC = () => {
 
           {/* Motivational Message */}
           <div className="p-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5">
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-zinc-600 dark:text-zinc-400">
               <span className="font-bold text-emerald-400">Keep it up!</span> You're on a {currentStreak}-day learning streak. Consistency is key to mastering Web3 development. 🔥
             </p>
           </div>

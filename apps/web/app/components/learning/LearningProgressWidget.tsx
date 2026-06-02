@@ -57,9 +57,9 @@ export const LearningProgressWidget: React.FC = () => {
             <p className="text-2xl font-bold text-black dark:text-white">
               {completedAssignments}/{totalAssignments}
             </p>
-            <p className="text-xs text-zinc-400">submitted</p>
+            <p className="text-xs text-zinc-600 dark:text-zinc-400">submitted</p>
           </div>
-          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/8">
+          <div className="w-full h-1.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden border border-white/8">
             <div
               className="h-full bg-emerald-500/70 rounded-full transition-all duration-300"
               style={{ width: `${assignmentCompletion}%` }}

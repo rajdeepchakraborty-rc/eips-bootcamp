@@ -59,7 +59,7 @@ export const SkillAnalytics: React.FC = () => {
                     {skill.progress}%
                   </p>
                 </div>
-                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/8">
+                <div className="w-full h-1.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden border border-white/8">
                   <div
                     className="h-full bg-emerald-500/70 rounded-full transition-all duration-300"
                     style={{ width: `${skill.progress}%` }}
@@ -86,7 +86,7 @@ export const SkillAnalytics: React.FC = () => {
                     {skill.progress}%
                   </p>
                 </div>
-                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/8">
+                <div className="w-full h-1.5 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden border border-white/8">
                   <div
                     className="h-full bg-emerald-500/70 rounded-full transition-all duration-300"
                     style={{ width: `${skill.progress}%` }}

@@ -86,7 +86,7 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User' })
       <div className="relative z-10 px-6 py-8 sm:px-8 flex items-start justify-between">
         <div className="max-w-2xl">
           <h1 className="text-3xl sm:text-4xl font-bold text-black dark:text-white mb-3">Welcome back, {userName}!</h1>
-          <p className="text-zinc-400 text-sm sm:text-base mb-5">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base mb-5">
             You're <span className="font-semibold text-emerald-400">{bootcampCompletion}%</span> through the bootcamp. Keep your{' '}
             <span className="font-semibold text-orange-400">{currentStreak}-day streak</span> alive and unlock your potential.
           </p>
@@ -95,13 +95,13 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User' })
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span className="text-xs sm:text-sm text-zinc-400">
+              <span className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
                 <span className="text-emerald-400 font-semibold">{bootcampCompletion}%</span> Progress
               </span>
             </div>
             <div className="flex items-center gap-2">
               <Flame size={14} className="text-orange-400" />
-              <span className="text-xs sm:text-sm text-zinc-400">
+              <span className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400">
                 <span className="text-orange-400 font-semibold">{currentStreak}</span> Day Streak
               </span>
             </div>

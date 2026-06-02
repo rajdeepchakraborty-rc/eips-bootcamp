@@ -19,16 +19,16 @@ export const ContinueLearningCard: React.FC = () => {
         <div className="mb-6">
           <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">Continue Learning</p>
           <h2 className="text-2xl font-bold text-black dark:text-white mb-2">{moduleTitle}</h2>
-          <p className="text-sm text-zinc-400">{description}</p>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">{description}</p>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium text-zinc-400">Progress</span>
+            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">Progress</span>
             <span className="text-xs font-semibold text-emerald-400">{progress}%</span>
           </div>
-          <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/8">
+          <div className="w-full h-2 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden border border-white/8">
             <div
               className="h-full bg-gradient-to-r from-emerald-500/80 to-emerald-400/80 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
@@ -38,11 +38,11 @@ export const ContinueLearningCard: React.FC = () => {
 
         {/* Meta Info */}
         <div className="flex flex-wrap gap-6 mb-6">
-          <div className="flex items-center gap-2 text-xs text-zinc-400">
+          <div className="flex items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400">
             <Clock size={14} className="text-emerald-400/70" />
             <span>{estimatedTime} remaining</span>
           </div>
-          <div className="flex items-center gap-2 text-xs text-zinc-400">
+          <div className="flex items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400">
             <Zap size={14} className="text-emerald-400/70" />
             <span>{difficulty}</span>
           </div>

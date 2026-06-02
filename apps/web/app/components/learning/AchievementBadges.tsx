@@ -102,7 +102,7 @@ export const AchievementBadges: React.FC = () => {
                 {/* Progress for locked badges */}
                 {!badge.unlocked && badge.progress && (
                   <div className="mt-2 pt-2 border-t border-white/8">
-                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden mb-0.5">
+                    <div className="w-full h-1 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden mb-0.5">
                       <div
                         className="h-full bg-emerald-500/70 transition-all"
                         style={{ width: `${badge.progress}%` }}
