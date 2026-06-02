@@ -45,7 +45,7 @@ function PendingCard({ application }: { application: CAPApplication }) {
       <StatusBadge label="PENDING" color="rgba(245,158,11,1)" bg="rgba(245,158,11,0.12)" border="rgba(245,158,11,0.3)" />
 
       {/* Text */}
-      <h3 className="text-2xl font-semibold text-white mt-4 mb-2">
+      <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mt-4 mb-2">
         Your application is under review.
       </h3>
       <p className="text-white/45 text-sm max-w-sm mx-auto leading-relaxed">
@@ -64,7 +64,7 @@ function PendingCard({ application }: { application: CAPApplication }) {
           label="Applied on"
           value={application.appliedOn ?? "—"}
         />
-        <div className="w-px h-8 bg-white/10" />
+        <div className="w-px h-8 bg-black/10 dark:bg-white/10" />
         <MetaItem
           icon={
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -130,7 +130,7 @@ function ApprovedCard({ application }: { application: CAPApplication }) {
       <StatusBadge label="APPROVED" color="rgba(52,211,153,1)" bg="rgba(52,211,153,0.12)" border="rgba(52,211,153,0.3)" />
 
       {/* Text */}
-      <h3 className="text-2xl font-semibold text-white mt-4 mb-2">
+      <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mt-4 mb-2">
         Congratulations! 🎉
       </h3>
       <p className="text-white/45 text-sm max-w-sm mx-auto leading-relaxed">
@@ -153,7 +153,7 @@ function ApprovedCard({ application }: { application: CAPApplication }) {
             }}
           >
             <span className="text-base">{p.icon}</span>
-            <span className="text-xs text-white/60 font-medium">{p.label}</span>
+            <span className="text-xs text-zinc-500 dark:text-white/60 font-medium">{p.label}</span>
           </div>
         ))}
       </div>
@@ -202,7 +202,7 @@ function RejectedCard() {
       <StatusBadge label="NOT APPROVED" color="rgba(239,68,68,1)" bg="rgba(239,68,68,0.1)" border="rgba(239,68,68,0.25)" />
 
       {/* Text */}
-      <h3 className="text-2xl font-semibold text-white mt-4 mb-2">
+      <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mt-4 mb-2">
         Application not approved this cycle.
       </h3>
       <p className="text-white/45 text-sm max-w-sm mx-auto leading-relaxed">
@@ -218,8 +218,8 @@ function RejectedCard() {
           border: "1px solid rgba(255,255,255,0.07)",
         }}
       >
-        <p className="text-xs text-white/40 leading-relaxed">
-          💡 <span className="text-white/60">Tip:</span> Complete more bootcamp
+        <p className="text-xs text-zinc-600 dark:text-zinc-400 dark:text-white/40 leading-relaxed">
+          💡 <span className="text-zinc-500 dark:text-white/60">Tip:</span> Complete more bootcamp
           modules, contribute to EIPs, and grow your community presence before
           reapplying.
         </p>
@@ -314,11 +314,11 @@ function MetaItem({
 }) {
   return (
     <div className="text-center">
-      <div className="flex items-center justify-center gap-1.5 text-white/30 text-xs mb-1">
+      <div className="flex items-center justify-center gap-1.5 text-zinc-600 dark:text-zinc-400 dark:text-white/30 text-xs mb-1">
         {icon}
         {label}
       </div>
-      <p className="text-white font-medium text-sm">{value}</p>
+      <p className="text-zinc-900 dark:text-white font-medium text-sm">{value}</p>
     </div>
   );
 }

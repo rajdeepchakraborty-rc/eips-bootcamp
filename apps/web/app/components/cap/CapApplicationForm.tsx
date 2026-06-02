@@ -107,11 +107,11 @@ export default function CapApplicationForm({ onSubmitted }: Props) {
       />
 
       <div
-        className="relative z-10 rounded-3xl border border-white/[0.08] overflow-hidden transition-all duration-500 bg-black/40 backdrop-blur-3xl shadow-2xl"
+        className="relative z-10 rounded-3xl border border-zinc-200 dark:border-white/[0.08] overflow-hidden transition-all duration-500 bg-white/80 dark:bg-black/40 backdrop-blur-3xl shadow-2xl"
       >
         {/* Progress Bar */}
         {step > 1 && (
-          <div className="w-full h-1 bg-white/5 relative overflow-hidden">
+          <div className="w-full h-1 bg-black/5 dark:bg-white/5 relative overflow-hidden">
             <div 
               className="absolute top-0 left-0 h-full bg-gradient-to-r from-emerald-500 to-cyan-500 transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
@@ -132,22 +132,22 @@ export default function CapApplicationForm({ onSubmitted }: Props) {
                 Become a Campus Ambassador
               </h2>
               
-              <p className="text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
+              <p className="text-lg text-zinc-500 dark:text-white/60 max-w-xl mx-auto leading-relaxed">
                 Join an elite group of student leaders. Bring EIPsInsight to your college, host exclusive seminars, and build the future of Ethereum education.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 pb-10">
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex flex-col items-center gap-3">
+                <div className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.05] flex flex-col items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400"><Users size={20}/></div>
-                  <div className="text-sm font-semibold text-white">Host Seminars</div>
+                  <div className="text-sm font-semibold text-zinc-900 dark:text-white">Host Seminars</div>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex flex-col items-center gap-3">
+                <div className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.05] flex flex-col items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400"><Zap size={20}/></div>
-                  <div className="text-sm font-semibold text-white">Earn XP</div>
+                  <div className="text-sm font-semibold text-zinc-900 dark:text-white">Earn XP</div>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex flex-col items-center gap-3">
+                <div className="p-4 rounded-2xl bg-black/5 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/[0.05] flex flex-col items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"><GraduationCap size={20}/></div>
-                  <div className="text-sm font-semibold text-white">Unlock Perks</div>
+                  <div className="text-sm font-semibold text-zinc-900 dark:text-white">Unlock Perks</div>
                 </div>
               </div>
 
@@ -192,13 +192,13 @@ export default function CapApplicationForm({ onSubmitted }: Props) {
                     name="graduationYear"
                     value={form.graduationYear}
                     onChange={handleChange}
-                    className="w-full px-5 py-4 rounded-2xl text-white appearance-none outline-none transition-all duration-300 bg-white/5 border border-white/10 hover:border-emerald-500/50 focus:border-emerald-500 focus:bg-white/10 focus:ring-4 focus:ring-emerald-500/10 cursor-pointer"
+                    className="w-full px-5 py-4 rounded-2xl text-zinc-900 dark:text-white appearance-none outline-none transition-all duration-300 bg-black/5 dark:bg-white/5 border border-zinc-200 dark:border-white/10 hover:border-emerald-500/50 focus:border-emerald-500 focus:bg-white/10 focus:ring-4 focus:ring-emerald-500/10 cursor-pointer"
                   >
                     {GRAD_YEARS.map((y) => (
-                      <option key={y} value={y} className="bg-zinc-900 text-white">{y}</option>
+                      <option key={y} value={y} className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white">{y}</option>
                     ))}
                   </select>
-                  <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-white/30 group-hover:text-emerald-400 rotate-90 transition-colors pointer-events-none" />
+                  <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-zinc-600 dark:text-zinc-400 dark:text-white/30 group-hover:text-emerald-400 rotate-90 transition-colors pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -260,7 +260,7 @@ export default function CapApplicationForm({ onSubmitted }: Props) {
             <div className="mt-8 flex items-center justify-between">
               <button 
                 onClick={handleBack}
-                className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors"
+                className="p-4 rounded-full bg-black/5 dark:bg-white/5 hover:bg-white/10 text-zinc-900 dark:text-white transition-colors"
               >
                 <ChevronLeft />
               </button>
@@ -297,8 +297,8 @@ function StepHeader({ step, title, subtitle }: { step: string, title: string, su
   return (
     <div className="mb-10">
       <div className="text-emerald-400 font-mono text-sm tracking-widest mb-3">STEP {step}</div>
-      <h2 className="text-3xl font-bold text-white mb-2 tracking-tight">{title}</h2>
-      <p className="text-white/50">{subtitle}</p>
+      <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 tracking-tight">{title}</h2>
+      <p className="text-zinc-500 dark:text-white/50">{subtitle}</p>
     </div>
   );
 }
@@ -309,8 +309,8 @@ function InputField({ label, name, value, onChange, placeholder, error, hint }: 
   return (
     <div>
       <div className="flex justify-between items-end mb-2">
-        <label className="block text-sm font-medium text-white/70">{label}</label>
-        {hint && <span className="text-xs text-white/30">{hint}</span>}
+        <label className="block text-sm font-medium text-zinc-700 dark:text-white/70">{label}</label>
+        {hint && <span className="text-xs text-zinc-600 dark:text-zinc-400 dark:text-white/30">{hint}</span>}
       </div>
       <div className="relative">
         <input
@@ -318,7 +318,7 @@ function InputField({ label, name, value, onChange, placeholder, error, hint }: 
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`w-full px-5 py-4 rounded-2xl text-white placeholder-white/20 outline-none transition-all duration-300 bg-white/5 border ${error ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/10' : 'border-white/10 hover:border-emerald-500/50 focus:border-emerald-500 focus:bg-white/10 focus:ring-4 focus:ring-emerald-500/10'}`}
+          className={`w-full px-5 py-4 rounded-2xl text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-white/20 outline-none transition-all duration-300 bg-black/5 dark:bg-white/5 border ${error ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/10' : 'border-zinc-200 dark:border-white/10 hover:border-emerald-500/50 focus:border-emerald-500 focus:bg-black/5 dark:focus:bg-white/10 focus:ring-4 focus:ring-emerald-500/10'}`}
         />
         {isFilled && !error && (
           <CheckCircle2 className="absolute right-4 top-1/2 -translate-y-1/2 text-emerald-500 w-5 h-5" />
@@ -336,8 +336,8 @@ function TextareaField({ label, name, value, onChange, placeholder, error, hint 
   return (
     <div>
       <div className="flex justify-between items-end mb-2">
-        <label className="block text-sm font-medium text-white/70">{label}</label>
-        {hint && <span className="text-xs text-white/30">{hint}</span>}
+        <label className="block text-sm font-medium text-zinc-700 dark:text-white/70">{label}</label>
+        {hint && <span className="text-xs text-zinc-600 dark:text-zinc-400 dark:text-white/30">{hint}</span>}
       </div>
       <div className="relative">
         <textarea
@@ -347,11 +347,11 @@ function TextareaField({ label, name, value, onChange, placeholder, error, hint 
           placeholder={placeholder}
           rows={4}
           maxLength={maxLength}
-          className={`w-full px-5 py-4 rounded-2xl text-white placeholder-white/20 outline-none resize-none transition-all duration-300 bg-white/5 border ${error ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/10' : 'border-white/10 hover:border-emerald-500/50 focus:border-emerald-500 focus:bg-white/10 focus:ring-4 focus:ring-emerald-500/10'}`}
+          className={`w-full px-5 py-4 rounded-2xl text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-white/20 outline-none resize-none transition-all duration-300 bg-black/5 dark:bg-white/5 border ${error ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/10' : 'border-zinc-200 dark:border-white/10 hover:border-emerald-500/50 focus:border-emerald-500 focus:bg-black/5 dark:focus:bg-white/10 focus:ring-4 focus:ring-emerald-500/10'}`}
         />
         <div className="absolute bottom-4 right-4 flex items-center gap-2">
           {isFilled && !error && <CheckCircle2 className="text-emerald-500 w-4 h-4" />}
-          <span className={`text-xs ${value.length >= maxLength ? 'text-red-400' : 'text-white/20'}`}>
+          <span className={`text-xs ${value.length >= maxLength ? 'text-red-400' : 'text-zinc-400 dark:text-white/20'}`}>
             {value.length}/{maxLength}
           </span>
         </div>
@@ -363,10 +363,10 @@ function TextareaField({ label, name, value, onChange, placeholder, error, hint 
 
 function NavigationButtons({ onBack, onNext }: { onBack: () => void, onNext: () => void }) {
   return (
-    <div className="mt-8 flex items-center justify-between pt-6 border-t border-white/5">
+    <div className="mt-8 flex items-center justify-between pt-6 border-t border-zinc-200 dark:border-white/5">
       <button 
         onClick={onBack}
-        className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-colors"
+        className="p-4 rounded-full bg-black/5 dark:bg-white/5 hover:bg-white/10 text-zinc-900 dark:text-white transition-colors"
       >
         <ChevronLeft />
       </button>
