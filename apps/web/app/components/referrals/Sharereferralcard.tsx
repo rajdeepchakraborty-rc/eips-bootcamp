@@ -15,9 +15,9 @@ export default function ShareReferralCard({ stats }: { stats?: ReferralStats }) 
   };
 
   return (
-    <div className="p-4 bg-zinc-900 rounded-md border border-zinc-800">
+    <div className="p-4 bg-white dark:bg-zinc-900 rounded-md border border-zinc-200 dark:border-zinc-800">
       <h3 className="text-sm font-medium text-gray-200">Share your referral</h3>
-      <p className="text-xs text-gray-400 mt-2">Your code: <span className="font-mono bg-zinc-800 px-2 py-1 rounded">{code}</span></p>
+      <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">Your code: <span className="font-mono bg-zinc-800 px-2 py-1 rounded">{code}</span></p>
       <div className="mt-3">
         <button 
           onClick={handleCopy}
