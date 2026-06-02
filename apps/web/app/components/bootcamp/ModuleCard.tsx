@@ -35,7 +35,7 @@ export function ModuleCard({ module, onClick }: ModuleCardProps) {
       
       {/* Thumbnail (if available) */}
       {module.thumbnailUrl && (
-        <div className="w-full h-32 mb-4 rounded-xl overflow-hidden bg-black border border-white/5">
+        <div className="w-full h-32 mb-4 rounded-xl overflow-hidden bg-white dark:bg-black border border-zinc-200 dark:border-white/5">
           <img src={module.thumbnailUrl} alt={module.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
         </div>
       )}
@@ -47,7 +47,7 @@ export function ModuleCard({ module, onClick }: ModuleCardProps) {
             <Book size={20} className="text-emerald-400" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors mt-1">
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-300 transition-colors mt-1">
               {module.title}
             </h3>
           </div>
@@ -62,7 +62,7 @@ export function ModuleCard({ module, onClick }: ModuleCardProps) {
       </div>
 
       {/* Description */}
-      <p className="text-gray-400 text-sm mb-4 line-clamp-2">{module.description}</p>
+      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">{module.description}</p>
 
       {/* Meta Info */}
       <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-300 dark:border-gray-700/50">
@@ -91,10 +91,10 @@ export function ModuleCard({ module, onClick }: ModuleCardProps) {
       {/* Progress Bar */}
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-semibold text-gray-400">Progress</span>
+          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">Progress</span>
           <span className="text-xs font-bold text-emerald-400">{completionPercentage}%</span>
         </div>
-        <div className="w-full h-2.5 bg-gray-800/50 rounded-full overflow-hidden">
+        <div className="w-full h-2.5 bg-gray-200/50 dark:bg-gray-800/50 rounded-full overflow-hidden">
           <div
             className={`h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-500`}
             style={{ width: `${completionPercentage}%` }}
