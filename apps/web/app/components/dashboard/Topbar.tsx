@@ -2,6 +2,7 @@
 
 import { Bell, Search, Menu } from 'lucide-react';
 import { useSession, signOut } from '@/app/lib/auth-client';
+import { ThemeToggle } from '@/app/components/ThemeToggle';
 
 import Link from 'next/link';
 
@@ -92,6 +93,7 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
             </button>
           </div>
         </div>
+        <ThemeToggle />
       </div>
     </header>
   );
