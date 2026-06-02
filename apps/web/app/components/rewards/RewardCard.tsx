@@ -65,11 +65,11 @@ export const RewardCard: React.FC<RewardCardProps> = ({
 
         {/* Content */}
         <div className="relative flex-grow flex flex-col">
-          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
             {reward.title}
           </h3>
 
-          <p className="text-sm text-gray-400 mb-4 flex-grow leading-relaxed">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow leading-relaxed">
             {reward.description}
           </p>
 

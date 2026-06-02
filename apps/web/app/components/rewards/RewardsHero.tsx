@@ -6,7 +6,7 @@ import React from 'react';
 
 export const RewardsHero: React.FC = () => {
   return (
-    <div className="relative mb-12 overflow-hidden bg-black">
+    <div className="relative mb-12 overflow-hidden bg-white dark:bg-black">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
         {/* Left Content */}
         <div className="z-10">

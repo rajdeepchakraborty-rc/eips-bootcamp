@@ -27,10 +27,10 @@ export const XPOverviewCard: React.FC<XPOverviewCardProps> = ({ data }) => {
               <span className="text-emerald-500 font-bold text-lg">XP</span>
               <span className="text-gray-500 text-sm">Current</span>
             </div>
-            <div className="text-3xl lg:text-4xl font-bold text-white">
+            <div className="text-3xl lg:text-4xl font-bold text-zinc-900 dark:text-white">
               {data.currentXP.toLocaleString()}
             </div>
-            <p className="text-xs text-gray-400">Keep earning to unlock more!</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Keep earning to unlock more!</p>
           </div>
 
           {/* Rewards Redeemed */}
@@ -39,10 +39,10 @@ export const XPOverviewCard: React.FC<XPOverviewCardProps> = ({ data }) => {
               <span className="text-xl">🎁</span>
               <span className="text-gray-500 text-sm">Redeemed</span>
             </div>
-            <div className="text-3xl lg:text-4xl font-bold text-white">
+            <div className="text-3xl lg:text-4xl font-bold text-zinc-900 dark:text-white">
               {data.rewardsRedeemed}
             </div>
-            <p className="text-xs text-gray-400">Total rewards claimed</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Total rewards claimed</p>
           </div>
 
           {/* Total Value Unlocked */}
@@ -51,10 +51,10 @@ export const XPOverviewCard: React.FC<XPOverviewCardProps> = ({ data }) => {
               <span className="text-xl">💰</span>
               <span className="text-gray-500 text-sm">Value</span>
             </div>
-            <div className="text-3xl lg:text-4xl font-bold text-white">
+            <div className="text-3xl lg:text-4xl font-bold text-zinc-900 dark:text-white">
               ${data.totalValueUnlocked}
             </div>
-            <p className="text-xs text-gray-400">Across all rewards</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">Across all rewards</p>
           </div>
 
           {/* Next Reward */}
@@ -63,17 +63,17 @@ export const XPOverviewCard: React.FC<XPOverviewCardProps> = ({ data }) => {
               <span className="text-xl">🔓</span>
               <span className="text-gray-500 text-sm">Next Unlock</span>
             </div>
-            <div className="text-3xl lg:text-4xl font-bold text-white">
+            <div className="text-3xl lg:text-4xl font-bold text-zinc-900 dark:text-white">
               {data.nextRewardUnlock}
             </div>
-            <p className="text-xs text-gray-400">XP needed</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">XP needed</p>
           </div>
         </div>
 
         {/* Progress Bar Section */}
         <div className="pt-6 border-t border-emerald-500/10">
           <div className="flex items-end justify-between mb-3">
-            <span className="text-sm font-medium text-gray-400">
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               Progress to next reward
             </span>
             <span className="text-sm font-bold text-emerald-400">
