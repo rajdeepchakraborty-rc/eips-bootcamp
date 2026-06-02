@@ -203,7 +203,16 @@ function ModuleOverview({ module, lessons }: { module: Module; lessons: Lesson[]
   );
 }
 
-function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Lesson; moduleTitle: string; onLessonComplete?: (id: string) => void }) {
+function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Lesson; moduleTitle: string; onLessonComplete?: (id: string) => Promise<void> | void }) {
+  const [isCompleting, setIsCompleting] = useState(false);
+
+  const handleComplete = async () => {
+    if (!onLessonComplete || isCompleting) return;
+    setIsCompleting(true);
+    await onLessonComplete(lesson.id);
+    setIsCompleting(false);
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-8">
       {/* Breadcrumb */}
@@ -255,8 +264,25 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
             embedUrl = videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/');
             // Remove any other query params like &t=...
             embedUrl = embedUrl.split('&')[0];
+            embedUrl += '?modestbranding=1&rel=0&controls=1&disablekb=1';
           } else if (videoUrl.includes('youtu.be/')) {
             embedUrl = videoUrl.replace('youtu.be/', 'youtube.com/embed/');
+            embedUrl += '?modestbranding=1&rel=0&controls=1&disablekb=1';
+          } else if (videoUrl && !videoUrl.includes('youtube') && !videoUrl.includes('vimeo')) {
+            // It's a direct video link, use native HTML5 player
+            return (
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <video 
+                  src={videoUrl}
+                  controls
+                  controlsList="nodownload"
+                  poster={thumbnailUrl}
+                  className="w-full h-full object-cover"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            );
           }
 
           if (embedUrl) {
@@ -346,12 +372,27 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
         {!lesson.completed && (
           <div className="flex gap-4 pt-8 border-t border-gray-800">
             <button 
-              onClick={() => onLessonComplete?.(lesson.id)}
-              className="flex-1 px-6 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-black font-bold rounded-xl transition-all"
+              onClick={handleComplete}
+              disabled={isCompleting}
+              className="flex-1 px-6 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-black font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Mark as Complete
+              {isCompleting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+                  Saving...
+                </>
+              ) : (
+                <>
+                  <Check size={20} />
+                  Mark as Complete & Claim XP
+                </>
+              )}
             </button>
-            <button className="px-6 py-4 bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-semibold rounded-xl transition-all">
+            <button 
+              onClick={() => alert('Progress is automatically saved as you watch!')}
+              className="px-6 py-4 bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-semibold rounded-xl transition-all flex items-center gap-2"
+            >
+              <Clock size={18} />
               Save Progress
             </button>
           </div>
