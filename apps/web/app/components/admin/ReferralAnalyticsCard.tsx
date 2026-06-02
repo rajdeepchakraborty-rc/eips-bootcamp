@@ -21,7 +21,7 @@ export function ReferralAnalyticsCard({ data }: ReferralAnalyticsCardProps) {
         {/* Total Referrals */}
         <div className="rounded-lg bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-gray-400 text-sm font-medium">Total Referrals</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">Total Referrals</p>
             <Share2 className="w-4 h-4 text-blue-400 opacity-60" />
           </div>
           <p className="text-black dark:text-white text-3xl font-bold">
@@ -33,7 +33,7 @@ export function ReferralAnalyticsCard({ data }: ReferralAnalyticsCardProps) {
         {/* Conversion Rate */}
         <div className="rounded-lg bg-gradient-to-br from-emerald-500/10 to-green-500/10 border border-emerald-500/20 p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-gray-400 text-sm font-medium">Conversion Rate</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">Conversion Rate</p>
             <TrendingUp className="w-4 h-4 text-emerald-400 opacity-60" />
           </div>
           <p className="text-black dark:text-white text-3xl font-bold">
@@ -45,10 +45,10 @@ export function ReferralAnalyticsCard({ data }: ReferralAnalyticsCardProps) {
         {/* XP Generated */}
         <div className="rounded-lg bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-gray-400 text-sm font-medium">XP Generated</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">XP Generated</p>
             <Zap className="w-4 h-4 text-amber-400 opacity-60" />
           </div>
-          <p className="text-white text-3xl font-bold">
+          <p className="text-zinc-900 dark:text-white text-3xl font-bold">
             {(data.xpGenerated / 1000).toFixed(1)}K
           </p>
           <p className="text-amber-400/70 text-xs mt-2">↑ 12.1% from last month</p>

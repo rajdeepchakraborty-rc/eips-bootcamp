@@ -42,7 +42,7 @@ function RankBadge({ rank }: { rank: number }) {
     return (
       <div className="
         w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600
-        flex items-center justify-center text-white font-bold text-sm
+        flex items-center justify-center text-zinc-900 dark:text-white font-bold text-sm
         shadow-lg shadow-amber-500/50
       ">
         🏆
@@ -53,7 +53,7 @@ function RankBadge({ rank }: { rank: number }) {
     return (
       <div className="
         w-10 h-10 rounded-full bg-gradient-to-br from-slate-400 to-slate-600
-        flex items-center justify-center text-white font-bold text-sm
+        flex items-center justify-center text-zinc-900 dark:text-white font-bold text-sm
         shadow-lg shadow-slate-500/50
       ">
         {rank}
@@ -64,7 +64,7 @@ function RankBadge({ rank }: { rank: number }) {
     return (
       <div className="
         w-10 h-10 rounded-full bg-gradient-to-br from-orange-600 to-orange-800
-        flex items-center justify-center text-white font-bold text-sm
+        flex items-center justify-center text-zinc-900 dark:text-white font-bold text-sm
         shadow-lg shadow-orange-500/50
       ">
         {rank}
@@ -75,7 +75,7 @@ function RankBadge({ rank }: { rank: number }) {
   return (
     <div className="
       w-10 h-10 flex items-center justify-center
-      text-gray-400 font-semibold text-sm
+      text-gray-600 dark:text-gray-400 font-semibold text-sm
     ">
       {rank}
     </div>
@@ -84,10 +84,10 @@ function RankBadge({ rank }: { rank: number }) {
 
 export function TopUsersTable({ users }: TopUsersTableProps) {
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
+    <div className="rounded-xl border border-emerald-500/20 bg-white/80 dark:bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
-        <h3 className="text-white font-semibold text-lg">Top Users by XP</h3>
+        <h3 className="text-zinc-900 dark:text-white font-semibold text-lg">Top Users by XP</h3>
         <a href="#" className="
           flex items-center gap-1 text-emerald-400 text-sm font-medium
           hover:text-emerald-300 transition-colors group
@@ -102,12 +102,12 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
         <table className="w-full">
           <thead>
             <tr className="border-b border-emerald-500/10 bg-emerald-500/5">
-              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wide">#</th>
-              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wide">User</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">XP Earned</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">Modules</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">Streak</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">Joined</th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">#</th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">User</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">XP Earned</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Modules</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Streak</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Joined</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-emerald-500/10">

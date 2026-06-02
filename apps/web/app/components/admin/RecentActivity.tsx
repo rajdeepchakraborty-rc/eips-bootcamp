@@ -69,10 +69,10 @@ function formatTime(date: Date) {
 
 export function RecentActivity({ activities }: RecentActivityProps) {
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 h-fit">
+    <div className="rounded-xl border border-emerald-500/20 bg-white/80 dark:bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 h-fit">
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
-        <h3 className="text-white font-semibold text-lg">Recent Activity</h3>
+        <h3 className="text-zinc-900 dark:text-white font-semibold text-lg">Recent Activity</h3>
         <a href="#" className="
           flex items-center gap-1 text-emerald-400 text-sm font-medium
           hover:text-emerald-300 transition-colors group
