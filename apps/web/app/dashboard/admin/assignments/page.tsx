@@ -35,8 +35,8 @@ export default async function AdminAssignmentsPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Assignments Management</h1>
-            <p className="text-zinc-400 text-sm">Create and organize student assignments and challenges.</p>
+            <h1 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 tracking-tight">Assignments Management</h1>
+            <p className="text-zinc-600 dark:text-zinc-400 text-sm">Create and organize student assignments and challenges.</p>
           </div>
         </div>
 

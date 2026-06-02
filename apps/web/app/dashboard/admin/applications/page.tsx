@@ -181,10 +181,10 @@ export default function ApplicationsPage() {
   // Bypassed Login Admin for Testing
   if (!isAdmin) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-black text-white">
+      <div className="flex flex-col items-center justify-center h-screen bg-white dark:bg-black text-zinc-900 dark:text-white">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">403 Unauthorized</h1>
-          <p className="text-xl text-gray-400">You do not have access to this page.</p>
+          <p className="text-xl text-gray-600 dark:text-gray-400">You do not have access to this page.</p>
         </div>
       </div>
     );
