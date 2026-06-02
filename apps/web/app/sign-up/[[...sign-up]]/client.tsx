@@ -19,7 +19,7 @@ export default function SignUpClientPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black">
+    <div className="flex min-h-screen items-center justify-center bg-white dark:bg-black">
       <SignUp forceRedirectUrl="/dashboard" />
     </div>
   );
