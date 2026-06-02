@@ -69,7 +69,7 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
             className="w-10 h-10 rounded-full border border-emerald-500/30 object-cover"
           />
           <div className="min-w-0">
-            <p className="font-medium text-white text-sm truncate">{application.name}</p>
+            <p className="font-medium text-zinc-900 dark:text-white text-sm truncate">{application.name}</p>
             <p className="text-xs text-gray-500 truncate">{application.city}, India</p>
           </div>
         </div>
@@ -119,7 +119,7 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
             className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200 group/btn"
             title="View details"
           >
-            <Eye className="w-4 h-4 text-gray-400 group-hover/btn:text-emerald-400" />
+            <Eye className="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover/btn:text-emerald-400" />
           </button>
 
           {/* More Menu */}
@@ -128,11 +128,11 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
               onClick={() => setShowMenu(!showMenu)}
               className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200 group/btn"
             >
-              <MoreVertical className="w-4 h-4 text-gray-400 group-hover/btn:text-emerald-400" />
+              <MoreVertical className="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover/btn:text-emerald-400" />
             </button>
 
             {showMenu && (
-              <div className="absolute right-0 mt-1 w-48 bg-black/95 border border-white/10 rounded-lg shadow-lg overflow-hidden backdrop-blur-sm z-50">
+              <div className="absolute right-0 mt-1 w-48 bg-black/95 border border-zinc-200 dark:border-white/10 rounded-lg shadow-lg overflow-hidden backdrop-blur-sm z-50">
                 <button
                   onClick={() => {
                     handleApprove();
@@ -149,7 +149,7 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
                     setShowMenu(false);
                   }}
                   disabled={isUpdating}
-                  className="w-full px-4 py-2.5 text-left text-sm text-red-400 hover:bg-red-500/20 transition-colors duration-150 disabled:opacity-50 border-t border-white/10"
+                  className="w-full px-4 py-2.5 text-left text-sm text-red-400 hover:bg-red-500/20 transition-colors duration-150 disabled:opacity-50 border-t border-zinc-200 dark:border-white/10"
                 >
                   ✕ Reject Application
                 </button>

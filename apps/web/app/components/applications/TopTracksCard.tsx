@@ -25,7 +25,7 @@ export default function TopTracksCard({ applications }: { applications: any[] })
     <div className="bg-gradient-to-br from-gray-900/40 to-gray-900/20 border border-emerald-400/10 rounded-xl p-5 backdrop-blur-md">
       <div className="space-y-4">
         <div>
-          <h3 className="text-sm font-semibold text-white mb-1">Top Tracks</h3>
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">Top Tracks</h3>
           <p className="text-xs text-gray-500">Most applied tracks</p>
         </div>
 
@@ -34,10 +34,10 @@ export default function TopTracksCard({ applications }: { applications: any[] })
             topTracks.map((item, index) => (
               <div key={index} className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-400 font-medium">{item.track}</span>
-                  <span className="text-xs font-bold text-white">{item.count}</span>
+                  <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">{item.track}</span>
+                  <span className="text-xs font-bold text-zinc-900 dark:text-white">{item.count}</span>
                 </div>
-                <div className="w-full h-1.5 bg-gray-800/50 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-gray-200/50 dark:bg-gray-800/50 rounded-full overflow-hidden">
                   <div
                     className={`h-full bg-gradient-to-r ${trackColors[item.track] || trackColors['N/A']} rounded-full`}
                     style={{

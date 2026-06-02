@@ -55,7 +55,7 @@ export function ApplicationsFilters({
               placeholder="Search applications..."
               value={filters.search}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-emerald-500/50 focus:bg-white/10 focus:outline-none transition-all duration-200 text-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-black/5 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-lg text-zinc-900 dark:text-white placeholder-gray-500 focus:border-emerald-500/50 focus:bg-white/10 focus:outline-none transition-all duration-200 text-sm"
             />
           </div>
 

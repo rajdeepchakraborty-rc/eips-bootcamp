@@ -49,14 +49,14 @@ export function ApplicationDetailsModal({
             />
             <div>
               <h2 className="text-2xl font-bold text-black dark:text-white">{application.name}</h2>
-              <p className="text-gray-400 text-sm">{application.email}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">{application.email}</p>
             </div>
           </div>
           <button
             onClick={onClose}
             className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
           >
-            <X className="w-6 h-6 text-gray-400" />
+            <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />
           </button>
         </div>
 
@@ -97,7 +97,7 @@ export function ApplicationDetailsModal({
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Why Join CAP?
             </h3>
-            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+            <div className="p-4 bg-black/5 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-lg">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{application.whyJoinCAP}</p>
             </div>
           </section>
@@ -108,7 +108,7 @@ export function ApplicationDetailsModal({
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Community Experience
             </h3>
-            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+            <div className="p-4 bg-black/5 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-lg">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{application.communityExperience}</p>
             </div>
           </section>
@@ -205,7 +205,7 @@ function SocialLink({ label, url }: { label: string; url: string }) {
 
 function MetricCard({ icon, label, value }: { icon: string; label: string; value: string | number }) {
   return (
-    <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+    <div className="p-4 bg-black/5 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-lg">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-xl">{icon}</span>
         <p className="text-xs text-gray-500 uppercase">{label}</p>

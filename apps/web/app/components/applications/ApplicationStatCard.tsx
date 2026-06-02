@@ -66,8 +66,8 @@ export function ApplicationStatCard({
 
       {/* Value */}
       <div className="space-y-1 mb-3">
-        <p className="text-gray-400 text-sm font-medium">{title}</p>
-        <p className="text-3xl font-bold text-white tracking-tight">
+        <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">{title}</p>
+        <p className="text-3xl font-bold text-zinc-900 dark:text-white tracking-tight">
           {loading ? (
             <span className="animate-pulse">---</span>
           ) : (
