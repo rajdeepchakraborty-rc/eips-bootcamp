@@ -1,15 +1,9 @@
 'use client';
 
 import { Bell, Search, Menu } from 'lucide-react';
-<<<<<<< HEAD
-import { UserButton } from '@clerk/nextjs';
-import { useUser } from '@clerk/nextjs';
-import { ThemeToggle } from '@/app/components/ThemeToggle';
-=======
 import { useSession, signOut } from '@/app/lib/auth-client';
 
 import Link from 'next/link';
->>>>>>> 15ba315d33feb64e571bfbbc7029a1860569720d
 
 interface TopbarProps {
   onMobileMenuOpen: () => void;
@@ -67,13 +61,8 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
         {/* User info + Profile button */}
         <div className="flex items-center gap-2.5 relative group cursor-pointer">
           <div className="hidden sm:flex flex-col items-end">
-<<<<<<< HEAD
-            <span className="text-black dark:text-white text-sm font-semibold leading-none">
-              {user?.firstName ?? 'User'}
-=======
             <span className="text-white text-sm font-semibold leading-none">
               {user?.name ?? 'User'}
->>>>>>> 15ba315d33feb64e571bfbbc7029a1860569720d
             </span>
             <span className="text-gray-600 dark:text-zinc-500 text-xs mt-0.5">Student</span>
           </div>
@@ -88,7 +77,7 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
             <Link href="/dashboard/profile" className="px-3 py-2 text-sm text-zinc-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors text-left">
               Profile
             </Link>
-            <button 
+            <button
               onClick={async () => {
                 const { error } = await signOut();
                 if (error) {
@@ -103,7 +92,6 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
             </button>
           </div>
         </div>
-        <ThemeToggle />
       </div>
     </header>
   );

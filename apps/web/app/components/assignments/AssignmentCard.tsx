@@ -133,9 +133,6 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
           <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-300 transition-colors">
             {assignment.title}
           </h3>
-<<<<<<< HEAD
-          <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 line-clamp-2">{assignment.description}</p>
-=======
           <p className="text-gray-400 text-sm mt-1 line-clamp-2">{assignment.description}</p>
           {(assignment as any).questionFileUrl && (
             <div className="mt-3">
@@ -145,7 +142,6 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
               </a>
             </div>
           )}
->>>>>>> 15ba315d33feb64e571bfbbc7029a1860569720d
         </div>
 
         {/* Status Badge */}
@@ -209,14 +205,14 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
           ))}
         </div>
 
-        <input 
-          type="file" 
-          ref={fileInputRef} 
-          className="hidden" 
-          accept=".pdf" 
+        <input
+          type="file"
+          ref={fileInputRef}
+          className="hidden"
+          accept=".pdf"
           onChange={handleFileChange}
         />
-        <button 
+        <button
           onClick={handleActionClick}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all ${statusConfig_.text} hover:bg-white/10`}
         >

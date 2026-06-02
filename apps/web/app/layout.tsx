@@ -24,25 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<<<<<<< HEAD
-    <ClerkProvider afterSignOutUrl="/">
-      <html
-        lang="en"
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
-        suppressHydrationWarning
-      >
-        <body className="min-h-full flex flex-col">
-          <Providers>{children}</Providers>
-        </body>
-      </html>
-    </ClerkProvider>
-=======
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
->>>>>>> 15ba315d33feb64e571bfbbc7029a1860569720d
   );
 }
