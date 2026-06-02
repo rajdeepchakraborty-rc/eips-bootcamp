@@ -6,7 +6,7 @@ export function ProgressWidget() {
 
   return (
     <div className="bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col h-full">
-      <h3 className="text-white font-bold text-base mb-4">Your Progress</h3>
+      <h3 className="text-zinc-900 dark:text-white font-bold text-base mb-4">Your Progress</h3>
 
       <div className="flex-1 flex flex-col items-center justify-center gap-4">
         {/* Circular progress */}
@@ -40,12 +40,12 @@ export function ProgressWidget() {
           </svg>
           {/* Center text */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-white font-black text-3xl">{progress}%</span>
+            <span className="text-zinc-900 dark:text-white font-black text-3xl">{progress}%</span>
           </div>
         </div>
 
         <div className="text-center">
-          <p className="text-white font-bold text-sm">Overall Progress</p>
+          <p className="text-zinc-900 dark:text-white font-bold text-sm">Overall Progress</p>
           <p className="text-zinc-500 text-xs mt-0.5">Keep learning, keep building!</p>
         </div>
       </div>

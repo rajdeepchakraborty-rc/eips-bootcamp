@@ -73,16 +73,16 @@ function NavSection({ title, items, pathname, }: { title: string; items: NavItem
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group
                   ${
                     active
-                      ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
+                      ? 'bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
                   }`}
               >
-              <span className={`transition-colors ${active ? 'text-emerald-400' : 'text-zinc-500 group-hover:text-emerald-400'}`}>
+              <span className={`transition-colors ${active ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400'}`}>
                 {item.icon}
               </span>
               <span>{item.label}</span>
               {active && (
-                <ChevronRight size={14} className="ml-auto text-emerald-500/60" />
+                <ChevronRight size={14} className="ml-auto text-emerald-500/60 dark:text-emerald-500/60" />
               )}
             </Link>
           </li>
@@ -111,11 +111,11 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-[220px] bg-background border-r border-white/5 z-50 flex flex-col transition-transform duration-300
+        className={`fixed top-0 left-0 h-screen w-[220px] bg-background border-r border-zinc-200 dark:border-white/5 z-50 flex flex-col transition-transform duration-300
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between px-4 py-5 border-b border-white/5">
+        <div className="flex items-center justify-between px-4 py-5 border-b border-zinc-200 dark:border-white/5">
           <div className="flex items-center gap-3">
             {/* Ethereum diamond logo placeholder */}
             <div className="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
@@ -153,7 +153,7 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
               <Zap size={16} className="text-emerald-400" />
               <span className="text-emerald-400 font-bold text-sm">Upgrade to Pro</span>
             </div>
-            <p className="text-zinc-400 text-xs leading-relaxed mb-3">
+            <p className="text-zinc-600 dark:text-zinc-400 text-xs leading-relaxed mb-3">
               Unlock advanced analytics, exclusive content and priority support.
             </p>
             <button className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-1.5 group">

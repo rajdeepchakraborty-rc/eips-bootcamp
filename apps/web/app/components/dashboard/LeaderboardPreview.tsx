@@ -21,7 +21,7 @@ const medalEmoji: Record<number, string> = {
 
 function Avatar({ name, avatarUrl }: { name: string; avatarUrl?: string }) {
   if (avatarUrl) {
-    return <img src={avatarUrl} alt={name} className="w-8 h-8 rounded-full border border-white/10" />;
+    return <img src={avatarUrl} alt={name} className="w-8 h-8 rounded-full border border-zinc-200 dark:border-white/10" />;
   }
   const initials = name.replace(/[^a-zA-Z]/g, '').slice(0, 2).toUpperCase() || 'U';
   const colors = ['bg-emerald-800', 'bg-blue-800', 'bg-purple-800', 'bg-pink-800', 'bg-orange-800'];
@@ -37,11 +37,11 @@ export function LeaderboardPreview({ leaderboard }: LeaderboardPreviewProps) {
   return (
     <div className="bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-white font-bold text-base">
+        <h3 className="text-zinc-900 dark:text-white font-bold text-base">
           Leaderboard <span className="text-zinc-500 font-normal text-sm">(Top 5)</span>
         </h3>
         <Link href="/dashboard/leaderboard">
-          <button className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors">
+          <button className="text-emerald-600 dark:text-emerald-400 text-xs font-semibold hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors">
             View All
           </button>
         </Link>
@@ -51,7 +51,7 @@ export function LeaderboardPreview({ leaderboard }: LeaderboardPreviewProps) {
         {leaderboard.slice(0, 5).map((entry, index) => (
           <li
             key={entry.userId}
-            className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/3 transition-colors"
+            className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-black/5 dark:hover:bg-white/3 transition-colors"
           >
             {/* Rank */}
             <div className="w-6 text-center flex-shrink-0">
@@ -66,12 +66,12 @@ export function LeaderboardPreview({ leaderboard }: LeaderboardPreviewProps) {
             <Avatar name={entry.name} avatarUrl={entry.avatarUrl} />
 
             {/* Username */}
-            <span className="text-zinc-200 text-sm font-medium flex-1 truncate">
+            <span className="text-zinc-900 dark:text-zinc-200 text-sm font-medium flex-1 truncate">
               {entry.name}
             </span>
 
             {/* XP */}
-            <span className="text-emerald-400 text-sm font-bold flex-shrink-0">
+            <span className="text-emerald-600 dark:text-emerald-400 text-sm font-bold flex-shrink-0">
               {entry.xp.toLocaleString()} XP
             </span>
           </li>

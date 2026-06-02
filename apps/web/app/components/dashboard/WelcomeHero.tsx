@@ -11,7 +11,7 @@ type WelcomeHeroProps = {
 
 export function WelcomeHero({ user }: WelcomeHeroProps) {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-gradient-to-br from-[#0d1a12] via-[#0a0f0d] to-[#080808] min-h-[200px]">
+    <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/8 bg-gradient-to-br from-emerald-50/50 via-zinc-50 to-white dark:from-[#0d1a12] dark:via-[#0a0f0d] dark:to-[#080808] min-h-[200px]">
       {/* Background glow effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 right-20 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl" />
@@ -92,13 +92,13 @@ export function WelcomeHero({ user }: WelcomeHeroProps) {
 
         {/* Badges */}
         <div className="flex flex-wrap items-center gap-2.5">
-          <div className="flex items-center gap-1.5 bg-black/40 border border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
+          <div className="flex items-center gap-1.5 bg-white/80 dark:bg-black/40 border border-zinc-200 dark:border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
             <Shield size={13} className="text-emerald-400" />
-            <span className="text-white text-xs font-semibold">{user.role}</span>
+            <span className="text-zinc-900 dark:text-white text-xs font-semibold">{user.role}</span>
           </div>
-          <div className="flex items-center gap-1.5 bg-black/40 border border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
+          <div className="flex items-center gap-1.5 bg-white/80 dark:bg-black/40 border border-zinc-200 dark:border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
             <Compass size={13} className="text-emerald-400" />
-            <span className="text-white text-xs font-semibold">{user.username}</span>
+            <span className="text-zinc-900 dark:text-white text-xs font-semibold">{user.username}</span>
           </div>
         </div>
       </div>

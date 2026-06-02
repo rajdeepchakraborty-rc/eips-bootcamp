@@ -11,10 +11,10 @@ export function EventsCard() {
         </button>
       </div>
 
-      <div className="flex-1 flex items-center justify-center bg-black/20 border border-white/5 rounded-xl p-6 text-center">
+      <div className="flex-1 flex items-center justify-center bg-black/20 border border-zinc-200 dark:border-white/5 rounded-xl p-6 text-center">
         <div>
           <Clock size={20} className="text-zinc-500 mx-auto mb-2" />
-          <p className="text-white font-semibold text-sm">No upcoming event</p>
+          <p className="text-zinc-900 dark:text-white font-semibold text-sm">No upcoming event</p>
           <p className="text-zinc-500 text-xs mt-1">Check back later for new workshops.</p>
         </div>
       </div>

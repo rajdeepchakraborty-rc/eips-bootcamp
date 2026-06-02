@@ -23,14 +23,14 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
       </button>
 
       {/* Desktop sidebar toggle (decorative) */}
-      <button className="hidden lg:flex text-gray-400 dark:text-zinc-600 hover:text-gray-600 dark:hover:text-zinc-300 transition-colors p-1">
+      <button className="hidden lg:flex text-gray-600 dark:text-gray-400 dark:text-zinc-600 hover:text-gray-600 dark:hover:text-zinc-300 transition-colors p-1">
         <Menu size={18} />
       </button>
 
       {/* Search */}
       <div className="flex-1 max-w-[500px]">
         <div className="relative">
-          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-zinc-500" />
+          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600 dark:text-gray-400 dark:text-zinc-500" />
           <input
             type="text"
             placeholder="Search courses, modules, topics..."

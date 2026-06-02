@@ -32,36 +32,36 @@ export function ReferralCard({ referralsCount, xp, referralCode }: ReferralCardP
   return (
     <div className="bg-white dark:bg-[#0d0d0d] border border-gray-300 dark:border-white/8 rounded-2xl p-5 flex flex-col h-full">
       <div className="mb-4">
-        <h3 className="text-white font-bold text-base">Your Referral Code</h3>
+        <h3 className="text-zinc-900 dark:text-white font-bold text-base">Your Referral Code</h3>
         <p className="text-zinc-500 text-xs mt-0.5">Share your code and earn XP</p>
       </div>
 
       {/* Referral code input */}
       <div className="flex items-center gap-2 mb-5">
-        <div className="flex-1 bg-black/60 border border-emerald-500/25 rounded-lg px-4 py-2.5 flex items-center">
-          <span className="text-emerald-400 font-bold text-sm font-mono tracking-widest">
+        <div className="flex-1 bg-black/5 dark:bg-black/60 border border-zinc-200 dark:border-emerald-500/25 rounded-lg px-4 py-2.5 flex items-center">
+          <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm font-mono tracking-widest">
             {referralCode}
           </span>
         </div>
         <button
           onClick={handleCopy}
-          className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all duration-200 text-zinc-400 hover:text-white"
+          className="p-2.5 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-zinc-200 dark:border-white/10 rounded-lg transition-all duration-200 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white"
         >
-          {copied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+          {copied ? <Check size={16} className="text-emerald-600 dark:text-emerald-400" /> : <Copy size={16} />}
         </button>
       </div>
 
       {/* Stats row */}
       <div className="flex gap-4 mb-5">
-        <div className="flex-1 bg-black/30 border border-white/5 rounded-xl p-3.5">
+        <div className="flex-1 bg-black/5 dark:bg-black/30 border border-zinc-200 dark:border-white/5 rounded-xl p-3.5">
           <p className="text-zinc-500 text-[10px] uppercase tracking-wider font-medium mb-1.5">Total Referrals</p>
-          <p className="text-white font-black text-2xl leading-none">{referralsCount}</p>
-          <p className="text-emerald-400 text-xs mt-1 font-medium">+0 this week</p>
+          <p className="text-zinc-900 dark:text-white font-black text-2xl leading-none">{referralsCount}</p>
+          <p className="text-emerald-600 dark:text-emerald-400 text-xs mt-1 font-medium">+0 this week</p>
         </div>
-        <div className="flex-1 bg-black/30 border border-white/5 rounded-xl p-3.5 relative overflow-hidden">
+        <div className="flex-1 bg-black/5 dark:bg-black/30 border border-zinc-200 dark:border-white/5 rounded-xl p-3.5 relative overflow-hidden">
           <p className="text-zinc-500 text-[10px] uppercase tracking-wider font-medium mb-1.5">XP Earned</p>
-          <p className="text-white font-black text-2xl leading-none">{xp.toLocaleString()}</p>
-          <p className="text-zinc-500 text-xs mt-1">from referrals</p>
+          <p className="text-zinc-900 dark:text-white font-black text-2xl leading-none">{xp.toLocaleString()}</p>
+          <p className="text-zinc-600 dark:text-zinc-500 text-xs mt-1">from referrals</p>
           {/* Coin stack placeholder */}
           <div className="absolute right-2 bottom-1 opacity-40">
             <svg viewBox="0 0 40 40" className="w-10 h-10 text-emerald-500">
