@@ -37,7 +37,7 @@ export function FeedbackWidget() {
     <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/5 border border-blue-500/20 rounded-2xl p-6 hover:border-blue-500/40 transition-colors">
       <div className="flex items-center gap-2 mb-4">
         <MessageSquare size={20} className="text-blue-400" />
-        <h3 className="text-lg font-bold text-white">Mentor Feedback</h3>
+        <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Mentor Feedback</h3>
       </div>
 
       <div className="space-y-3">
@@ -48,10 +48,10 @@ export function FeedbackWidget() {
           >
             <div className="flex items-start justify-between mb-2">
               <div>
-                <p className="text-sm font-semibold text-white truncate">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-white truncate">
                   {feedback.assignment}
                 </p>
-                <p className="text-xs text-gray-400">{feedback.mentor}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{feedback.mentor}</p>
               </div>
             </div>
             <p className={`text-xs line-clamp-2 ${statusTextColor[feedback.status as keyof typeof statusTextColor]}`}>

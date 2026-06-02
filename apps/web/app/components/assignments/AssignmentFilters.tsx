@@ -94,7 +94,7 @@ export function AssignmentFilters({
         </button>
 
         {isOpen && (
-          <div className="absolute top-full left-0 mt-2 w-48 bg-gray-900/95 border border-gray-700 rounded-lg shadow-2xl z-50 overflow-hidden backdrop-blur-sm">
+          <div className="absolute top-full left-0 mt-2 w-48 bg-gray-900/95 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl z-50 overflow-hidden backdrop-blur-sm">
             {options.map((option) => (
               <button
                 key={option.value}
@@ -118,7 +118,7 @@ export function AssignmentFilters({
   };
 
   return (
-    <div className="flex flex-col gap-4 p-6 bg-gradient-to-br from-gray-900/30 to-gray-800/20 border border-gray-800 rounded-2xl">
+    <div className="flex flex-col gap-4 p-6 bg-gradient-to-br from-gray-900/30 to-gray-800/20 border border-gray-200 dark:border-gray-800 rounded-2xl">
       {/* Search Bar */}
       <div className="relative">
         <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
@@ -127,7 +127,7 @@ export function AssignmentFilters({
           placeholder="Search assignments..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full bg-gray-800/30 border border-gray-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-all"
+          className="w-full bg-gray-100 dark:bg-gray-800/30 border border-gray-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-zinc-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-all"
         />
       </div>
 
@@ -174,7 +174,7 @@ export function AssignmentFilters({
               onDifficultyChange('all');
               onModuleChange('all');
             }}
-            className="ml-auto px-4 py-2.5 text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors"
+            className="ml-auto px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-emerald-400 transition-colors"
           >
             Clear Filters
           </button>

@@ -43,7 +43,7 @@ export function DeadlineWidget({ assignments }: DeadlineWidgetProps) {
     <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border border-emerald-500/20 rounded-2xl p-6 hover:border-emerald-500/40 transition-colors">
       <div className="flex items-center gap-2 mb-4">
         <Calendar size={20} className="text-emerald-400" />
-        <h3 className="text-lg font-bold text-white">Upcoming Deadlines</h3>
+        <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Upcoming Deadlines</h3>
       </div>
 
       {upcomingDeadlines.length > 0 ? (
@@ -55,7 +55,7 @@ export function DeadlineWidget({ assignments }: DeadlineWidgetProps) {
             >
               <div className="flex-shrink-0 w-2 h-2 rounded-full bg-emerald-400 mt-1.5" />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-white truncate">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-white truncate">
                   {assignment.title}
                 </p>
                 <p className="text-xs text-emerald-300">
@@ -68,12 +68,12 @@ export function DeadlineWidget({ assignments }: DeadlineWidgetProps) {
       ) : (
         <div className="text-center py-6">
           <AlertCircle size={24} className="mx-auto text-gray-500 mb-2" />
-          <p className="text-sm text-gray-400">No upcoming deadlines</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">No upcoming deadlines</p>
         </div>
       )}
 
       {upcomingDeadlines.length === 0 && assignments.length > 0 && (
-        <p className="text-xs text-gray-400 text-center">All caught up! 🎉</p>
+        <p className="text-xs text-gray-600 dark:text-gray-400 text-center">All caught up! 🎉</p>
       )}
     </div>
   );

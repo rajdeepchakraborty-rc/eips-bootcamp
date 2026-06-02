@@ -23,7 +23,7 @@ export function XPProgressWidget({ stats }: XPProgressWidgetProps) {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Zap size={20} className="text-cyan-400" />
-          <h3 className="text-lg font-bold text-white">XP Progress</h3>
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-white">XP Progress</h3>
         </div>
         <div className="flex items-center gap-1 text-cyan-400">
           <TrendingUp size={16} />
@@ -34,7 +34,7 @@ export function XPProgressWidget({ stats }: XPProgressWidgetProps) {
       {/* Level */}
       <div className="mb-4 p-4 bg-black/30 border border-cyan-500/20 rounded-lg">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-gray-400">Level</span>
+          <span className="text-sm text-gray-600 dark:text-gray-400">Level</span>
           <span className="text-2xl font-bold text-cyan-300">{level}</span>
         </div>
         <p className="text-xs text-gray-500">This Week</p>
@@ -43,12 +43,12 @@ export function XPProgressWidget({ stats }: XPProgressWidgetProps) {
       {/* Progress Bar */}
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-semibold text-gray-400">Level Progress</span>
+          <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">Level Progress</span>
           <span className="text-xs font-bold text-cyan-300">
             {Math.floor(xpPercentage)}%
           </span>
         </div>
-        <div className="w-full h-2.5 bg-gray-800/50 rounded-full overflow-hidden">
+        <div className="w-full h-2.5 bg-gray-200/50 dark:bg-gray-800/50 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-cyan-500 to-blue-400 rounded-full transition-all duration-500"
             style={{ width: `${xpPercentage}%` }}
@@ -59,7 +59,7 @@ export function XPProgressWidget({ stats }: XPProgressWidgetProps) {
       {/* Stats */}
       <div className="grid grid-cols-2 gap-3">
         <div className="text-center">
-          <div className="text-sm font-bold text-white">{stats.totalXpEarned}</div>
+          <div className="text-sm font-bold text-zinc-900 dark:text-white">{stats.totalXpEarned}</div>
           <div className="text-xs text-gray-500">Total XP</div>
         </div>
         <div className="text-center">

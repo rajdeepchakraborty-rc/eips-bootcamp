@@ -111,10 +111,10 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
               {assignment.difficulty}
             </span>
           </div>
-          <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+          <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-300 transition-colors">
             {assignment.title}
           </h3>
-          <p className="text-gray-400 text-sm mt-1 line-clamp-2">{assignment.description}</p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 line-clamp-2">{assignment.description}</p>
         </div>
 
         {/* Status Badge */}
@@ -151,13 +151,13 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
         </div>
         <div>
           <div className="text-xs text-gray-500 mb-1">Progress</div>
-          <div className="text-sm font-bold text-white">{assignment.progress}%</div>
+          <div className="text-sm font-bold text-zinc-900 dark:text-white">{assignment.progress}%</div>
         </div>
       </div>
 
       {/* Progress Bar */}
       <div className="mb-4">
-        <div className="w-full h-2 bg-gray-800/50 rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-gray-200/50 dark:bg-gray-800/50 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-500"
             style={{ width: `${assignment.progress}%` }}
