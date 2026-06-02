@@ -31,6 +31,7 @@ export class BootcampService {
           title: lesson.title,
           duration: lesson.duration,
           description: lesson.description,
+          content: lesson.content,
           completed: isCompleted,
           orderIndex: lesson.orderIndex,
         };
@@ -43,7 +44,8 @@ export class BootcampService {
         xpReward: module.xpReward,
         duration: module.duration,
         color: module.color,
-        section: module.id,
+        thumbnailUrl: module.thumbnailUrl,
+        section: module.orderIndex.toString(),
         lessons: mappedLessons.length,
         completed: completedLessons,
         mappedLessons, // returning the detailed lessons array inside
@@ -135,6 +137,25 @@ export class BootcampService {
         xpReward: Number(data.xpReward),
         duration: data.duration,
         color: data.color,
+        thumbnailUrl: data.thumbnailUrl,
+        orderIndex: Number(data.orderIndex),
+      },
+    });
+  }
+
+  async updateModule(id: string, data: any) {
+    const module = await this.prisma.module.findUnique({ where: { id } });
+    if (!module) throw new NotFoundException('Module not found');
+    
+    return this.prisma.module.update({
+      where: { id },
+      data: {
+        title: data.title,
+        description: data.description,
+        xpReward: Number(data.xpReward),
+        duration: data.duration,
+        color: data.color,
+        thumbnailUrl: data.thumbnailUrl,
         orderIndex: Number(data.orderIndex),
       },
     });
@@ -159,5 +180,37 @@ export class BootcampService {
         orderIndex: Number(data.orderIndex),
       },
     });
+  }
+
+  async updateLesson(id: string, data: any) {
+    const lesson = await this.prisma.lesson.findUnique({ where: { id } });
+    if (!lesson) throw new NotFoundException('Lesson not found');
+    
+    return this.prisma.lesson.update({
+      where: { id },
+      data: {
+        title: data.title,
+        description: data.description,
+        duration: data.duration,
+        content: data.content,
+        orderIndex: Number(data.orderIndex),
+      },
+    });
+  }
+
+  async deleteModule(moduleId: string) {
+    const module = await this.prisma.module.findUnique({ where: { id: moduleId } });
+    if (!module) throw new NotFoundException('Module not found');
+    
+    await this.prisma.module.delete({ where: { id: moduleId } });
+    return { success: true };
+  }
+
+  async deleteLesson(lessonId: string) {
+    const lesson = await this.prisma.lesson.findUnique({ where: { id: lessonId } });
+    if (!lesson) throw new NotFoundException('Lesson not found');
+    
+    await this.prisma.lesson.delete({ where: { id: lessonId } });
+    return { success: true };
   }
 }

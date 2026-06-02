@@ -117,6 +117,7 @@ model Module {
   xpReward    Int
   duration    String
   color       String
+  thumbnailUrl String?
   orderIndex  Int
   createdAt   DateTime @default(now())
 

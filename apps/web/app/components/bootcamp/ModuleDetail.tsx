@@ -19,6 +19,7 @@ interface Lesson {
   duration: string;
   completed: boolean;
   description: string;
+  content?: string;
 }
 
 interface Module {
@@ -63,9 +64,6 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
               <Book size={24} className="text-black" />
             </div>
             <div className="flex-1">
-              <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
-                Module {module.section}
-              </div>
               <h2 className="text-lg font-bold text-white mt-1">{module.title}</h2>
             </div>
           </div>
@@ -234,18 +232,75 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
 
       {/* Content Sections */}
       <div className="space-y-12">
-        {/* Video Placeholder */}
-        <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-96">
-          <PlayCircle size={64} className="text-emerald-400/30 mb-4" />
-          <p className="text-gray-400 text-center">Lesson content and video would display here</p>
-        </div>
+        {/* Video or Image */}
+        {(() => {
+          let videoUrl = '';
+          let thumbnailUrl = '';
+          let textContent = lesson.content || lesson.description;
 
-        {/* Description */}
+          if (lesson.content) {
+            try {
+              const parsed = JSON.parse(lesson.content);
+              videoUrl = parsed.videoUrl || '';
+              thumbnailUrl = parsed.thumbnailUrl || '';
+              textContent = parsed.text || lesson.description;
+            } catch (e) {
+              // Not JSON, assume it's just raw text
+            }
+          }
+
+          // Convert youtube watch links to embed links
+          let embedUrl = videoUrl;
+          if (videoUrl.includes('youtube.com/watch?v=')) {
+            embedUrl = videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/');
+            // Remove any other query params like &t=...
+            embedUrl = embedUrl.split('&')[0];
+          } else if (videoUrl.includes('youtu.be/')) {
+            embedUrl = videoUrl.replace('youtu.be/', 'youtube.com/embed/');
+          }
+
+          if (embedUrl) {
+            return (
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <iframe 
+                  src={embedUrl} 
+                  title={lesson.title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            );
+          } else if (thumbnailUrl) {
+            return (
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <img src={thumbnailUrl} alt={lesson.title} className="w-full h-full object-cover" />
+              </div>
+            );
+          } else {
+            return (
+              <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-64">
+                <PlayCircle size={64} className="text-emerald-400/30 mb-4" />
+                <p className="text-gray-400 text-center">No video available for this lesson</p>
+              </div>
+            );
+          }
+        })()}
+
+        {/* Description / Content Text */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">Overview</h2>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            {lesson.description}
-          </p>
+          <div className="text-gray-300 leading-relaxed text-lg whitespace-pre-wrap font-sans">
+            {(() => {
+              try {
+                if (lesson.content) {
+                  const parsed = JSON.parse(lesson.content);
+                  return parsed.text || lesson.description;
+                }
+              } catch (e) {}
+              return lesson.content || lesson.description;
+            })()}
+          </div>
         </div>
 
         {/* Key Points */}

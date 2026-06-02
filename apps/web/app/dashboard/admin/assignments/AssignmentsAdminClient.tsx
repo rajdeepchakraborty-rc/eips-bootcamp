@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, FileText, Calendar, Tag as TagIcon, Signal } from "lucide-react";
-import { createAssignment } from "./actions";
+import { Plus, FileText, Calendar, Tag as TagIcon, Signal, Trash2, AlertTriangle } from "lucide-react";
+import { createAssignment, deleteAssignment, editAssignment } from "./actions";
 import { useRouter } from "next/navigation";
 
 export default function AssignmentsAdminClient({ initialAssignments }: { initialAssignments: any[] }) {
   const router = useRouter();
   const [isCreating, setIsCreating] = useState(false);
+  const [deletingAssignment, setDeletingAssignment] = useState<{ id: string; title: string } | null>(null);
+  const [editingAssignment, setEditingAssignment] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
 
   async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
@@ -34,6 +36,40 @@ export default function AssignmentsAdminClient({ initialAssignments }: { initial
     router.refresh();
   }
 
+  async function handleDelete() {
+    if (!deletingAssignment) return;
+    setLoading(true);
+    await deleteAssignment(deletingAssignment.id);
+    setLoading(false);
+    setDeletingAssignment(null);
+    router.refresh();
+  }
+
+  async function handleEdit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!editingAssignment) return;
+    setLoading(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const tagsString = formData.get("tags") as string;
+    const tags = tagsString ? tagsString.split(",").map(t => t.trim()).filter(Boolean) : [];
+    
+    await editAssignment(editingAssignment.id, {
+      title: formData.get("title") as string,
+      module: formData.get("module") as string,
+      description: formData.get("description") as string,
+      difficulty: formData.get("difficulty") as string,
+      xpReward: Number(formData.get("xpReward")),
+      deadline: formData.get("deadline") as string,
+      estimatedTime: Number(formData.get("estimatedTime")),
+      tags,
+    });
+
+    setLoading(false);
+    setEditingAssignment(null);
+    router.refresh();
+  }
+
   return (
     <div>
       <div className="flex justify-end mb-6">
@@ -49,14 +85,30 @@ export default function AssignmentsAdminClient({ initialAssignments }: { initial
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {initialAssignments.map((assignment) => (
           <div key={assignment.id} className="bg-[#0f0f0f] border border-white/5 rounded-xl overflow-hidden flex flex-col h-full">
-            <div className="p-5 flex-1">
+            <div className="p-5 flex-1 relative group">
               <div className="flex justify-between items-start mb-3">
                 <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   {assignment.module}
                 </span>
-                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10">
-                  {assignment.xpReward} XP
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10">
+                    {assignment.xpReward} XP
+                  </span>
+                  <button
+                    onClick={() => setEditingAssignment(assignment)}
+                    className="p-1.5 text-zinc-500 hover:text-emerald-400 hover:bg-emerald-400/10 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                    title="Edit Assignment"
+                  >
+                    ✎
+                  </button>
+                  <button
+                    onClick={() => setDeletingAssignment({ id: assignment.id, title: assignment.title })}
+                    className="p-1.5 text-zinc-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                    title="Delete Assignment"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
               </div>
               <h3 className="text-lg font-bold text-white mb-2">{assignment.title}</h3>
               <p className="text-sm text-zinc-400 line-clamp-3 mb-4">{assignment.description}</p>
@@ -138,6 +190,94 @@ export default function AssignmentsAdminClient({ initialAssignments }: { initial
                 <button type="button" onClick={() => setIsCreating(false)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
                 <button type="submit" disabled={loading} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-black text-sm font-bold rounded-lg disabled:opacity-50">
                   {loading ? "Creating..." : "Create Assignment"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* DELETE ASSIGNMENT MODAL */}
+      {deletingAssignment && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#111] border border-red-500/20 rounded-xl w-full max-w-sm overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-white/5 flex items-center gap-3 text-red-400">
+              <AlertTriangle size={20} />
+              <h2 className="text-lg font-bold">Delete Assignment</h2>
+            </div>
+            <div className="p-5">
+              <p className="text-zinc-300 text-sm mb-4">
+                Are you sure you want to delete <strong className="text-white">"{deletingAssignment.title}"</strong>? 
+                This action cannot be undone.
+              </p>
+              <div className="flex justify-end gap-3">
+                <button onClick={() => setDeletingAssignment(null)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button 
+                  onClick={handleDelete} 
+                  disabled={loading} 
+                  className="px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
+                >
+                  {loading ? "Deleting..." : "Yes, Delete"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* EDIT ASSIGNMENT MODAL */}
+      {editingAssignment && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#111] border border-white/10 rounded-xl w-full max-w-xl overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-white/5 flex justify-between items-center">
+              <h2 className="text-lg font-bold">Edit Assignment</h2>
+              <button onClick={() => setEditingAssignment(null)} className="text-zinc-500 hover:text-white">✕</button>
+            </div>
+            <form onSubmit={handleEdit} className="p-5 space-y-4 max-h-[80vh] overflow-y-auto">
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Assignment Title</label>
+                <input required name="title" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingAssignment.title} />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Module Name / ID</label>
+                <input required name="module" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingAssignment.module} />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Description (Supports Markdown)</label>
+                <textarea required name="description" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 min-h-[100px]" defaultValue={editingAssignment.description} />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Difficulty</label>
+                  <select required name="difficulty" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingAssignment.difficulty}>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">XP Reward</label>
+                  <input required name="xpReward" type="number" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingAssignment.xpReward} />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Deadline</label>
+                  <input required name="deadline" type="datetime-local" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={new Date(editingAssignment.deadline).toISOString().slice(0, 16)} />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Estimated Time (Hours)</label>
+                  <input required name="estimatedTime" type="number" step="0.5" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingAssignment.estimatedTime} />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Tags (comma-separated)</label>
+                <input name="tags" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingAssignment.tags?.join(", ")} />
+              </div>
+              <div className="pt-4 flex justify-end gap-3">
+                <button type="button" onClick={() => setEditingAssignment(null)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button type="submit" disabled={loading} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-black text-sm font-bold rounded-lg disabled:opacity-50">
+                  {loading ? "Saving..." : "Save Changes"}
                 </button>
               </div>
             </form>

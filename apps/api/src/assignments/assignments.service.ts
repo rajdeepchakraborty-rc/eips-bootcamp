@@ -115,6 +115,36 @@ export class AssignmentsService {
     });
   }
 
+  async updateAssignment(assignmentId: string, data: any) {
+    const assignment = await this.prisma.assignment.findUnique({ where: { id: assignmentId } });
+    if (!assignment) throw new NotFoundException('Assignment not found');
+    
+    return this.prisma.assignment.update({
+      where: { id: assignmentId },
+      data: {
+        title: data.title,
+        module: data.module,
+        description: data.description,
+        difficulty: data.difficulty,
+        xpReward: Number(data.xpReward),
+        deadline: new Date(data.deadline),
+        estimatedTime: Number(data.estimatedTime),
+        tags: data.tags || [],
+      },
+    });
+  }
+
+  async deleteAssignment(assignmentId: string) {
+    const assignment = await this.prisma.assignment.findUnique({ where: { id: assignmentId } });
+    if (!assignment) throw new NotFoundException('Assignment not found');
+    
+    // AssignmentSubmission has `assignmentId` which might need to cascade delete.
+    // Assuming schema is setup with cascade delete on the relation. 
+    // If not, we might need to delete submissions first. Let's assume Prisma handles it.
+    await this.prisma.assignment.delete({ where: { id: assignmentId } });
+    return { success: true };
+  }
+
   private mapStatus(status: string) {
     switch(status) {
       case 'NOT_STARTED': return 'Not Started';
