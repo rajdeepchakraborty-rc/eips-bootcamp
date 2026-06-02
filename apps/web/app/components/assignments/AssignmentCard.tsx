@@ -27,7 +27,7 @@ interface Assignment {
 
 interface AssignmentCardProps {
   assignment: Assignment;
-  onSubmit?: (id: string) => void;
+  onSubmit?: (id: string, file?: File) => void;
 }
 
 const statusConfig = {
@@ -98,6 +98,25 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
 
   const actionButton = getActionButton();
 
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  const handleActionClick = () => {
+    if (assignment.status === 'Not Started' || assignment.status === 'In Progress' || assignment.status === 'Overdue') {
+      fileInputRef.current?.click();
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && onSubmit) {
+      onSubmit(assignment.id, file);
+    }
+    // Reset the input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
   return (
     <div className={`group relative bg-gradient-to-br ${statusConfig_.bg} border border-gray-800 hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20`}>
       {/* Top Section */}
@@ -114,7 +133,19 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
           <h3 className="text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-300 transition-colors">
             {assignment.title}
           </h3>
+<<<<<<< HEAD
           <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 line-clamp-2">{assignment.description}</p>
+=======
+          <p className="text-gray-400 text-sm mt-1 line-clamp-2">{assignment.description}</p>
+          {(assignment as any).questionFileUrl && (
+            <div className="mt-3">
+              <a href={(assignment as any).questionFileUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-medium text-cyan-400 hover:text-cyan-300 bg-cyan-500/10 px-3 py-1.5 rounded-lg transition-colors">
+                <FileText size={14} />
+                Download Question PDF
+              </a>
+            </div>
+          )}
+>>>>>>> 15ba315d33feb64e571bfbbc7029a1860569720d
         </div>
 
         {/* Status Badge */}
@@ -178,12 +209,15 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
           ))}
         </div>
 
+        <input 
+          type="file" 
+          ref={fileInputRef} 
+          className="hidden" 
+          accept=".pdf" 
+          onChange={handleFileChange}
+        />
         <button 
-          onClick={() => {
-            if (assignment.status === 'Not Started' || assignment.status === 'In Progress' || assignment.status === 'Overdue') {
-              onSubmit?.(assignment.id);
-            }
-          }}
+          onClick={handleActionClick}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all ${statusConfig_.text} hover:bg-white/10`}
         >
           <span className="text-sm">{actionButton.label}</span>
