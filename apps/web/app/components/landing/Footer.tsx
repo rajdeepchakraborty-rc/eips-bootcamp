@@ -8,7 +8,7 @@ export function Footer() {
   const { isSignedIn } = useUser();
 
   return (
-    <footer className="bg-[#050505] border-t border-white/5">
+    <footer className="bg-[#050505] border-t border-zinc-200 dark:border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           <div>
@@ -17,7 +17,7 @@ export function Footer() {
                 <svg viewBox="0 0 24 24" className="w-5 h-5 text-emerald-400" fill="currentColor"><polygon points="12,2 20,8 20,16 12,22 4,16 4,8" opacity="0.25" /><polygon points="12,2 20,8 12,12" /><polygon points="4,8 12,12 12,22" opacity="0.6" /><polygon points="20,8 12,12 12,22" opacity="0.85" /></svg>
               </div>
               <div>
-                <div className="text-white font-bold">EIPsInsight</div>
+                <div className="text-zinc-900 dark:text-white font-bold">EIPsInsight</div>
                 <div className="text-emerald-400 text-xs font-semibold">Bootcamp</div>
               </div>
             </div>
@@ -30,7 +30,7 @@ export function Footer() {
               <ul className="space-y-2">
                 {footerLinks.platform.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-zinc-400 text-sm hover:text-white">{l.label}</Link>
+                    <Link href={l.href} className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-white">{l.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -40,7 +40,7 @@ export function Footer() {
               <ul className="space-y-2">
                 {footerLinks.company.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-zinc-400 text-sm hover:text-white">{l.label}</Link>
+                    <Link href={l.href} className="text-zinc-600 dark:text-zinc-400 text-sm hover:text-white">{l.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -56,7 +56,7 @@ export function Footer() {
               >
                 {isSignedIn ? 'Go to Dashboard' : 'Create Account'}
               </Link>
-              <Link href="/sign-in" className="text-zinc-400 text-sm">Sign In</Link>
+              <Link href="/sign-in" className="text-zinc-600 dark:text-zinc-400 text-sm">Sign In</Link>
             </div>
             <div className="text-gray-700 dark:text-zinc-500 text-xs mt-6">© {new Date().getFullYear()} EIPsInsight — All rights reserved.</div>
           </div>

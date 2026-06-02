@@ -15,7 +15,7 @@ export function WhyEIPs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-2xl">
           <p className="text-emerald-400 text-sm font-semibold mb-3 tracking-wide">Why EIPs</p>
-          <h2 className="text-white font-black text-3xl sm:text-4xl leading-tight">Why Ethereum evolves through proposals</h2>
+          <h2 className="text-zinc-900 dark:text-white font-black text-3xl sm:text-4xl leading-tight">Why Ethereum evolves through proposals</h2>
           <p className="text-gray-700 dark:text-zinc-500 mt-3">Understanding how proposals drive protocol change is essential to participating meaningfully in Ethereum's future.</p>
         </div>
 
@@ -32,7 +32,7 @@ export function WhyEIPs() {
                   {iconMap[card.icon]}
                 </div>
                 <div>
-                  <h3 className="text-white font-bold text-base leading-tight">{card.title}</h3>
+                  <h3 className="text-zinc-900 dark:text-white font-bold text-base leading-tight">{card.title}</h3>
                   <p className="text-gray-700 dark:text-zinc-500 text-sm mt-2">{card.description}</p>
                 </div>
               </div>

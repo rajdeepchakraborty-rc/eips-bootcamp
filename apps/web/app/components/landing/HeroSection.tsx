@@ -166,13 +166,13 @@ export function HeroSection() {
               Understand Ethereum. Shape the Future.
             </p>
 
-            <h1 className="text-white font-black leading-none mb-6" style={{ fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', letterSpacing: '-0.03em', lineHeight: 1.02 }}>
+            <h1 className="text-zinc-900 dark:text-white font-black leading-none mb-6" style={{ fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', letterSpacing: '-0.03em', lineHeight: 1.02 }}>
               Learn Ethereum.<br />
               Understand <span className="text-emerald-400">EIPs</span>.<br />
               Build the Future.
             </h1>
 
-            <p className="text-zinc-400 text-base leading-relaxed mb-8 max-w-[480px]">
+            <p className="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed mb-8 max-w-[480px]">
               EIPsInsight Bootcamp is your gateway to the world of Ethereum Improvement Proposals, core concepts, and the ideas shaping the Ethereum ecosystem.
             </p>
 
@@ -196,7 +196,7 @@ export function HeroSection() {
             {/* Value prop bar */}
             <div className="flex items-center gap-3 bg-white/3 border border-white/6 rounded-xl px-4 py-3 max-w-[460px]">
               <BookOpen size={16} className="text-emerald-400 flex-shrink-0" />
-              <p className="text-zinc-400 text-sm">
+              <p className="text-zinc-600 dark:text-zinc-400 text-sm">
                 From beginner to contributor — learn, explore, and grow with Ethereum.
               </p>
             </div>

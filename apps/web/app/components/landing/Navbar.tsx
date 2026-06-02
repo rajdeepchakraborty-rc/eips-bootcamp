@@ -63,7 +63,7 @@ export function Navbar() {
               <>
                 <Link
                   href="/sign-in"
-                  className="text-zinc-400 hover:text-white text-sm font-medium px-3 py-2 transition-colors"
+                  className="text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white text-sm font-medium px-3 py-2 transition-colors"
                 >
                   Sign In
                 </Link>
@@ -102,7 +102,7 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="pt-3 border-t border-white/5 space-y-2">
+            <div className="pt-3 border-t border-zinc-200 dark:border-white/5 space-y-2">
               {isSignedIn ? (
                 <Link
                   href="/dashboard"
@@ -114,7 +114,7 @@ export function Navbar() {
                 <>
                   <Link
                     href="/sign-in"
-                    className="block text-center py-2.5 text-zinc-400 hover:text-white text-sm font-medium"
+                    className="block text-center py-2.5 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white text-sm font-medium"
                   >
                     Sign In
                   </Link>

@@ -30,7 +30,7 @@ function TrackCard({ track }: { track: LearningTrack }) {
       {/* Content */}
       <div className="relative z-10 flex flex-col gap-2 flex-1">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-white font-bold text-base leading-tight">{track.title}</h3>
+          <h3 className="text-zinc-900 dark:text-white font-bold text-base leading-tight">{track.title}</h3>
           <span className={`flex-shrink-0 text-[10px] font-bold uppercase tracking-wider border rounded-full px-2.5 py-0.5 ${levelColors[track.level]}`}>
             {track.level}
           </span>
@@ -63,7 +63,7 @@ export function LearningTracks() {
         {/* Header */}
         <div className="mb-12 max-w-xl">
           <p className="text-emerald-400 text-sm font-semibold mb-3 tracking-wide">Learning Paths</p>
-          <h2 className="text-white font-black text-4xl leading-tight tracking-tight mb-4">
+          <h2 className="text-zinc-900 dark:text-white font-black text-4xl leading-tight tracking-tight mb-4">
             Your path to Ethereum knowledge starts here
           </h2>
           <p className="text-gray-700 dark:text-zinc-500 text-base leading-relaxed">

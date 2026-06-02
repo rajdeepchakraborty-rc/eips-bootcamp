@@ -15,7 +15,7 @@ export function JourneySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-2xl">
           <p className="text-emerald-400 text-sm font-semibold mb-3 tracking-wide">Contributor Journey</p>
-          <h2 className="text-white font-black text-3xl sm:text-4xl leading-tight">From learner to contributor</h2>
+          <h2 className="text-zinc-900 dark:text-white font-black text-3xl sm:text-4xl leading-tight">From learner to contributor</h2>
           <p className="text-gray-700 dark:text-zinc-500 mt-3">A clear progression that takes you from discovery through active participation and contribution.</p>
         </div>
 
@@ -28,7 +28,7 @@ export function JourneySection() {
                 </div>
                 <div className="flex-1">
                   <div className="text-emerald-400 font-semibold text-xs">Step {s.step}</div>
-                  <h3 className="text-white font-bold mt-1">{s.title}</h3>
+                  <h3 className="text-zinc-900 dark:text-white font-bold mt-1">{s.title}</h3>
                 </div>
               </div>
               <p className="text-gray-700 dark:text-zinc-500 text-sm">{s.description}</p>
