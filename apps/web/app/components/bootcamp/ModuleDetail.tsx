@@ -19,6 +19,7 @@ interface Lesson {
   duration: string;
   completed: boolean;
   description: string;
+  content?: string;
 }
 
 interface Module {
@@ -63,9 +64,6 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
               <Book size={24} className="text-black" />
             </div>
             <div className="flex-1">
-              <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
-                Module {module.section}
-              </div>
               <h2 className="text-lg font-bold text-white mt-1">{module.title}</h2>
             </div>
           </div>
@@ -205,7 +203,16 @@ function ModuleOverview({ module, lessons }: { module: Module; lessons: Lesson[]
   );
 }
 
-function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Lesson; moduleTitle: string; onLessonComplete?: (id: string) => void }) {
+function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Lesson; moduleTitle: string; onLessonComplete?: (id: string) => Promise<void> | void }) {
+  const [isCompleting, setIsCompleting] = useState(false);
+
+  const handleComplete = async () => {
+    if (!onLessonComplete || isCompleting) return;
+    setIsCompleting(true);
+    await onLessonComplete(lesson.id);
+    setIsCompleting(false);
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-8">
       {/* Breadcrumb */}
@@ -234,18 +241,92 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
 
       {/* Content Sections */}
       <div className="space-y-12">
-        {/* Video Placeholder */}
-        <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-96">
-          <PlayCircle size={64} className="text-emerald-400/30 mb-4" />
-          <p className="text-gray-400 text-center">Lesson content and video would display here</p>
-        </div>
+        {/* Video or Image */}
+        {(() => {
+          let videoUrl = '';
+          let thumbnailUrl = '';
+          let textContent = lesson.content || lesson.description;
 
-        {/* Description */}
+          if (lesson.content) {
+            try {
+              const parsed = JSON.parse(lesson.content);
+              videoUrl = parsed.videoUrl || '';
+              thumbnailUrl = parsed.thumbnailUrl || '';
+              textContent = parsed.text || lesson.description;
+            } catch (e) {
+              // Not JSON, assume it's just raw text
+            }
+          }
+
+          // Convert youtube watch links to embed links
+          let embedUrl = videoUrl;
+          if (videoUrl.includes('youtube.com/watch?v=')) {
+            embedUrl = videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/');
+            // Remove any other query params like &t=...
+            embedUrl = embedUrl.split('&')[0];
+            embedUrl += '?modestbranding=1&rel=0&controls=1&disablekb=1';
+          } else if (videoUrl.includes('youtu.be/')) {
+            embedUrl = videoUrl.replace('youtu.be/', 'youtube.com/embed/');
+            embedUrl += '?modestbranding=1&rel=0&controls=1&disablekb=1';
+          } else if (videoUrl && !videoUrl.includes('youtube') && !videoUrl.includes('vimeo')) {
+            // It's a direct video link, use native HTML5 player
+            return (
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <video 
+                  src={videoUrl}
+                  controls
+                  controlsList="nodownload"
+                  poster={thumbnailUrl}
+                  className="w-full h-full object-cover"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            );
+          }
+
+          if (embedUrl) {
+            return (
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <iframe 
+                  src={embedUrl} 
+                  title={lesson.title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            );
+          } else if (thumbnailUrl) {
+            return (
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+                <img src={thumbnailUrl} alt={lesson.title} className="w-full h-full object-cover" />
+              </div>
+            );
+          } else {
+            return (
+              <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-64">
+                <PlayCircle size={64} className="text-emerald-400/30 mb-4" />
+                <p className="text-gray-400 text-center">No video available for this lesson</p>
+              </div>
+            );
+          }
+        })()}
+
+        {/* Description / Content Text */}
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">Overview</h2>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            {lesson.description}
-          </p>
+          <div className="text-gray-300 leading-relaxed text-lg whitespace-pre-wrap font-sans">
+            {(() => {
+              try {
+                if (lesson.content) {
+                  const parsed = JSON.parse(lesson.content);
+                  return parsed.text || lesson.description;
+                }
+              } catch (e) {}
+              return lesson.content || lesson.description;
+            })()}
+          </div>
         </div>
 
         {/* Key Points */}
@@ -291,12 +372,27 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
         {!lesson.completed && (
           <div className="flex gap-4 pt-8 border-t border-gray-800">
             <button 
-              onClick={() => onLessonComplete?.(lesson.id)}
-              className="flex-1 px-6 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-black font-bold rounded-xl transition-all"
+              onClick={handleComplete}
+              disabled={isCompleting}
+              className="flex-1 px-6 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-black font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Mark as Complete
+              {isCompleting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+                  Saving...
+                </>
+              ) : (
+                <>
+                  <Check size={20} />
+                  Mark as Complete & Claim XP
+                </>
+              )}
             </button>
-            <button className="px-6 py-4 bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-semibold rounded-xl transition-all">
+            <button 
+              onClick={() => alert('Progress is automatically saved as you watch!')}
+              className="px-6 py-4 bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-semibold rounded-xl transition-all flex items-center gap-2"
+            >
+              <Clock size={18} />
               Save Progress
             </button>
           </div>

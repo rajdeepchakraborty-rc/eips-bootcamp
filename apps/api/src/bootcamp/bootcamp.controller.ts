@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException } from '@nestjs/common';
 import { BootcampService } from './bootcamp.service';
 
 @Controller('bootcamp')
@@ -10,7 +10,7 @@ export class BootcampController {
     return this.bootcampService.getModules(userId);
   }
 
-  @Post('lessons/:lessonId/complete')
+  @Post('modules/:lessonId/complete')
   async completeLesson(
     @Param('lessonId') lessonId: string,
     @Body('userId') userId: string
@@ -19,5 +19,38 @@ export class BootcampController {
       throw new NotFoundException('User ID is required');
     }
     return this.bootcampService.completeLesson(userId, lessonId);
+  }
+
+  @Post('modules')
+  async createModule(@Body() data: any) {
+    return this.bootcampService.createModule(data);
+  }
+
+  @Put('modules/:id')
+  async updateModule(@Param('id') id: string, @Body() data: any) {
+    return this.bootcampService.updateModule(id, data);
+  }
+
+  @Post('modules/:moduleId/lessons')
+  async createLesson(
+    @Param('moduleId') moduleId: string,
+    @Body() data: any
+  ) {
+    return this.bootcampService.createLesson(moduleId, data);
+  }
+
+  @Put('lessons/:id')
+  async updateLesson(@Param('id') id: string, @Body() data: any) {
+    return this.bootcampService.updateLesson(id, data);
+  }
+
+  @Delete('modules/:moduleId')
+  async deleteModule(@Param('moduleId') moduleId: string) {
+    return this.bootcampService.deleteModule(moduleId);
+  }
+
+  @Delete('lessons/:lessonId')
+  async deleteLesson(@Param('lessonId') lessonId: string) {
+    return this.bootcampService.deleteLesson(lessonId);
   }
 }

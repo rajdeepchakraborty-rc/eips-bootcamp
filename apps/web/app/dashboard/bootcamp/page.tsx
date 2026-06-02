@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, BookOpen, CheckCircle2, Clock } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ChevronRight, ChevronLeft, BookOpen, CheckCircle2, Clock, Search } from 'lucide-react';
 import { DashboardShell } from '@/app/components/dashboard/DashboardShell';
 import { ModuleCard } from '@/app/components/bootcamp/ModuleCard';
 import { ModuleDetail } from '@/app/components/bootcamp/ModuleDetail';
@@ -14,6 +14,7 @@ export default function BootcampPage() {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [modules, setModules] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchModules = async () => {
     if (!user?.id) return;
@@ -54,7 +55,14 @@ export default function BootcampPage() {
 
   const selectedModuleData = modules.find(m => m.id === selectedModule);
 
-  
+  const filteredModules = useMemo(() => {
+    if (!searchQuery.trim()) return modules;
+    const query = searchQuery.toLowerCase();
+    return modules.filter(m => 
+      m.title.toLowerCase().includes(query) || 
+      m.description.toLowerCase().includes(query)
+    );
+  }, [modules, searchQuery]);
 
   return (
     <DashboardShell>
@@ -114,16 +122,40 @@ export default function BootcampPage() {
                 </div>
               </div>
 
-              {/* Modules Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {modules.map((module) => (
-                  <ModuleCard
-                    key={module.id}
-                    module={module}
-                    onClick={() => setSelectedModule(module.id)}
+              {/* Search Bar */}
+              <div className="mb-8">
+                <div className="relative max-w-md">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Search size={18} className="text-zinc-500" />
+                  </div>
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search modules by title or description..."
+                    className="w-full bg-[#111] border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-zinc-500"
                   />
-                ))}
+                </div>
               </div>
+
+              {/* Modules Grid */}
+              {filteredModules.length > 0 ? (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {filteredModules.map((module) => (
+                    <ModuleCard
+                      key={module.id}
+                      module={module}
+                      onClick={() => setSelectedModule(module.id)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-20 border border-white/5 rounded-xl bg-white/[0.01]">
+                  <Search size={32} className="mx-auto mb-3 text-zinc-600" />
+                  <h3 className="text-lg font-medium text-white mb-1">No modules found</h3>
+                  <p className="text-zinc-500 text-sm">Try adjusting your search query.</p>
+                </div>
+              )}
             </div>
           )}
         </div>
