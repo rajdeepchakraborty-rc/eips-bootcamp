@@ -12,10 +12,11 @@ import { XPProgressWidget } from '@/app/components/assignments/XPProgressWidget'
 import { mockStats } from '@/app/lib/assignments-data';
 import { Assignment } from '@/app/lib/assignments.types';
 import Link from 'next/link';
-import { useUser } from '@clerk/nextjs';
+import { useSession } from '@/app/lib/auth-client';
 
 export default function AssignmentsPage() {
-  const { user } = useUser();
+  const { data: session } = useSession();
+  const user = session?.user;
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [difficultyFilter, setDifficultyFilter] = useState('all');
