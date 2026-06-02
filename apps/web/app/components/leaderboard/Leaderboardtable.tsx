@@ -12,10 +12,10 @@ export default function LeaderboardTable({ users }: Props) {
       <table className="w-full table-fixed text-left">
         <thead className="bg-white/2">
           <tr>
-            <th className="px-4 py-3 text-xs text-white/50">Rank</th>
-            <th className="px-4 py-3 text-xs text-white/50">Contributor</th>
-            <th className="px-4 py-3 text-xs text-white/50">XP</th>
-            <th className="px-4 py-3 text-xs text-white/50">Streak</th>
+            <th className="px-4 py-3 text-xs text-zinc-500 dark:text-white/50">Rank</th>
+            <th className="px-4 py-3 text-xs text-zinc-500 dark:text-white/50">Contributor</th>
+            <th className="px-4 py-3 text-xs text-zinc-500 dark:text-white/50">XP</th>
+            <th className="px-4 py-3 text-xs text-zinc-500 dark:text-white/50">Streak</th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@ export default function LeaderboardTable({ users }: Props) {
                       <div className="text-sm font-semibold">{u.name}</div>
                       {u.isCurrentUser && <div className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-600 text-black font-semibold">You</div>}
                     </div>
-                    <div className="text-xs text-white/40">{u.handle ?? 'Contributor'}</div>
+                    <div className="text-xs text-zinc-600 dark:text-zinc-400 dark:text-white/40">{u.handle ?? 'Contributor'}</div>
                   </div>
                 </div>
               </td>

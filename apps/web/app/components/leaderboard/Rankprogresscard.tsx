@@ -13,15 +13,15 @@ export default function RankProgressCard({ rank, nextRankXp, currentXp, percenti
   const progress = Math.min(100, Math.round((currentXp / nextRankXp) * 100));
   return (
     <div className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-      <div className="text-xs text-white/40">Current Rank</div>
-      <div className="text-2xl font-bold text-white">#{rank}</div>
+      <div className="text-xs text-zinc-600 dark:text-zinc-400 dark:text-white/40">Current Rank</div>
+      <div className="text-2xl font-bold text-zinc-900 dark:text-white">#{rank}</div>
       {typeof percentile === 'number' && (
-        <div className="text-xs text-white/40">Top {percentile}% of {totalUsers ?? 'learners'}</div>
+        <div className="text-xs text-zinc-600 dark:text-zinc-400 dark:text-white/40">Top {percentile}% of {totalUsers ?? 'learners'}</div>
       )}
       <div className="mt-3 h-2 w-full bg-white/6 rounded-full overflow-hidden">
         <div style={{ width: `${progress}%` }} className="h-full bg-emerald-400" />
       </div>
-      <div className="mt-2 text-xs text-white/40">{currentXp.toLocaleString()} / {nextRankXp.toLocaleString()} XP</div>
+      <div className="mt-2 text-xs text-zinc-600 dark:text-zinc-400 dark:text-white/40">{currentXp.toLocaleString()} / {nextRankXp.toLocaleString()} XP</div>
     </div>
   );
 }
