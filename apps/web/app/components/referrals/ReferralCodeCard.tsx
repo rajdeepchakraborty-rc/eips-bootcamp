@@ -25,14 +25,14 @@ export default function ReferralCodeCard({ stats }: Props) {
   };
 
   return (
-    <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0d0d0d] mb-4">
+    <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] bg-card mb-4">
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.04] via-transparent to-transparent pointer-events-none" />
 
       <div className="relative grid grid-cols-1 md:grid-cols-3 gap-0">
         {/* LEFT: Code section */}
         <div className="p-6 md:p-8 flex flex-col justify-center">
-          <p className="text-sm text-gray-400 font-medium mb-3 uppercase tracking-widest text-xs">
+          <p className="text-sm text-muted-foreground font-medium mb-3 uppercase tracking-widest text-xs">
             Your Referral Code
           </p>
 
@@ -50,7 +50,7 @@ export default function ReferralCodeCard({ stats }: Props) {
             </span>
             <button
               onClick={handleCopy}
-              className="p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-gray-400 hover:text-emerald-400"
+              className="p-2 rounded-lg border border-border bg-accent hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-muted-foreground hover:text-emerald-400"
               title="Copy code"
             >
               {copied ? (
@@ -66,7 +66,7 @@ export default function ReferralCodeCard({ stats }: Props) {
             </button>
           </div>
 
-          <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-[260px]">
+          <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-[260px]">
             Share your code and earn XP when your friends join and complete their onboarding.
           </p>
 
@@ -76,9 +76,10 @@ export default function ReferralCodeCard({ stats }: Props) {
               onClick={handleCopy}
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all"
               style={{
-                background: "linear-gradient(135deg, #10b981, #059669)",
+                background: copied ? "linear-gradient(135deg, #059669, #047857)" : "linear-gradient(135deg, #10b981, #059669)",
                 color: "white",
-                boxShadow: "0 0 20px rgba(16,185,129,0.3)",
+                boxShadow: copied ? "0 0 30px rgba(16,185,129,0.6)" : "0 0 20px rgba(16,185,129,0.3)",
+                transform: copied ? "scale(0.95)" : "scale(1)",
               }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -89,7 +90,7 @@ export default function ReferralCodeCard({ stats }: Props) {
             </button>
             <button
               onClick={handleShare}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm border border-white/10 bg-white/5 text-gray-300 hover:text-white hover:border-white/20 hover:bg-white/10 transition-all"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm border border-border bg-accent text-foreground hover:text-foreground hover:border-border hover:bg-accent transition-all"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -111,15 +112,15 @@ export default function ReferralCodeCard({ stats }: Props) {
         {/* RIGHT: Analytics */}
         <div className="p-6 md:p-8 flex flex-col justify-center gap-5 border-t md:border-t-0 md:border-l border-white/[0.06]">
           <div>
-            <p className="text-xs text-gray-500 font-medium uppercase tracking-widest mb-1">Total Clicks</p>
-            <p className="text-3xl font-bold text-white">{stats.totalClicks}</p>
+            <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest mb-1">Total Clicks</p>
+            <p className="text-3xl font-bold text-foreground">{stats.totalClicks}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 font-medium uppercase tracking-widest mb-1">Successful Referrals</p>
-            <p className="text-3xl font-bold text-white">{stats.successfulSignups}</p>
+            <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest mb-1">Successful Referrals</p>
+            <p className="text-3xl font-bold text-foreground">{stats.successfulSignups}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 font-medium uppercase tracking-widest mb-1">XP Earned</p>
+            <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest mb-1">XP Earned</p>
             <p
               className="text-3xl font-bold"
               style={{

@@ -65,10 +65,10 @@ export function AssignmentStats({ stats }: AssignmentStatsProps) {
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <div className="text-gray-400 text-sm mb-2 font-medium">{card.label}</div>
-                <div className="text-3xl font-bold text-white">{card.value}</div>
+                <div className="text-muted-foreground text-sm mb-2 font-medium">{card.label}</div>
+                <div className="text-3xl font-bold text-foreground">{card.value}</div>
               </div>
-              <div className={`flex-shrink-0 p-3 rounded-lg bg-white/5 ${card.iconColor}`}>
+              <div className={`flex-shrink-0 p-3 rounded-lg bg-accent ${card.iconColor}`}>
                 <Icon size={24} />
               </div>
             </div>

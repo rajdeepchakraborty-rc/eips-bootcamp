@@ -64,8 +64,8 @@ function DonutChart({ approved, rejected, pending, total }: { approved: number; 
       
       {/* Center text */}
       <div className="absolute inset-0 flex items-center justify-center flex-col">
-        <p className="text-white font-bold text-2xl">{total}</p>
-        <p className="text-gray-400 text-xs">Total Apps</p>
+        <p className="text-foreground font-bold text-2xl">{total}</p>
+        <p className="text-muted-foreground text-xs">Total Apps</p>
       </div>
     </div>
   );
@@ -75,8 +75,8 @@ export function CapAnalyticsCard({ data }: CapAnalyticsCardProps) {
   const total = data.applications;
 
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
-      <h3 className="text-white font-semibold text-lg mb-6 flex items-center gap-2">
+    <div className="rounded-xl border border-emerald-500/20 bg-background/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
+      <h3 className="text-foreground font-semibold text-lg mb-6 flex items-center gap-2">
         <FileText className="w-5 h-5 text-amber-400" />
         CAP Program
       </h3>
@@ -95,11 +95,11 @@ export function CapAnalyticsCard({ data }: CapAnalyticsCardProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-emerald-400" />
-            <span className="text-gray-400 text-sm">Approved</span>
+            <span className="text-muted-foreground text-sm">Approved</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-white font-semibold text-sm">{data.approved}</span>
-            <span className="text-gray-500 text-xs">
+            <span className="text-foreground font-semibold text-sm">{data.approved}</span>
+            <span className="text-muted-foreground text-xs">
               ({((data.approved / total) * 100).toFixed(0)}%)
             </span>
           </div>
@@ -109,11 +109,11 @@ export function CapAnalyticsCard({ data }: CapAnalyticsCardProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-amber-400" />
-            <span className="text-gray-400 text-sm">Pending</span>
+            <span className="text-muted-foreground text-sm">Pending</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-white font-semibold text-sm">{data.pending}</span>
-            <span className="text-gray-500 text-xs">
+            <span className="text-foreground font-semibold text-sm">{data.pending}</span>
+            <span className="text-muted-foreground text-xs">
               ({((data.pending / total) * 100).toFixed(0)}%)
             </span>
           </div>
@@ -123,11 +123,11 @@ export function CapAnalyticsCard({ data }: CapAnalyticsCardProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <XCircle className="w-4 h-4 text-red-400" />
-            <span className="text-gray-400 text-sm">Rejected</span>
+            <span className="text-muted-foreground text-sm">Rejected</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-white font-semibold text-sm">{data.rejected}</span>
-            <span className="text-gray-500 text-xs">
+            <span className="text-foreground font-semibold text-sm">{data.rejected}</span>
+            <span className="text-muted-foreground text-xs">
               ({((data.rejected / total) * 100).toFixed(0)}%)
             </span>
           </div>

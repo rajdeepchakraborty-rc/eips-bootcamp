@@ -41,8 +41,8 @@ export default function ApplicationsPage() {
   useEffect(() => {
     if (!isPending) {
       const user = session?.user;
-      const userRole = 'admin'; // Temporary bypass or fetch actual role from profile
-      const hasAccess = userRole === ADMIN_ROLE || user?.id === 'user_3EFohPWsEpwDDfFQxcf3i1T39pJ';
+      const userRole = (user as any)?.role;
+      const hasAccess = userRole === 'ADMIN' || userRole === 'admin';
       
       setIsAdmin(hasAccess);
       if (hasAccess) {
@@ -178,10 +178,10 @@ export default function ApplicationsPage() {
   // Bypassed Login Admin for Testing
   if (!isAdmin) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-black text-white">
+      <div className="flex flex-col items-center justify-center h-screen bg-background text-foreground">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">403 Unauthorized</h1>
-          <p className="text-xl text-gray-400">You do not have access to this page.</p>
+          <p className="text-xl text-muted-foreground">You do not have access to this page.</p>
         </div>
       </div>
     );
@@ -189,7 +189,7 @@ export default function ApplicationsPage() {
 
   return (
     <DashboardShell>
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Main Content */}
       <div className="flex-1">
         {/* Hero Section */}
@@ -201,7 +201,7 @@ export default function ApplicationsPage() {
         </div>
 
         {/* Filters */}
-        <div className="px-6 lg:px-8 py-6 border-b border-white/10">
+        <div className="px-6 lg:px-8 py-6 border-b border-border">
           <ApplicationsFilters
             filters={filters}
             onFilterChange={handleFilterChange}

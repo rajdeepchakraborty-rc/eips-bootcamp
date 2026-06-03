@@ -34,7 +34,7 @@ export default function RewardsPage() {
   const fetchRewardsData = async () => {
     if (!user?.id) return;
     try {
-      const response = await fetch(`/api/rewards?clerkId=${user.id}`);
+      const response = await fetch(`/api/rewards?userId=${user.id}`);
       if (response.ok) {
         const data = await response.json();
         setUserData(data.userData);
@@ -58,7 +58,7 @@ export default function RewardsPage() {
       const response = await fetch('/api/rewards/redeem', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ clerkId: user.id, rewardId }),
+        body: JSON.stringify({ userId: user.id, rewardId }),
       });
       if (response.ok) {
         await fetchRewardsData(); // Refresh everything
@@ -74,7 +74,7 @@ export default function RewardsPage() {
 
   return (
     <DashboardShell>
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-background">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/5 rounded-full blur-3xl" />

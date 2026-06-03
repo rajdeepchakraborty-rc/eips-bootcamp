@@ -123,16 +123,16 @@ export function AdminHero({ startDate = 'May 1', endDate = 'May 31, 2024' }: Adm
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         {/* Left side - Text content */}
         <div className="pt-4 lg:pt-8">
-          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-3 tracking-tight">
+          <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-3 tracking-tight">
             Admin Analytics
           </h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
+          <p className="text-muted-foreground text-lg mb-8 max-w-md leading-relaxed">
             Monitor platform growth, engagement, learning activity, and ecosystem impact.
           </p>
 
           {/* Date range and export button */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
+            <div className="flex items-center gap-2 text-muted-foreground text-sm">
               <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v2h16V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5H4v9a2 2 0 002 2h12a2 2 0 002-2V7h-2v1a1 1 0 11-2 0V7H9v1a1 1 0 11-2 0V7H6v1a1 1 0 11-2 0V7z" />
               </svg>

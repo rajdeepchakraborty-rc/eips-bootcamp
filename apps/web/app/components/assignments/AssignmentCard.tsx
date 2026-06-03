@@ -32,9 +32,9 @@ interface AssignmentCardProps {
 
 const statusConfig = {
   'Not Started': {
-    bg: 'bg-gray-800/30',
-    text: 'text-gray-400',
-    badge: 'bg-gray-700 text-gray-300',
+    bg: 'bg-accent/50',
+    text: 'text-muted-foreground',
+    badge: 'bg-gray-700 text-foreground',
   },
   'In Progress': {
     bg: 'bg-cyan-500/10',
@@ -118,7 +118,7 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
   };
 
   return (
-    <div className={`group relative bg-gradient-to-br ${statusConfig_.bg} border border-gray-800 hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20`}>
+    <div className={`group relative bg-gradient-to-br ${statusConfig_.bg} border border-border hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20`}>
       {/* Top Section */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
@@ -130,10 +130,10 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
               {assignment.difficulty}
             </span>
           </div>
-          <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+          <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-300 transition-colors">
             {assignment.title}
           </h3>
-          <p className="text-gray-400 text-sm mt-1 line-clamp-2">{assignment.description}</p>
+          <p className="text-muted-foreground text-sm mt-1 line-clamp-2">{assignment.description}</p>
           {(assignment as any).questionFileUrl && (
             <div className="mt-3">
               <a href={(assignment as any).questionFileUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-medium text-cyan-400 hover:text-cyan-300 bg-cyan-500/10 px-3 py-1.5 rounded-lg transition-colors">
@@ -151,24 +151,24 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
       </div>
 
       {/* Meta Info Row */}
-      <div className="grid grid-cols-4 gap-4 mb-4 pb-4 border-b border-gray-700/50">
+      <div className="grid grid-cols-4 gap-4 mb-4 pb-4 border-b border-border">
         <div>
-          <div className="text-xs text-gray-500 mb-1">XP Reward</div>
+          <div className="text-xs text-muted-foreground mb-1">XP Reward</div>
           <div className="flex items-center gap-1 text-emerald-400 font-bold">
             <Zap size={14} />
             <span>{assignment.xpReward}</span>
           </div>
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Est. Time</div>
+          <div className="text-xs text-muted-foreground mb-1">Est. Time</div>
           <div className="flex items-center gap-1 text-cyan-400 font-semibold text-sm">
             <Clock size={14} />
             <span>{assignment.estimatedTime}h</span>
           </div>
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Deadline</div>
-          <div className={`text-sm font-semibold ${isOverdue ? 'text-red-400' : 'text-white'}`}>
+          <div className="text-xs text-muted-foreground mb-1">Deadline</div>
+          <div className={`text-sm font-semibold ${isOverdue ? 'text-red-400' : 'text-foreground'}`}>
             {daysUntilDeadline > 0
               ? `${daysUntilDeadline}d left`
               : daysUntilDeadline === 0
@@ -177,14 +177,14 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
           </div>
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Progress</div>
-          <div className="text-sm font-bold text-white">{assignment.progress}%</div>
+          <div className="text-xs text-muted-foreground mb-1">Progress</div>
+          <div className="text-sm font-bold text-foreground">{assignment.progress}%</div>
         </div>
       </div>
 
       {/* Progress Bar */}
       <div className="mb-4">
-        <div className="w-full h-2 bg-gray-800/50 rounded-full overflow-hidden">
+        <div className="w-full h-2 bg-accent rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-500"
             style={{ width: `${assignment.progress}%` }}
@@ -198,7 +198,7 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
           {assignment.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-2 py-1 rounded-full bg-gray-800/50 text-gray-300 border border-gray-700/50"
+              className="text-xs px-2 py-1 rounded-full bg-accent text-foreground border border-border"
             >
               {tag}
             </span>
@@ -214,7 +214,7 @@ export function AssignmentCard({ assignment, onSubmit }: AssignmentCardProps) {
         />
         <button 
           onClick={handleActionClick}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all ${statusConfig_.text} hover:bg-white/10`}
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all ${statusConfig_.text} hover:bg-accent`}
         >
           <span className="text-sm">{actionButton.label}</span>
           <actionButton.icon size={16} />

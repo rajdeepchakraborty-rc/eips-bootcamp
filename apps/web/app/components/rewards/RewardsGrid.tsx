@@ -82,10 +82,10 @@ export const RewardsGrid: React.FC<RewardsGridProps> = ({
       ) : (
         <div className="text-center py-16">
           <div className="text-6xl mb-4 opacity-50">📦</div>
-          <h3 className="text-xl font-bold text-gray-400 mb-2">
+          <h3 className="text-xl font-bold text-muted-foreground mb-2">
             No rewards in this category
           </h3>
-          <p className="text-gray-500">
+          <p className="text-muted-foreground">
             Check back soon for new exclusive rewards!
           </p>
         </div>

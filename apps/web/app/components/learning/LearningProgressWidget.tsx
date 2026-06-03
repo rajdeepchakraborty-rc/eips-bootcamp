@@ -13,8 +13,8 @@ export const LearningProgressWidget = ({ stats }: { stats?: any }) => {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
-      <h3 className="text-white font-bold text-base mb-6">Course Progress</h3>
+    <div className="bg-card border border-border rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
+      <h3 className="text-foreground font-bold text-base mb-6">Course Progress</h3>
 
       <div className="flex-1 flex flex-col items-center justify-center gap-6">
         {/* Circular progress */}
@@ -51,16 +51,16 @@ export const LearningProgressWidget = ({ stats }: { stats?: any }) => {
           </svg>
           {/* Center text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center relative z-10">
-            <span className="text-white font-black text-3xl tracking-tight">{progress}%</span>
+            <span className="text-foreground font-black text-3xl tracking-tight">{progress}%</span>
           </div>
         </div>
 
         <div className="w-full">
           <div className="flex justify-between text-xs mb-2">
-            <span className="text-zinc-400">Completed</span>
-            <span className="font-semibold text-white">{data.modulesCompleted} / {data.totalModules} Modules</span>
+            <span className="text-muted-foreground">Completed</span>
+            <span className="font-semibold text-foreground">{data.modulesCompleted} / {data.totalModules} Modules</span>
           </div>
-          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+          <div className="w-full h-1.5 bg-accent rounded-full overflow-hidden">
             <div 
               className="h-full bg-emerald-500/50 rounded-full transition-all duration-1000"
               style={{ width: `${progress}%` }}

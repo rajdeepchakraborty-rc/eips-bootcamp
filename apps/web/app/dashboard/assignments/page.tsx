@@ -30,7 +30,7 @@ export default function AssignmentsPage() {
   const fetchAssignments = async () => {
     if (!user?.id) return;
     try {
-      const res = await fetch(`/api/assignments?clerkId=${user.id}`);
+      const res = await fetch(`/api/assignments?userId=${user.id}`);
       if (res.ok) {
         const data = await res.json();
         setAssignments(data.assignments || []);
@@ -74,7 +74,7 @@ export default function AssignmentsPage() {
       const res = await fetch('/api/assignments/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ clerkId: user.id, assignmentId, content: contentUrl }),
+        body: JSON.stringify({ userId: user.id, assignmentId, content: contentUrl }),
       });
       if (res.ok) {
         await fetchAssignments(); // refresh data
@@ -134,17 +134,17 @@ export default function AssignmentsPage() {
             {/* Page Header */}
             <div className="mb-12">
                 <Link href="/dashboard">
-              <button className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition-colors mb-4">
+              <button className="flex items-center gap-2 text-muted-foreground hover:text-emerald-400 transition-colors mb-4">
                 <ChevronLeft size={18} />
                 <span className="text-sm font-medium">Back to Dashboard</span>
               </button>
               </Link>
 
               <div className="mb-6">
-                <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                   Assignments
                 </h1>
-                <p className="text-gray-400 text-lg">
+                <p className="text-muted-foreground text-lg">
                   Complete challenges, submit EIPs, and earn XP rewards.
                 </p>
               </div>
@@ -175,10 +175,10 @@ export default function AssignmentsPage() {
               {/* Assignments List */}
               <div className="lg:col-span-2">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-white">
+                  <h2 className="text-2xl font-bold text-foreground">
                     {sortedAssignments.length} Assignments
                   </h2>
-                  <p className="text-gray-400 text-sm mt-1">
+                  <p className="text-muted-foreground text-sm mt-1">
                     {statusFilter !== 'all' && `Showing ${statusFilter} assignments`}
                   </p>
                 </div>
@@ -189,11 +189,24 @@ export default function AssignmentsPage() {
                       <AssignmentCard key={assignment.id} assignment={assignment} onSubmit={handleSubmit} />
                     ))
                   ) : (
-                    <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/20 border border-gray-700/50 rounded-2xl p-12 text-center">
-                      <p className="text-gray-400 text-lg">No assignments found</p>
-                      <p className="text-gray-500 text-sm mt-2">
-                        Try adjusting your filters or search query
-                      </p>
+                    <div className="bg-card border border-border rounded-2xl p-12 text-center">
+                      <p className="text-foreground text-lg font-bold mb-2">No assignments found</p>
+                      {assignments.length === 0 ? (
+                        <>
+                          <p className="text-muted-foreground text-sm mb-6">
+                            You need to subscribe to modules in the Marketplace to see related assignments.
+                          </p>
+                          <Link href="/dashboard/marketplace">
+                            <button className="px-6 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                              Go to Marketplace
+                            </button>
+                          </Link>
+                        </>
+                      ) : (
+                        <p className="text-muted-foreground text-sm mt-2">
+                          Try adjusting your filters or search query
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>

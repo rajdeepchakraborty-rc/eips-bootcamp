@@ -61,7 +61,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <DashboardShell>
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Main gradient background */}
       <div className="fixed inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent pointer-events-none -z-10" />
       
@@ -107,7 +107,7 @@ export default async function AdminDashboardPage() {
         </div>
 
         {/* Footer spacer */}
-        <div className="mt-12 pt-8 border-t border-emerald-500/10 text-center text-gray-500 text-sm">
+        <div className="mt-12 pt-8 border-t border-emerald-500/10 text-center text-muted-foreground text-sm">
           <p>Last updated: {new Date().toLocaleString()}</p>
         </div>
       </div>

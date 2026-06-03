@@ -8,21 +8,21 @@ interface Props {
 
 export default function LeaderboardTable({ users }: Props) {
   return (
-    <div className="rounded-xl overflow-hidden border border-white/6">
+    <div className="rounded-xl overflow-hidden border border-border">
       <table className="w-full table-fixed text-left">
-        <thead className="bg-white/2">
+        <thead className="bg-accent/50">
           <tr>
-            <th className="px-4 py-3 text-xs text-white/50">Rank</th>
-            <th className="px-4 py-3 text-xs text-white/50">Contributor</th>
-            <th className="px-4 py-3 text-xs text-white/50">XP</th>
-            <th className="px-4 py-3 text-xs text-white/50">Streak</th>
+            <th className="px-4 py-3 text-xs text-foreground/50">Rank</th>
+            <th className="px-4 py-3 text-xs text-foreground/50">Contributor</th>
+            <th className="px-4 py-3 text-xs text-foreground/50">XP</th>
+            <th className="px-4 py-3 text-xs text-foreground/50">Streak</th>
           </tr>
         </thead>
         <tbody>
           {users.map((u) => (
             <tr
               key={u.userId}
-              className={"border-t border-white/4 " + (u.isCurrentUser ? "bg-white/3 ring-1 ring-emerald-400" : "")}
+              className={"border-t border-border " + (u.isCurrentUser ? "bg-emerald-500/10 ring-1 ring-emerald-400" : "")}
             >
               <td className="px-4 py-3 align-middle">#{u.rank}</td>
               <td className="px-4 py-3 align-middle">
@@ -35,7 +35,7 @@ export default function LeaderboardTable({ users }: Props) {
                       <div className="text-sm font-semibold">{u.name}</div>
                       {u.isCurrentUser && <div className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-600 text-black font-semibold">You</div>}
                     </div>
-                    <div className="text-xs text-white/40">{u.handle ?? 'Contributor'}</div>
+                    <div className="text-xs text-foreground/40">{u.handle ?? 'Contributor'}</div>
                   </div>
                 </div>
               </td>
@@ -45,8 +45,8 @@ export default function LeaderboardTable({ users }: Props) {
           ))}
         </tbody>
       </table>
-      <div className="p-3 border-t border-white/4 bg-white/2">
-        <button className="w-full py-2 rounded-lg bg-white/6 text-sm font-semibold">View full leaderboard</button>
+      <div className="p-3 border-t border-border bg-accent/50">
+        <button className="w-full py-2 rounded-lg bg-accent hover:bg-accent-foreground/5 text-sm font-semibold transition-colors">View full leaderboard</button>
       </div>
     </div>
   );

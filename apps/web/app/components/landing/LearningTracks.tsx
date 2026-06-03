@@ -17,7 +17,7 @@ const iconMap: Record<LearningTrack['icon'], React.ReactNode> = {
 
 function TrackCard({ track }: { track: LearningTrack }) {
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/7 rounded-2xl p-6 flex flex-col gap-4 hover:border-emerald-500/20 hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden">
+    <div className="group relative bg-card border border-border rounded-2xl p-6 flex flex-col gap-4 hover:border-emerald-500/20 hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/2 transition-all duration-300 rounded-2xl pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/0 group-hover:via-emerald-500/20 to-transparent transition-all duration-500 pointer-events-none" />
@@ -30,12 +30,12 @@ function TrackCard({ track }: { track: LearningTrack }) {
       {/* Content */}
       <div className="relative z-10 flex flex-col gap-2 flex-1">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-white font-bold text-base leading-tight">{track.title}</h3>
+          <h3 className="text-foreground font-bold text-base leading-tight">{track.title}</h3>
           <span className={`flex-shrink-0 text-[10px] font-bold uppercase tracking-wider border rounded-full px-2.5 py-0.5 ${levelColors[track.level]}`}>
             {track.level}
           </span>
         </div>
-        <p className="text-zinc-500 text-sm leading-relaxed">{track.description}</p>
+        <p className="text-muted-foreground text-sm leading-relaxed">{track.description}</p>
       </div>
 
       {/* Tags */}
@@ -43,7 +43,7 @@ function TrackCard({ track }: { track: LearningTrack }) {
         {track.tags.map((tag: string) => (
           <span
             key={tag}
-            className="text-[10.5px] font-medium text-zinc-500 bg-white/4 border border-white/6 rounded-lg px-2 py-0.5"
+            className="text-[10.5px] font-medium text-muted-foreground bg-white/4 border border-border rounded-lg px-2 py-0.5"
           >
             {tag}
           </span>
@@ -55,7 +55,7 @@ function TrackCard({ track }: { track: LearningTrack }) {
 
 export function LearningTracks() {
   return (
-    <section id="learn" className="py-24 bg-[#080808] relative overflow-hidden">
+    <section id="learn" className="py-24 bg-background relative overflow-hidden">
       {/* Subtle top divider glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
@@ -63,10 +63,10 @@ export function LearningTracks() {
         {/* Header */}
         <div className="mb-12 max-w-xl">
           <p className="text-emerald-400 text-sm font-semibold mb-3 tracking-wide">Learning Paths</p>
-          <h2 className="text-white font-black text-4xl leading-tight tracking-tight mb-4">
+          <h2 className="text-foreground font-black text-4xl leading-tight tracking-tight mb-4">
             Your path to Ethereum knowledge starts here
           </h2>
-          <p className="text-zinc-500 text-base leading-relaxed">
+          <p className="text-muted-foreground text-base leading-relaxed">
             Structured tracks built for learners who want depth — from core Ethereum fundamentals to active protocol participation.
           </p>
         </div>

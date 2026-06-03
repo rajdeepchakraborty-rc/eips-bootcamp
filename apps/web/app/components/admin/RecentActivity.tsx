@@ -49,7 +49,7 @@ function getActivityColor(color?: string) {
     case 'violet':
       return 'bg-violet-500/10 text-violet-400';
     default:
-      return 'bg-gray-500/10 text-gray-400';
+      return 'bg-gray-500/10 text-muted-foreground';
   }
 }
 
@@ -69,10 +69,10 @@ function formatTime(date: Date) {
 
 export function RecentActivity({ activities }: RecentActivityProps) {
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 h-fit">
+    <div className="rounded-xl border border-emerald-500/20 bg-background/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 h-fit">
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
-        <h3 className="text-white font-semibold text-lg">Recent Activity</h3>
+        <h3 className="text-foreground font-semibold text-lg">Recent Activity</h3>
         <a href="#" className="
           flex items-center gap-1 text-emerald-400 text-sm font-medium
           hover:text-emerald-300 transition-colors group
@@ -101,17 +101,17 @@ export function RecentActivity({ activities }: RecentActivityProps) {
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <p className="text-white font-medium text-sm truncate">
+                <p className="text-foreground font-medium text-sm truncate">
                   {activity.title}
                 </p>
-                <p className="text-gray-500 text-sm truncate">
+                <p className="text-muted-foreground text-sm truncate">
                   {activity.description}
                 </p>
               </div>
 
               {/* Time */}
               <div className="flex-shrink-0 text-right">
-                <p className="text-gray-500 text-xs whitespace-nowrap">
+                <p className="text-muted-foreground text-xs whitespace-nowrap">
                   {formatTime(activity.timestamp)}
                 </p>
               </div>

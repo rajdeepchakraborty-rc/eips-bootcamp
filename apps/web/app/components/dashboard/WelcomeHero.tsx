@@ -11,7 +11,7 @@ type WelcomeHeroProps = {
 
 export function WelcomeHero({ user }: WelcomeHeroProps) {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-gradient-to-br from-[#0d1a12] via-[#0a0f0d] to-[#080808] min-h-[200px]">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-emerald-950/5 via-background to-background dark:from-[#0d1a12] dark:via-[#0a0f0d] dark:to-[#080808] min-h-[200px]">
       {/* Background glow effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 right-20 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl" />
@@ -83,22 +83,37 @@ export function WelcomeHero({ user }: WelcomeHeroProps) {
 
       {/* Main text content */}
       <div className="relative z-10 px-7 py-8 max-w-[calc(100%-200px)] lg:max-w-[calc(100%-320px)]">
-        <p className="text-zinc-400 text-sm font-medium mb-1">Welcome back,</p>
-        <h1 className="text-white font-black text-4xl lg:text-5xl tracking-tight mb-2 flex items-center gap-3">
+        <p className="text-muted-foreground text-sm font-medium mb-1">Welcome back,</p>
+        <h1 className="text-foreground font-black text-4xl lg:text-5xl tracking-tight mb-2 flex items-center gap-3">
           {user.username}
           <span className="text-3xl select-none" role="img" aria-label="wave">👋</span>
         </h1>
-        <p className="text-zinc-400 text-sm mb-6">Continue building Ethereum&apos;s future.</p>
+        <p className="text-muted-foreground text-sm mb-6">Continue building Ethereum&apos;s future.</p>
 
-        {/* Badges */}
-        <div className="flex flex-wrap items-center gap-2.5">
-          <div className="flex items-center gap-1.5 bg-black/40 border border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
-            <Shield size={13} className="text-emerald-400" />
-            <span className="text-white text-xs font-semibold">{user.role}</span>
+        {/* Badges & Actions */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-6">
+          <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-1.5 bg-background/40 border border-border rounded-full px-3.5 py-1.5 backdrop-blur-sm">
+              <Shield size={13} className="text-emerald-400" />
+              <span className="text-foreground text-xs font-semibold">{user.role}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1.5 bg-black/40 border border-white/10 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
-            <Compass size={13} className="text-emerald-400" />
-            <span className="text-white text-xs font-semibold">{user.username}</span>
+          
+          <div className="h-4 w-px bg-accent hidden sm:block" />
+          
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <a 
+              href="/dashboard/my-modules" 
+              className="flex-1 sm:flex-none text-center bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-bold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+            >
+              Resume Course
+            </a>
+            <a 
+              href="/dashboard/marketplace" 
+              className="flex-1 sm:flex-none text-center bg-accent hover:bg-accent border border-border hover:border-emerald-500/50 text-foreground text-sm font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+            >
+              Explore Modules
+            </a>
           </div>
         </div>
       </div>

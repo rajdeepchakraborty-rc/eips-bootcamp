@@ -58,7 +58,7 @@ export function ApplicationStatCard({
     >
       {/* Header with icon */}
       <div className="flex items-center justify-between mb-4">
-        <div className={`p-2.5 bg-black/50 rounded-lg border ${colors.border}`}>
+        <div className={`p-2.5 bg-background/50 rounded-lg border ${colors.border}`}>
           <Icon className={`w-5 h-5 ${colors.icon}`} />
         </div>
         <span className={`text-xs font-semibold ${colors.text}`}>{growth}</span>
@@ -66,8 +66,8 @@ export function ApplicationStatCard({
 
       {/* Value */}
       <div className="space-y-1 mb-3">
-        <p className="text-gray-400 text-sm font-medium">{title}</p>
-        <p className="text-3xl font-bold text-white tracking-tight">
+        <p className="text-muted-foreground text-sm font-medium">{title}</p>
+        <p className="text-3xl font-bold text-foreground tracking-tight">
           {loading ? (
             <span className="animate-pulse">---</span>
           ) : (
@@ -77,7 +77,7 @@ export function ApplicationStatCard({
       </div>
 
       {/* Subtitle */}
-      <p className="text-gray-500 text-xs">{subtitle}</p>
+      <p className="text-muted-foreground text-xs">{subtitle}</p>
 
       {/* Glow effect on hover */}
       <div

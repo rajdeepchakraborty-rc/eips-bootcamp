@@ -30,7 +30,7 @@ export const EarnXPCard: React.FC = () => {
         <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white mb-6">How to Earn More XP</h3>
+        <h3 className="text-lg font-bold text-foreground mb-6">How to Earn More XP</h3>
 
         {/* Activities List */}
         <div className="space-y-3 mb-6">
@@ -43,7 +43,7 @@ export const EarnXPCard: React.FC = () => {
                 <span className="text-lg">
                   {activity.emoji}
                 </span>
-                <span className="text-sm text-gray-300">
+                <span className="text-sm text-foreground">
                   {activity.activity}
                 </span>
               </div>

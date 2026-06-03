@@ -5,6 +5,20 @@ import { X, ExternalLink, TrendingUp } from 'lucide-react';
 import { getStatusColor } from '@/app/lib/applications';
 import type { Application } from '@/app/lib/applications';
 
+function Avatar({ name, avatarUrl, className }: { name: string; avatarUrl?: string; className?: string }) {
+  if (avatarUrl && avatarUrl.trim() !== '') {
+    return <img src={avatarUrl} alt={name} className={className} />;
+  }
+  const initials = name.replace(/[^a-zA-Z]/g, '').slice(0, 2).toUpperCase() || 'U';
+  const colors = ['bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300', 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300', 'bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300', 'bg-pink-100 text-pink-800 dark:bg-pink-900/50 dark:text-pink-300', 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300'];
+  const idx = name.charCodeAt(0) % colors.length;
+  return (
+    <div className={`${className} ${colors[idx]} flex items-center justify-center font-bold flex-shrink-0`}>
+      {initials}
+    </div>
+  );
+}
+
 interface ApplicationDetailsModalProps {
   application: Application;
   isOpen: boolean;
@@ -36,27 +50,27 @@ export function ApplicationDetailsModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
       {/* Modal */}
-      <div className="bg-black border border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div className="bg-background border border-border rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
         {/* Header */}
-        <div className="sticky top-0 bg-black/50 backdrop-blur-sm border-b border-white/10 px-8 py-6 flex items-center justify-between">
+        <div className="sticky top-0 bg-background/50 backdrop-blur-sm border-b border-border px-8 py-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img
-              src={application.avatar}
-              alt={application.name}
+            <Avatar
+              name={application.name}
+              avatarUrl={application.avatar}
               className="w-12 h-12 rounded-full border border-emerald-500/30 object-cover"
             />
             <div>
-              <h2 className="text-2xl font-bold text-white">{application.name}</h2>
-              <p className="text-gray-400 text-sm">{application.email}</p>
+              <h2 className="text-2xl font-bold text-foreground">{application.name}</h2>
+              <p className="text-muted-foreground text-sm">{application.email}</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
+            className="p-2 hover:bg-accent rounded-lg transition-colors duration-200"
           >
-            <X className="w-6 h-6 text-gray-400" />
+            <X className="w-6 h-6 text-muted-foreground" />
           </button>
         </div>
 
@@ -64,7 +78,7 @@ export function ApplicationDetailsModal({
         <div className="px-8 py-8 space-y-8">
           {/* Personal Info */}
           <section>
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Personal Information
             </h3>
@@ -80,7 +94,7 @@ export function ApplicationDetailsModal({
 
           {/* Social Profiles */}
           <section>
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Social Profiles
             </h3>
@@ -93,29 +107,29 @@ export function ApplicationDetailsModal({
 
           {/* Why Join CAP */}
           <section>
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Why Join CAP?
             </h3>
-            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
-              <p className="text-gray-300 leading-relaxed">{application.whyJoinCAP}</p>
+            <div className="p-4 bg-accent border border-border rounded-lg">
+              <p className="text-foreground leading-relaxed">{application.whyJoinCAP}</p>
             </div>
           </section>
 
           {/* Community Experience */}
           <section>
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Community Experience
             </h3>
-            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
-              <p className="text-gray-300 leading-relaxed">{application.communityExperience}</p>
+            <div className="p-4 bg-accent border border-border rounded-lg">
+              <p className="text-foreground leading-relaxed">{application.communityExperience}</p>
             </div>
           </section>
 
           {/* Referral Metrics */}
           <section>
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Referral Metrics
             </h3>
@@ -140,7 +154,7 @@ export function ApplicationDetailsModal({
 
           {/* Current Status */}
           <section>
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-400 rounded-full" />
               Current Status
             </h3>
@@ -155,7 +169,7 @@ export function ApplicationDetailsModal({
 
           {/* Decision Buttons */}
           {status === 'pending' && (
-            <section className="border-t border-white/10 pt-8">
+            <section className="border-t border-border pt-8">
               <div className="flex gap-4">
                 <button
                   onClick={handleApprove}
@@ -183,8 +197,8 @@ export function ApplicationDetailsModal({
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-sm text-white font-medium">{value}</p>
+      <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{label}</p>
+      <p className="text-sm text-foreground font-medium">{value}</p>
     </div>
   );
 }
@@ -195,22 +209,22 @@ function SocialLink({ label, url }: { label: string; url: string }) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-200 flex items-center justify-between group"
+      className="p-3 bg-accent border border-border rounded-lg hover:bg-accent transition-all duration-200 flex items-center justify-between group"
     >
-      <span className="text-sm text-gray-300">{label}</span>
-      <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-emerald-400 transition-colors" />
+      <span className="text-sm text-foreground">{label}</span>
+      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
     </a>
   );
 }
 
 function MetricCard({ icon, label, value }: { icon: string; label: string; value: string | number }) {
   return (
-    <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+    <div className="p-4 bg-accent border border-border rounded-lg">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-xl">{icon}</span>
-        <p className="text-xs text-gray-500 uppercase">{label}</p>
+        <p className="text-xs text-muted-foreground uppercase">{label}</p>
       </div>
-      <p className="text-2xl font-bold text-white">{value}</p>
+      <p className="text-2xl font-bold text-foreground">{value}</p>
     </div>
   );
 }

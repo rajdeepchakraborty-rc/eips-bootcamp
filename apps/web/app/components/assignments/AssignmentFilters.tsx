@@ -84,7 +84,7 @@ export function AssignmentFilters({
       <div className="relative">
         <button
           onClick={() => setOpenDropdown(isOpen ? null : dropdownId)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-emerald-500/30 rounded-lg transition-all text-sm font-medium text-gray-300"
+          className="flex items-center gap-2 px-4 py-2.5 bg-accent/50 hover:bg-accent border border-border hover:border-emerald-500/30 rounded-lg transition-all text-sm font-medium text-foreground"
         >
           <span>{selectedLabel}</span>
           <ChevronDown
@@ -94,7 +94,7 @@ export function AssignmentFilters({
         </button>
 
         {isOpen && (
-          <div className="absolute top-full left-0 mt-2 w-48 bg-gray-900/95 border border-gray-700 rounded-lg shadow-2xl z-50 overflow-hidden backdrop-blur-sm">
+          <div className="absolute top-full left-0 mt-2 w-48 bg-popover border border-border rounded-lg shadow-2xl z-50 overflow-hidden backdrop-blur-sm">
             {options.map((option) => (
               <button
                 key={option.value}
@@ -105,7 +105,7 @@ export function AssignmentFilters({
                 className={`w-full text-left px-4 py-3 transition-colors ${
                   value === option.value
                     ? 'bg-emerald-500/20 text-emerald-300'
-                    : 'text-gray-300 hover:bg-gray-800/50'
+                    : 'text-foreground hover:bg-accent'
                 }`}
               >
                 {option.label}
@@ -118,16 +118,16 @@ export function AssignmentFilters({
   };
 
   return (
-    <div className="flex flex-col gap-4 p-6 bg-gradient-to-br from-gray-900/30 to-gray-800/20 border border-gray-800 rounded-2xl">
+    <div className="flex flex-col gap-4 p-6 bg-gradient-to-br from-accent/30 to-accent/20 border border-border rounded-2xl">
       {/* Search Bar */}
       <div className="relative">
-        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <input
           type="text"
           placeholder="Search assignments..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full bg-gray-800/30 border border-gray-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-all"
+          className="w-full bg-accent/50 border border-border rounded-lg pl-10 pr-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-emerald-500/50 transition-all"
         />
       </div>
 
@@ -174,7 +174,7 @@ export function AssignmentFilters({
               onDifficultyChange('all');
               onModuleChange('all');
             }}
-            className="ml-auto px-4 py-2.5 text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors"
+            className="ml-auto px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-emerald-400 transition-colors"
           >
             Clear Filters
           </button>

@@ -5,7 +5,7 @@ import { EthereumCrystal } from '@/app/components/applications/EthereumCrystal';
 
 export function ApplicationsHero() {
   return (
-    <div className="relative overflow-hidden border-b border-white/10 px-6 lg:px-8 py-12 lg:py-16">
+    <div className="relative overflow-hidden border-b border-border px-6 lg:px-8 py-12 lg:py-16">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/5 via-transparent to-transparent pointer-events-none" />
 
@@ -16,11 +16,11 @@ export function ApplicationsHero() {
             <div className="p-2 bg-emerald-500/20 rounded-lg border border-emerald-500/30">
               <Users className="w-6 h-6 text-emerald-400" />
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-emerald-100 to-emerald-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground via-emerald-500 to-emerald-400 bg-clip-text text-transparent">
               Applications
             </h1>
           </div>
-          <p className="text-lg text-gray-400 max-w-md leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-md leading-relaxed">
             Review and manage Campus Ambassador applications.
           </p>
         </div>

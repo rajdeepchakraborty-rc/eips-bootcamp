@@ -226,38 +226,38 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
 
       <div className="space-y-6">
         {initialModules.map((module) => (
-          <div key={module.id} className="bg-[#0f0f0f] border border-white/5 rounded-xl overflow-hidden transition-all duration-200 hover:border-white/10">
+          <div key={module.id} className="bg-card border border-border rounded-xl overflow-hidden transition-all duration-200 hover:border-emerald-500/30 hover:shadow-[0_0_15px_rgba(16,185,129,0.1)]">
             <div 
-              className="p-5 border-b border-white/5 flex items-center justify-between cursor-pointer group"
+              className="p-5 border-b border-border flex items-center justify-between cursor-pointer group hover:bg-accent transition-colors"
               onClick={() => toggleModule(module.id)}
             >
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-1">
                   <div className={`w-3 h-3 rounded-full ${module.color}`} />
-                  <h2 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">{module.title}</h2>
+                  <h2 className="text-lg font-bold text-foreground group-hover:text-emerald-400 transition-colors">{module.title}</h2>
                 </div>
-                <p className="text-zinc-400 text-sm">{module.description}</p>
+                <p className="text-muted-foreground text-sm">{module.description}</p>
               </div>
-              <div className="flex items-center gap-4 text-sm text-zinc-500">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5"><Clock size={14} /> {module.duration}</span>
                 <span className="flex items-center gap-1.5"><Tag size={14} /> {module.xpReward} XP</span>
                 
                 <div className="flex items-center gap-2 ml-4">
                   <button 
                     onClick={(e) => { e.stopPropagation(); setEditingModule(module); }}
-                    className="p-2 text-zinc-500 hover:text-emerald-400 hover:bg-emerald-400/10 rounded-lg transition-colors"
+                    className="p-2 text-muted-foreground hover:text-emerald-400 hover:bg-emerald-400/10 rounded-lg transition-colors"
                     title="Edit Module"
                   >
                     ✎
                   </button>
                   <button 
                     onClick={(e) => { e.stopPropagation(); setDeletingModule({ id: module.id, title: module.title }); }}
-                    className="p-2 text-zinc-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors"
+                    className="p-2 text-muted-foreground hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors"
                     title="Delete Module"
                   >
                     <Trash2 size={16} />
                   </button>
-                  <div className="p-1 text-zinc-500 bg-white/5 rounded-full">
+                  <div className="p-1 text-muted-foreground bg-accent rounded-full">
                     {expandedModules[module.id] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </div>
                 </div>
@@ -267,7 +267,7 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
             {expandedModules[module.id] && (
               <div className="p-5 bg-white/[0.01]">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Lessons</h3>
+                  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Lessons</h3>
                   <button
                     onClick={() => setIsCreatingLessonFor(module.id)}
                     className="text-xs px-3 py-1.5 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 font-medium rounded flex items-center gap-1.5 transition-colors"
@@ -279,28 +279,28 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
                 {module.mappedLessons && module.mappedLessons.length > 0 ? (
                   <div className="grid gap-3">
                     {module.mappedLessons.map((lesson: any) => (
-                      <div key={lesson.id} className="flex items-center justify-between p-3 rounded-lg bg-[#141414] border border-white/[0.04] hover:border-white/10 transition-colors group">
+                      <div key={lesson.id} className="flex items-center justify-between p-3 rounded-lg bg-card border border-white/[0.04] hover:bg-accent hover:border-emerald-500/20 transition-all group">
                         <div className="flex items-center gap-3">
                           <BookOpen size={16} className="text-emerald-500/50" />
                           <div>
-                            <p className="text-sm font-medium text-white">{lesson.title}</p>
-                            <p className="text-xs text-zinc-500">{lesson.description}</p>
+                            <p className="text-sm font-medium text-foreground">{lesson.title}</p>
+                            <p className="text-xs text-muted-foreground">{lesson.description}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-4">
-                          <span className="text-xs text-zinc-500 font-mono bg-black px-2 py-1 rounded">
+                          <span className="text-xs text-muted-foreground font-mono bg-background px-2 py-1 rounded">
                             {lesson.duration}
                           </span>
                           <button
                             onClick={() => setEditingLesson(lesson)}
-                            className="text-zinc-600 hover:text-emerald-400 opacity-0 group-hover:opacity-100 transition-all p-1"
+                            className="text-muted-foreground hover:text-emerald-400 opacity-0 group-hover:opacity-100 transition-all p-1"
                             title="Edit Lesson"
                           >
                             ✎
                           </button>
                           <button
                             onClick={() => setDeletingLesson({ id: lesson.id, title: lesson.title })}
-                            className="text-zinc-600 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all p-1"
+                            className="text-muted-foreground hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all p-1"
                             title="Delete Lesson"
                           >
                             <Trash2 size={14} />
@@ -310,8 +310,8 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8 border border-dashed border-white/10 rounded-lg">
-                    <p className="text-zinc-500 text-sm mb-2">No lessons added yet.</p>
+                  <div className="text-center py-8 border border-dashed border-border rounded-lg">
+                    <p className="text-muted-foreground text-sm mb-2">No lessons added yet.</p>
                     <button
                       onClick={() => setIsCreatingLessonFor(module.id)}
                       className="text-xs text-emerald-400 hover:text-emerald-300 font-medium"
@@ -326,60 +326,60 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
         ))}
 
         {initialModules.length === 0 && (
-          <div className="text-center py-20 border border-white/5 rounded-xl bg-white/[0.01]">
-            <BookOpen size={32} className="mx-auto mb-3 text-zinc-600" />
-            <h3 className="text-lg font-medium text-white mb-1">No modules found</h3>
-            <p className="text-zinc-500 text-sm">Create your first bootcamp module to get started.</p>
+          <div className="text-center py-20 border border-border rounded-xl bg-white/[0.01]">
+            <BookOpen size={32} className="mx-auto mb-3 text-muted-foreground" />
+            <h3 className="text-lg font-medium text-foreground mb-1">No modules found</h3>
+            <p className="text-muted-foreground text-sm">Create your first bootcamp module to get started.</p>
           </div>
         )}
       </div>
 
       {/* CREATE MODULE MODAL */}
       {isCreatingModule && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#111] border border-white/10 rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-white/5 flex justify-between items-center">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-border flex justify-between items-center">
               <h2 className="text-lg font-bold">Create New Module</h2>
-              <button onClick={() => setIsCreatingModule(false)} className="text-zinc-500 hover:text-white">✕</button>
+              <button onClick={() => setIsCreatingModule(false)} className="text-muted-foreground hover:text-foreground">✕</button>
             </div>
             <form onSubmit={handleCreateModule} className="p-5 space-y-4">
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Module Title</label>
-                <input required name="title" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" placeholder="e.g. Ethereum Basics" />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Module Title</label>
+                <input required name="title" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" placeholder="e.g. Ethereum Basics" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Description</label>
-                <textarea required name="description" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 min-h-[80px]" placeholder="Brief overview of what students will learn..." />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Description</label>
+                <textarea required name="description" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 min-h-[80px]" placeholder="Brief overview of what students will learn..." />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">XP Reward</label>
-                  <input required name="xpReward" type="number" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" placeholder="1000" />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">XP Reward</label>
+                  <input required name="xpReward" type="number" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" placeholder="1000" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Duration</label>
-                  <input required name="duration" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" placeholder="2 Weeks" />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Duration</label>
+                  <input required name="duration" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" placeholder="2 Weeks" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Theme Color (Tailwind class)</label>
-                  <input required name="color" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" placeholder="bg-blue-500" defaultValue="bg-emerald-500" />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Theme Color (Tailwind class)</label>
+                  <input required name="color" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" placeholder="bg-blue-500" defaultValue="bg-emerald-500" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Order Index</label>
-                  <input required name="orderIndex" type="number" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue="1" />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Order Index</label>
+                  <input required name="orderIndex" type="number" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue="1" />
                 </div>
               </div>
               <div className="p-4 bg-white/[0.02] border border-white/[0.05] rounded-lg">
-                <label className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 mb-1.5">
+                <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground mb-1.5">
                   <ImageIcon size={14} /> Module Thumbnail (URL or Upload)
                 </label>
-                <input name="thumbnailUrl" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 mb-2" placeholder="https://..." />
-                <input type="file" name="moduleThumbnailFile" accept="image/*" className="w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
+                <input name="thumbnailUrl" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 mb-2" placeholder="https://..." />
+                <input type="file" name="moduleThumbnailFile" accept="image/*" className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
               </div>
               <div className="pt-4 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsCreatingModule(false)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button type="button" onClick={() => setIsCreatingModule(false)} className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Cancel</button>
                 <button type="submit" disabled={loading || uploadingImage} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-black text-sm font-bold rounded-lg disabled:opacity-50 flex items-center gap-2">
                   {uploadingImage ? "Uploading..." : loading ? "Creating..." : "Create Module"}
                 </button>
@@ -391,55 +391,55 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
 
       {/* CREATE LESSON MODAL */}
       {isCreatingLessonFor && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#111] border border-white/10 rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-white/5 flex justify-between items-center">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-border flex justify-between items-center">
               <h2 className="text-lg font-bold">Add Lesson to Module</h2>
-              <button onClick={() => setIsCreatingLessonFor(null)} className="text-zinc-500 hover:text-white">✕</button>
+              <button onClick={() => setIsCreatingLessonFor(null)} className="text-muted-foreground hover:text-foreground">✕</button>
             </div>
             <form onSubmit={handleCreateLesson} className="p-5 space-y-4 max-h-[80vh] overflow-y-auto">
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Lesson Title</label>
-                <input required name="title" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" placeholder="e.g. Introduction to Smart Contracts" />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Lesson Title</label>
+                <input required name="title" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" placeholder="e.g. Introduction to Smart Contracts" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Short Description</label>
-                <textarea required name="description" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 min-h-[60px]" placeholder="What will students learn in this lesson?" />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Short Description</label>
+                <textarea required name="description" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 min-h-[60px]" placeholder="What will students learn in this lesson?" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Duration</label>
-                  <input required name="duration" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" placeholder="e.g. 15 mins" />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Duration</label>
+                  <input required name="duration" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" placeholder="e.g. 15 mins" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Order Index</label>
-                  <input required name="orderIndex" type="number" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue="1" />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Order Index</label>
+                  <input required name="orderIndex" type="number" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue="1" />
                 </div>
               </div>
 
               <div className="p-4 bg-white/[0.02] border border-white/[0.05] rounded-lg space-y-4">
                 <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Media & Content</h4>
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 mb-1.5">
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground mb-1.5">
                     <Video size={14} /> Video URL (YouTube/Vimeo)
                   </label>
-                  <input name="videoUrl" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" placeholder="https://youtube.com/watch?v=..." />
+                  <input name="videoUrl" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" placeholder="https://youtube.com/watch?v=..." />
                 </div>
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 mb-1.5">
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground mb-1.5">
                     <ImageIcon size={14} /> Thumbnail Image URL (Or Upload Below)
                   </label>
-                  <input name="thumbnailUrl" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 mb-2" placeholder="https://..." />
-                  <input type="file" name="thumbnailFile" accept="image/*" className="w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
+                  <input name="thumbnailUrl" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 mb-2" placeholder="https://..." />
+                  <input type="file" name="thumbnailFile" accept="image/*" className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Markdown Content</label>
-                  <textarea name="content" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 min-h-[120px] font-mono" placeholder="Write additional text instructions in markdown..." />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Markdown Content</label>
+                  <textarea name="content" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 min-h-[120px] font-mono" placeholder="Write additional text instructions in markdown..." />
                 </div>
               </div>
 
               <div className="pt-2 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsCreatingLessonFor(null)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button type="button" onClick={() => setIsCreatingLessonFor(null)} className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Cancel</button>
                 <button type="submit" disabled={loading || uploadingImage} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-black text-sm font-bold rounded-lg disabled:opacity-50 flex items-center gap-2">
                   {uploadingImage ? "Uploading..." : loading ? "Saving..." : "Save Lesson"}
                 </button>
@@ -451,23 +451,23 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
 
       {/* DELETE MODULE MODAL */}
       {deletingModule && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#111] border border-red-500/20 rounded-xl w-full max-w-sm overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-white/5 flex items-center gap-3 text-red-400">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-red-500/20 rounded-xl w-full max-w-sm overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-border flex items-center gap-3 text-red-400">
               <AlertTriangle size={20} />
               <h2 className="text-lg font-bold">Delete Module</h2>
             </div>
             <div className="p-5">
-              <p className="text-zinc-300 text-sm mb-4">
-                Are you sure you want to delete <strong className="text-white">"{deletingModule.title}"</strong>? 
+              <p className="text-muted-foreground text-sm mb-4">
+                Are you sure you want to delete <strong className="text-foreground">"{deletingModule.title}"</strong>? 
                 This action cannot be undone and will delete all associated lessons.
               </p>
               <div className="flex justify-end gap-3">
-                <button onClick={() => setDeletingModule(null)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button onClick={() => setDeletingModule(null)} className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Cancel</button>
                 <button 
                   onClick={handleDeleteModule} 
                   disabled={loading} 
-                  className="px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
+                  className="px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-foreground text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
                 >
                   {loading ? "Deleting..." : "Yes, Delete"}
                 </button>
@@ -479,23 +479,23 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
 
       {/* DELETE LESSON MODAL */}
       {deletingLesson && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#111] border border-red-500/20 rounded-xl w-full max-w-sm overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-white/5 flex items-center gap-3 text-red-400">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-red-500/20 rounded-xl w-full max-w-sm overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-border flex items-center gap-3 text-red-400">
               <AlertTriangle size={20} />
               <h2 className="text-lg font-bold">Delete Lesson</h2>
             </div>
             <div className="p-5">
-              <p className="text-zinc-300 text-sm mb-4">
-                Are you sure you want to delete <strong className="text-white">"{deletingLesson.title}"</strong>? 
+              <p className="text-muted-foreground text-sm mb-4">
+                Are you sure you want to delete <strong className="text-foreground">"{deletingLesson.title}"</strong>? 
                 This action cannot be undone.
               </p>
               <div className="flex justify-end gap-3">
-                <button onClick={() => setDeletingLesson(null)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button onClick={() => setDeletingLesson(null)} className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Cancel</button>
                 <button 
                   onClick={handleDeleteLesson} 
                   disabled={loading} 
-                  className="px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
+                  className="px-4 py-2 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-foreground text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
                 >
                   {loading ? "Deleting..." : "Yes, Delete"}
                 </button>
@@ -507,50 +507,50 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
 
       {/* EDIT MODULE MODAL */}
       {editingModule && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#111] border border-white/10 rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-white/5 flex justify-between items-center">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-border flex justify-between items-center">
               <h2 className="text-lg font-bold">Edit Module</h2>
-              <button onClick={() => setEditingModule(null)} className="text-zinc-500 hover:text-white">✕</button>
+              <button onClick={() => setEditingModule(null)} className="text-muted-foreground hover:text-foreground">✕</button>
             </div>
             <form onSubmit={handleEditModuleSubmit} className="p-5 space-y-4">
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Module Title</label>
-                <input required name="title" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingModule.title} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Module Title</label>
+                <input required name="title" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingModule.title} />
               </div>
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Description</label>
-                <textarea required name="description" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 min-h-[80px]" defaultValue={editingModule.description} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Description</label>
+                <textarea required name="description" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 min-h-[80px]" defaultValue={editingModule.description} />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">XP Reward</label>
-                  <input required name="xpReward" type="number" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingModule.xpReward} />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">XP Reward</label>
+                  <input required name="xpReward" type="number" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingModule.xpReward} />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Duration</label>
-                  <input required name="duration" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingModule.duration} />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Duration</label>
+                  <input required name="duration" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingModule.duration} />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Theme Color (Tailwind class)</label>
-                  <input required name="color" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingModule.color} />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Theme Color (Tailwind class)</label>
+                  <input required name="color" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingModule.color} />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Order Index</label>
-                  <input required name="orderIndex" type="number" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingModule.orderIndex || editingModule.section} />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Order Index</label>
+                  <input required name="orderIndex" type="number" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingModule.orderIndex || editingModule.section} />
                 </div>
               </div>
               <div className="p-4 bg-white/[0.02] border border-white/[0.05] rounded-lg">
-                <label className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 mb-1.5">
+                <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground mb-1.5">
                   <ImageIcon size={14} /> Module Thumbnail (URL or Upload)
                 </label>
-                <input name="thumbnailUrl" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 mb-2" defaultValue={editingModule.thumbnailUrl} />
-                <input type="file" name="moduleThumbnailFile" accept="image/*" className="w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
+                <input name="thumbnailUrl" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 mb-2" defaultValue={editingModule.thumbnailUrl} />
+                <input type="file" name="moduleThumbnailFile" accept="image/*" className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
               </div>
               <div className="pt-4 flex justify-end gap-3">
-                <button type="button" onClick={() => setEditingModule(null)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button type="button" onClick={() => setEditingModule(null)} className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Cancel</button>
                 <button type="submit" disabled={loading || uploadingImage} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-black text-sm font-bold rounded-lg disabled:opacity-50 flex items-center gap-2">
                   {uploadingImage ? "Uploading..." : loading ? "Saving..." : "Save Changes"}
                 </button>
@@ -562,58 +562,58 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
 
       {/* EDIT LESSON MODAL */}
       {editingLesson && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#111] border border-white/10 rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
-            <div className="p-5 border-b border-white/5 flex justify-between items-center">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-card border border-border rounded-xl w-full max-w-lg overflow-hidden shadow-2xl">
+            <div className="p-5 border-b border-border flex justify-between items-center">
               <h2 className="text-lg font-bold">Edit Lesson</h2>
-              <button onClick={() => setEditingLesson(null)} className="text-zinc-500 hover:text-white">✕</button>
+              <button onClick={() => setEditingLesson(null)} className="text-muted-foreground hover:text-foreground">✕</button>
             </div>
             <form onSubmit={handleEditLessonSubmit} className="p-5 space-y-4 max-h-[80vh] overflow-y-auto">
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Lesson Title</label>
-                <input required name="title" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingLesson.title} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Lesson Title</label>
+                <input required name="title" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingLesson.title} />
               </div>
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Short Description</label>
-                <textarea required name="description" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 min-h-[60px]" defaultValue={editingLesson.description} />
+                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Short Description</label>
+                <textarea required name="description" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 min-h-[60px]" defaultValue={editingLesson.description} />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Duration</label>
-                  <input required name="duration" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingLesson.duration} />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Duration</label>
+                  <input required name="duration" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingLesson.duration} />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Order Index</label>
-                  <input required name="orderIndex" type="number" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" defaultValue={editingLesson.orderIndex} />
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Order Index</label>
+                  <input required name="orderIndex" type="number" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" defaultValue={editingLesson.orderIndex} />
                 </div>
               </div>
 
               <div className="p-4 bg-white/[0.02] border border-white/[0.05] rounded-lg space-y-4">
                 <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Media & Content</h4>
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 mb-1.5">
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground mb-1.5">
                     <Video size={14} /> Video URL (YouTube/Vimeo)
                   </label>
-                  <input name="videoUrl" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500" 
+                  <input name="videoUrl" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500" 
                     defaultValue={(() => {
                       try { return JSON.parse(editingLesson.content).videoUrl || ""; } catch(e) { return ""; }
                     })()}
                   />
                 </div>
                 <div>
-                  <label className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 mb-1.5">
+                  <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground mb-1.5">
                     <ImageIcon size={14} /> Thumbnail Image URL (Or Upload Below)
                   </label>
-                  <input name="thumbnailUrl" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 mb-2" 
+                  <input name="thumbnailUrl" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 mb-2" 
                     defaultValue={(() => {
                       try { return JSON.parse(editingLesson.content).thumbnailUrl || ""; } catch(e) { return ""; }
                     })()}
                   />
-                  <input type="file" name="thumbnailFile" accept="image/*" className="w-full text-sm text-zinc-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
+                  <input type="file" name="thumbnailFile" accept="image/*" className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-500/10 file:text-emerald-400 hover:file:bg-emerald-500/20" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Markdown Content</label>
-                  <textarea name="content" className="w-full bg-black border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 min-h-[120px] font-mono" 
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">Markdown Content</label>
+                  <textarea name="content" className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-emerald-500 min-h-[120px] font-mono" 
                     defaultValue={(() => {
                       try { return JSON.parse(editingLesson.content).text || editingLesson.content; } catch(e) { return editingLesson.content; }
                     })()}
@@ -622,7 +622,7 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
               </div>
 
               <div className="pt-2 flex justify-end gap-3">
-                <button type="button" onClick={() => setEditingLesson(null)} className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white">Cancel</button>
+                <button type="button" onClick={() => setEditingLesson(null)} className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Cancel</button>
                 <button type="submit" disabled={loading || uploadingImage} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-black text-sm font-bold rounded-lg disabled:opacity-50 flex items-center gap-2">
                   {uploadingImage ? "Uploading..." : loading ? "Saving..." : "Save Changes"}
                 </button>

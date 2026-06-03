@@ -32,9 +32,9 @@ export default function LeaderboardHero({ filter, onFilterChange }: Props) {
                 <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
               </svg>
             </div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">Leaderboard</h1>
+            <h1 className="text-3xl font-bold text-foreground tracking-tight">Leaderboard</h1>
           </div>
-          <p className="text-white/40 text-sm ml-[52px]">Top contributors in the EIPsInsight Bootcamp ecosystem.</p>
+          <p className="text-foreground/40 text-sm ml-[52px]">Top contributors in the EIPsInsight Bootcamp ecosystem.</p>
           <div className="ml-[52px]"><FilterTabs active={filter} onChange={onFilterChange} /></div>
         </div>
 

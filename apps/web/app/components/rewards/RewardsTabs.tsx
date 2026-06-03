@@ -38,7 +38,7 @@ export const RewardsTabs: React.FC<RewardsTabsProps> = ({
             className={`px-4 lg:px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300 whitespace-nowrap ${
               activeTab === category
                 ? 'bg-emerald-500/30 text-emerald-300 border border-emerald-400/50 shadow-lg shadow-emerald-500/20'
-                : 'bg-slate-800/50 text-gray-400 border border-slate-700/50 hover:border-emerald-500/30 hover:text-emerald-300'
+                : 'bg-slate-800/50 text-muted-foreground border border-slate-700/50 hover:border-emerald-500/30 hover:text-emerald-300'
             }`}
           >
             {category}
@@ -48,11 +48,11 @@ export const RewardsTabs: React.FC<RewardsTabsProps> = ({
 
       {/* Sort Dropdown */}
       <div className="flex items-center gap-3">
-        <span className="text-gray-500 text-sm font-medium">Sort by:</span>
+        <span className="text-muted-foreground text-sm font-medium">Sort by:</span>
         <select
           value={sortBy}
           onChange={(e) => handleSortChange(e.target.value as any)}
-          className="px-4 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 text-gray-300 text-sm font-medium focus:outline-none focus:border-emerald-500/50 focus:bg-slate-800/70 transition-all duration-200 cursor-pointer hover:border-slate-600/50"
+          className="px-4 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 text-foreground text-sm font-medium focus:outline-none focus:border-emerald-500/50 focus:bg-slate-800/70 transition-all duration-200 cursor-pointer hover:border-slate-600/50"
         >
           <option value="popular">Popular</option>
           <option value="cost">Cost: Low to High</option>

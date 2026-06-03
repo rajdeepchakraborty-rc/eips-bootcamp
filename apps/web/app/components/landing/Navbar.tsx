@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSession, } from '@/app/lib/auth-client';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { navLinks } from '../../lib/landing-data';
+import { ThemeToggle } from '../ThemeToggle';
 
 export function Navbar() {
   const { data: session } = useSession();
@@ -13,7 +14,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#080808]/90 backdrop-blur-xl border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16 gap-8">
 
@@ -28,7 +29,7 @@ export function Navbar() {
               </svg>
             </div>
             <div>
-              <div className="text-white font-bold text-sm leading-none">EIPsInsight</div>
+              <div className="text-foreground font-bold text-sm leading-none">EIPsInsight</div>
               <div className="text-emerald-400 text-[11px] font-semibold mt-0.5">Bootcamp</div>
             </div>
           </Link>
@@ -39,7 +40,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-sm text-zinc-400 hover:text-white hover:bg-white/5 transition-all duration-150 font-medium"
+                className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-150 font-medium"
               >
                 {link.label}
               </Link>
@@ -48,6 +49,7 @@ export function Navbar() {
 
           {/* Desktop right */}
           <div className="hidden lg:flex items-center gap-3 ml-auto">
+            <ThemeToggle />
             {isSignedIn ? (
               <>
                 <Link
@@ -68,13 +70,13 @@ export function Navbar() {
               <>
                 <Link
                   href="/sign-in"
-                  className="text-zinc-400 hover:text-white text-sm font-medium px-3 py-2 transition-colors"
+                  className="text-muted-foreground hover:text-foreground text-sm font-medium px-3 py-2 transition-colors"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/sign-up"
-                  className="flex items-center gap-1.5 bg-transparent hover:bg-white/5 border border-white/15 hover:border-white/25 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200"
+                  className="flex items-center gap-1.5 bg-transparent hover:bg-accent border border-border hover:border-foreground/50 text-foreground text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200"
                 >
                   Get Started <ArrowRight size={13} />
                 </Link>
@@ -82,31 +84,34 @@ export function Navbar() {
             )}
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="lg:hidden ml-auto text-zinc-400 hover:text-white p-1.5 transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Mobile right */}
+          <div className="lg:hidden flex items-center gap-3 ml-auto">
+            <ThemeToggle />
+            <button
+              className="text-muted-foreground hover:text-foreground p-1.5 transition-colors"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-white/5 bg-[#080808]/98 backdrop-blur-xl">
+        <div className="lg:hidden border-t border-border bg-background/98 backdrop-blur-xl">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link: { label: string; href: string }) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block px-3 py-2.5 text-zinc-400 hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium transition-all"
+                className="block px-3 py-2.5 text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg text-sm font-medium transition-all"
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-3 border-t border-white/5 space-y-2">
+            <div className="pt-3 border-t border-border space-y-2">
               {isSignedIn ? (
                 <Link
                   href="/dashboard"
@@ -118,7 +123,7 @@ export function Navbar() {
                 <>
                   <Link
                     href="/sign-in"
-                    className="block text-center py-2.5 text-zinc-400 hover:text-white text-sm font-medium"
+                    className="block text-center py-2.5 text-muted-foreground hover:text-foreground text-sm font-medium"
                   >
                     Sign In
                   </Link>

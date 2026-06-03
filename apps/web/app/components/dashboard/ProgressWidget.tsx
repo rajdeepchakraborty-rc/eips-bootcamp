@@ -4,8 +4,8 @@ export function ProgressWidget({ progress = 0 }: { progress?: number }) {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full">
-      <h3 className="text-white font-bold text-base mb-4">Your Progress</h3>
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full">
+      <h3 className="text-foreground font-bold text-base mb-4">Your Progress</h3>
 
       <div className="flex-1 flex flex-col items-center justify-center gap-4">
         {/* Circular progress */}
@@ -39,13 +39,13 @@ export function ProgressWidget({ progress = 0 }: { progress?: number }) {
           </svg>
           {/* Center text */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-white font-black text-3xl">{progress}%</span>
+            <span className="text-foreground font-black text-3xl">{progress}%</span>
           </div>
         </div>
 
         <div className="text-center">
-          <p className="text-white font-bold text-sm">Overall Progress</p>
-          <p className="text-zinc-500 text-xs mt-0.5">Keep learning, keep building!</p>
+          <p className="text-foreground font-bold text-sm">Overall Progress</p>
+          <p className="text-emerald-400/80 text-[11px] font-medium mt-1">Keep learning to reach the next rank!</p>
         </div>
       </div>
     </div>

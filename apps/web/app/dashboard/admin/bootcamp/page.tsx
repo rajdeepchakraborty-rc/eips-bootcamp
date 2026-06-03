@@ -38,8 +38,8 @@ export default async function AdminBootcampPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">Bootcamp Management</h1>
-            <p className="text-zinc-400 text-sm">Create and organize learning modules and lessons.</p>
+            <h1 className="text-3xl font-bold text-foreground mb-2 tracking-tight">Bootcamp Management</h1>
+            <p className="text-muted-foreground text-sm">Create and organize learning modules and lessons.</p>
           </div>
         </div>
 

@@ -49,7 +49,7 @@ export default function FeaturedContributor({ contributor }: Props) {
       <div className="flex-1 min-w-0">
         <p className="text-[10px] font-bold tracking-[0.15em] mb-2" style={{ color: "rgba(52,211,153,0.7)" }}>TOP CONTRIBUTOR THIS WEEK</p>
         <div className="flex items-center gap-2 mb-2">
-          <h2 className="text-2xl font-bold text-white tracking-tight">{name}</h2>
+          <h2 className="text-2xl font-bold text-foreground tracking-tight">{name}</h2>
           <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ background: "#34d399" }}>
             <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </span>
@@ -62,7 +62,7 @@ export default function FeaturedContributor({ contributor }: Props) {
           </span>
         )}
 
-        <p className="text-sm text-white/45 leading-relaxed mb-4 max-w-xs">{description}</p>
+        <p className="text-sm text-foreground/45 leading-relaxed mb-4 max-w-xs">{description}</p>
 
         <div className="flex flex-wrap gap-2">
           {badges.slice(1).map((b) => {
@@ -84,7 +84,7 @@ export default function FeaturedContributor({ contributor }: Props) {
         <Sparkline data={sparkline} />
         <div className="text-right mt-2 px-3 py-1.5 rounded-xl" style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.15)" }}>
           <p className="text-emerald-400 font-bold text-sm">↑ {weeklyGrowth}%</p>
-          <p className="text-white/30 text-[10px]">vs last week</p>
+          <p className="text-foreground/30 text-[10px]">vs last week</p>
         </div>
       </div>
     </div>
@@ -94,9 +94,9 @@ export default function FeaturedContributor({ contributor }: Props) {
 function StatBlock({ label, value, sub, accent }: { label: string; value: string; sub: string; accent?: boolean }) {
   return (
     <div className="text-center">
-      <p className="text-[10px] font-bold tracking-widest text-white/30 mb-1">{label}</p>
+      <p className="text-[10px] font-bold tracking-widest text-foreground/30 mb-1">{label}</p>
       <p className="text-3xl font-bold leading-none mb-1" style={{ color: accent ? "#34d399" : "#fff" }}>{value}</p>
-      <p className="text-xs text-white/35">{sub}</p>
+      <p className="text-xs text-foreground/35">{sub}</p>
     </div>
   );
 }

@@ -19,33 +19,33 @@ export default function SubmissionsClient({ submissions, assignmentId }: { submi
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
-      <Link href="/dashboard/admin/assignments" className="flex items-center gap-2 text-zinc-400 hover:text-emerald-400 mb-6 transition-colors">
+      <Link href="/dashboard/admin/assignments" className="flex items-center gap-2 text-muted-foreground hover:text-emerald-400 mb-6 transition-colors">
         <ChevronLeft size={18} />
         <span className="text-sm font-medium">Back to Assignments</span>
       </Link>
       
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Assignment Submissions</h1>
-        <p className="text-zinc-400">Review student submissions and award XP</p>
+        <h1 className="text-3xl font-bold text-foreground mb-2">Assignment Submissions</h1>
+        <p className="text-muted-foreground">Review student submissions and award XP</p>
       </div>
 
-      <div className="bg-[#0f0f0f] border border-white/5 rounded-xl overflow-hidden">
+      <div className="bg-card border border-border rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-zinc-400">
-            <thead className="text-xs uppercase bg-white/[0.02] border-b border-white/5">
+          <table className="w-full text-left text-sm text-muted-foreground">
+            <thead className="text-xs uppercase bg-white/[0.02] border-b border-border">
               <tr>
-                <th className="px-6 py-4 font-medium text-zinc-300">Student</th>
-                <th className="px-6 py-4 font-medium text-zinc-300">Status</th>
-                <th className="px-6 py-4 font-medium text-zinc-300">Submission</th>
-                <th className="px-6 py-4 font-medium text-zinc-300 text-right">Action</th>
+                <th className="px-6 py-4 font-medium text-muted-foreground">Student</th>
+                <th className="px-6 py-4 font-medium text-muted-foreground">Status</th>
+                <th className="px-6 py-4 font-medium text-muted-foreground">Submission</th>
+                <th className="px-6 py-4 font-medium text-muted-foreground text-right">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
               {submissions.map((sub) => (
                 <tr key={sub.id} className="hover:bg-white/[0.02] transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="font-medium text-white">{sub.user?.name || "Unknown Student"}</div>
-                    <div className="text-xs text-zinc-500">{sub.user?.email || sub.userId}</div>
+                    <div className="font-medium text-foreground">{sub.user?.name || "Unknown Student"}</div>
+                    <div className="text-xs text-muted-foreground">{sub.user?.email || sub.userId}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${
@@ -63,7 +63,7 @@ export default function SubmissionsClient({ submissions, assignmentId }: { submi
                         View PDF
                       </a>
                     ) : (
-                      <span className="text-zinc-500 italic">{sub.content || "No File"}</span>
+                      <span className="text-muted-foreground italic">{sub.content || "No File"}</span>
                     )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right">
@@ -107,7 +107,7 @@ export default function SubmissionsClient({ submissions, assignmentId }: { submi
               
               {submissions.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="px-6 py-12 text-center text-zinc-500">
+                  <td colSpan={4} className="px-6 py-12 text-center text-muted-foreground">
                     No submissions found for this assignment yet.
                   </td>
                 </tr>

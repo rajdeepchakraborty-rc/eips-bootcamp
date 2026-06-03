@@ -71,7 +71,7 @@ export function KPICard({ title, value, change, icon: Icon, color }: KPICardProp
       {/* Top section: Icon and Title */}
       <div className="flex items-start justify-between relative z-10">
         <div>
-          <p className="text-gray-400 text-sm font-medium tracking-wide">
+          <p className="text-muted-foreground text-sm font-medium tracking-wide">
             {title}
           </p>
         </div>
@@ -86,7 +86,7 @@ export function KPICard({ title, value, change, icon: Icon, color }: KPICardProp
       {/* Bottom section: Value and Change */}
       <div className="relative z-10">
         <div className="flex items-baseline gap-3 mb-2">
-          <p className="text-white text-3xl font-bold tracking-tight">
+          <p className="text-foreground text-3xl font-bold tracking-tight">
             {value}
           </p>
         </div>
@@ -98,7 +98,7 @@ export function KPICard({ title, value, change, icon: Icon, color }: KPICardProp
           `}>
             {isPositive ? '↑' : '↓'} {Math.abs(change).toFixed(1)}%
           </span>
-          <span className="text-gray-500 text-sm">vs last month</span>
+          <span className="text-muted-foreground text-sm">vs last month</span>
         </div>
       </div>
 

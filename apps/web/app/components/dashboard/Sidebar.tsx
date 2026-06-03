@@ -35,8 +35,9 @@ interface SidebarProps {
 
 const mainNav: NavItem[] = [
   { label: 'Dashboard', href: '/dashboard', icon: <LayoutDashboard size={18} />, },
-  { label: 'My Learning', href: '/dashboard/learning', icon: <BookOpen size={18} /> },
-  { label: 'Bootcamp Modules', href: '/dashboard/bootcamp', icon: <Layers size={18} /> },
+  { label: 'My Modules', href: '/dashboard/my-modules', icon: <Layers size={18} /> },
+  { label: 'Marketplace', href: '/dashboard/marketplace', icon: <BookOpen size={18} /> },
+  { label: 'My Learning', href: '/dashboard/learning', icon: <Trophy size={18} /> },
   { label: 'Assignments', href: '/dashboard/assignments', icon: <FileText size={18} /> },
   { label: 'Leaderboard', href: '/dashboard/leaderboard', icon: <Trophy size={18} /> },
 ];
@@ -53,12 +54,13 @@ const adminNav: NavItem[] = [
   { label: 'Applications', href: '/dashboard/admin/applications', icon: <ClipboardList size={18} /> },
   { label: 'Manage Bootcamp', href: '/dashboard/admin/bootcamp', icon: <Layers size={18} /> },
   { label: 'Manage Assignments', href: '/dashboard/admin/assignments', icon: <FileText size={18} /> },
+  { label: 'Manage Events', href: '/dashboard/admin/events', icon: <Zap size={18} /> },
 ];
 
 function NavSection({ title, items, pathname, }: { title: string; items: NavItem[], pathname: string; }) {
   return (
     <div className="mb-6">
-      <p className="px-3 mb-2 text-[10px] font-semibold tracking-widest text-zinc-500 uppercase">
+      <p className="px-3 mb-2 text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
         {title}
       </p>
 
@@ -70,14 +72,14 @@ function NavSection({ title, items, pathname, }: { title: string; items: NavItem
           <li key={item.href}>
             <Link
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out hover:translate-x-1 group
                   ${
                     active
-                      ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20'
-                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                      ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent hover:shadow-[0_0_15px_rgba(255,255,255,0.02)]'
                   }`}
               >
-              <span className={`transition-colors ${active ? 'text-emerald-400' : 'text-zinc-500 group-hover:text-emerald-400'}`}>
+              <span className={`transition-colors ${active ? 'text-emerald-400' : 'text-muted-foreground group-hover:text-emerald-400'}`}>
                 {item.icon}
               </span>
               <span>{item.label}</span>
@@ -105,18 +107,18 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-background/60 backdrop-blur-sm z-40 lg:hidden"
           onClick={onMobileClose}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-[220px] bg-[#0a0a0a] border-r border-white/5 z-50 flex flex-col transition-transform duration-300
+        className={`fixed top-0 left-0 h-screen w-[220px] bg-card border-r border-border z-50 flex flex-col transition-transform duration-300
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between px-4 py-5 border-b border-white/5">
+        <div className="flex items-center justify-between px-4 py-5 border-b border-border">
           <div className="flex items-center gap-3">
             {/* Ethereum diamond logo placeholder */}
             <div className="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
@@ -128,13 +130,13 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
               </svg>
             </div>
             <div>
-              <div className="text-white font-bold text-sm leading-none">EIPsInsight</div>
+              <div className="text-foreground font-bold text-sm leading-none">EIPsInsight</div>
               <div className="text-emerald-400 text-xs font-medium mt-0.5">Academy</div>
             </div>
           </div>
           <button
             onClick={onMobileClose}
-            className="lg:hidden text-zinc-500 hover:text-white transition-colors"
+            className="lg:hidden text-muted-foreground hover:text-foreground transition-colors"
           >
             <X size={18} />
           </button>
@@ -148,13 +150,13 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
         </nav>
 
         {/* Upgrade CTA */}
-        <div className="px-3 py-4 border-t border-white/5">
-          <div className="bg-gradient-to-br from-emerald-950/80 to-black border border-emerald-500/20 rounded-xl p-4">
+        <div className="px-3 py-4 border-t border-border">
+          <div className="bg-gradient-to-br from-emerald-500/10 to-accent dark:from-emerald-950/80 dark:to-black border border-emerald-500/20 rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
               <Zap size={16} className="text-emerald-400" />
               <span className="text-emerald-400 font-bold text-sm">Upgrade to Pro</span>
             </div>
-            <p className="text-zinc-400 text-xs leading-relaxed mb-3">
+            <p className="text-muted-foreground text-xs leading-relaxed mb-3">
               Unlock advanced analytics, exclusive content and priority support.
             </p>
             <button className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-1.5 group">

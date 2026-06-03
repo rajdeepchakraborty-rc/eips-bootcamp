@@ -22,9 +22,9 @@ const iconConfig: Record<ActivityItem['icon'], { icon: React.ReactNode; bg: stri
 
 export function ActivityFeed({ activities }: { activities: ActivityItem[] }) {
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-white font-bold text-base">Recent Activity</h3>
+        <h3 className="text-foreground font-bold text-base">Recent Activity</h3>
         <button className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors">
           View All
         </button>
@@ -41,16 +41,16 @@ export function ActivityFeed({ activities }: { activities: ActivityItem[] }) {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2">
-                  <p className="text-white text-sm font-semibold leading-tight">{item.title}</p>
-                  <span className="text-zinc-600 text-[10px] font-medium flex-shrink-0 mt-0.5">{item.time}</span>
+                  <p className="text-foreground text-sm font-semibold leading-tight">{item.title}</p>
+                  <span className="text-muted-foreground text-[10px] font-medium flex-shrink-0 mt-0.5">{item.time}</span>
                 </div>
-                <p className="text-zinc-500 text-xs mt-0.5 leading-relaxed">{item.description}</p>
+                <p className="text-muted-foreground text-xs mt-0.5 leading-relaxed">{item.description}</p>
               </div>
             </li>
           );
         })
         ) : (
-          <li className="text-center text-zinc-500 text-xs py-4">No recent activity</li>
+          <li className="text-center text-muted-foreground text-xs py-4">No recent activity</li>
         )}
       </ul>
     </div>

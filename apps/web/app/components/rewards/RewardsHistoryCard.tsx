@@ -34,7 +34,7 @@ export const RewardsHistoryCard: React.FC<RewardsHistoryCardProps> = ({ history 
         <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl" />
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white mb-6">Rewards History</h3>
+        <h3 className="text-lg font-bold text-foreground mb-6">Rewards History</h3>
 
         {/* History Items */}
         <div className="space-y-4 mb-6">
@@ -45,20 +45,20 @@ export const RewardsHistoryCard: React.FC<RewardsHistoryCardProps> = ({ history 
               className="p-4 rounded-lg bg-slate-800/40 border border-emerald-500/10 hover:border-emerald-500/30 hover:bg-slate-800/60 transition-all duration-200"
             >
               <div className="flex items-start justify-between mb-2">
-                <span className="text-sm font-bold text-gray-300">
+                <span className="text-sm font-bold text-foreground">
                   {item.title}
                 </span>
                 <span className="text-emerald-400 font-bold text-sm">
                   -{item.xpSpent} XP
                 </span>
               </div>
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-muted-foreground">
                 {formatDate(item.redeemedAt)}
               </span>
             </div>
             ))
           ) : (
-            <div className="text-gray-400 text-sm text-center py-4">No rewards redeemed yet.</div>
+            <div className="text-muted-foreground text-sm text-center py-4">No rewards redeemed yet.</div>
           )}
         </div>
 

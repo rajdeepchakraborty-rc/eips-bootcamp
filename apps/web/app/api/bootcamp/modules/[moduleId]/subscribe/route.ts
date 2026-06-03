@@ -1,0 +1,46 @@
+import { auth } from '@/app/lib/auth';
+import { headers } from 'next/headers';
+import { NextResponse } from 'next/server';
+
+const API_BASE = 'http://127.0.0.1:4000';
+
+
+export async function POST(
+  request: Request,
+  { params }: { params: { moduleId: string } }
+) {
+  const body = await request.json();
+  const userId = body.userId;
+
+  if (!userId) {
+    return NextResponse.json({ message: 'Missing userId' }, { status: 400 });
+  }
+
+  const session = await auth.api.getSession({ headers: await headers() });
+  const userAuth = session?.user;
+  if (!userAuth || userAuth.id !== userId) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
+
+  
+
+  try {
+    const res = await fetch(`${API_BASE}/bootcamp/modules/${params.moduleId}/subscribe`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-api-key': 'dev-secret-key' 
+      },
+      body: JSON.stringify({ userId: userId })
+    });
+
+    if (!res.ok) {
+      return NextResponse.json({ message: 'Failed to subscribe' }, { status: res.status });
+    }
+
+    const data = await res.json();
+    return NextResponse.json(data);
+  } catch (err) {
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+  }
+}

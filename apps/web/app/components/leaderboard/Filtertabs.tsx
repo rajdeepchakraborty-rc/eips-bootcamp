@@ -22,21 +22,11 @@ export default function FilterTabs({ active, onChange }: Props) {
           <button
             key={tab.value}
             onClick={() => onChange(tab.value)}
-            className="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200"
-            style={
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 border ${
               isActive
-                ? {
-                    background: "rgba(52,211,153,0.12)",
-                    border: "1px solid rgba(52,211,153,0.4)",
-                    color: "#34d399",
-                    boxShadow: "0 0 12px rgba(52,211,153,0.15)",
-                  }
-                : {
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "rgba(255,255,255,0.45)",
-                  }
-            }
+                ? "bg-emerald-500/10 border-emerald-500/40 text-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.15)]"
+                : "bg-accent border-border text-muted-foreground hover:text-foreground"
+            }`}
           >
             {tab.label}
           </button>

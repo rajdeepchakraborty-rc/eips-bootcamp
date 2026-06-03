@@ -20,7 +20,7 @@ export default async function SubmissionsPage({ params }: { params: { id: string
 
   return (
     <DashboardShell>
-      <div className="flex-1 flex flex-col overflow-hidden bg-black">
+      <div className="flex-1 flex flex-col overflow-hidden bg-background">
         <div className="flex-1 overflow-auto">
           <SubmissionsClient submissions={submissions} assignmentId={params.id} />
         </div>

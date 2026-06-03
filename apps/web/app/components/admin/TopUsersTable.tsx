@@ -30,7 +30,7 @@ function Avatar({ name }: { name: string }) {
   return (
     <div className={`
       w-10 h-10 rounded-full flex items-center justify-center
-      text-white text-sm font-semibold ${color}
+      text-foreground text-sm font-semibold ${color}
     `}>
       {initials}
     </div>
@@ -42,7 +42,7 @@ function RankBadge({ rank }: { rank: number }) {
     return (
       <div className="
         w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600
-        flex items-center justify-center text-white font-bold text-sm
+        flex items-center justify-center text-foreground font-bold text-sm
         shadow-lg shadow-amber-500/50
       ">
         🏆
@@ -53,7 +53,7 @@ function RankBadge({ rank }: { rank: number }) {
     return (
       <div className="
         w-10 h-10 rounded-full bg-gradient-to-br from-slate-400 to-slate-600
-        flex items-center justify-center text-white font-bold text-sm
+        flex items-center justify-center text-foreground font-bold text-sm
         shadow-lg shadow-slate-500/50
       ">
         {rank}
@@ -64,7 +64,7 @@ function RankBadge({ rank }: { rank: number }) {
     return (
       <div className="
         w-10 h-10 rounded-full bg-gradient-to-br from-orange-600 to-orange-800
-        flex items-center justify-center text-white font-bold text-sm
+        flex items-center justify-center text-foreground font-bold text-sm
         shadow-lg shadow-orange-500/50
       ">
         {rank}
@@ -75,7 +75,7 @@ function RankBadge({ rank }: { rank: number }) {
   return (
     <div className="
       w-10 h-10 flex items-center justify-center
-      text-gray-400 font-semibold text-sm
+      text-muted-foreground font-semibold text-sm
     ">
       {rank}
     </div>
@@ -84,10 +84,10 @@ function RankBadge({ rank }: { rank: number }) {
 
 export function TopUsersTable({ users }: TopUsersTableProps) {
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
+    <div className="rounded-xl border border-emerald-500/20 bg-background/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
-        <h3 className="text-white font-semibold text-lg">Top Users by XP</h3>
+        <h3 className="text-foreground font-semibold text-lg">Top Users by XP</h3>
         <a href="#" className="
           flex items-center gap-1 text-emerald-400 text-sm font-medium
           hover:text-emerald-300 transition-colors group
@@ -102,12 +102,12 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
         <table className="w-full">
           <thead>
             <tr className="border-b border-emerald-500/10 bg-emerald-500/5">
-              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wide">#</th>
-              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wide">User</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">XP Earned</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">Modules</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">Streak</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wide">Joined</th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide">#</th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide">User</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">XP Earned</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">Modules</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">Streak</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">Joined</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-emerald-500/10">
@@ -126,10 +126,10 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
                   <div className="flex items-center gap-3">
                     <Avatar name={user.name} />
                     <div>
-                      <p className="text-white font-medium text-sm">
+                      <p className="text-foreground font-medium text-sm">
                         {user.name}
                       </p>
-                      <p className="text-gray-500 text-xs">
+                      <p className="text-muted-foreground text-xs">
                         {user.username}
                       </p>
                     </div>
@@ -145,7 +145,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
 
                 {/* Modules */}
                 <td className="px-6 py-5 text-right">
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-foreground text-sm">
                     {user.modulesCompleted}
                   </p>
                 </td>
@@ -154,7 +154,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
                 <td className="px-6 py-5 text-right">
                   <div className="flex items-center justify-end gap-2">
                     <Flame className="w-4 h-4 text-orange-400" />
-                    <p className="text-gray-300 text-sm">
+                    <p className="text-foreground text-sm">
                       {user.streak} days
                     </p>
                   </div>
@@ -162,7 +162,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
 
                 {/* Joined */}
                 <td className="px-6 py-5 text-right">
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-muted-foreground text-sm">
                     {user.joinDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </p>
                 </td>

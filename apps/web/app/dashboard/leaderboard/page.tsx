@@ -25,23 +25,6 @@ import ImpactCard from "@/app/components/leaderboard/Impactcard";
 import RankProgressCard from "@/app/components/leaderboard/Rankprogresscard";
 import { DashboardShell } from '@/app/components/dashboard/DashboardShell';
 
-// ─── Sidebar nav ──────────────────────────────────────────────────────────────
-
-const NAV_MAIN = [
-  { label: "Dashboard", href: "/dashboard", icon: "🏠" },
-  { label: "My Learning", href: "/dashboard/learning", icon: "📖" },
-  { label: "Bootcamp Modules", href: "/dashboard/bootcamp", icon: "⚡" },
-  { label: "Assignments", href: "/dashboard/assignments", icon: "📋" },
-  { label: "Leaderboard", href: "/dashboard/leaderboard", icon: "🏆", active: true },
-];
-const NAV_CAP = [
-  { label: "CAP Status", href: "/dashboard/cap", icon: "🛡️" },
-  { label: "Referrals", href: "/dashboard/referrals", icon: "👥" },
-  { label: "Rewards", href: "/dashboard/rewards", icon: "🎁" },
-  { label: "Wallet", href: "/dashboard/wallet", icon: "💼" },
-];
-const NAV_ADMIN = [{ label: "Admin Analytics", href: "/dashboard/admin", icon: "📊" }];
-
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function LeaderboardPage() {
@@ -142,46 +125,6 @@ export default function LeaderboardPage() {
         </div>
       </div>
     </DashboardShell>
-  );
-}
-
-// ─── Nav section ─────────────────────────────────────────────────────────────
-
-function NavSection({
-  label,
-  items,
-}: {
-  label: string;
-  items: { label: string; href: string; icon: string; active?: boolean }[];
-}) {
-  return (
-    <div>
-      <p className="text-[10px] font-semibold tracking-widest text-white/20 px-3 mb-2">
-        {label}
-      </p>
-      <ul className="space-y-0.5">
-        {items.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-150"
-              style={
-                item.active
-                  ? {
-                      background: "rgba(52,211,153,0.12)",
-                      color: "#34d399",
-                      border: "1px solid rgba(52,211,153,0.2)",
-                    }
-                  : { color: "rgba(255,255,255,0.45)" }
-              }
-            >
-              <span className="text-base w-5 text-center">{item.icon}</span>
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }
 

@@ -92,8 +92,8 @@ function MetricCard({ title, value, change, icon, chart, chartColor }: MetricCar
     ">
       <div className="flex items-start justify-between mb-4">
         <div>
-          <p className="text-gray-400 text-sm font-medium mb-2">{title}</p>
-          <p className="text-white text-2xl font-bold">{value}</p>
+          <p className="text-muted-foreground text-sm font-medium mb-2">{title}</p>
+          <p className="text-foreground text-2xl font-bold">{value}</p>
         </div>
         <div className="text-emerald-400 opacity-60">
           {icon}
@@ -124,14 +124,14 @@ export function SystemOverview({ metrics }: SystemOverviewProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {/* System Health Metrics */}
-      <div className="lg:col-span-3 rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
-        <h3 className="text-white font-semibold text-lg mb-6">System Status</h3>
+      <div className="lg:col-span-3 rounded-xl border border-emerald-500/20 bg-background/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
+        <h3 className="text-foreground font-semibold text-lg mb-6">System Status</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Server Status */}
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-gray-400 text-sm font-medium mb-3">Server Status</p>
+              <p className="text-muted-foreground text-sm font-medium mb-3">Server Status</p>
               <StatusIndicator status={metrics.serverStatus} />
             </div>
             <Server className="w-5 h-5 text-emerald-400/60" />
@@ -140,7 +140,7 @@ export function SystemOverview({ metrics }: SystemOverviewProps) {
           {/* Database Status */}
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-gray-400 text-sm font-medium mb-3">Database</p>
+              <p className="text-muted-foreground text-sm font-medium mb-3">Database</p>
               <StatusIndicator status={metrics.databaseStatus} />
             </div>
             <Database className="w-5 h-5 text-emerald-400/60" />
@@ -149,9 +149,9 @@ export function SystemOverview({ metrics }: SystemOverviewProps) {
           {/* API Response Time */}
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-gray-400 text-sm font-medium mb-3">API Response Time</p>
-              <p className="text-white font-semibold text-xl">{metrics.apiResponseTime}ms</p>
-              <p className="text-gray-500 text-xs mt-1">Avg. Response Time</p>
+              <p className="text-muted-foreground text-sm font-medium mb-3">API Response Time</p>
+              <p className="text-foreground font-semibold text-xl">{metrics.apiResponseTime}ms</p>
+              <p className="text-muted-foreground text-xs mt-1">Avg. Response Time</p>
             </div>
             <Zap className="w-5 h-5 text-amber-400/60" />
           </div>

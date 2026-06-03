@@ -63,8 +63,8 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#080808] text-white">
-      <div className="w-full max-w-md p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl shadow-2xl">
+    <>
+      <div className="w-full max-w-md p-8 bg-card border border-border rounded-2xl shadow-2xl">
         <h2 className="text-2xl font-bold mb-6 text-center text-emerald-400">Sign In</h2>
         
         {error && <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-lg text-sm">{error}</div>}
@@ -72,13 +72,13 @@ export default function SignIn() {
         {!otpSent ? (
           <form onSubmit={handleSendOtp} className="space-y-4">
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Email</label>
+              <label className="block text-sm text-muted-foreground mb-1">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500/50"
+                className="w-full bg-accent border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:border-emerald-500/50"
                 placeholder="you@example.com"
               />
             </div>
@@ -93,13 +93,13 @@ export default function SignIn() {
         ) : (
           <form onSubmit={handleVerifyOtp} className="space-y-4">
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Enter OTP</label>
+              <label className="block text-sm text-muted-foreground mb-1">Enter OTP</label>
               <input
                 type="text"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500/50 text-center tracking-[0.5em]"
+                className="w-full bg-accent border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:border-emerald-500/50 text-center tracking-[0.5em]"
                 placeholder="000000"
                 maxLength={6}
               />
@@ -114,7 +114,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() => setOtpSent(false)}
-              className="w-full text-zinc-400 hover:text-white text-sm"
+              className="w-full text-muted-foreground hover:text-foreground text-sm"
             >
               Use a different email
             </button>
@@ -122,9 +122,9 @@ export default function SignIn() {
         )}
 
         <div className="my-6 flex items-center gap-4">
-          <div className="h-px bg-white/10 flex-1"></div>
-          <span className="text-zinc-500 text-xs">OR</span>
-          <div className="h-px bg-white/10 flex-1"></div>
+          <div className="h-px bg-accent flex-1"></div>
+          <span className="text-muted-foreground text-xs">OR</span>
+          <div className="h-px bg-accent flex-1"></div>
         </div>
 
         <button
@@ -153,10 +153,10 @@ export default function SignIn() {
           Continue with Metamask
         </button>
 
-        <p className="mt-6 text-center text-sm text-zinc-500">
+        <p className="mt-6 text-center text-sm text-muted-foreground">
           Don't have an account? <Link href="/sign-up" className="text-emerald-400 hover:text-emerald-300">Sign Up</Link>
         </p>
       </div>
-    </div>
+    </>
   );
 }
