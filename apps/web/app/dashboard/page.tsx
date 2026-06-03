@@ -76,7 +76,7 @@ export default function DashboardPage() {
 
   if (isPending || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#080808] text-white">
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
         <LoadingScreen text="INITIALIZING DASHBOARD..." />
       </div>
     );

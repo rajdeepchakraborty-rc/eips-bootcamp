@@ -6,18 +6,18 @@ import React from 'react';
 
 export const RewardsHero: React.FC = () => {
   return (
-    <div className="relative mb-12 overflow-hidden bg-black">
+    <div className="relative mb-12 overflow-hidden bg-background">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
         {/* Left Content */}
         <div className="z-10">
           <div className="flex items-center gap-3 mb-6">
             <div className="text-4xl">🎁</div>
-            <h1 className="text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
               Rewards
             </h1>
           </div>
 
-          <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+          <p className="text-lg text-foreground leading-relaxed max-w-xl">
             Redeem your XP for exclusive rewards and unlock new opportunities.
           </p>
         </div>

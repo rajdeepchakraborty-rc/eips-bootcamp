@@ -49,13 +49,13 @@ export function ApplicationsFilters({
         <div className="flex flex-col sm:flex-row gap-3 flex-1 w-full lg:w-auto">
           {/* Search */}
           <div className="relative flex-1 sm:flex-none sm:min-w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search applications..."
               value={filters.search}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-emerald-500/50 focus:bg-white/10 focus:outline-none transition-all duration-200 text-sm"
+              className="w-full pl-10 pr-4 py-2.5 bg-accent border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:border-emerald-500/50 focus:bg-accent focus:outline-none transition-all duration-200 text-sm"
             />
           </div>
 
@@ -100,7 +100,7 @@ export function ApplicationsFilters({
         <div className="flex gap-3 items-center w-full lg:w-auto">
           {/* Date Range - simplified for this version */}
           <button
-            className="px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-gray-300 hover:bg-white/10 transition-all duration-200 text-sm flex items-center gap-2 whitespace-nowrap"
+            className="px-4 py-2.5 bg-accent border border-border rounded-lg text-foreground hover:bg-accent transition-all duration-200 text-sm flex items-center gap-2 whitespace-nowrap"
           >
             📅 Date Range
           </button>
@@ -133,14 +133,14 @@ function FilterDropdown({ label, value, options, onChange }: FilterDropdownProps
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-gray-300 hover:bg-white/10 transition-all duration-200 text-sm flex items-center gap-2 whitespace-nowrap min-w-40"
+        className="px-4 py-2.5 bg-accent border border-border rounded-lg text-foreground hover:bg-accent transition-all duration-200 text-sm flex items-center gap-2 whitespace-nowrap min-w-40"
       >
         <span>{value}</span>
         <ChevronDown className="w-4 h-4 ml-auto" />
       </button>
 
       {isOpen && (
-        <div className="absolute top-full mt-2 left-0 right-0 bg-black/95 border border-white/10 rounded-lg overflow-hidden backdrop-blur-sm z-50">
+        <div className="absolute top-full mt-2 left-0 right-0 bg-background/95 border border-border rounded-lg overflow-hidden backdrop-blur-sm z-50">
           {options.map((option) => (
             <button
               key={option}
@@ -151,7 +151,7 @@ function FilterDropdown({ label, value, options, onChange }: FilterDropdownProps
               className={`w-full px-4 py-2.5 text-left text-sm transition-colors duration-150 ${
                 value === option
                   ? 'bg-emerald-500/20 text-emerald-400 border-l-2 border-emerald-500'
-                  : 'text-gray-300 hover:bg-white/10'
+                  : 'text-foreground hover:bg-accent'
               }`}
             >
               {option}

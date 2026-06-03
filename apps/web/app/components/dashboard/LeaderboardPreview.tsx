@@ -21,13 +21,13 @@ const medalEmoji: Record<number, string> = {
 
 function Avatar({ name, avatarUrl }: { name: string; avatarUrl?: string }) {
   if (avatarUrl) {
-    return <img src={avatarUrl} alt={name} className="w-8 h-8 rounded-full border border-white/10" />;
+    return <img src={avatarUrl} alt={name} className="w-8 h-8 rounded-full border border-border" />;
   }
   const initials = name.replace(/[^a-zA-Z]/g, '').slice(0, 2).toUpperCase() || 'U';
   const colors = ['bg-emerald-800', 'bg-blue-800', 'bg-purple-800', 'bg-pink-800', 'bg-orange-800'];
   const idx = name.charCodeAt(0) % colors.length;
   return (
-    <div className={`w-8 h-8 rounded-full ${colors[idx]} flex items-center justify-center text-xs font-bold text-white flex-shrink-0`}>
+    <div className={`w-8 h-8 rounded-full ${colors[idx]} flex items-center justify-center text-xs font-bold text-foreground flex-shrink-0`}>
       {initials}
     </div>
   );
@@ -35,10 +35,10 @@ function Avatar({ name, avatarUrl }: { name: string; avatarUrl?: string }) {
 
 export function LeaderboardPreview({ leaderboard }: LeaderboardPreviewProps) {
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-white font-bold text-base">
-          Leaderboard <span className="text-zinc-500 font-normal text-sm">(Top 5)</span>
+        <h3 className="text-foreground font-bold text-base">
+          Leaderboard <span className="text-muted-foreground font-normal text-sm">(Top 5)</span>
         </h3>
         <Link href="/dashboard/leaderboard">
           <button className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors">
@@ -58,7 +58,7 @@ export function LeaderboardPreview({ leaderboard }: LeaderboardPreviewProps) {
               {index < 3 ? (
                 <span className="text-lg leading-none">{medalEmoji[index]}</span>
               ) : (
-                <span className="text-zinc-500 text-sm font-bold">{index + 1}</span>
+                <span className="text-muted-foreground text-sm font-bold">{index + 1}</span>
               )}
             </div>
 
@@ -66,7 +66,7 @@ export function LeaderboardPreview({ leaderboard }: LeaderboardPreviewProps) {
             <Avatar name={entry.name} avatarUrl={entry.avatarUrl} />
 
             {/* Username */}
-            <span className="text-zinc-200 text-sm font-medium flex-1 truncate">
+            <span className="text-foreground text-sm font-medium flex-1 truncate">
               {entry.name}
             </span>
 

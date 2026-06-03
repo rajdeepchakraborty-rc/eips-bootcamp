@@ -35,7 +35,7 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User', s
   }
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-gradient-to-br from-[#0d1a12] via-[#0a0f0d] to-[#080808] min-h-[160px]">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-emerald-950/5 via-background to-background dark:from-[#0d1a12] dark:via-[#0a0f0d] dark:to-[#080808] min-h-[160px]">
       {/* Background glow effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 right-20 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl" />
@@ -108,8 +108,8 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User', s
       {/* Content */}
       <div className="relative z-10 px-6 py-8 sm:px-8 flex items-start justify-between">
         <div className="max-w-2xl">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Welcome back, {userName}!</h1>
-          <p className="text-zinc-400 text-sm sm:text-base mb-5">
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">Welcome back, {userName}!</h1>
+          <p className="text-muted-foreground text-sm sm:text-base mb-5">
             You're <span className="font-semibold text-emerald-400">{bootcampCompletion}%</span> through the bootcamp. Keep your{' '}
             <span className="font-semibold text-orange-400">{currentStreak}-day streak</span> alive and unlock your potential.
           </p>
@@ -118,13 +118,13 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User', s
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400" />
-              <span className="text-xs sm:text-sm text-zinc-400">
+              <span className="text-xs sm:text-sm text-muted-foreground">
                 <span className="text-emerald-400 font-semibold">{bootcampCompletion}%</span> Progress
               </span>
             </div>
             <div className="flex items-center gap-2">
               <Flame size={14} className="text-orange-400" />
-              <span className="text-xs sm:text-sm text-zinc-400">
+              <span className="text-xs sm:text-sm text-muted-foreground">
                 <span className="text-orange-400 font-semibold">{currentStreak}</span> Day Streak
               </span>
             </div>

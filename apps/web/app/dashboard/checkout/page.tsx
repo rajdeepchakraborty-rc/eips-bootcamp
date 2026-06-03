@@ -94,8 +94,8 @@ export default function CheckoutPage() {
           <div className="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6 border-2 border-emerald-500 animate-pulse">
             <CheckCircle2 className="w-12 h-12 text-emerald-400" />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-4">Payment Successful!</h1>
-          <p className="text-zinc-400 max-w-md text-center mb-8">
+          <h1 className="text-4xl font-bold text-foreground mb-4">Payment Successful!</h1>
+          <p className="text-muted-foreground max-w-md text-center mb-8">
             You have successfully subscribed to <strong>{moduleData.title}</strong>. You can now access all lessons and resources.
           </p>
           <button
@@ -119,48 +119,48 @@ export default function CheckoutPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Order Summary */}
-          <div className="bg-[#111] border border-white/5 rounded-2xl p-6">
-            <h2 className="text-xl font-bold text-white mb-6">Order Summary</h2>
+          <div className="bg-card border border-border rounded-2xl p-6">
+            <h2 className="text-xl font-bold text-foreground mb-6">Order Summary</h2>
             
             {moduleData.thumbnailUrl && (
-              <div className="w-full h-40 mb-6 rounded-xl overflow-hidden bg-black border border-white/5">
+              <div className="w-full h-40 mb-6 rounded-xl overflow-hidden bg-background border border-border">
                 <img src={moduleData.thumbnailUrl} alt={moduleData.title} className="w-full h-full object-cover opacity-80" />
               </div>
             )}
             
             <div className="mb-6">
-              <h3 className="text-lg font-bold text-white mb-2">{moduleData.title}</h3>
-              <p className="text-sm text-zinc-400">{moduleData.description}</p>
+              <h3 className="text-lg font-bold text-foreground mb-2">{moduleData.title}</h3>
+              <p className="text-sm text-muted-foreground">{moduleData.description}</p>
             </div>
             
-            <div className="space-y-3 border-t border-white/10 pt-6">
-              <div className="flex justify-between text-sm text-zinc-400">
+            <div className="space-y-3 border-t border-border pt-6">
+              <div className="flex justify-between text-sm text-muted-foreground">
                 <span>Category</span>
-                <span className="text-white">{moduleData.category || 'General'}</span>
+                <span className="text-foreground">{moduleData.category || 'General'}</span>
               </div>
-              <div className="flex justify-between text-sm text-zinc-400">
+              <div className="flex justify-between text-sm text-muted-foreground">
                 <span>Lessons</span>
-                <span className="text-white">{moduleData.lessons}</span>
+                <span className="text-foreground">{moduleData.lessons}</span>
               </div>
-              <div className="flex justify-between text-sm text-zinc-400">
+              <div className="flex justify-between text-sm text-muted-foreground">
                 <span>Price</span>
-                <span className="text-white font-medium">${moduleData.price || 0}</span>
+                <span className="text-foreground font-medium">${moduleData.price || 0}</span>
               </div>
             </div>
             
-            <div className="border-t border-white/10 mt-6 pt-6 flex justify-between items-center">
-              <span className="text-lg font-bold text-white">Total</span>
+            <div className="border-t border-border mt-6 pt-6 flex justify-between items-center">
+              <span className="text-lg font-bold text-foreground">Total</span>
               <span className="text-2xl font-black text-emerald-400">${moduleData.price || 0}</span>
             </div>
           </div>
           
           {/* Payment Section */}
-          <div className="bg-[#111] border border-white/5 rounded-2xl p-6 flex flex-col">
-            <h2 className="text-xl font-bold text-white mb-6">Payment Method</h2>
+          <div className="bg-card border border-border rounded-2xl p-6 flex flex-col">
+            <h2 className="text-xl font-bold text-foreground mb-6">Payment Method</h2>
             
             {(!moduleData.price || moduleData.price === 0) ? (
               <>
-                <p className="text-zinc-400 mb-6 text-sm">
+                <p className="text-muted-foreground mb-6 text-sm">
                   This module is completely free! You don't need a credit card to subscribe.
                 </p>
                 <div className="mt-auto">
@@ -182,18 +182,18 @@ export default function CheckoutPage() {
               </>
             ) : (
               <>
-                <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center gap-4 mb-6">
+                <div className="bg-accent border border-border rounded-xl p-4 flex items-center gap-4 mb-6">
                   <div className="w-12 h-8 bg-zinc-800 rounded flex items-center justify-center">
-                    <CreditCard className="text-zinc-400" size={20} />
+                    <CreditCard className="text-muted-foreground" size={20} />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-white">Credit Card ending in ****</p>
-                    <p className="text-xs text-zinc-500">Test mode</p>
+                    <p className="text-sm font-medium text-foreground">Credit Card ending in ****</p>
+                    <p className="text-xs text-muted-foreground">Test mode</p>
                   </div>
                 </div>
                 
                 <div className="mt-auto">
-                  <p className="text-xs text-zinc-500 text-center mb-4">
+                  <p className="text-xs text-muted-foreground text-center mb-4">
                     This is a simulated checkout. No real charges will be made.
                   </p>
                   <button

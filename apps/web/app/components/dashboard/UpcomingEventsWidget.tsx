@@ -27,12 +27,12 @@ export function UpcomingEventsWidget() {
   }, [user?.id]);
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex flex-col h-full relative overflow-hidden group hover:border-emerald-500/30 transition-all duration-300">
+    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full relative overflow-hidden group hover:border-emerald-500/30 transition-all duration-300">
       {/* Background Glow */}
       <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-500 pointer-events-none" />
 
       <div className="flex items-center justify-between mb-4 relative z-10">
-        <h3 className="text-white font-bold text-base flex items-center gap-2">
+        <h3 className="text-foreground font-bold text-base flex items-center gap-2">
           <Video size={16} className="text-emerald-400" />
           Upcoming Events
         </h3>
@@ -44,17 +44,17 @@ export function UpcomingEventsWidget() {
             <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-emerald-500 border-opacity-50"></div>
           </div>
         ) : events.length === 0 ? (
-          <div className="bg-black/20 border border-white/5 rounded-xl p-6 text-center">
-            <Calendar size={20} className="text-zinc-500 mx-auto mb-2" />
-            <p className="text-white font-semibold text-sm">No scheduled events</p>
-            <p className="text-zinc-500 text-xs mt-1">Events for your subscribed modules will appear here</p>
+          <div className="bg-background/20 border border-border rounded-xl p-6 text-center">
+            <Calendar size={20} className="text-muted-foreground mx-auto mb-2" />
+            <p className="text-foreground font-semibold text-sm">No scheduled events</p>
+            <p className="text-muted-foreground text-xs mt-1">Events for your subscribed modules will appear here</p>
           </div>
         ) : (
           <div className="space-y-3">
             {events.slice(0, 3).map((event) => (
-              <div key={event.id} className="bg-white/5 border border-white/10 rounded-lg p-3 flex flex-col gap-2 hover:bg-white/10 transition-colors">
+              <div key={event.id} className="bg-accent border border-border rounded-lg p-3 flex flex-col gap-2 hover:bg-accent transition-colors">
                 <div className="flex justify-between items-start">
-                  <h4 className="text-sm font-semibold text-white truncate pr-2">{event.title}</h4>
+                  <h4 className="text-sm font-semibold text-foreground truncate pr-2">{event.title}</h4>
                   <span className="text-[9px] uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded flex-shrink-0">
                     {event.module?.title || 'General'}
                   </span>

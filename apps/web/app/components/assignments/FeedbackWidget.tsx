@@ -31,16 +31,16 @@ export function FeedbackWidget() {
     <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/5 border border-blue-500/20 rounded-2xl p-6 hover:border-blue-500/40 transition-colors">
       <div className="flex items-center gap-2 mb-4">
         <MessageSquare size={20} className="text-blue-400" />
-        <h3 className="text-lg font-bold text-white">Mentor Feedback</h3>
+        <h3 className="text-lg font-bold text-foreground">Mentor Feedback</h3>
       </div>
 
       <div className="space-y-3">
         {loading ? (
-          <div className="p-4 text-center text-zinc-500 text-sm border border-white/5 rounded-lg">
+          <div className="p-4 text-center text-muted-foreground text-sm border border-border rounded-lg">
             Loading remarks...
           </div>
         ) : feedbackList.length === 0 ? (
-          <div className="p-4 text-center text-zinc-500 text-sm border border-white/5 rounded-lg bg-black/20">
+          <div className="p-4 text-center text-muted-foreground text-sm border border-border rounded-lg bg-background/20">
             No feedback received yet
           </div>
         ) : (
@@ -51,10 +51,10 @@ export function FeedbackWidget() {
             >
               <div className="flex items-start justify-between mb-2">
                 <div>
-                  <p className="text-sm font-semibold text-white truncate">
+                  <p className="text-sm font-semibold text-foreground truncate">
                     {feedback.assignmentTitle}
                   </p>
-                  <p className="text-xs text-gray-400">{feedback.mentor}</p>
+                  <p className="text-xs text-muted-foreground">{feedback.mentor}</p>
                 </div>
               </div>
               <p className={`text-xs ${statusTextColor[feedback.status as keyof typeof statusTextColor]}`}>

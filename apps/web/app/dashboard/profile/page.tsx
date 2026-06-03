@@ -100,13 +100,13 @@ export default function ProfilePage() {
     <DashboardShell>
       <div className="max-w-4xl mx-auto space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Your Profile</h1>
-          <p className="text-zinc-400 mt-1">Manage your public information and social presence.</p>
+          <h1 className="text-3xl font-bold text-foreground tracking-tight">Your Profile</h1>
+          <p className="text-muted-foreground mt-1">Manage your public information and social presence.</p>
         </div>
         
-        <div className="bg-[#0a0a0a] border border-white/5 rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-card border border-border rounded-2xl shadow-xl overflow-hidden">
           {/* Header Banner */}
-          <div className="h-32 bg-gradient-to-r from-emerald-900/40 to-[#0a0a0a] border-b border-white/5"></div>
+          <div className="h-32 bg-gradient-to-r from-emerald-900/40 to-[#0a0a0a] border-b border-border"></div>
           
           <div className="p-8 -mt-16 relative">
             <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6 mb-8">
@@ -118,13 +118,13 @@ export default function ProfilePage() {
                     <span className="text-emerald-400 text-4xl font-bold">{name.charAt(0) || 'U'}</span>
                   )}
                 </div>
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl cursor-pointer ring-4 ring-[#0a0a0a]">
-                  <Camera size={24} className="text-white" />
+                <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-2xl cursor-pointer ring-4 ring-[#0a0a0a]">
+                  <Camera size={24} className="text-foreground" />
                 </div>
               </div>
               
               <div className="flex-1 pb-2">
-                <h2 className="text-2xl font-bold text-white">{name || 'Unnamed User'}</h2>
+                <h2 className="text-2xl font-bold text-foreground">{name || 'Unnamed User'}</h2>
                 <p className="text-emerald-400/80 font-medium">{user.email}</p>
               </div>
             </div>
@@ -132,107 +132,107 @@ export default function ProfilePage() {
             <form onSubmit={handleUpdate} className="space-y-8">
               {/* Basic Info */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                   <User size={18} className="text-emerald-400" />
                   Basic Information
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">Display Name</label>
+                    <label className="block text-sm font-medium text-muted-foreground mb-2">Display Name</label>
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                      className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors"
                       placeholder="Jane Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">Profile Picture URL</label>
+                    <label className="block text-sm font-medium text-muted-foreground mb-2">Profile Picture URL</label>
                     <input
                       type="text"
                       value={image}
                       onChange={(e) => setImage(e.target.value)}
                       placeholder="https://example.com/avatar.png"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                      className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors"
                     />
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">Bio</label>
+                    <label className="block text-sm font-medium text-muted-foreground mb-2">Bio</label>
                     <textarea
                       value={bio}
                       onChange={(e) => setBio(e.target.value)}
                       rows={3}
                       placeholder="Tell the community a little about yourself..."
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"
+                      className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="h-px bg-white/5"></div>
+              <div className="h-px bg-accent"></div>
 
               {/* Personal Details */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                   <Briefcase size={18} className="text-emerald-400" />
                   Education & Interests
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">College / University</label>
+                    <label className="block text-sm font-medium text-muted-foreground mb-2">College / University</label>
                     <input
                       type="text"
                       value={college}
                       onChange={(e) => setCollege(e.target.value)}
                       placeholder="e.g. MIT, Stanford"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                      className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">Hobbies & Interests</label>
+                    <label className="block text-sm font-medium text-muted-foreground mb-2">Hobbies & Interests</label>
                     <input
                       type="text"
                       value={hobbies}
                       onChange={(e) => setHobbies(e.target.value)}
                       placeholder="e.g. Web3, Smart Contracts, Reading"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                      className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">City</label>
+                    <label className="block text-sm font-medium text-muted-foreground mb-2">City</label>
                     <input
                       type="text"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                       placeholder="e.g. San Francisco"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                      className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zinc-400 mb-2">Country</label>
+                    <label className="block text-sm font-medium text-muted-foreground mb-2">Country</label>
                     <input
                       type="text"
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
                       placeholder="e.g. United States"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
+                      className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="h-px bg-white/5"></div>
+              <div className="h-px bg-accent"></div>
 
               {/* Social Links */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                   <LinkIcon size={18} className="text-emerald-400" />
                   Social Links
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-center">
-                    <span className="bg-white/5 border border-r-0 border-white/10 rounded-l-lg px-4 py-2.5 text-zinc-400 h-[42px] flex items-center w-12 justify-center">
+                    <span className="bg-accent border border-r-0 border-border rounded-l-lg px-4 py-2.5 text-muted-foreground h-[42px] flex items-center w-12 justify-center">
                       <Globe size={18} />
                     </span>
                     <input
@@ -240,11 +240,11 @@ export default function ProfilePage() {
                       value={twitter}
                       onChange={(e) => setTwitter(e.target.value)}
                       placeholder="https://twitter.com/username"
-                      className="flex-1 bg-white/5 border border-white/10 rounded-r-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors h-[42px]"
+                      className="flex-1 bg-accent border border-border rounded-r-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors h-[42px]"
                     />
                   </div>
                   <div className="flex items-center">
-                    <span className="bg-white/5 border border-r-0 border-white/10 rounded-l-lg px-4 py-2.5 text-zinc-400 h-[42px] flex items-center w-12 justify-center">
+                    <span className="bg-accent border border-r-0 border-border rounded-l-lg px-4 py-2.5 text-muted-foreground h-[42px] flex items-center w-12 justify-center">
                       <Code size={18} />
                     </span>
                     <input
@@ -252,11 +252,11 @@ export default function ProfilePage() {
                       value={github}
                       onChange={(e) => setGithub(e.target.value)}
                       placeholder="https://github.com/username"
-                      className="flex-1 bg-white/5 border border-white/10 rounded-r-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors h-[42px]"
+                      className="flex-1 bg-accent border border-border rounded-r-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors h-[42px]"
                     />
                   </div>
                   <div className="flex items-center">
-                    <span className="bg-white/5 border border-r-0 border-white/10 rounded-l-lg px-4 py-2.5 text-zinc-400 h-[42px] flex items-center w-12 justify-center">
+                    <span className="bg-accent border border-r-0 border-border rounded-l-lg px-4 py-2.5 text-muted-foreground h-[42px] flex items-center w-12 justify-center">
                       <Briefcase size={18} />
                     </span>
                     <input
@@ -264,7 +264,7 @@ export default function ProfilePage() {
                       value={linkedin}
                       onChange={(e) => setLinkedin(e.target.value)}
                       placeholder="https://linkedin.com/in/username"
-                      className="flex-1 bg-white/5 border border-white/10 rounded-r-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500/50 transition-colors h-[42px]"
+                      className="flex-1 bg-accent border border-border rounded-r-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500/50 transition-colors h-[42px]"
                     />
                   </div>
                 </div>

@@ -93,10 +93,10 @@ export default function MyModulesPage() {
                   <Layers size={16} />
                   MY MODULES
                 </div>
-                <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                   My Modules
                 </h1>
-                <p className="text-gray-400 text-lg max-w-2xl">
+                <p className="text-muted-foreground text-lg max-w-2xl">
                   Access the modules you have subscribed to. Track your progress and continue where you left off.
                 </p>
               </div>
@@ -105,14 +105,14 @@ export default function MyModulesPage() {
               <div className="mb-8 flex justify-between items-center">
                 <div className="relative max-w-md w-full">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Search size={18} className="text-zinc-500" />
+                    <Search size={18} className="text-muted-foreground" />
                   </div>
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search my modules..."
-                    className="w-full bg-[#111] border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-zinc-500"
+                    className="w-full bg-card border border-border rounded-xl pl-10 pr-4 py-3 text-sm text-foreground focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-muted-foreground"
                   />
                 </div>
                 <Link href="/dashboard/marketplace">
@@ -135,12 +135,12 @@ export default function MyModulesPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-20 border border-white/5 rounded-xl bg-white/[0.01]">
-                  <BookOpen size={32} className="mx-auto mb-3 text-zinc-600" />
-                  <h3 className="text-lg font-medium text-white mb-1">You haven't subscribed to any modules yet</h3>
-                  <p className="text-zinc-500 text-sm mb-6">Head over to the Marketplace to discover and unlock new content.</p>
+                <div className="text-center py-20 border border-border rounded-xl bg-white/[0.01]">
+                  <BookOpen size={32} className="mx-auto mb-3 text-muted-foreground" />
+                  <h3 className="text-lg font-medium text-foreground mb-1">You haven't subscribed to any modules yet</h3>
+                  <p className="text-muted-foreground text-sm mb-6">Head over to the Marketplace to discover and unlock new content.</p>
                   <Link href="/dashboard/marketplace">
-                    <button className="flex items-center gap-2 px-6 py-3 mx-auto bg-white/5 hover:bg-white/10 text-emerald-400 font-bold rounded-xl border border-emerald-500/30 hover:border-emerald-500/50 transition-all">
+                    <button className="flex items-center gap-2 px-6 py-3 mx-auto bg-accent hover:bg-accent text-emerald-400 font-bold rounded-xl border border-emerald-500/30 hover:border-emerald-500/50 transition-all">
                       Go to Marketplace
                     </button>
                   </Link>

@@ -33,7 +33,7 @@ export function ModuleCard({ module, onClick, isMarketplaceMode = false }: Modul
   return (
     <div
       onClick={onClick}
-      className={`group relative text-left bg-[#0f0f0f] border border-white/5 hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] relative overflow-hidden cursor-pointer`}
+      className={`group relative text-left bg-card border border-border hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] relative overflow-hidden cursor-pointer`}
     >
       {/* Expanding Gradient Overlay on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
@@ -43,7 +43,7 @@ export function ModuleCard({ module, onClick, isMarketplaceMode = false }: Modul
       
       {/* Thumbnail (if available) */}
       {module.thumbnailUrl && (
-        <div className="w-full h-32 mb-4 rounded-xl overflow-hidden bg-black border border-white/5 cursor-pointer" onClick={isMarketplaceMode || module.isSubscribed ? onClick : undefined}>
+        <div className="w-full h-32 mb-4 rounded-xl overflow-hidden bg-background border border-border cursor-pointer" onClick={isMarketplaceMode || module.isSubscribed ? onClick : undefined}>
           <img src={module.thumbnailUrl} alt={module.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
         </div>
       )}
@@ -55,11 +55,11 @@ export function ModuleCard({ module, onClick, isMarketplaceMode = false }: Modul
             <Book size={20} className="text-emerald-400" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors mt-1">
+            <h3 className="text-xl font-bold text-foreground group-hover:text-emerald-300 transition-colors mt-1">
               {module.title}
             </h3>
             {module.category && (
-              <span className="text-[10px] font-semibold tracking-wider uppercase text-zinc-500 border border-white/10 rounded-full px-2 py-0.5 inline-block mt-1">
+              <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground border border-border rounded-full px-2 py-0.5 inline-block mt-1">
                 {module.category}
               </span>
             )}
@@ -72,33 +72,33 @@ export function ModuleCard({ module, onClick, isMarketplaceMode = false }: Modul
             <div className="w-6 h-6 rounded-full border-2 border-emerald-400/30 group-hover:border-emerald-400/60 transition-colors"></div>
           )}
           {isMarketplaceMode && module.isPremium && !module.isSubscribed && (
-            <div className="flex items-center gap-1 bg-white/10 px-2 py-1 rounded-md">
-              <span className="text-xs font-bold text-white">PRO</span>
+            <div className="flex items-center gap-1 bg-accent px-2 py-1 rounded-md">
+              <span className="text-xs font-bold text-foreground">PRO</span>
             </div>
           )}
         </div>
       </div>
 
       {/* Description */}
-      <p className="text-gray-400 text-sm mb-4 line-clamp-2 cursor-pointer" onClick={isMarketplaceMode || module.isSubscribed ? onClick : undefined}>{module.description}</p>
+      <p className="text-muted-foreground text-sm mb-4 line-clamp-2 cursor-pointer" onClick={isMarketplaceMode || module.isSubscribed ? onClick : undefined}>{module.description}</p>
 
       {/* Meta Info */}
-      <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-700/50 cursor-pointer" onClick={isMarketplaceMode || module.isSubscribed ? onClick : undefined}>
+      <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-border cursor-pointer" onClick={isMarketplaceMode || module.isSubscribed ? onClick : undefined}>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Lessons</div>
-          <div className="text-lg font-bold text-white">
+          <div className="text-xs text-muted-foreground mb-1">Lessons</div>
+          <div className="text-lg font-bold text-foreground">
             {isMarketplaceMode ? module.lessons : `${module.completed}/${module.lessons}`}
           </div>
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Duration</div>
-          <div className="flex items-center gap-1 text-white">
+          <div className="text-xs text-muted-foreground mb-1">Duration</div>
+          <div className="flex items-center gap-1 text-foreground">
             <Clock size={14} className="text-emerald-400" />
             <span className="text-sm font-semibold">{module.duration}</span>
           </div>
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">XP Reward</div>
+          <div className="text-xs text-muted-foreground mb-1">XP Reward</div>
           <div className="flex items-center gap-1 text-emerald-400">
             <Zap size={14} />
             <span className="text-sm font-semibold">{module.xpReward}</span>
@@ -110,10 +110,10 @@ export function ModuleCard({ module, onClick, isMarketplaceMode = false }: Modul
       {!isMarketplaceMode && (
         <div className="mb-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-gray-400">Progress</span>
+            <span className="text-xs font-semibold text-muted-foreground">Progress</span>
             <span className="text-xs font-bold text-emerald-400">{completionPercentage}%</span>
           </div>
-          <div className="w-full h-2.5 bg-gray-800/50 rounded-full overflow-hidden">
+          <div className="w-full h-2.5 bg-accent rounded-full overflow-hidden">
             <div
               className={`h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-500`}
               style={{ width: `${completionPercentage}%` }}
@@ -128,7 +128,7 @@ export function ModuleCard({ module, onClick, isMarketplaceMode = false }: Modul
           module.isSubscribed ? (
             <button
               onClick={onClick}
-              className="w-full flex items-center justify-center py-2.5 rounded-lg bg-white/5 border border-white/10 text-emerald-400 hover:bg-white/10 hover:border-emerald-500/30 transition-all font-semibold text-sm"
+              className="w-full flex items-center justify-center py-2.5 rounded-lg bg-accent border border-border text-emerald-400 hover:bg-accent hover:border-emerald-500/30 transition-all font-semibold text-sm"
             >
               Already Owned - View Module
             </button>

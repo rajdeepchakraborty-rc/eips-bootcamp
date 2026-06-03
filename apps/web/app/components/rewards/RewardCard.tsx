@@ -65,11 +65,11 @@ export const RewardCard: React.FC<RewardCardProps> = ({
 
         {/* Content */}
         <div className="relative flex-grow flex flex-col">
-          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors duration-300">
+          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-emerald-300 transition-colors duration-300">
             {reward.title}
           </h3>
 
-          <p className="text-sm text-gray-400 mb-4 flex-grow leading-relaxed">
+          <p className="text-sm text-muted-foreground mb-4 flex-grow leading-relaxed">
             {reward.description}
           </p>
 
@@ -78,7 +78,7 @@ export const RewardCard: React.FC<RewardCardProps> = ({
             <span className="text-2xl lg:text-3xl font-bold text-emerald-400">
               {reward.cost}
             </span>
-            <span className="text-sm text-gray-500">XP</span>
+            <span className="text-sm text-muted-foreground">XP</span>
           </div>
 
           {/* Redeem Button */}
@@ -88,7 +88,7 @@ export const RewardCard: React.FC<RewardCardProps> = ({
             className={`w-full py-3 rounded-lg font-bold uppercase text-sm tracking-wider transition-all duration-300 ${
               isRedeemable
                 ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-black hover:from-emerald-500 hover:to-emerald-400 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 cursor-pointer'
-                : 'bg-slate-700/50 text-gray-500 cursor-not-allowed opacity-50'
+                : 'bg-slate-700/50 text-muted-foreground cursor-not-allowed opacity-50'
             }`}
           >
             {isRedeemable ? 'Redeem Now' : 'Locked'}

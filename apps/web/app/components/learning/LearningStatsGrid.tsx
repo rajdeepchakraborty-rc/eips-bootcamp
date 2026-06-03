@@ -52,7 +52,7 @@ export const LearningStatsGrid = ({ stats }: { stats?: any }) => {
         return (
           <div
             key={index}
-            className="group relative overflow-hidden rounded-2xl bg-[#0d0d0d] border border-white/5 p-6 hover:border-white/10 transition-all duration-300"
+            className="group relative overflow-hidden rounded-2xl bg-card border border-border p-6 hover:border-border transition-all duration-300"
           >
             {/* Background Glow */}
             <div
@@ -66,10 +66,10 @@ export const LearningStatsGrid = ({ stats }: { stats?: any }) => {
                 <Icon size={22} strokeWidth={2.5} />
               </div>
               <div>
-                <p className="text-sm font-medium text-zinc-400 mb-1">
+                <p className="text-sm font-medium text-muted-foreground mb-1">
                   {stat.label}
                 </p>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-foreground">
                   {stat.value}
                 </h3>
               </div>

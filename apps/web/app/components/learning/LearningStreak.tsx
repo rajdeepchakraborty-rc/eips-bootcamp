@@ -62,7 +62,7 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
   }
 
   const getColor = (intensity: number) => {
-    if (intensity === 0) return 'bg-white/5 border-white/5';
+    if (intensity === 0) return 'bg-accent border-border';
     if (intensity === 1) return 'bg-emerald-900/40 border-emerald-500/20';
     if (intensity === 2) return 'bg-emerald-700/60 border-emerald-500/30';
     if (intensity === 3) return 'bg-emerald-500/80 border-emerald-500/50';
@@ -71,7 +71,7 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
 
   return (
     <div className="relative group">
-      <div className="relative rounded-2xl border border-white/8 bg-[#0d0d0d] p-6 transition-all duration-300 hover:border-emerald-500/20 overflow-hidden">
+      <div className="relative rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-emerald-500/20 overflow-hidden">
         {/* Hover glow */}
         <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
@@ -79,27 +79,27 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
-              <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
                 Consistency
               </p>
-              <h3 className="text-xl font-bold text-white">Learning Streak</h3>
+              <h3 className="text-xl font-bold text-foreground">Learning Streak</h3>
             </div>
 
             {/* Stats */}
             <div className="flex gap-6">
               <div className="text-center">
-                <p className="text-xs text-zinc-500 font-medium mb-1">
+                <p className="text-xs text-muted-foreground font-medium mb-1">
                   Current Streak
                 </p>
                 <div className="flex items-center justify-center gap-1.5">
-                  <Flame className={currentStreak > 0 ? "text-orange-400" : "text-zinc-600"} size={16} />
-                  <p className={`text-xl font-bold ${currentStreak > 0 ? 'text-white' : 'text-zinc-500'}`}>
-                    {currentStreak} <span className="text-sm text-zinc-500 font-normal">days</span>
+                  <Flame className={currentStreak > 0 ? "text-orange-400" : "text-muted-foreground"} size={16} />
+                  <p className={`text-xl font-bold ${currentStreak > 0 ? 'text-foreground' : 'text-muted-foreground'}`}>
+                    {currentStreak} <span className="text-sm text-muted-foreground font-normal">days</span>
                   </p>
                 </div>
               </div>
               <div className="text-center">
-                <p className="text-xs text-zinc-500 font-medium mb-1">
+                <p className="text-xs text-muted-foreground font-medium mb-1">
                   Longest
                 </p>
                 <p className="text-xl font-bold text-emerald-400">
@@ -134,8 +134,8 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
                         <div
                           className={`
                             absolute bottom-full left-1/2 -translate-x-1/2 mb-2
-                            px-2 py-1 rounded text-xs text-white
-                            bg-zinc-800 border border-white/10 shadow-lg
+                            px-2 py-1 rounded text-xs text-foreground
+                            bg-zinc-800 border border-border shadow-lg
                             whitespace-nowrap pointer-events-none
                             opacity-0 group-hover/day:opacity-100
                             transition-opacity duration-200
@@ -157,9 +157,9 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
           </div>
 
           {/* Legend */}
-          <div className="flex items-center justify-end gap-2 text-[10px] text-zinc-500 mt-2">
+          <div className="flex items-center justify-end gap-2 text-[10px] text-muted-foreground mt-2">
             <span>Less</span>
-            <div className="w-3 h-3 rounded-sm bg-white/5 border border-white/5" />
+            <div className="w-3 h-3 rounded-sm bg-accent border border-border" />
             <div className="w-3 h-3 rounded-sm bg-emerald-900/40 border border-emerald-500/20" />
             <div className="w-3 h-3 rounded-sm bg-emerald-700/60 border border-emerald-500/30" />
             <div className="w-3 h-3 rounded-sm bg-emerald-500/80 border border-emerald-500/50" />

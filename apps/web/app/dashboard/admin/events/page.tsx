@@ -129,7 +129,7 @@ export default function AdminEventsPage() {
               <Calendar size={16} />
               ADMIN / EVENTS
             </div>
-            <h1 className="text-4xl font-bold text-white">Manage Events</h1>
+            <h1 className="text-4xl font-bold text-foreground">Manage Events</h1>
           </div>
           <button
             onClick={() => setIsAdding(!isAdding)}
@@ -140,28 +140,28 @@ export default function AdminEventsPage() {
         </div>
 
         {isAdding && (
-          <div className="bg-[#111] border border-white/5 rounded-2xl p-6 mb-8">
-            <h2 className="text-xl font-bold text-white mb-6">Create New Event</h2>
+          <div className="bg-card border border-border rounded-2xl p-6 mb-8">
+            <h2 className="text-xl font-bold text-foreground mb-6">Create New Event</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Title</label>
+                  <label className="block text-sm font-medium text-muted-foreground mb-1">Title</label>
                   <input
                     required
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500"
                     placeholder="e.g. Zoom AMA with Vitalik"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Target Module</label>
+                  <label className="block text-sm font-medium text-muted-foreground mb-1">Target Module</label>
                   <select
                     required
                     value={moduleId}
                     onChange={(e) => setModuleId(e.target.value)}
-                    className="w-full bg-black border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500"
                   >
                     <option value="">Select a module...</option>
                     {modules.map(m => (
@@ -170,43 +170,43 @@ export default function AdminEventsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Date</label>
+                  <label className="block text-sm font-medium text-muted-foreground mb-1">Date</label>
                   <input
                     required
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Time</label>
+                  <label className="block text-sm font-medium text-muted-foreground mb-1">Time</label>
                   <input
                     required
                     type="time"
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Meeting Link (e.g. Zoom)</label>
+                  <label className="block text-sm font-medium text-muted-foreground mb-1">Meeting Link (e.g. Zoom)</label>
                   <input
                     required
                     type="url"
                     value={link}
                     onChange={(e) => setLink(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500"
                     placeholder="https://zoom.us/j/..."
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-zinc-400 mb-1">Description</label>
+                  <label className="block text-sm font-medium text-muted-foreground mb-1">Description</label>
                   <textarea
                     required
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500 min-h-[100px]"
+                    className="w-full bg-accent border border-border rounded-lg px-4 py-2.5 text-foreground focus:outline-none focus:border-emerald-500 min-h-[100px]"
                     placeholder="Brief description of the event..."
                   />
                 </div>
@@ -222,20 +222,20 @@ export default function AdminEventsPage() {
 
         <div className="space-y-4">
           {events.length > 0 ? events.map(event => (
-            <div key={event.id} className="bg-[#111] border border-white/5 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-white/10 transition-colors">
+            <div key={event.id} className="bg-card border border-border rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-border transition-colors">
               <div className="flex items-start gap-4 flex-1">
                 <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                   <Video className="text-emerald-400" size={24} />
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-bold text-white">{event.title}</h3>
+                    <h3 className="text-lg font-bold text-foreground">{event.title}</h3>
                     <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
                       {event.module?.title || 'Unknown Module'}
                     </span>
                   </div>
-                  <p className="text-sm text-zinc-400 mb-2">{event.description}</p>
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-zinc-500">
+                  <p className="text-sm text-muted-foreground mb-2">{event.description}</p>
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-muted-foreground">
                     <span className="flex items-center gap-1">
                       <Calendar size={14} />
                       {new Date(event.date).toLocaleString()}
@@ -247,16 +247,16 @@ export default function AdminEventsPage() {
                 </div>
               </div>
               <div>
-                <button onClick={() => handleDelete(event.id)} disabled={deletingId === event.id} className="p-2 text-zinc-500 hover:text-red-400 hover:bg-red-400/10 disabled:opacity-50 rounded-lg transition-colors">
+                <button onClick={() => handleDelete(event.id)} disabled={deletingId === event.id} className="p-2 text-muted-foreground hover:text-red-400 hover:bg-red-400/10 disabled:opacity-50 rounded-lg transition-colors">
                   {deletingId === event.id ? <Loader2 size={18} className="animate-spin text-red-400" /> : <Trash2 size={18} />}
                 </button>
               </div>
             </div>
           )) : (
-            <div className="text-center py-20 border border-white/5 rounded-xl bg-white/[0.01]">
-              <Calendar size={32} className="mx-auto mb-3 text-zinc-600" />
-              <h3 className="text-lg font-medium text-white mb-1">No events scheduled</h3>
-              <p className="text-zinc-500 text-sm">Click 'Add Event' to create your first upcoming event.</p>
+            <div className="text-center py-20 border border-border rounded-xl bg-white/[0.01]">
+              <Calendar size={32} className="mx-auto mb-3 text-muted-foreground" />
+              <h3 className="text-lg font-medium text-foreground mb-1">No events scheduled</h3>
+              <p className="text-muted-foreground text-sm">Click 'Add Event' to create your first upcoming event.</p>
             </div>
           )}
         </div>

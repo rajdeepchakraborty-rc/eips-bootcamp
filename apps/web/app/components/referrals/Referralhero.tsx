@@ -14,8 +14,8 @@ export default function ReferralHero() {
           </svg>
         </div>
         <div>
-          <h1 className="text-3xl font-bold text-white tracking-tight">Referrals</h1>
-          <p className="text-gray-400 text-sm mt-0.5">Invite builders and grow the Ethereum ecosystem.</p>
+          <h1 className="text-3xl font-bold text-foreground tracking-tight">Referrals</h1>
+          <p className="text-muted-foreground text-sm mt-0.5">Invite builders and grow the Ethereum ecosystem.</p>
         </div>
       </div>
 

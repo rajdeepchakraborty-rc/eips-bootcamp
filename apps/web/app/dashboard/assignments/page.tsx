@@ -134,17 +134,17 @@ export default function AssignmentsPage() {
             {/* Page Header */}
             <div className="mb-12">
                 <Link href="/dashboard">
-              <button className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition-colors mb-4">
+              <button className="flex items-center gap-2 text-muted-foreground hover:text-emerald-400 transition-colors mb-4">
                 <ChevronLeft size={18} />
                 <span className="text-sm font-medium">Back to Dashboard</span>
               </button>
               </Link>
 
               <div className="mb-6">
-                <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                   Assignments
                 </h1>
-                <p className="text-gray-400 text-lg">
+                <p className="text-muted-foreground text-lg">
                   Complete challenges, submit EIPs, and earn XP rewards.
                 </p>
               </div>
@@ -175,10 +175,10 @@ export default function AssignmentsPage() {
               {/* Assignments List */}
               <div className="lg:col-span-2">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-white">
+                  <h2 className="text-2xl font-bold text-foreground">
                     {sortedAssignments.length} Assignments
                   </h2>
-                  <p className="text-gray-400 text-sm mt-1">
+                  <p className="text-muted-foreground text-sm mt-1">
                     {statusFilter !== 'all' && `Showing ${statusFilter} assignments`}
                   </p>
                 </div>
@@ -189,11 +189,11 @@ export default function AssignmentsPage() {
                       <AssignmentCard key={assignment.id} assignment={assignment} onSubmit={handleSubmit} />
                     ))
                   ) : (
-                    <div className="bg-[#111] border border-white/5 rounded-2xl p-12 text-center">
-                      <p className="text-white text-lg font-bold mb-2">No assignments found</p>
+                    <div className="bg-card border border-border rounded-2xl p-12 text-center">
+                      <p className="text-foreground text-lg font-bold mb-2">No assignments found</p>
                       {assignments.length === 0 ? (
                         <>
-                          <p className="text-zinc-500 text-sm mb-6">
+                          <p className="text-muted-foreground text-sm mb-6">
                             You need to subscribe to modules in the Marketplace to see related assignments.
                           </p>
                           <Link href="/dashboard/marketplace">
@@ -203,7 +203,7 @@ export default function AssignmentsPage() {
                           </Link>
                         </>
                       ) : (
-                        <p className="text-zinc-500 text-sm mt-2">
+                        <p className="text-muted-foreground text-sm mt-2">
                           Try adjusting your filters or search query
                         </p>
                       )}

@@ -28,27 +28,27 @@ export const LearningActivityFeed = ({ activity }: { activity?: any[] }) => {
   };
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
+    <div className="bg-card border border-border rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-white font-bold text-base">Recent Activity</h3>
+        <h3 className="text-foreground font-bold text-base">Recent Activity</h3>
       </div>
 
       <div className="flex-1">
         {events.length === 0 ? (
-          <div className="flex items-center justify-center h-full text-zinc-500 text-sm">
+          <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
             No recent activity.
           </div>
         ) : (
           <div className="space-y-4">
             {events.map((event) => (
-              <div key={event.id} className="flex gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+              <div key={event.id} className="flex gap-4 p-3 rounded-xl hover:bg-accent transition-colors border border-transparent hover:border-border">
                 <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${getIconBg(event.type)}`}>
                   {getIcon(event.type)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-white truncate">{event.title}</p>
+                  <p className="text-sm font-semibold text-foreground truncate">{event.title}</p>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs text-zinc-500">{event.time}</span>
+                    <span className="text-xs text-muted-foreground">{event.time}</span>
                     {event.xp > 0 && (
                       <>
                         <span className="text-zinc-700 text-[10px]">•</span>

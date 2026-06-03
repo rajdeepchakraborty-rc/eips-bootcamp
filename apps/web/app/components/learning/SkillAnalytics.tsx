@@ -21,16 +21,16 @@ export const SkillAnalytics = ({ skills }: { skills?: any[] }) => {
     : 0;
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
+    <div className="bg-card border border-border rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-white font-bold text-base">Skill Analytics</h3>
+        <h3 className="text-foreground font-bold text-base">Skill Analytics</h3>
       </div>
 
       <div className="flex-1 flex flex-col gap-6">
         {/* Technical Skills */}
         <div className="flex-1">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-semibold text-white uppercase tracking-wider">Technical Skills</p>
+            <p className="text-xs font-semibold text-foreground uppercase tracking-wider">Technical Skills</p>
             <p className="text-xs font-bold text-emerald-400">{avgTechnical}% avg</p>
           </div>
 
@@ -38,10 +38,10 @@ export const SkillAnalytics = ({ skills }: { skills?: any[] }) => {
             {technicalSkills.map((skill) => (
               <div key={skill.name}>
                 <div className="flex items-center justify-between mb-1.5">
-                  <p className="text-xs text-zinc-300">{skill.name}</p>
+                  <p className="text-xs text-muted-foreground">{skill.name}</p>
                   <p className="text-xs text-emerald-400/70 font-semibold">{skill.progress}%</p>
                 </div>
-                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/8">
+                <div className="w-full h-1.5 bg-accent rounded-full overflow-hidden border border-border">
                   <div
                     className="h-full bg-emerald-500/70 rounded-full transition-all duration-1000"
                     style={{ width: `${skill.progress}%` }}
@@ -55,7 +55,7 @@ export const SkillAnalytics = ({ skills }: { skills?: any[] }) => {
         {/* Soft Skills */}
         <div className="flex-1">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-semibold text-white uppercase tracking-wider">Soft Skills</p>
+            <p className="text-xs font-semibold text-foreground uppercase tracking-wider">Soft Skills</p>
             <p className="text-xs font-bold text-emerald-400">{avgSoft}% avg</p>
           </div>
 
@@ -63,10 +63,10 @@ export const SkillAnalytics = ({ skills }: { skills?: any[] }) => {
             {softSkills.map((skill) => (
               <div key={skill.name}>
                 <div className="flex items-center justify-between mb-1.5">
-                  <p className="text-xs text-zinc-300">{skill.name}</p>
+                  <p className="text-xs text-muted-foreground">{skill.name}</p>
                   <p className="text-xs text-emerald-400/70 font-semibold">{skill.progress}%</p>
                 </div>
-                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/8">
+                <div className="w-full h-1.5 bg-accent rounded-full overflow-hidden border border-border">
                   <div
                     className="h-full bg-blue-500/70 rounded-full transition-all duration-1000"
                     style={{ width: `${skill.progress}%` }}

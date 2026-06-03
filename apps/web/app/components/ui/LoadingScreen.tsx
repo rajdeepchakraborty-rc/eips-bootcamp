@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function LoadingScreen({ text = "SYNCING DATA...", fullScreen = true }: { text?: string, fullScreen?: boolean }) {
   return (
-    <div className={`${fullScreen ? 'fixed inset-0 z-50' : 'w-full h-full min-h-[400px] rounded-xl'} flex flex-col items-center justify-center bg-[#080808] backdrop-blur-md`}>
+    <div className={`${fullScreen ? 'fixed inset-0 z-50' : 'w-full h-full min-h-[400px] rounded-xl'} flex flex-col items-center justify-center bg-background backdrop-blur-md`}>
       <div className="relative flex flex-col items-center justify-center">
         {/* Glow effect behind the logo */}
         <div className="absolute w-32 h-32 bg-emerald-500/20 rounded-full blur-[50px] animate-pulse"></div>
@@ -52,7 +52,7 @@ export default function LoadingScreen({ text = "SYNCING DATA...", fullScreen = t
           </div>
           
           {/* Progress bar container */}
-          <div className="w-48 h-1 bg-white/5 rounded-full overflow-hidden mt-4">
+          <div className="w-48 h-1 bg-accent rounded-full overflow-hidden mt-4">
             {/* Animated progress bar line */}
             <div className="h-full bg-gradient-to-r from-emerald-600 via-emerald-400 to-emerald-600 w-full animate-[shimmer_1.5s_infinite]" 
                  style={{ 

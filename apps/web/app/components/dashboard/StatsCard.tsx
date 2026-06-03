@@ -63,22 +63,22 @@ export function StatsCard({ stat }: StatsCardProps) {
   const isRank = stat.id === 'rank';
 
   return (
-    <div className="group relative bg-[#0d0d0d] border border-white/8 rounded-2xl p-5 flex items-center justify-between hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-default overflow-hidden">
+    <div className="group relative bg-card border border-border rounded-2xl p-5 flex items-center justify-between hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-default overflow-hidden">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
       <div className="relative z-10">
-        <p className="text-zinc-500 text-xs font-medium uppercase tracking-wider mb-2">{stat.label}</p>
+        <p className="text-muted-foreground text-xs font-medium uppercase tracking-wider mb-2">{stat.label}</p>
         <p
           className={`font-black text-3xl tracking-tight mb-1 ${
-            isCapStatus ? 'text-emerald-400' : isRank ? 'text-white' : 'text-white'
+            isCapStatus ? 'text-emerald-400' : isRank ? 'text-foreground' : 'text-foreground'
           }`}
         >
           {stat.value}
         </p>
         <p
           className={`text-xs font-medium ${
-            isCapStatus ? 'text-zinc-400' : stat.changePositive ? 'text-emerald-400' : 'text-red-400'
+            isCapStatus ? 'text-muted-foreground' : stat.changePositive ? 'text-emerald-400' : 'text-red-400'
           }`}
         >
           {stat.change}

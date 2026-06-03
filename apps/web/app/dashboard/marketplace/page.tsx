@@ -82,10 +82,10 @@ export default function MarketplacePage() {
                 <ShoppingCart size={16} />
                 MARKETPLACE
               </div>
-              <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                 Module Marketplace
               </h1>
-              <p className="text-gray-400 text-lg max-w-2xl">
+              <p className="text-muted-foreground text-lg max-w-2xl">
                 Browse our curated selection of Ethereum and Web3 modules. Add modules to your cart and start learning.
               </p>
             </div>
@@ -93,11 +93,11 @@ export default function MarketplacePage() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4 mb-12">
               <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border border-emerald-500/20 rounded-xl p-4">
-                <div className="text-gray-400 text-sm mb-1">Available Modules</div>
+                <div className="text-muted-foreground text-sm mb-1">Available Modules</div>
                 <div className="text-3xl font-bold text-emerald-400">{modules.length}</div>
               </div>
               <div className="bg-gradient-to-br from-cyan-500/10 to-cyan-600/5 border border-cyan-500/20 rounded-xl p-4">
-                <div className="text-gray-400 text-sm mb-1">My Owned Modules</div>
+                <div className="text-muted-foreground text-sm mb-1">My Owned Modules</div>
                 <div className="text-3xl font-bold text-cyan-400">
                   {modules.filter(m => m.isSubscribed).length}
                 </div>
@@ -108,14 +108,14 @@ export default function MarketplacePage() {
             <div className="mb-8">
               <div className="relative max-w-md">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search size={18} className="text-zinc-500" />
+                  <Search size={18} className="text-muted-foreground" />
                 </div>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search modules..."
-                  className="w-full bg-[#111] border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-zinc-500"
+                  className="w-full bg-card border border-border rounded-xl pl-10 pr-4 py-3 text-sm text-foreground focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-muted-foreground"
                 />
               </div>
             </div>
@@ -125,7 +125,7 @@ export default function MarketplacePage() {
               <div className="space-y-12">
                 {Object.keys(groupedModules).map((category) => (
                   <div key={category}>
-                    <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2">{category} Modules</h2>
+                    <h2 className="text-2xl font-bold text-foreground mb-6 border-b border-border pb-2">{category} Modules</h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       {groupedModules[category].map((module: any) => (
                         <ModuleCard
@@ -140,10 +140,10 @@ export default function MarketplacePage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-20 border border-white/5 rounded-xl bg-white/[0.01]">
-                <Search size={32} className="mx-auto mb-3 text-zinc-600" />
-                <h3 className="text-lg font-medium text-white mb-1">No modules found</h3>
-                <p className="text-zinc-500 text-sm">Try adjusting your search query.</p>
+              <div className="text-center py-20 border border-border rounded-xl bg-white/[0.01]">
+                <Search size={32} className="mx-auto mb-3 text-muted-foreground" />
+                <h3 className="text-lg font-medium text-foreground mb-1">No modules found</h3>
+                <p className="text-muted-foreground text-sm">Try adjusting your search query.</p>
               </div>
             )}
           </div>

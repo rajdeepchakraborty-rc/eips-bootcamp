@@ -27,8 +27,8 @@ const ICONS = [
 
 export default function XPInfoCard() {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-[#0d0d0d] p-5">
-      <h3 className="text-white font-semibold text-base mb-4">How You Earn XP</h3>
+    <div className="rounded-2xl border border-white/[0.06] bg-card p-5">
+      <h3 className="text-foreground font-semibold text-base mb-4">How You Earn XP</h3>
 
       <div className="space-y-3">
         {XP_REWARDS.map((reward, idx) => (
@@ -36,7 +36,7 @@ export default function XPInfoCard() {
             <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/15 flex items-center justify-center text-emerald-400 flex-shrink-0">
               {ICONS[idx]}
             </div>
-            <span className="text-gray-300 text-xs flex-1">{reward.label}</span>
+            <span className="text-foreground text-xs flex-1">{reward.label}</span>
             <span
               className="text-sm font-bold flex-shrink-0"
               style={{ color: "#10b981" }}

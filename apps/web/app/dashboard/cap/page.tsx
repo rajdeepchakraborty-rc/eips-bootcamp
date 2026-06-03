@@ -23,7 +23,7 @@ export default function CAPPage() {
     <DashboardShell>
       <div className="space-y-5">
         <div
-          className="relative overflow-hidden rounded-3xl border border-white/5 px-6 pt-8 pb-10"
+          className="relative overflow-hidden rounded-3xl border border-border px-6 pt-8 pb-10"
           style={{
             background:
               "linear-gradient(180deg, rgba(52,211,153,0.04) 0%, transparent 100%)",
@@ -51,10 +51,10 @@ export default function CAPPage() {
                 <StarIcon />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-white tracking-tight">
+                <h1 className="text-3xl font-bold text-foreground tracking-tight">
                   CAP Program
                 </h1>
-                <p className="text-white/45 text-sm mt-1.5 max-w-lg leading-relaxed">
+                <p className="text-foreground/45 text-sm mt-1.5 max-w-lg leading-relaxed">
                   Join the EIPsInsight Campus Ambassador Program and help grow
                   Ethereum education on your campus.
                 </p>
@@ -75,17 +75,17 @@ export default function CAPPage() {
           >
             <span className="text-emerald-400 text-base">✦</span>
             <div>
-              <p className="text-white text-xs font-medium">
+              <p className="text-foreground text-xs font-medium">
                 Empower your campus.
               </p>
-              <p className="text-white/35 text-xs">
+              <p className="text-foreground/35 text-xs">
                 Earn XP. Unlock perks. Grow your network.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="rounded-3xl border border-white/5 bg-black/20 px-6 py-10">
+        <div className="rounded-3xl border border-border bg-background/20 px-6 py-10">
           <div className="max-w-5xl mx-auto">
             {loading ? (
               <LoadingSkeleton />

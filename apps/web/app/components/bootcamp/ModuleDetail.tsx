@@ -48,12 +48,12 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
   return (
     <div className="flex h-full overflow-hidden">
       {/* Sidebar - Lessons List */}
-      <div className="w-96 bg-gradient-to-b from-gray-950 via-black to-black border-r border-gray-800 flex flex-col overflow-hidden">
+      <div className="w-96 bg-gradient-to-b from-gray-950 via-black to-black border-r border-border flex flex-col overflow-hidden">
         {/* Module Header */}
-        <div className="p-6 border-b border-gray-800">
+        <div className="p-6 border-b border-border">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition-colors mb-4"
+            className="flex items-center gap-2 text-muted-foreground hover:text-emerald-400 transition-colors mb-4"
           >
             <ChevronLeft size={18} />
             <span className="text-sm font-medium">Back to Modules</span>
@@ -64,20 +64,20 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
               <Book size={24} className="text-black" />
             </div>
             <div className="flex-1">
-              <h2 className="text-lg font-bold text-white mt-1">{module.title}</h2>
+              <h2 className="text-lg font-bold text-foreground mt-1">{module.title}</h2>
             </div>
           </div>
         </div>
 
         {/* Module Progress */}
-        <div className="px-6 py-4 border-b border-gray-800">
+        <div className="px-6 py-4 border-b border-border">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-gray-300">Progress</span>
+            <span className="text-sm font-semibold text-foreground">Progress</span>
             <span className="text-sm font-bold text-emerald-400">
               {module.completed}/{module.lessons}
             </span>
           </div>
-          <div className="w-full h-2 bg-gray-800/50 rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-accent rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all"
               style={{ width: `${module.lessons > 0 ? (module.completed / module.lessons) * 100 : 0}%` }}
@@ -94,7 +94,7 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
               className={`w-full text-left p-4 rounded-xl transition-all ${
                 selectedLesson === lesson.id
                   ? 'bg-gradient-to-r from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30'
-                  : 'bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50'
+                  : 'bg-accent/50 hover:bg-accent border border-border'
               }`}
             >
               <div className="flex items-start gap-3">
@@ -111,10 +111,10 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
                   <div className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
                     Lesson {idx + 1}
                   </div>
-                  <h4 className="text-sm font-semibold text-white mt-1 line-clamp-2">
+                  <h4 className="text-sm font-semibold text-foreground mt-1 line-clamp-2">
                     {lesson.title}
                   </h4>
-                  <div className="flex items-center gap-1 mt-2 text-xs text-gray-400">
+                  <div className="flex items-center gap-1 mt-2 text-xs text-muted-foreground">
                     <Clock size={12} />
                     {lesson.duration}
                   </div>
@@ -125,16 +125,16 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
         </div>
 
         {/* Module Stats */}
-        <div className="p-4 border-t border-gray-800 space-y-3 bg-gradient-to-t from-black to-transparent">
+        <div className="p-4 border-t border-border space-y-3 bg-gradient-to-t from-black to-transparent">
           <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Total Duration</span>
-            <span className="font-semibold text-white flex items-center gap-1">
+            <span className="text-muted-foreground">Total Duration</span>
+            <span className="font-semibold text-foreground flex items-center gap-1">
               <Clock size={14} className="text-emerald-400" />
               {module.duration}
             </span>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Total XP</span>
+            <span className="text-muted-foreground">Total XP</span>
             <span className="font-semibold text-emerald-400 flex items-center gap-1">
               <Zap size={14} />
               {module.xpReward}
@@ -144,7 +144,7 @@ export function ModuleDetail({ module, onBack, lessons, onLessonComplete }: Modu
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto bg-black">
+      <div className="flex-1 overflow-y-auto bg-background">
         {selectedLessonData ? (
           <LessonContent 
             lesson={selectedLessonData} 
@@ -164,15 +164,15 @@ function ModuleOverview({ module, lessons }: { module: Module; lessons: Lesson[]
     <div className="max-w-4xl mx-auto p-8">
       {/* Header */}
       <div className="mb-12">
-        <h1 className="text-5xl font-bold text-white mb-3">
+        <h1 className="text-5xl font-bold text-foreground mb-3">
           {module.title}
         </h1>
-        <p className="text-xl text-gray-400 max-w-2xl">{module.description}</p>
+        <p className="text-xl text-muted-foreground max-w-2xl">{module.description}</p>
       </div>
 
       {/* Key Takeaways */}
       <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border border-emerald-500/20 rounded-2xl p-8 mb-12">
-        <h2 className="text-2xl font-bold text-white mb-6">What You'll Learn</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-6">What You'll Learn</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {lessons.map((lesson, idx) => (
             <div key={lesson.id} className="flex gap-4">
@@ -180,8 +180,8 @@ function ModuleOverview({ module, lessons }: { module: Module; lessons: Lesson[]
                 <span className="text-sm font-bold text-emerald-400">{idx + 1}</span>
               </div>
               <div>
-                <h3 className="text-white font-semibold mb-1">{lesson.title}</h3>
-                <p className="text-gray-400 text-sm">{lesson.description}</p>
+                <h3 className="text-foreground font-semibold mb-1">{lesson.title}</h3>
+                <p className="text-muted-foreground text-sm">{lesson.description}</p>
               </div>
             </div>
           ))}
@@ -190,8 +190,8 @@ function ModuleOverview({ module, lessons }: { module: Module; lessons: Lesson[]
 
       {/* Next Steps */}
       <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/5 border border-cyan-500/20 rounded-2xl p-8">
-        <h2 className="text-2xl font-bold text-white mb-4">Ready to Get Started?</h2>
-        <p className="text-gray-400 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">Ready to Get Started?</h2>
+        <p className="text-muted-foreground mb-6">
           Click on the first lesson to begin this module. You can progress through lessons at your own pace.
         </p>
         <button className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-black font-semibold rounded-lg transition-all">
@@ -216,7 +216,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
   return (
     <div className="max-w-4xl mx-auto p-8">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-gray-400 text-sm mb-6">
+      <div className="flex items-center gap-2 text-muted-foreground text-sm mb-6">
         <span>{moduleTitle}</span>
         <ChevronRight size={16} />
         <span className="text-emerald-400">{lesson.title}</span>
@@ -225,7 +225,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
       {/* Lesson Header */}
       <div className="mb-12">
         <div className="flex items-start justify-between mb-4">
-          <h1 className="text-5xl font-bold text-white flex-1">{lesson.title}</h1>
+          <h1 className="text-5xl font-bold text-foreground flex-1">{lesson.title}</h1>
           {lesson.completed && (
             <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-lg">
               <Check size={18} className="text-emerald-400" />
@@ -233,7 +233,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
             </div>
           )}
         </div>
-        <p className="text-gray-400 flex items-center gap-2">
+        <p className="text-muted-foreground flex items-center gap-2">
           <Clock size={16} className="text-emerald-400" />
           {lesson.duration}
         </p>
@@ -271,7 +271,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
           } else if (videoUrl && !videoUrl.includes('youtube') && !videoUrl.includes('vimeo')) {
             // It's a direct video link, use native HTML5 player
             return (
-              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-border shadow-2xl bg-background">
                 <video 
                   src={videoUrl}
                   controls
@@ -287,7 +287,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
 
           if (embedUrl) {
             return (
-              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-border shadow-2xl bg-background">
                 <iframe 
                   src={embedUrl} 
                   title={lesson.title}
@@ -299,15 +299,15 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
             );
           } else if (thumbnailUrl) {
             return (
-              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-border shadow-2xl bg-background">
                 <img src={thumbnailUrl} alt={lesson.title} className="w-full h-full object-cover" />
               </div>
             );
           } else {
             return (
-              <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-gray-800 rounded-2xl p-8 flex flex-col items-center justify-center min-h-64">
+              <div className="bg-gradient-to-br from-gray-900/50 to-black/50 border border-border rounded-2xl p-8 flex flex-col items-center justify-center min-h-64">
                 <PlayCircle size={64} className="text-emerald-400/30 mb-4" />
-                <p className="text-gray-400 text-center">No video available for this lesson</p>
+                <p className="text-muted-foreground text-center">No video available for this lesson</p>
               </div>
             );
           }
@@ -315,8 +315,8 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
 
         {/* Description / Content Text */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-4">Overview</h2>
-          <div className="text-gray-300 leading-relaxed text-lg whitespace-pre-wrap font-sans">
+          <h2 className="text-2xl font-bold text-foreground mb-4">Overview</h2>
+          <div className="text-foreground leading-relaxed text-lg whitespace-pre-wrap font-sans">
             {(() => {
               try {
                 if (lesson.content) {
@@ -331,7 +331,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
 
         {/* Key Points */}
         <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border border-emerald-500/20 rounded-2xl p-8">
-          <h2 className="text-2xl font-bold text-white mb-6">Key Points</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-6">Key Points</h2>
           <ul className="space-y-4">
             {[
               'Understand the core concept and its importance',
@@ -341,7 +341,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
             ].map((point, idx) => (
               <li key={idx} className="flex gap-3">
                 <Check size={20} className="text-emerald-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-300">{point}</span>
+                <span className="text-foreground">{point}</span>
               </li>
             ))}
           </ul>
@@ -349,7 +349,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
 
         {/* Resources */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-6">Resources</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-6">Resources</h2>
           <div className="space-y-3">
             {[
               { title: 'EIP Standard Reference', icon: FileText },
@@ -358,10 +358,10 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
             ].map((resource, idx) => (
               <button
                 key={idx}
-                className="w-full flex items-center gap-3 p-4 bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-emerald-500/30 rounded-xl transition-all text-left"
+                className="w-full flex items-center gap-3 p-4 bg-accent/50 hover:bg-accent border border-border hover:border-emerald-500/30 rounded-xl transition-all text-left"
               >
                 <resource.icon size={20} className="text-emerald-400 flex-shrink-0" />
-                <span className="font-medium text-white flex-1">{resource.title}</span>
+                <span className="font-medium text-foreground flex-1">{resource.title}</span>
                 <ChevronRight size={18} className="text-gray-600" />
               </button>
             ))}
@@ -370,7 +370,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
 
         {/* Actions */}
         {!lesson.completed && (
-          <div className="flex gap-4 pt-8 border-t border-gray-800">
+          <div className="flex gap-4 pt-8 border-t border-border">
             <button 
               onClick={handleComplete}
               disabled={isCompleting}
@@ -390,7 +390,7 @@ function LessonContent({ lesson, moduleTitle, onLessonComplete }: { lesson: Less
             </button>
             <button 
               onClick={() => alert('Progress is automatically saved as you watch!')}
-              className="px-6 py-4 bg-gray-800/50 hover:bg-gray-800 border border-gray-700 text-white font-semibold rounded-xl transition-all flex items-center gap-2"
+              className="px-6 py-4 bg-accent hover:bg-gray-800 border border-border text-foreground font-semibold rounded-xl transition-all flex items-center gap-2"
             >
               <Clock size={18} />
               Save Progress

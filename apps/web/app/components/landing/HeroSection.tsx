@@ -142,7 +142,7 @@ export function HeroSection() {
   const isSignedIn = !!session?.user;
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#080808] pt-16">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background pt-16">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
@@ -167,13 +167,13 @@ export function HeroSection() {
               Understand Ethereum. Shape the Future.
             </p>
 
-            <h1 className="text-white font-black leading-none mb-6" style={{ fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', letterSpacing: '-0.03em', lineHeight: 1.02 }}>
+            <h1 className="text-foreground font-black leading-none mb-6" style={{ fontSize: 'clamp(2.8rem, 5vw, 4.2rem)', letterSpacing: '-0.03em', lineHeight: 1.02 }}>
               Learn Ethereum.<br />
               Understand <span className="text-emerald-400">EIPs</span>.<br />
               Build the Future.
             </h1>
 
-            <p className="text-zinc-400 text-base leading-relaxed mb-8 max-w-[480px]">
+            <p className="text-muted-foreground text-base leading-relaxed mb-8 max-w-[480px]">
               EIPsInsight Bootcamp is your gateway to the world of Ethereum Improvement Proposals, core concepts, and the ideas shaping the Ethereum ecosystem.
             </p>
 
@@ -187,7 +187,7 @@ export function HeroSection() {
                 <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
               {!isSignedIn && (
-                <div className="text-sm text-zinc-500 leading-snug">
+                <div className="text-sm text-muted-foreground leading-snug">
                   Sign in or create an account<br />
                   to continue your journey
                 </div>
@@ -195,9 +195,9 @@ export function HeroSection() {
             </div>
 
             {/* Value prop bar */}
-            <div className="flex items-center gap-3 bg-white/3 border border-white/6 rounded-xl px-4 py-3 max-w-[460px]">
+            <div className="flex items-center gap-3 bg-white/3 border border-border rounded-xl px-4 py-3 max-w-[460px]">
               <BookOpen size={16} className="text-emerald-400 flex-shrink-0" />
-              <p className="text-zinc-400 text-sm">
+              <p className="text-muted-foreground text-sm">
                 From beginner to contributor — learn, explore, and grow with Ethereum.
               </p>
             </div>

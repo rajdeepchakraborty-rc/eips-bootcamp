@@ -51,8 +51,8 @@ function SparklineChart({ data, color = 'emerald' }: { data: number[]; color?: C
 
 export function PlatformHealthCard({ data }: PlatformHealthCardProps) {
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
-      <h3 className="text-white font-semibold text-lg mb-6 flex items-center gap-2">
+    <div className="rounded-xl border border-emerald-500/20 bg-background/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10 p-6">
+      <h3 className="text-foreground font-semibold text-lg mb-6 flex items-center gap-2">
         <TrendingUp className="w-5 h-5 text-emerald-400" />
         Platform Health
       </h3>
@@ -61,7 +61,7 @@ export function PlatformHealthCard({ data }: PlatformHealthCardProps) {
         {/* User Growth */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-gray-400 text-sm font-medium">User Growth</p>
+            <p className="text-muted-foreground text-sm font-medium">User Growth</p>
             <span className="text-emerald-400 text-sm font-semibold">+12.4%</span>
           </div>
           <SparklineChart data={data.userGrowth} color="emerald" />
@@ -70,8 +70,8 @@ export function PlatformHealthCard({ data }: PlatformHealthCardProps) {
         {/* Retention Rate */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-gray-400 text-sm font-medium">Retention Rate</p>
-            <span className="text-white text-lg font-bold">{data.retentionRate}%</span>
+            <p className="text-muted-foreground text-sm font-medium">Retention Rate</p>
+            <span className="text-foreground text-lg font-bold">{data.retentionRate}%</span>
           </div>
           <div className="w-full bg-gray-700/30 rounded-full h-2 overflow-hidden">
             <div
@@ -84,8 +84,8 @@ export function PlatformHealthCard({ data }: PlatformHealthCardProps) {
         {/* Referral Conversion */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-gray-400 text-sm font-medium">Referral Conversion</p>
-            <span className="text-white text-lg font-bold">{data.referralConversion}%</span>
+            <p className="text-muted-foreground text-sm font-medium">Referral Conversion</p>
+            <span className="text-foreground text-lg font-bold">{data.referralConversion}%</span>
           </div>
           <div className="w-full bg-gray-700/30 rounded-full h-2 overflow-hidden">
             <div

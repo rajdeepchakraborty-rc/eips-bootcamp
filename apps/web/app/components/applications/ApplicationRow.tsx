@@ -5,6 +5,20 @@ import { Eye, CheckCircle2, XCircle, Clock } from 'lucide-react';
 import { getStatusColor, getTrackColor, getStatusIcon } from '@/app/lib/applications';
 import type { Application } from '@/app/lib/applications';
 
+function Avatar({ name, avatarUrl, className }: { name: string; avatarUrl?: string; className?: string }) {
+  if (avatarUrl && avatarUrl.trim() !== '') {
+    return <img src={avatarUrl} alt={name} className={className} />;
+  }
+  const initials = name.replace(/[^a-zA-Z]/g, '').slice(0, 2).toUpperCase() || 'U';
+  const colors = ['bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300', 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300', 'bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300', 'bg-pink-100 text-pink-800 dark:bg-pink-900/50 dark:text-pink-300', 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300'];
+  const idx = name.charCodeAt(0) % colors.length;
+  return (
+    <div className={`${className} ${colors[idx]} flex items-center justify-center font-bold flex-shrink-0`}>
+      {initials}
+    </div>
+  );
+}
+
 interface ApplicationRowProps {
   application: Application;
   onViewDetails: (application: Application) => void;
@@ -61,7 +75,7 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
   return (
     <div 
       onClick={() => onViewDetails(application)}
-      className="group relative flex flex-col p-5 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-emerald-500/50 transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-sm"
+      className="group relative flex flex-col p-5 bg-accent border border-border rounded-xl hover:bg-accent hover:border-emerald-500/50 transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-sm"
     >
       {/* Background Glow on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-emerald-500/0 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -69,13 +83,13 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
       {/* Header: Avatar, Info, Status */}
       <div className="flex items-start justify-between mb-4 z-10">
         <div className="flex items-center gap-3 flex-1 min-w-0 pr-4">
-          <img
-            src={application.avatar}
-            alt={application.name}
+          <Avatar
+            name={application.name}
+            avatarUrl={application.avatar}
             className="flex-shrink-0 w-12 h-12 rounded-full border-2 border-emerald-500/30 object-cover shadow-[0_0_15px_rgba(16,185,129,0.2)]"
           />
           <div className="min-w-0 flex-1">
-            <h3 className="font-semibold text-white text-base leading-tight truncate">{application.name}</h3>
+            <h3 className="font-semibold text-foreground text-base leading-tight truncate">{application.name}</h3>
             <p className="text-xs text-emerald-400 mt-0.5 truncate">{application.email}</p>
           </div>
         </div>
@@ -91,18 +105,18 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
       </div>
 
       {/* Body: Location & Batch & Time */}
-      <div className="grid grid-cols-2 gap-y-3 mb-5 text-sm text-gray-400 z-10">
+      <div className="grid grid-cols-2 gap-y-3 mb-5 text-sm text-muted-foreground z-10">
         <div className="flex flex-col">
-          <span className="text-xs text-gray-500 mb-0.5">Location</span>
-          <span className="text-gray-300 truncate">{application.city}, IN</span>
+          <span className="text-xs text-muted-foreground mb-0.5">Location</span>
+          <span className="text-foreground truncate">{application.city}, IN</span>
         </div>
         <div className="flex flex-col">
-          <span className="text-xs text-gray-500 mb-0.5">Batch</span>
-          <span className="text-gray-300">{application.batch}</span>
+          <span className="text-xs text-muted-foreground mb-0.5">Batch</span>
+          <span className="text-foreground">{application.batch}</span>
         </div>
         <div className="flex flex-col col-span-2">
-          <span className="text-xs text-gray-500 mb-0.5">Applied</span>
-          <div className="flex items-center gap-1.5 text-gray-300">
+          <span className="text-xs text-muted-foreground mb-0.5">Applied</span>
+          <div className="flex items-center gap-1.5 text-foreground">
             <Clock className="w-3.5 h-3.5" />
             <span>{formattedDate} at {time}</span>
           </div>
@@ -110,15 +124,15 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
       </div>
 
       {/* Footer Actions */}
-      <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between gap-2 z-10">
+      <div className="mt-auto pt-4 border-t border-border flex items-center justify-between gap-2 z-10">
         <button
           onClick={(e) => { e.stopPropagation(); onViewDetails(application); }}
-          className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-white bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors"
+          className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-foreground bg-accent border border-border rounded-lg hover:bg-accent transition-colors"
         >
           <Eye className="w-3.5 h-3.5" /> View
         </button>
         
-        {application.status === 'PENDING' || application.status === 'UNDER_REVIEW' ? (
+        {application.status === 'pending' ? (
           <>
             <button
               onClick={handleApprove}

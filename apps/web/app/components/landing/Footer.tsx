@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export function Footer() {
   return (
-    <footer className="bg-[#050505] border-t border-white/5 font-sans">
+    <footer className="bg-background border-t border-border font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           
@@ -19,17 +19,17 @@ export function Footer() {
               <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 relative drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]">
                 <Image src="/brand-logo.png" alt="EIPsInsight Logo" fill className="object-contain" />
               </div>
-              <div className="text-white font-bold text-xl tracking-tight">
+              <div className="text-foreground font-bold text-xl tracking-tight">
                 EIPsInsight Bootcamp
               </div>
             </div>
             
-            <p className="text-zinc-400 text-sm flex items-center gap-1.5 mb-8">
+            <p className="text-muted-foreground text-sm flex items-center gap-1.5 mb-8">
               Build With <Heart size={14} className="text-emerald-500 fill-emerald-500/20" /> by Avarch
             </p>
             
             <div>
-              <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">JOIN US:</p>
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">JOIN US:</p>
               <div className="inline-flex items-center justify-center px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">
                 v4.1
               </div>
@@ -38,11 +38,11 @@ export function Footer() {
 
           {/* Column 2: Links */}
           <div>
-            <h4 className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest mb-5">LINKS</h4>
+            <h4 className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest mb-5">LINKS</h4>
             <ul className="space-y-3.5">
               {footerLinks.important.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} className="text-zinc-300 text-sm hover:text-emerald-400 transition-colors">
+                  <Link href={l.href} className="text-muted-foreground text-sm hover:text-emerald-400 transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -52,12 +52,12 @@ export function Footer() {
 
           {/* Column 3: Follow Us */}
           <div>
-            <h4 className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest mb-5">FOLLOW US</h4>
+            <h4 className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest mb-5">FOLLOW US</h4>
             <ul className="space-y-3.5">
               {footerLinks.followUs.map((l) => {
                 return (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-zinc-300 text-sm hover:text-emerald-400 transition-colors flex items-center gap-2">
+                    <Link href={l.href} className="text-muted-foreground text-sm hover:text-emerald-400 transition-colors flex items-center gap-2">
                       {l.label === 'YouTube' && (
                         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
                       )}

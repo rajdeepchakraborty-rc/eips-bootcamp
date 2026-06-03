@@ -159,23 +159,23 @@ export function GrowthChart({ data }: GrowthChartProps) {
   const [period, setPeriod] = useState<'daily' | 'weekly' | 'monthly'>('daily');
 
   return (
-    <div className="rounded-xl border border-emerald-500/20 bg-black/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
+    <div className="rounded-xl border border-emerald-500/20 bg-background/40 backdrop-blur-xl overflow-hidden shadow-lg shadow-emerald-500/10">
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
         <div>
-          <h3 className="text-white font-semibold text-lg mb-1">Platform Growth Overview</h3>
+          <h3 className="text-foreground font-semibold text-lg mb-1">Platform Growth Overview</h3>
           <div className="flex items-center gap-4 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-emerald-400" />
-              <span className="text-gray-400">Users</span>
+              <span className="text-muted-foreground">Users</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-blue-400" />
-              <span className="text-gray-400">Active Learners</span>
+              <span className="text-muted-foreground">Active Learners</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-purple-400" />
-              <span className="text-gray-400">XP Awarded</span>
+              <span className="text-muted-foreground">XP Awarded</span>
             </div>
           </div>
         </div>
@@ -203,7 +203,7 @@ export function GrowthChart({ data }: GrowthChartProps) {
                   w-full px-4 py-2 text-left text-sm transition-colors
                   ${period === p
                     ? 'bg-emerald-500/20 text-emerald-400'
-                    : 'text-gray-400 hover:bg-emerald-500/10 hover:text-emerald-400'
+                    : 'text-muted-foreground hover:bg-emerald-500/10 hover:text-emerald-400'
                   }
                 `}
               >

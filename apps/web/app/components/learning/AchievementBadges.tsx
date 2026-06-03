@@ -41,7 +41,7 @@ export const AchievementBadges = ({ stats }: { stats?: any }) => {
   ];
 
   const getColorClasses = (color: string, unlocked: boolean) => {
-    if (!unlocked) return 'bg-white/5 border-white/5 text-zinc-600';
+    if (!unlocked) return 'bg-accent border-border text-muted-foreground';
     switch (color) {
       case 'amber': return 'bg-amber-400/10 border-amber-400/30 text-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.15)]';
       case 'blue': return 'bg-blue-500/10 border-blue-500/30 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]';
@@ -51,10 +51,10 @@ export const AchievementBadges = ({ stats }: { stats?: any }) => {
   };
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/8 rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
+    <div className="bg-card border border-border rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-white font-bold text-base">Achievements</h3>
-        <p className="text-xs font-semibold text-zinc-400">{badges.filter(b => b.unlocked).length} Unlocked</p>
+        <h3 className="text-foreground font-bold text-base">Achievements</h3>
+        <p className="text-xs font-semibold text-muted-foreground">{badges.filter(b => b.unlocked).length} Unlocked</p>
       </div>
 
       <div className="flex-1 grid grid-cols-2 gap-4">
@@ -69,8 +69,8 @@ export const AchievementBadges = ({ stats }: { stats?: any }) => {
                   )}
                   <Icon size={32} className="relative z-10" />
                 </div>
-                <h4 className={`text-sm font-bold mb-1 ${badge.unlocked ? 'text-white' : 'text-zinc-400'}`}>{badge.name}</h4>
-                <p className="text-[10px] leading-tight text-zinc-500">{badge.description}</p>
+                <h4 className={`text-sm font-bold mb-1 ${badge.unlocked ? 'text-foreground' : 'text-muted-foreground'}`}>{badge.name}</h4>
+                <p className="text-[10px] leading-tight text-muted-foreground">{badge.description}</p>
               </div>
             </div>
           );
