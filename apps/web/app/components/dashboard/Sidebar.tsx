@@ -118,6 +118,7 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
         <div className="flex items-center justify-between px-4 py-5 border-b border-border">
           <div className="flex items-center gap-3">
             {/* Ethereum diamond logo placeholder */}
@@ -141,6 +142,7 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
             <X size={18} />
           </button>
         </div>
+        </Link>
 
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-3 py-5 scrollbar-hide">
