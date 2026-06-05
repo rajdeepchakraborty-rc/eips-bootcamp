@@ -264,7 +264,7 @@ function StatsPanel() {
   ];
 
   return (
-    <div className="hidden lg:flex flex-col gap-6 absolute right-0 top-0">
+    <div className="hidden lg:flex flex-row gap-6 absolute right-0 top-15">
       {stats.map((stat, idx) => {
         const Icon = stat.icon;
         const colorClasses =
@@ -272,12 +272,12 @@ function StatsPanel() {
 
         return (
           <div key={idx} className="flex items-center gap-3 text-right">
-            <div className="text-right">
-              <p className="text-2xl sm:text-3xl font-black text-white">{stat.value}</p>
-              <p className="text-xs sm:text-sm text-gray-400 font-medium">{stat.label}</p>
-            </div>
             <div className={`p-2.5 rounded-lg bg-white/5 border border-white/10 ${colorClasses}`}>
               <Icon size={20} strokeWidth={1.5} />
+            </div>
+            <div className="text-left">
+              <p className="text-2xl sm:text-3xl font-black text-white">{stat.value}</p>
+              <p className="text-xs sm:text-sm text-gray-400 font-medium">{stat.label}</p>
             </div>
           </div>
         );
