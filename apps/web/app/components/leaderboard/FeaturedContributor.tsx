@@ -95,7 +95,7 @@ function StatBlock({ label, value, sub, accent }: { label: string; value: string
   return (
     <div className="text-center">
       <p className="text-[10px] font-bold tracking-widest text-foreground/30 mb-1">{label}</p>
-      <p className="text-3xl font-bold leading-none mb-1" style={{ color: accent ? "#34d399" : "#fff" }}>{value}</p>
+      <p className="text-3xl font-bold leading-none mb-1" style={{ color: accent ? "#34d399" : "text-foreground" }}>{value}</p>
       <p className="text-xs text-foreground/35">{sub}</p>
     </div>
   );
