@@ -46,7 +46,7 @@ export default function LeaderboardTable({ users }: Props) {
         </tbody>
       </table>
       <div className="p-3 border-t border-border bg-accent/50">
-        <button className="w-full py-2 rounded-lg bg-accent hover:bg-accent-foreground/5 text-sm font-semibold transition-colors">View full leaderboard</button>
+        <button className="w-full py-2 rounded-lg bg-foreground/6 hover:bg-emerald-600 text-sm font-semibold transition-colors">View full leaderboard</button>
       </div>
     </div>
   );
