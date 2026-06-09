@@ -457,9 +457,11 @@ export async function fetchTopUsers(): Promise<TopUser[]> {
       username: user.handle || '@unknown',
       avatar: user.avatarUrl,
       xpEarned: user.xp,
-      modulesCompleted: 0,
+      modulesCompleted: user.modulesCompleted ?? 0,
       streak: user.streak,
-      joinDate: new Date()
+      joinDate: user.createdAt
+        ? new Date(user.createdAt)
+        : new Date()
     }));
   } catch (error) {
     try {
