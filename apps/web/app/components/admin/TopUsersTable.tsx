@@ -88,7 +88,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
         <h3 className="text-foreground font-semibold text-lg">Top Users by XP</h3>
-        <a href="#" className="
+        <a href="/dashboard/leaderboard" className="
           flex items-center gap-1 text-emerald-400 text-sm font-medium
           hover:text-emerald-300 transition-colors group
         ">
