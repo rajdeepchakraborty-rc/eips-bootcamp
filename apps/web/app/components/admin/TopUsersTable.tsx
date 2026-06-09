@@ -10,7 +10,7 @@ interface TopUsersTableProps {
 }
 
 // Simple avatar generator based on user name
-function Avatar({ name }: { name: string }) {
+function Avatar({ name, avatar }: { name: string; avatar?: string; }) {
   const colors = [
     'bg-emerald-500',
     'bg-blue-500',
@@ -28,11 +28,21 @@ function Avatar({ name }: { name: string }) {
     .toUpperCase();
 
   return (
-    <div className={`
+    <div className="w-10 h-10 rounded-full overflow-hidden">
+      {avatar ? (
+        <img
+          src={avatar}
+          alt={name}
+          className="w-full h-full object-cover"
+        />
+        ) : (
+      <div className={`
       w-10 h-10 rounded-full flex items-center justify-center
       text-foreground text-sm font-semibold ${color}
-    `}>
-      {initials}
+      `}>
+        {initials}
+      </div>
+      )}
     </div>
   );
 }
@@ -88,7 +98,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-emerald-500/10">
         <h3 className="text-foreground font-semibold text-lg">Top Users by XP</h3>
-        <a href="#" className="
+        <a href="/dashboard/leaderboard" className="
           flex items-center gap-1 text-emerald-400 text-sm font-medium
           hover:text-emerald-300 transition-colors group
         ">
@@ -102,10 +112,10 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
         <table className="w-full">
           <thead>
             <tr className="border-b border-emerald-500/10 bg-emerald-500/5">
-              <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide">#</th>
+              <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide">Rank</th>
               <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide">User</th>
               <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">XP Earned</th>
-              <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">Modules</th>
+              <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">Lessons Completed</th>
               <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">Streak</th>
               <th className="px-6 py-4 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wide">Joined</th>
             </tr>
@@ -124,7 +134,7 @@ export function TopUsersTable({ users }: TopUsersTableProps) {
                 {/* User */}
                 <td className="px-6 py-5">
                   <div className="flex items-center gap-3">
-                    <Avatar name={user.name} />
+                    <Avatar name={user.name} avatar={user.avatar} />
                     <div>
                       <p className="text-foreground font-medium text-sm">
                         {user.name}

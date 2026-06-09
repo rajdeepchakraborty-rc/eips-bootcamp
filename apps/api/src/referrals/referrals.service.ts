@@ -154,6 +154,7 @@ export class ReferralsService {
         profile: true,
         capApplication: true,
         xpTransactions: true,
+        lessonProgress: true,
         referralCode: {
           include: { referrals: true },
         },
@@ -163,6 +164,7 @@ export class ReferralsService {
     const leaderboard = users.map((user) => {
       const xp = user.xpTransactions.reduce((sum, tx) => sum + tx.amount, 0);
       const referralsCount = user.referralCode?.referrals?.length || 0;
+      const completedLessons = user.lessonProgress.length;
       return {
         userId: user.id,
         name: user.name || user.profile?.fullName || user.username || (user.email ? user.email.split('@')[0] : 'Unknown'),
@@ -172,6 +174,8 @@ export class ReferralsService {
         referrals: referralsCount,
         capStatus: user.capApplication?.status || 'None',
         streak: 0,
+        modulesCompleted: completedLessons,
+        createdAt: user.createdAt,
       };
     });
 

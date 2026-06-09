@@ -110,7 +110,7 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
           </div>
 
           {/* Heatmap */}
-          <div className="overflow-x-auto pb-4 custom-scrollbar">
+          <div className="pt-2 pl-4 custom-scrollbar">
             <div className="flex gap-1.5 mb-4 min-w-max">
               {weeks.map((week, weekIndex) => (
                 <div key={weekIndex} className="flex flex-col gap-1.5">
@@ -133,9 +133,16 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
                         {/* Tooltip on hover */}
                         <div
                           className={`
-                            absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+                            absolute top-full mb-2
+                            ${
+                              weekIndex < 3
+                              ? 'left-0'
+                              : weekIndex > weeks.length - 4
+                                ? 'right-0'
+                                : 'left-1/2 -translate-x-1/2'
+                            }
                             px-2 py-1 rounded text-xs text-foreground
-                            bg-zinc-800 border border-border shadow-lg
+                            bg-card border border-border shadow-lg
                             whitespace-nowrap pointer-events-none
                             opacity-0 group-hover/day:opacity-100
                             transition-opacity duration-200
