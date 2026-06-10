@@ -185,16 +185,17 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
                         )}`}
                       >
                         {/* Tooltip */}
-                        <div className="absolute top-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 rounded text-xs text-foreground bg-card border border-border shadow-lg whitespace-nowrap pointer-events-none opacity-0 group-hover/day:opacity-100 transition-opacity duration-200 z-20">
+                        <div className="absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 rounded-md text-[11px] leading-tight text-white bg-black/90 backdrop-blur-md border border-white/10 shadow-xl whitespace-nowrap pointer-events-none opacity-0 group-hover/day:opacity-100 transition-opacity duration-150">
                           {dateObj.toLocaleDateString(undefined, {
                             month: 'short',
                             day: 'numeric',
                             year: 'numeric',
                           })}
-                          :{' '}
-                          {day.intensity > 0
-                            ? `Activity level ${day.intensity}`
-                            : 'No activity'}
+                          <div className="text-[10px] text-white/70 mt-0.5">
+                            {day.intensity > 0
+                              ? `Activity level ${day.intensity}`
+                              : 'No activity'}
+                          </div>
                         </div>
                       </div>
                     );
