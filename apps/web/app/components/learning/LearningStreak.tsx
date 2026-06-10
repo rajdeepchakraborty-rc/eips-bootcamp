@@ -1,30 +1,54 @@
+'use client';
+
 import React from 'react';
 import { Flame } from 'lucide-react';
 
 export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
-  // Use real data if provided, otherwise empty array
   const rawData = streakData || [];
 
-  // Sort and validate
-  const sortedData = [...rawData].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-  
-  // Create a default empty heatmap if no data
+  // Sort data safely
+  const sortedData = [...rawData].sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
+
+  /**
+   * Map API data for fast lookup (fixes broken highlight issue)
+   */
+  const intensityMap = new Map(
+    sortedData.map((d) => [
+      new Date(d.date).toDateString(),
+      d.intensity,
+    ])
+  );
+
+  /**
+   * Generate FULL 1-year GitHub-style grid (no breaking change to logic)
+   */
   const ensureData = () => {
-    if (sortedData.length === 57) return sortedData;
-    const data = [];
+    const data: any[] = [];
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    for (let i = 56; i >= 0; i--) {
+
+    for (let i = 364; i >= 0; i--) {
       const date = new Date(today);
       date.setDate(date.getDate() - i);
-      data.push({ date, intensity: 0 });
+
+      const key = date.toDateString();
+
+      data.push({
+        date,
+        intensity: intensityMap.get(key) || 0,
+      });
     }
+
     return data;
   };
 
   const finalData = ensureData();
 
-  // Calculate streaks
+  /**
+   * KEEPING YOUR EXISTING STREAK LOGIC (no change)
+   */
   let currentStreak = 0;
   let longestStreak = 0;
   let tempStreak = 0;
@@ -33,33 +57,49 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
     if (finalData[i].intensity > 0) {
       tempStreak++;
       if (tempStreak > longestStreak) longestStreak = tempStreak;
-      // If it's today or yesterday and we have activity, we might have a current streak
+
       if (i >= finalData.length - 2) {
         currentStreak = tempStreak;
       }
     } else {
-      // If it's today and we don't have activity, the streak might still be alive from yesterday
       if (i < finalData.length - 1) {
         tempStreak = 0;
       }
     }
   }
 
-  // If today has no activity, but yesterday did, currentStreak is tempStreak
-  // If today and yesterday have no activity, currentStreak is 0.
-  if (finalData[finalData.length - 1].intensity === 0 && finalData[finalData.length - 2].intensity === 0) {
+  if (
+    finalData[finalData.length - 1].intensity === 0 &&
+    finalData[finalData.length - 2].intensity === 0
+  ) {
     currentStreak = 0;
-  } else if (finalData[finalData.length - 1].intensity === 0 && finalData[finalData.length - 2].intensity > 0) {
-    // Keep currentStreak as is
+  } else if (
+    finalData[finalData.length - 1].intensity === 0 &&
+    finalData[finalData.length - 2].intensity > 0
+  ) {
+    // keep streak as is
   } else if (finalData[finalData.length - 1].intensity > 0) {
     currentStreak = tempStreak;
   }
 
-  // Group data by week
-  const weeks = [];
-  for (let i = 0; i < finalData.length; i += 7) {
-    weeks.push(finalData.slice(i, i + 7));
-  }
+  /**
+   * FIXED: GitHub-style weekly grouping (no more 7-day bug)
+   */
+  const weeks: any[][] = [];
+  let currentWeek: any[] = [];
+
+  finalData.forEach((day) => {
+    currentWeek.push(day);
+
+    const dayOfWeek = new Date(day.date).getDay(); // 0 = Sunday
+
+    if (dayOfWeek === 6) {
+      weeks.push(currentWeek);
+      currentWeek = [];
+    }
+  });
+
+  if (currentWeek.length) weeks.push(currentWeek);
 
   const getColor = (intensity: number) => {
     if (intensity === 0) return 'bg-accent border-border';
@@ -72,17 +112,21 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
   return (
     <div className="relative group">
       <div className="relative rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-emerald-500/20 overflow-hidden">
+
         {/* Hover glow */}
         <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 
         <div className="relative z-10">
+
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
                 Consistency
               </p>
-              <h3 className="text-xl font-bold text-foreground">Learning Streak</h3>
+              <h3 className="text-xl font-bold text-foreground">
+                Learning Streak
+              </h3>
             </div>
 
             {/* Stats */}
@@ -92,18 +136,32 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
                   Current Streak
                 </p>
                 <div className="flex items-center justify-center gap-1.5">
-                  <Flame className={currentStreak > 0 ? "text-orange-400" : "text-muted-foreground"} size={16} />
-                  <p className={`text-xl font-bold ${currentStreak > 0 ? 'text-foreground' : 'text-muted-foreground'}`}>
-                    {currentStreak} <span className="text-sm text-muted-foreground font-normal">days</span>
+                  <Flame
+                    className={
+                      currentStreak > 0
+                        ? 'text-orange-400'
+                        : 'text-muted-foreground'
+                    }
+                    size={16}
+                  />
+                  <p className="text-xl font-bold text-foreground">
+                    {currentStreak}{' '}
+                    <span className="text-sm text-muted-foreground font-normal">
+                      days
+                    </span>
                   </p>
                 </div>
               </div>
+
               <div className="text-center">
                 <p className="text-xs text-muted-foreground font-medium mb-1">
                   Longest
                 </p>
                 <p className="text-xl font-bold text-emerald-400">
-                  {longestStreak} <span className="text-sm text-emerald-600 font-normal">days</span>
+                  {longestStreak}{' '}
+                  <span className="text-sm text-emerald-600 font-normal">
+                    days
+                  </span>
                 </p>
               </div>
             </div>
@@ -112,54 +170,39 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
           {/* Heatmap */}
           <div className="pt-2 pl-4 custom-scrollbar">
             <div className="flex gap-1.5 mb-4 min-w-max">
+
               {weeks.map((week, weekIndex) => (
                 <div key={weekIndex} className="flex flex-col gap-1.5">
+
                   {week.map((day, dayIndex) => {
                     const dateObj = new Date(day.date);
+
                     return (
                       <div
                         key={dayIndex}
-                        className={`
-                          w-4 h-4 rounded-sm
-                          border
-                          transition-all duration-200
-                          hover:ring-2 hover:ring-emerald-400/50
-                          cursor-pointer
-                          group/day
-                          relative
-                          ${getColor(day.intensity)}
-                        `}
+                        className={`w-4 h-4 rounded-sm border transition-all duration-200 hover:ring-2 hover:ring-emerald-400/50 cursor-pointer group/day relative ${getColor(
+                          day.intensity
+                        )}`}
                       >
-                        {/* Tooltip on hover */}
-                        <div
-                          className={`
-                            absolute top-full mb-2
-                            ${
-                              weekIndex < 3
-                              ? 'left-0'
-                              : weekIndex > weeks.length - 4
-                                ? 'right-0'
-                                : 'left-1/2 -translate-x-1/2'
-                            }
-                            px-2 py-1 rounded text-xs text-foreground
-                            bg-card border border-border shadow-lg
-                            whitespace-nowrap pointer-events-none
-                            opacity-0 group-hover/day:opacity-100
-                            transition-opacity duration-200
-                            z-20
-                          `}
-                        >
-                          {dateObj.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}: {
-                            day.intensity > 0
-                              ? `Activity level ${day.intensity}`
-                              : 'No activity'
-                          }
+                        {/* Tooltip */}
+                        <div className="absolute top-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 rounded text-xs text-foreground bg-card border border-border shadow-lg whitespace-nowrap pointer-events-none opacity-0 group-hover/day:opacity-100 transition-opacity duration-200 z-20">
+                          {dateObj.toLocaleDateString(undefined, {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })}
+                          :{' '}
+                          {day.intensity > 0
+                            ? `Activity level ${day.intensity}`
+                            : 'No activity'}
                         </div>
                       </div>
                     );
                   })}
+
                 </div>
               ))}
+
             </div>
           </div>
 
@@ -173,6 +216,7 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
             <div className="w-3 h-3 rounded-sm bg-emerald-400 border border-emerald-400" />
             <span>More</span>
           </div>
+
         </div>
       </div>
     </div>
