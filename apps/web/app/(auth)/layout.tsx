@@ -113,32 +113,40 @@ export default function AuthLayout({
             {/* SaaS cards */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
   
-              <div className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/5 p-2 backdrop-blur">
-                <span className="text-emerald-400">⚡</span>
+              <div className="group flex items-start gap-3 rounded-2xl border border-border/50 bg-background/40 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30">
+                <div className="rounded-xl bg-emerald-500/10 p-2 transition-transform duration-300 group-hover:scale-110">
+                  <Zap className="h-4 w-4 text-emerald-500" />
+                </div>
                 <div>
                   <p className="font-medium">Earn XP</p>
                   <p className="text-sm text-muted-foreground">Complete tasks and level up</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/5 p-2 backdrop-blur">
-                <span className="text-emerald-400">🔥</span>
+              <div className="group flex items-start gap-3 rounded-2xl border border-border/50 bg-background/40 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30">
+                <div className="rounded-xl bg-emerald-500/10 p-2 transition-transform duration-300 group-hover:scale-110">
+                  <TrendingUp className="h-4 w-4 text-emerald-500" />
+                </div>
                 <div>
                   <p className="font-medium">Streak System</p>
                   <p className="text-sm text-muted-foreground">Stay consistent daily</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/5 p-2 backdrop-blur">
-                <span className="text-emerald-400">🏆</span>
+              <div className="group flex items-start gap-3 rounded-2xl border border-border/50 bg-background/40 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30">
+                <div className="rounded-xl bg-emerald-500/10 p-2 transition-transform duration-300 group-hover:scale-110">
+                  <Trophy className="h-4 w-4 text-emerald-500" />
+                </div>
                 <div>
                   <p className="font-medium">Leaderboard</p>
                   <p className="text-sm text-muted-foreground">Compete globally</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/5 p-2 backdrop-blur">
-                <span className="text-emerald-400">📘</span>
+              <div className="group flex items-start gap-3 rounded-2xl border border-border/50 bg-background/40 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/30">
+                <div className="rounded-xl bg-emerald-500/10 p-2 transition-transform duration-300 group-hover:scale-110">
+                  <BookOpen className="h-4 w-4 text-emerald-500" />
+                </div>
                 <div>
                   <p className="font-medium">EIP Explorer</p>
                   <p className="text-sm text-muted-foreground">Study Ethereum proposals</p>
