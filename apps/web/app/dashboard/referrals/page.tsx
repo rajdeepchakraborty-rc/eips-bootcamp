@@ -21,7 +21,7 @@ import XPInfoCard from "../../components/referrals/Xpinfocard";
 import ImpactCard from "../../components/referrals/Impactcard";
 
 export const metadata = {
-  title: "Referrals | EIPsInsight Bootcamp",
+  title: "Referrals",
   description: "Invite builders and grow the Ethereum ecosystem.",
 };
 
