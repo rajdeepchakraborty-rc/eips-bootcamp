@@ -5,7 +5,7 @@ export function ProgressWidget({ progress = 0 }: { progress?: number }) {
 
   return (
     <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full">
-      <h3 className="text-foreground font-bold text-base mb-4">Your Progress</h3>
+      <h3 className="text-foreground font-bold text-base mb-4">Your XP Progress</h3>
 
       <div className="flex-1 flex flex-col items-center justify-center gap-4">
         {/* Circular progress */}
