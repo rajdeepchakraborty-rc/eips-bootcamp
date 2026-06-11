@@ -4,6 +4,8 @@ import { HeroSection } from './components/landing/HeroSection';
 import { LearningTracks } from './components/landing/LearningTracks';
 import { WhyEIPs } from './components/landing/WhyEIPs';
 import { JourneySection } from './components/landing/JourneySection';
+import { GovernanceSection } from './components/landing/GovernanceSection';
+import { CommunitySection } from './components/landing/CommunitySection';
 import { Footer } from './components/landing/Footer';
 
 export default function HomePage() {
@@ -14,7 +16,9 @@ export default function HomePage() {
         <HeroSection />
         <LearningTracks />
         <WhyEIPs />
+        <GovernanceSection />
         <JourneySection />
+        <CommunitySection />
       </main>
       <Footer />
     </div>
