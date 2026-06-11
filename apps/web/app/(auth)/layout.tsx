@@ -15,7 +15,7 @@ export default function AuthLayout({
           bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.18),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.15),transparent_40%)]
         "
       />
-      <Navbar />
+      <Navbar showNavLinks={false} className="bg-gradient-to-b from-background/80 to-background/20 backdrop-blur-md"/>
 
       {/* Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

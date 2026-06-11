@@ -9,7 +9,7 @@ import { Footer } from './components/landing/Footer';
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      <Navbar className=" bg-background/90 backdrop-blur-xl border-b border-border"/>
       <main className="mt-16">
         <HeroSection />
         <LearningTracks />
