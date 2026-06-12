@@ -20,6 +20,8 @@ import {
   ClipboardList,
   Zap,
   ChevronRight,
+  PanelLeftClose,
+  PanelLeftOpen,
   X,
 } from 'lucide-react';
 
@@ -32,6 +34,8 @@ interface NavItem {
 interface SidebarProps {
   mobileOpen: boolean;
   onMobileClose: () => void;
+  collapsed: boolean;
+  toggleSidebar: () => void;
 }
 
 const mainNav: NavItem[] = [
@@ -58,12 +62,14 @@ const adminNav: NavItem[] = [
   { label: 'Manage Events', href: '/dashboard/admin/events', icon: <Zap size={18} /> },
 ];
 
-function NavSection({ title, items, pathname, }: { title: string; items: NavItem[], pathname: string; }) {
+function NavSection({ title, items, pathname, collapsed }: { title: string; items: NavItem[], pathname: string; collapsed:boolean; }) {
   return (
     <div className="mb-6">
-      <p className="px-3 mb-2 text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
-        {title}
-      </p>
+      {!collapsed && (
+        <p className="px-3 mb-2 text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
+          {title}
+        </p>
+      )}
 
       <ul className="space-y-0.5">
         {items.map((item) => {
@@ -73,7 +79,10 @@ function NavSection({ title, items, pathname, }: { title: string; items: NavItem
           <li key={item.href}>
             <Link
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out hover:translate-x-1 group
+                title={collapsed ? item.label : ''}
+                className={`flex items-center
+                  ${collapsed ? 'justify-center' : 'gap-3'}
+                  px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out hover:translate-x-1 group
                   ${
                     active
                       ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
@@ -83,8 +92,16 @@ function NavSection({ title, items, pathname, }: { title: string; items: NavItem
               <span className={`transition-colors ${active ? 'text-emerald-400' : 'text-muted-foreground group-hover:text-emerald-400'}`}>
                 {item.icon}
               </span>
-              <span>{item.label}</span>
-              {active && (
+              <span className={`
+                  transition-all duration-300 overflow-hidden
+                  ${collapsed 
+                      ? 'w-0 opacity-0'
+                      : 'w-auto opacity-100'
+                  }
+                `}>
+                {item.label}
+              </span>
+              {active && !collapsed && (
                 <ChevronRight size={14} className="ml-auto text-emerald-500/60" />
               )}
             </Link>
@@ -97,8 +114,9 @@ function NavSection({ title, items, pathname, }: { title: string; items: NavItem
   );
 }
 
-export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
+export function Sidebar({ mobileOpen, onMobileClose, collapsed, toggleSidebar, }: SidebarProps) {
   const pathname = usePathname() || '';
+
   const [showUpgradeCTA, setShowUpgradeCTA] = useState(true);
   // Added the CTA state and effect
   useEffect(() => {
@@ -130,45 +148,104 @@ export function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-[220px] bg-card border-r border-border z-50 flex flex-col transition-transform duration-300
+        className={`fixed top-0 left-0 h-screen bg-card border-r border-border z-50 
+          flex flex-col 
+          transition-all duration-300 ease-in-out
+          ${collapsed ? 'lg:w-[72px]' : 'lg:w-[220px]'}
+          w-[220px]
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-        <div className="flex items-center justify-between px-4 py-5 border-b border-border">
-          <div className="flex items-center gap-3">
-            {/* EIPsInsight Logo Added */}
-              <div className="relative bottom-1.5" >
-                <ThemedLogoGif
-                  alt="EIPsInsight"
-                  width={45}
-                  height={45}
-                  unoptimized
-                />
-              </div>
-            <div>
-              <div className="text-foreground font-bold text-sm leading-none">EIPsInsight</div>
-              <div className="text-emerald-400 text-xs font-medium mt-0.5">Bootcamp</div>
-            </div>
-          </div>
+
+        <div className="px-4 py-5 border-b border-border space-y-3">
+
+          {/* Collapse button */}
           <button
-            onClick={onMobileClose}
-            className="lg:hidden text-muted-foreground hover:text-foreground transition-colors"
+            onClick={toggleSidebar}
+            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+            className={`
+              w-full
+              flex items-center justify-center
+              ${collapsed ? '' : 'gap-3'}
+              px-3 py-2.5
+              rounded-lg
+              text-sm
+              font-medium
+              text-muted-foreground
+              border border-border
+              hover:text-foreground
+              hover:bg-accent
+              transition-all duration-300
+              group
+            `}
           >
-            <X size={18} />
+            <span className="transition-colors group-hover:text-emerald-400">
+              {collapsed ? (
+                <PanelLeftOpen size={18} />
+              ) : (
+                <PanelLeftClose size={18} />
+              )}
+            </span>
+
+            <span
+              className={`
+                overflow-hidden
+                transition-all duration-300
+                ${
+                  collapsed
+                    ? 'w-0 opacity-0'
+                    : 'w-auto opacity-100'
+                }
+              `}
+            >
+              Collapse
+            </span>
           </button>
+          
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
+            <div className= {`
+              flex items-center
+              transition-all duration-300
+              ${collapsed ? 'justify-center w-full' : 'gap-3'}
+              `}
+              >
+              {/* EIPsInsight Logo Added */}
+                <div className="relative bottom-1.5" >
+                  <ThemedLogoGif
+                    alt="EIPsInsight"
+                    width={45}
+                    height={45}
+                    unoptimized
+                  />
+                </div>
+                <div
+                    className={`
+                      overflow-hidden transition-all duration-300
+                      ${collapsed ? 'w-0 opacity-0' : 'w-auto opacity-100'}
+                    `}
+                    >
+                    <div className="text-foreground font-bold text-sm leading-none">
+                      EIPsInsight
+                    </div>
+                    <div className="text-emerald-400 text-xs font-medium mt-0.5">
+                      Bootcamp
+                    </div>
+                </div>
+            </div>
+          </Link>
+          
         </div>
-        </Link>
+        
 
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-3 py-5 scrollbar-hide">
-          <NavSection title="Main" items={mainNav} pathname={pathname}/>
-          <NavSection title="CAP Program" items={capNav} pathname={pathname}/>
-          {isAdmin && <NavSection title="Admin" items={adminNav} pathname={pathname}/>}
+          <NavSection title="Main" items={mainNav} pathname={pathname} collapsed={collapsed}/>
+          <NavSection title="CAP Program" items={capNav} pathname={pathname} collapsed={collapsed}/>
+          {isAdmin && <NavSection title="Admin" items={adminNav} pathname={pathname} collapsed={collapsed}/>}
         </nav>
 
         {/* Upgrade CTA */}
-        {showUpgradeCTA && (
+        {showUpgradeCTA && !collapsed && (
         <div className="px-3 py-4 border-t border-border">
           <div className="relative bg-gradient-to-br from-emerald-500/10 to-accent dark:from-emerald-950/80 dark:to-black border border-emerald-500/20 rounded-xl p-4">
             {/* Close button */}
