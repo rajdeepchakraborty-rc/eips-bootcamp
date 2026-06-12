@@ -38,20 +38,17 @@ export class UsersController {
   }
 
   @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateUserDto: UpdateUserDto,
-  ) {
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
   @Patch(':id/wallet')
-updateWallet(
-  @Param('id') id: string,
-  @Body() updateWalletDto: UpdateWalletDto,
-) {
-  return this.usersService.updateWallet(id, updateWalletDto);
-}
+  updateWallet(
+    @Param('id') id: string,
+    @Body() updateWalletDto: UpdateWalletDto,
+  ) {
+    return this.usersService.updateWallet(id, updateWalletDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

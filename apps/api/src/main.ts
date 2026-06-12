@@ -1,4 +1,4 @@
-import "dotenv/config";
+import 'dotenv/config';
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
@@ -16,4 +16,4 @@ async function bootstrap() {
 
   await app.listen(4000);
 }
-bootstrap();
+void bootstrap();

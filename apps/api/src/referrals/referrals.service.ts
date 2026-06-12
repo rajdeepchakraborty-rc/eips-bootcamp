@@ -16,7 +16,9 @@ export class ReferralsService {
 
     if (!user) throw new BadRequestException('User not found');
     if (user.role !== 'AMBASSADOR') {
-      throw new BadRequestException('Only ambassadors can generate referral codes');
+      throw new BadRequestException(
+        'Only ambassadors can generate referral codes',
+      );
     }
 
     const existingCode = await this.prisma.referralCode.findUnique({
@@ -45,7 +47,8 @@ export class ReferralsService {
     });
 
     if (!refCode) throw new BadRequestException('Invalid referral code');
-    if (refCode.userId === referredUserId) throw new BadRequestException('Cannot refer yourself');
+    if (refCode.userId === referredUserId)
+      throw new BadRequestException('Cannot refer yourself');
 
     const existingRef = await this.prisma.referral.findUnique({
       where: { referredUserId },
@@ -82,8 +85,12 @@ export class ReferralsService {
 
     const totalClicks = refCode.clicks;
     const totalReferrals = refCode.referrals.length;
-    const pendingJoins = refCode.referrals.filter((r) => r.status === 'JOINED').length;
-    const successfulSignups = refCode.referrals.filter((r) => r.status === 'ONBOARDED').length;
+    const pendingJoins = refCode.referrals.filter(
+      (r) => r.status === 'JOINED',
+    ).length;
+    const successfulSignups = refCode.referrals.filter(
+      (r) => r.status === 'ONBOARDED',
+    ).length;
 
     const xp = await this.prisma.xPTransaction.aggregate({
       where: {
@@ -167,7 +174,11 @@ export class ReferralsService {
       const completedLessons = user.lessonProgress.length;
       return {
         userId: user.id,
-        name: user.name || user.profile?.fullName || user.username || (user.email ? user.email.split('@')[0] : 'Unknown'),
+        name:
+          user.name ||
+          user.profile?.fullName ||
+          user.username ||
+          (user.email ? user.email.split('@')[0] : 'Unknown'),
         handle: `@${user.username || user.id.substring(0, 5)}`,
         avatarUrl: user.image || user.profile?.avatarUrl,
         xp,

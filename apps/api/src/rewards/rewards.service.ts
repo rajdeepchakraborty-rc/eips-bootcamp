@@ -27,10 +27,13 @@ export class RewardsService {
 
     const xpSpent = history.reduce((acc, h) => acc + h.xpSpent, 0);
     const currentXP = totalXPEarned - xpSpent;
-    
+
     // We can define next unlocks at intervals of 1000 for display
     const nextRewardUnlock = (Math.floor(totalXPEarned / 1000) + 1) * 1000;
-    const progressPercentage = Math.min(100, Math.max(0, Math.floor((totalXPEarned / nextRewardUnlock) * 100)));
+    const progressPercentage = Math.min(
+      100,
+      Math.max(0, Math.floor((totalXPEarned / nextRewardUnlock) * 100)),
+    );
 
     const userData = {
       currentXP,
@@ -69,7 +72,7 @@ export class RewardsService {
     }
 
     // Process redemption
-    const redemption = await this.prisma.rewardRedemption.create({
+    await this.prisma.rewardRedemption.create({
       data: {
         userId,
         rewardId,
@@ -78,7 +81,11 @@ export class RewardsService {
     });
 
     // Deduct XP via transaction
-    await this.xpService.awardXp({ userId, amount: -reward.cost, reason: `Redeemed ${reward.title}` });
+    await this.xpService.awardXp({
+      userId,
+      amount: -reward.cost,
+      reason: `Redeemed ${reward.title}`,
+    });
 
     return { success: true, message: 'Reward redeemed successfully!' };
   }

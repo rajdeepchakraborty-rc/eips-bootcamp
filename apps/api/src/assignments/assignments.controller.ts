@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
+  NotFoundException,
+} from '@nestjs/common';
 import { AssignmentsService } from './assignments.service';
 
 @Controller('assignments')
@@ -14,12 +23,16 @@ export class AssignmentsController {
   async submitAssignment(
     @Param('id') assignmentId: string,
     @Body('userId') userId: string,
-    @Body('content') content: string
+    @Body('content') content: string,
   ) {
     if (!userId) {
       throw new NotFoundException('User ID required');
     }
-    return this.assignmentsService.submitAssignment(userId, assignmentId, content);
+    return this.assignmentsService.submitAssignment(
+      userId,
+      assignmentId,
+      content,
+    );
   }
 
   @Post()
