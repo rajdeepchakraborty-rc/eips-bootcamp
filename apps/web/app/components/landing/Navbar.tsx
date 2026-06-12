@@ -8,14 +8,20 @@ import { navLinks } from '../../lib/landing-data';
 import { ThemeToggle } from '../ThemeToggle';
 import { ThemedLogoGif } from "@/app/components/ThemedLogoGif";
 
-export function Navbar() {
+interface NavbarProps {
+  className?: string;
+  showNavLinks?: boolean;
+}
+
+export function Navbar({ className, showNavLinks = true,}: NavbarProps) {
   const { data: session } = useSession();
   const user = session?.user;
   const isSignedIn = !!user;
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border">
+    <header className={`fixed top-0 left-0 right-0 z-50 ${className ?? ""}`}
+     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16 gap-8">
 
@@ -36,17 +42,19 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav — center */}
-          <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center">
-            {navLinks.map((link: { label: string; href: string }) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-150 font-medium"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          {showNavLinks && (
+            <nav className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+              {navLinks.map((link: { label: string; href: string }) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-150 font-medium"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          )}
 
           {/* Desktop right */}
           <div className="hidden lg:flex items-center gap-3 ml-auto">

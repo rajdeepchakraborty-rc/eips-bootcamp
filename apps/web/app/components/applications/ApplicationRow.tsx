@@ -96,7 +96,8 @@ export function ApplicationRow({ application, onViewDetails, onStatusChange }: A
   return (
     <div 
       onClick={() => onViewDetails(application)}
-      className="group relative flex flex-col p-5 bg-accent border border-border rounded-xl hover:bg-accent hover:border-emerald-500/50 transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-sm"
+      className="group relative flex flex-col p-5 bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+        dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 border border-border rounded-xl hover:bg-accent hover:border-emerald-500/50 transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-sm"
     >
       {/* Background Glow on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-emerald-500/0 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

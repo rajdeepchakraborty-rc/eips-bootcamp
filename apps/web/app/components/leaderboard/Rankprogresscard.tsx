@@ -12,7 +12,10 @@ interface Props {
 export default function RankProgressCard({ rank, nextRankXp, currentXp, percentile, totalUsers }: Props) {
   const progress = Math.min(100, Math.round((currentXp / nextRankXp) * 100));
   return (
-    <div className="rounded-xl p-4 border border-border" style={{ background: "rgba(255,255,255,0.03)", }}>
+    <div className="rounded-xl p-4 border border-border
+    bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+    dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40" 
+    >
       <div className="text-xs text-foreground/40">Current Rank</div>
       <div className="text-2xl font-bold text-foreground">#{rank}</div>
       {typeof percentile === 'number' && (

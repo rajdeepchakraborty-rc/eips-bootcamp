@@ -9,7 +9,10 @@ interface Props {
 
 export default function ImpactCard({ impact }: Props) {
   return (
-    <div className="rounded-xl p-4 border border-border" style={{ background: "rgba(255,255,255,0.03)", }}>
+    <div className="rounded-xl p-4 border border-border
+    bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+    dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40" 
+    >
       <h3 className="text-sm font-semibold text-foreground/90 mb-2">Community Impact</h3>
       <div className="grid grid-cols-3 gap-3 mb-3 text-center">
         <div>

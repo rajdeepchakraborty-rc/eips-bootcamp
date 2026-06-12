@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { authClient, signIn } from '@/app/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { Mail, KeyRound } from "lucide-react";
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -64,72 +65,146 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="w-full max-w-md p-8 bg-card border border-border rounded-2xl shadow-2xl">
-        <h2 className="text-2xl font-bold mb-6 text-center text-emerald-400">Sign In</h2>
+      <div className="relative
+            z-10
+            w-full
+            max-w-md
+            overflow-hidden
+            rounded-3xl
+            border
+            border-border/50
+            bg-card/70
+            backdrop-blur-xl
+            shadow-[0_20px_80px_rgba(0,0,0,0.25)]
+            p-8">
+        {/* Internal Glow */}
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-br
+            from-emerald-500/5
+            via-transparent
+            to-cyan-500/5
+            pointer-events-none
+          "
+        />
+
+        <div className="relative z-10">
         
-        {error && <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-lg text-sm">{error}</div>}
+          <div className="mb-8 text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-emerald-400">
+              Welcome Back
+            </h1>
 
-        {!otpSent ? (
-          <form onSubmit={handleSendOtp} className="space-y-4">
-            <div>
-              <label className="block text-sm text-muted-foreground mb-1">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full bg-accent border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:border-emerald-500/50"
-                placeholder="you@example.com"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-2.5 rounded-lg transition-colors disabled:opacity-50"
-            >
-              {loading ? 'Sending...' : 'Send OTP'}
-            </button>
-          </form>
-        ) : (
-          <form onSubmit={handleVerifyOtp} className="space-y-4">
-            <div>
-              <label className="block text-sm text-muted-foreground mb-1">Enter OTP</label>
-              <input
-                type="text"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                required
-                className="w-full bg-accent border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:border-emerald-500/50 text-center tracking-[0.5em]"
-                placeholder="000000"
-                maxLength={6}
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-2.5 rounded-lg transition-colors disabled:opacity-50"
-            >
-              {loading ? 'Verifying...' : 'Verify OTP'}
-            </button>
-            <button
-              type="button"
-              onClick={() => setOtpSent(false)}
-              className="w-full text-muted-foreground hover:text-foreground text-sm"
-            >
-              Use a different email
-            </button>
-          </form>
-        )}
+            <p className="mt-2 text-sm text-muted-foreground">
+              Sign in to continue your learning journey.
+            </p>
+          </div>
+        
+          {error && <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-lg text-sm">{error}</div>}
 
-        <div className="my-6 flex items-center gap-4">
-          <div className="h-px bg-accent flex-1"></div>
-          <span className="text-muted-foreground text-xs">OR</span>
-          <div className="h-px bg-accent flex-1"></div>
-        </div>
+          {!otpSent ? (
+            <form onSubmit={handleSendOtp} className="space-y-4">
+              <div>
+                <label className="block text-sm text-muted-foreground mb-1">Email</label>
+                
+                <div className="relative">
+                  <Mail
+                    className="
+                      absolute
+                      left-4
+                      top-1/2
+                      h-4
+                      w-4
+                      -translate-y-1/2
+                      text-muted-foreground
+                    "
+                  />
+
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full bg-accent border border-border rounded-lg pl-11 py-2 text-foreground focus:outline-none focus:border-emerald-500/50"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-2.5 rounded-lg transition-colors disabled:opacity-50"
+              >
+                {loading ? 'Sending...' : 'Send OTP'}
+              </button>
+            </form>
+          ) : (
+            <form onSubmit={handleVerifyOtp} className="space-y-4">
+              
+              {/* Progress Indicator */}
+              <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-2 text-center">
+                <p className="mt-1 text-sm text-muted-foreground">
+                  We have sent a 6-digit verification code to
+                </p>
+
+                <p className="mt-2 font-medium text-emerald-400">
+                  {email}
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm text-muted-foreground mb-1">Enter OTP</label>
+                <div className="relative">
+                <KeyRound
+                  className="
+                    absolute
+                    left-4
+                    top-1/2
+                    h-4
+                    w-4
+                    -translate-y-1/2
+                    text-muted-foreground
+                  "
+                />
+                  <input
+                    type="text"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    required
+                    className="w-full bg-accent border border-border rounded-lg px-4 py-2 text-foreground focus:outline-none focus:border-emerald-500/50 text-center tracking-[0.5em]"
+                    placeholder="000000"
+                    maxLength={6}
+                  />
+                </div>
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-2.5 rounded-lg transition-colors disabled:opacity-50"
+              >
+                {loading ? 'Verifying...' : 'Verify OTP'}
+              </button>
+              <button
+                type="button"
+                onClick={() => setOtpSent(false)}
+                className="w-full text-muted-foreground hover:text-foreground text-sm"
+              >
+                Use a different email
+              </button>
+            </form>
+          )}
+
+          <div className="my-6 flex items-center gap-4">
+            <div className="h-px bg-accent flex-1"></div>
+            <span className="text-muted-foreground text-xs">OR</span>
+            <div className="h-px bg-accent flex-1"></div>
+          </div>
 
         <button
           onClick={handleGoogleSignIn}
-          className="w-full flex items-center justify-center gap-2 bg-white text-black font-bold py-2.5 rounded-lg hover:bg-zinc-200 transition-colors mb-4"
+          className="w-full flex items-center justify-center gap-2 bg-background hover:bg-accent font-bold py-2.5 rounded-lg transition-all mb-4"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -141,9 +216,10 @@ export default function SignIn() {
         </button>
 
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
-          Don't have an account? <Link href="/sign-up" className="text-emerald-400 hover:text-emerald-300">Sign Up</Link>
-        </p>
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Don't have an account? <Link href="/sign-up" className="text-emerald-400 hover:text-emerald-300">Sign Up</Link>
+          </p>
+        </div>
       </div>
     </>
   );

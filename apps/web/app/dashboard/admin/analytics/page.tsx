@@ -24,7 +24,7 @@ import {
 } from '@/app/lib/admin';
 
 export const metadata = {
-  title: 'Admin Analytics | EIPsInsight',
+  title: 'Admin Analytics',
   description: 'Monitor platform performance and ecosystem growth',
 };
 

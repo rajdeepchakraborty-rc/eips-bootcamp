@@ -33,7 +33,9 @@ export function ModuleCard({ module, onClick, isMarketplaceMode = false }: Modul
   return (
     <div
       onClick={onClick}
-      className={`group relative text-left bg-card border border-border hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] relative overflow-hidden cursor-pointer`}
+      className={`group relative text-left bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+        dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 
+        border border-border hover:border-emerald-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] relative overflow-hidden cursor-pointer`}
     >
       {/* Expanding Gradient Overlay on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />

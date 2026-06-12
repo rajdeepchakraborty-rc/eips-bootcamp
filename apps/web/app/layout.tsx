@@ -16,7 +16,10 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { Web3Provider } from "./components/Web3Provider";
 
 export const metadata: Metadata = {
-  title: "EIPsInsight Bootcamp",
+  title: {
+    default: "EIPsInsight Bootcamp",
+    template: "%s | EIPsInsight Bootcamp",
+  },
   description: "EIPsInsight Bootcamp Platform",
 };
 
