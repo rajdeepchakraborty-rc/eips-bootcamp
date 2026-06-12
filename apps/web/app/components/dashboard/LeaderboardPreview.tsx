@@ -35,7 +35,9 @@ function Avatar({ name, avatarUrl }: { name: string; avatarUrl?: string }) {
 
 export function LeaderboardPreview({ leaderboard }: LeaderboardPreviewProps) {
   return (
-    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+      dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 
+      border border-border rounded-2xl p-5 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-foreground font-bold text-base">
           Leaderboard <span className="text-muted-foreground font-normal text-sm">(Top 5)</span>

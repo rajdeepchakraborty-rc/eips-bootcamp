@@ -27,7 +27,8 @@ const ICONS = [
 
 export default function XPInfoCard() {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-card p-5">
+    <div className="rounded-2xl border border-white/[0.06] bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+      dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 p-5">
       <h3 className="text-foreground font-semibold text-base mb-4">How You Earn XP</h3>
 
       <div className="space-y-3">

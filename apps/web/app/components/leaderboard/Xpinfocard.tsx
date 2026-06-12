@@ -5,10 +5,12 @@ import { XP_WAYS } from "@/app/lib/leaderboard";
 export default function XPInfoCard({ compact }: { compact?: boolean }) {
   return (
     <div
-      className={`relative rounded-1xl overflow-hidden border border-border ${
-      compact ? "text-xs text-foreground/40" : "p-4"
+      className={`relative bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+        dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 
+        rounded-1xl overflow-hidden border border-border 
+        ${
+        compact ? "text-xs text-foreground/40" : "p-4"
       }`}
-      style={{ background: "rgba(255,255,255,0.02)" }}
     >
       <div className={compact ? "" : "text-sm font-semibold text-foreground/90 mb-3"}>How XP is Earned</div>
       <ul className={compact ? "text-xs text-foreground/40 space-y-1" : "text-sm text-foreground/40 space-y-3"}>

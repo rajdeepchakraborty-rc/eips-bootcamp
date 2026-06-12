@@ -18,7 +18,9 @@ export function LearningProgress() {
   }, []);
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+      dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 
+      border border-border rounded-2xl p-5 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-foreground font-bold text-base">Continue Your Learning</h3>
         <Link href="/dashboard/my-modules">  
@@ -33,7 +35,7 @@ export function LearningProgress() {
           <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-emerald-500 border-opacity-50"></div>
         </div>
       ) : progressData ? (
-        <Link href={`/dashboard/assignments/${progressData.id}`} className="flex-1 flex flex-col justify-center bg-accent border border-border rounded-xl p-5 hover:bg-accent transition-colors group cursor-pointer">
+        <Link href={`/dashboard/assignments/${progressData.id}`} className="flex-1 flex flex-col justify-center bg-accent/80 dark:bg-accent border border-border rounded-xl p-5 hover:bg-accent transition-colors group cursor-pointer">
           <div className="flex items-center gap-3 mb-3">
             <div className="p-2.5 bg-blue-500/10 rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
               <BookOpen size={20} />

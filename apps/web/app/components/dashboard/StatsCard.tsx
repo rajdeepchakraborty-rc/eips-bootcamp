@@ -63,7 +63,9 @@ export function StatsCard({ stat }: StatsCardProps) {
   const isRank = stat.id === 'rank';
 
   return (
-    <div className="group relative bg-card border border-border rounded-2xl p-5 flex items-center justify-between hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-default overflow-hidden">
+    <div className="group relative bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+      dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 
+      border border-border rounded-2xl p-5 flex items-center justify-between hover:border-emerald-500/20 hover:-translate-y-0.5 transition-all duration-300 cursor-default overflow-hidden">
       {/* Hover glow */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/3 transition-all duration-300 rounded-2xl" />
 

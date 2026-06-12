@@ -4,7 +4,9 @@ export function ProgressWidget({ progress = 0 }: { progress?: number }) {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full">
+    <div className="bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+        dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40
+        border border-border rounded-2xl p-5 flex flex-col h-full">
       <h3 className="text-foreground font-bold text-base mb-4">Your XP Progress</h3>
 
       <div className="flex-1 flex flex-col items-center justify-center gap-4">

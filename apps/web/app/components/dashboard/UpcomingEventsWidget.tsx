@@ -27,7 +27,8 @@ export function UpcomingEventsWidget() {
   }, [user?.id]);
 
   return (
-    <div className="bg-card border border-border rounded-2xl p-5 flex flex-col h-full relative overflow-hidden group hover:border-emerald-500/30 transition-all duration-300">
+    <div className="bg-gradient-to-br from-slate-100/90 via-slate-200/70 to-slate-300/50
+  dark:from-slate-800/80 dark:via-slate-900/60 dark:to-slate-900/40 border border-border rounded-2xl p-5 flex flex-col h-full relative overflow-hidden group hover:border-emerald-500/30 transition-all duration-300">
       {/* Background Glow */}
       <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all duration-500 pointer-events-none" />
 
@@ -44,7 +45,7 @@ export function UpcomingEventsWidget() {
             <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-emerald-500 border-opacity-50"></div>
           </div>
         ) : events.length === 0 ? (
-          <div className="bg-background/20 border border-border rounded-xl p-6 text-center">
+          <div className="bg-accent/80 dark:bg-accent border border-border rounded-xl p-6 text-center">
             <Calendar size={20} className="text-muted-foreground mx-auto mb-2" />
             <p className="text-foreground font-semibold text-sm">No scheduled events</p>
             <p className="text-muted-foreground text-xs mt-1">Events for your subscribed modules will appear here</p>
