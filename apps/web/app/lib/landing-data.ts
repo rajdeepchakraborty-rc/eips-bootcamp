@@ -132,7 +132,7 @@ export const navLinks = [
   { label: 'EIPs', href: '#eips' },
   { label: 'Governance', href: '#governance' },
   { label: 'Community', href: '#community' },
-  { label: 'About', href: '#about' },
+  { label: 'About', href: '/about' },
 ];
 
 export const footerLinks = {
@@ -145,7 +145,7 @@ export const footerLinks = {
     { label: 'Marketplace', href: '/dashboard/marketplace' },
     { label: 'My Learning', href: '/dashboard/learning' },
     { label: 'Referrals', href: '/dashboard/referrals' },
-    { label: 'About Us', href: '#' },
+    { label: 'About Us', href: '/about' },
   ],
   followUs: [
     { label: 'YouTube', href: 'https://www.youtube.com/@etherworldco' },

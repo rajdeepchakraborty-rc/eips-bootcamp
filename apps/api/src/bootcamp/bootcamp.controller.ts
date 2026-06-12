@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Param,
+  Body,
+  NotFoundException,
+} from '@nestjs/common';
 import { BootcampService } from './bootcamp.service';
 
 @Controller('bootcamp')
@@ -18,7 +27,7 @@ export class BootcampController {
   @Post('modules/:moduleId/subscribe')
   async subscribeToModule(
     @Param('moduleId') moduleId: string,
-    @Body('userId') userId: string
+    @Body('userId') userId: string,
   ) {
     if (!userId) {
       throw new NotFoundException('User ID is required');
@@ -29,7 +38,7 @@ export class BootcampController {
   @Post('modules/:lessonId/complete')
   async completeLesson(
     @Param('lessonId') lessonId: string,
-    @Body('userId') userId: string
+    @Body('userId') userId: string,
   ) {
     if (!userId) {
       throw new NotFoundException('User ID is required');
@@ -48,10 +57,7 @@ export class BootcampController {
   }
 
   @Post('modules/:moduleId/lessons')
-  async createLesson(
-    @Param('moduleId') moduleId: string,
-    @Body() data: any
-  ) {
+  async createLesson(@Param('moduleId') moduleId: string, @Body() data: any) {
     return this.bootcampService.createLesson(moduleId, data);
   }
 

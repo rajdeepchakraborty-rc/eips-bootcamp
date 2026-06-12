@@ -62,14 +62,14 @@ export class UsersService {
   }
 
   updateWallet(id: string, updateWalletDto: UpdateWalletDto) {
-  return this.prisma.user.update({
-    where: { id },
-    data: {
-      walletAddress: updateWalletDto.walletAddress,
-    },
-    include: {
-      profile: true,
-    },
-  });
-}
+    return this.prisma.user.update({
+      where: { id },
+      data: {
+        walletAddress: updateWalletDto.walletAddress,
+      },
+      include: {
+        profile: true,
+      },
+    });
+  }
 }

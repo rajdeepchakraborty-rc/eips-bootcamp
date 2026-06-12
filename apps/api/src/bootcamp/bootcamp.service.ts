@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -25,7 +30,7 @@ export class BootcampService {
 
     return modules.map((module) => {
       let completedLessons = 0;
-      
+
       const mappedLessons = module.lessons.map((lesson) => {
         const isCompleted = lesson.progress.length > 0;
         if (isCompleted) completedLessons++;
@@ -62,11 +67,13 @@ export class BootcampService {
 
   async getMyModules(userId: string) {
     const modules = await this.getModules(userId);
-    return modules.filter(m => m.isSubscribed);
+    return modules.filter((m) => m.isSubscribed);
   }
 
   async subscribeToModule(userId: string, moduleId: string) {
-    const module = await this.prisma.module.findUnique({ where: { id: moduleId } });
+    const module = await this.prisma.module.findUnique({
+      where: { id: moduleId },
+    });
     if (!module) throw new NotFoundException('Module not found');
 
     const existing = await this.prisma.moduleSubscription.findUnique({
@@ -178,7 +185,7 @@ export class BootcampService {
   async updateModule(id: string, data: any) {
     const module = await this.prisma.module.findUnique({ where: { id } });
     if (!module) throw new NotFoundException('Module not found');
-    
+
     return this.prisma.module.update({
       where: { id },
       data: {
@@ -197,7 +204,7 @@ export class BootcampService {
     const moduleExists = await this.prisma.module.findUnique({
       where: { id: moduleId },
     });
-    
+
     if (!moduleExists) {
       throw new NotFoundException('Module not found');
     }
@@ -217,7 +224,7 @@ export class BootcampService {
   async updateLesson(id: string, data: any) {
     const lesson = await this.prisma.lesson.findUnique({ where: { id } });
     if (!lesson) throw new NotFoundException('Lesson not found');
-    
+
     return this.prisma.lesson.update({
       where: { id },
       data: {
@@ -231,17 +238,21 @@ export class BootcampService {
   }
 
   async deleteModule(moduleId: string) {
-    const module = await this.prisma.module.findUnique({ where: { id: moduleId } });
+    const module = await this.prisma.module.findUnique({
+      where: { id: moduleId },
+    });
     if (!module) throw new NotFoundException('Module not found');
-    
+
     await this.prisma.module.delete({ where: { id: moduleId } });
     return { success: true };
   }
 
   async deleteLesson(lessonId: string) {
-    const lesson = await this.prisma.lesson.findUnique({ where: { id: lessonId } });
+    const lesson = await this.prisma.lesson.findUnique({
+      where: { id: lessonId },
+    });
     if (!lesson) throw new NotFoundException('Lesson not found');
-    
+
     await this.prisma.lesson.delete({ where: { id: lessonId } });
     return { success: true };
   }

@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Body, Param, NotFoundException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  NotFoundException,
+} from '@nestjs/common';
 import { RewardsService } from './rewards.service';
 
 @Controller('rewards')
@@ -13,7 +20,7 @@ export class RewardsController {
   @Post('redeem')
   async redeemReward(
     @Body('userId') userId: string,
-    @Body('rewardId') rewardId: string
+    @Body('rewardId') rewardId: string,
   ) {
     if (!userId || !rewardId) {
       throw new NotFoundException('User ID and Reward ID required');

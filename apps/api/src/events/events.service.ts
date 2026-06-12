@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -7,9 +8,9 @@ export class EventsService {
 
   async createEvent(data: any) {
     const module = await this.prisma.module.findUnique({
-      where: { id: data.moduleId }
+      where: { id: data.moduleId },
     });
-    
+
     if (!module) {
       throw new NotFoundException('Module not found');
     }
@@ -21,7 +22,7 @@ export class EventsService {
         link: data.link,
         date: new Date(data.date),
         moduleId: data.moduleId,
-      }
+      },
     });
   }
 
@@ -29,22 +30,22 @@ export class EventsService {
     // 1. Get modules the user is subscribed to
     const subscriptions = await this.prisma.moduleSubscription.findMany({
       where: { userId },
-      select: { moduleId: true }
+      select: { moduleId: true },
     });
-    const moduleIds = subscriptions.map(s => s.moduleId);
+    const moduleIds = subscriptions.map((s) => s.moduleId);
 
     // 2. Fetch upcoming events for those modules
     return this.prisma.event.findMany({
       where: {
         moduleId: { in: moduleIds },
-        date: { gte: new Date() } // upcoming only
+        date: { gte: new Date() }, // upcoming only
       },
       orderBy: { date: 'asc' },
       include: {
         module: {
-          select: { title: true }
-        }
-      }
+          select: { title: true },
+        },
+      },
     });
   }
 
@@ -53,15 +54,15 @@ export class EventsService {
       orderBy: { date: 'asc' },
       include: {
         module: {
-          select: { title: true }
-        }
-      }
+          select: { title: true },
+        },
+      },
     });
   }
 
   async deleteEvent(eventId: string) {
     await this.prisma.event.delete({
-      where: { id: eventId }
+      where: { id: eventId },
     });
     return { success: true };
   }

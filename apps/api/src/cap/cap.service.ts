@@ -5,7 +5,7 @@ import { UpdateCapStatusDto } from './dto/update-cap-status.dto';
 
 @Injectable()
 export class CapService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   apply(createCapApplicationDto: CreateCapApplicationDto) {
     return this.prisma.cAPApplication.create({
@@ -29,10 +29,10 @@ export class CapService {
           include: {
             profile: true,
             referralCode: {
-              include: { referrals: true }
+              include: { referrals: true },
             },
             xpTransactions: true,
-          }
+          },
         },
       },
       orderBy: {
@@ -40,17 +40,21 @@ export class CapService {
       },
     });
 
-    return applications.map(app => {
+    return applications.map((app) => {
       const user = app.user;
       const xp = user.xpTransactions.reduce((acc, tx) => acc + tx.amount, 0);
       const referralCount = user.referralCode?.referrals.length || 0;
-      
+
       let linkedin = '';
       let twitter = '';
       let github = '';
       if (app.socialLinks) {
         if (app.socialLinks.includes('linkedin')) linkedin = app.socialLinks;
-        else if (app.socialLinks.includes('twitter') || app.socialLinks.includes('x.com')) twitter = app.socialLinks;
+        else if (
+          app.socialLinks.includes('twitter') ||
+          app.socialLinks.includes('x.com')
+        )
+          twitter = app.socialLinks;
         else if (app.socialLinks.includes('github')) github = app.socialLinks;
         else linkedin = app.socialLinks;
       }
@@ -64,8 +68,10 @@ export class CapService {
         track: 'Smart Contract',
         batch: `Batch ${app.graduationYear}`,
         status: app.status.toLowerCase(),
-        appliedDate: app.createdAt.toISOString(),
-        avatar: user.profile?.avatarUrl || user.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${app.fullName}`,
+        appliedDate: app.createdAt.toISOString().split('T')[0],
+        avatar:
+          user.profile?.avatarUrl ||
+          `https://api.dicebear.com/7.x/avataaars/svg?seed=${app.fullName}`,
         referralCount,
         xp,
         leaderboardRank: 0,
@@ -78,81 +84,85 @@ export class CapService {
     });
   }
 
-async updateStatus(id: string, updateCapStatusDto: UpdateCapStatusDto) {
-  const application = await this.prisma.cAPApplication.update({
-    where: { id },
-    data: {
-      status: updateCapStatusDto.status,
-    },
-  });
+  async updateStatus(id: string, updateCapStatusDto: UpdateCapStatusDto) {
+    const application = await this.prisma.cAPApplication.update({
+      where: { id },
+      data: {
+        status: updateCapStatusDto.status,
+      },
+    });
 
-  if (updateCapStatusDto.status === 'APPROVED') {
-    const user = await this.prisma.user.findUnique({ where: { id: application.userId } });
-    if (user && user.role !== 'ADMIN') {
-      await this.prisma.user.update({
-        where: {
-          id: application.userId,
-        },
+    if (updateCapStatusDto.status === 'APPROVED') {
+      const user = await this.prisma.user.findUnique({
+        where: { id: application.userId },
+      });
+      if (user && user.role !== 'ADMIN') {
+        await this.prisma.user.update({
+          where: {
+            id: application.userId,
+          },
+          data: {
+            role: 'AMBASSADOR',
+          },
+        });
+      }
+
+      await this.prisma.xPTransaction.create({
         data: {
-          role: 'AMBASSADOR',
+          userId: application.userId,
+          amount: 500,
+          reason: 'CAP Application Approved',
         },
       });
     }
 
-    await this.prisma.xPTransaction.create({
-      data: {
-        userId: application.userId,
-        amount: 500,
-        reason: 'CAP Application Approved',
-      }
+    return application;
+  }
+
+  async revokeApplication(id: string) {
+    const application = await this.prisma.cAPApplication.findUnique({
+      where: { id },
     });
-  }
 
-  return application;
-}
+    if (!application) {
+      throw new Error('Application not found');
+    }
 
-async revokeApplication(id: string) {
-  const application = await this.prisma.cAPApplication.findUnique({
-    where: { id },
-  });
-
-  if (!application) {
-    throw new Error('Application not found');
-  }
-
-  // Downgrade user role only if they are not an ADMIN
-  const user = await this.prisma.user.findUnique({ where: { id: application.userId } });
-  if (user && user.role !== 'ADMIN') {
-    await this.prisma.user.update({
+    // Downgrade user role only if they are not an ADMIN
+    const user = await this.prisma.user.findUnique({
       where: { id: application.userId },
-      data: { role: 'STUDENT' },
+    });
+    if (user && user.role !== 'ADMIN') {
+      await this.prisma.user.update({
+        where: { id: application.userId },
+        data: { role: 'STUDENT' },
+      });
+    }
+
+    // Delete the application so they can apply again
+    return this.prisma.cAPApplication.delete({
+      where: { id },
     });
   }
 
-  // Delete the application so they can apply again
-  return this.prisma.cAPApplication.delete({
-    where: { id },
-  });
-}
+  async getAnalytics() {
+    const totalUsers = await this.prisma.user.count();
 
-async getAnalytics() {
-  const totalUsers = await this.prisma.user.count();
+    const totalApplicants = await this.prisma.cAPApplication.count();
 
-  const totalApplicants = await this.prisma.cAPApplication.count();
+    const approvedAmbassadors = await this.prisma.user.count({
+      where: {
+        role: 'AMBASSADOR',
+      },
+    });
 
-  const approvedAmbassadors = await this.prisma.user.count({
-    where: {
-      role: 'AMBASSADOR',
-    },
-  });
+    const totalReferrals = await this.prisma.referral.count();
 
-  const totalReferrals = await this.prisma.referral.count();
-
-  return {
-    totalUsers,
-    totalApplicants,
-    approvedAmbassadors,
-    totalReferrals,
-  };
-}
+    return {
+      totalUsers,
+      totalApplicants,
+      approvedAmbassadors,
+      totalReferrals,
+    };
+  }
 }
