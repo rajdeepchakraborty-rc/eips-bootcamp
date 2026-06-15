@@ -1,11 +1,25 @@
 import React from 'react';
 import { Navbar } from '../components/landing/Navbar';
 import { Footer } from '../components/landing/Footer';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Search, BarChart2, GitBranch, FileText, Shield, Activity, Globe, MessageSquare, Heart, Mail, ExternalLink, ArrowRight } from 'lucide-react';
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" {...props}>
     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+  </svg>
+);
+
+const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" {...props}>
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+);
+
+const DiscordIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" {...props}>
+    <path d="M20.317 4.369A19.791 19.791 0 0 0 15.885 3c-.191.328-.403.768-.553 1.11a18.27 18.27 0 0 0-5.29 0A11.64 11.64 0 0 0 9.49 3a19.736 19.736 0 0 0-4.435 1.371C2.249 8.57 1.484 12.663 1.866 16.699a19.9 19.9 0 0 0 5.993 3.028c.48-.654.908-1.346 1.276-2.07a12.93 12.93 0 0 1-2.008-.964c.169-.124.334-.253.494-.386 3.874 1.82 8.08 1.82 11.908 0 .162.133.327.262.496.386a12.89 12.89 0 0 1-2.011.965c.368.723.796 1.415 1.276 2.068a19.86 19.86 0 0 0 5.996-3.028c.448-4.678-.765-8.734-3.969-12.329ZM8.02 14.247c-1.182 0-2.151-1.085-2.151-2.419 0-1.333.95-2.418 2.151-2.418 1.211 0 2.17 1.094 2.151 2.418 0 1.334-.95 2.419-2.151 2.419Zm7.96 0c-1.182 0-2.151-1.085-2.151-2.419 0-1.333.95-2.418 2.151-2.418 1.211 0 2.17 1.094 2.151 2.418 0 1.334-.94 2.419-2.151 2.419Z" />
   </svg>
 );
 
@@ -62,21 +76,27 @@ export default function AboutPage() {
             
             <div className="space-y-4">
               <div className="p-5 rounded-2xl bg-muted/40 border border-border flex gap-4">
-                <Search className="text-primary w-5 h-5 shrink-0" />
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <Search className="w-4 h-4 text-primary" />
+                </div>
                 <div>
                   <h4 className="font-medium text-sm mb-1">Structured Learning</h4>
                   <p className="text-xs text-muted-foreground">Follow curated modules from fundamentals to advanced protocol research instead of manual repository digging.</p>
                 </div>
               </div>
               <div className="p-5 rounded-2xl bg-muted/40 border border-border flex gap-4">
-                <BarChart2 className="text-primary w-5 h-5 shrink-0" />
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <BarChart2 className="w-4 h-4 text-primary" />
+                </div>
                 <div>
                   <h4 className="font-medium text-sm mb-1">Progress Tracking</h4>
                   <p className="text-xs text-muted-foreground">Track your learning journey, earn XP, and measure your readiness to contribute.</p>
                 </div>
               </div>
               <div className="p-5 rounded-2xl bg-muted/40 border border-border flex gap-4">
-                <GitBranch className="text-primary w-5 h-5 shrink-0" />
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <GitBranch className="w-4 h-4 text-primary" />
+                </div>
                 <div>
                   <h4 className="font-medium text-sm mb-1">Contributor Tooling</h4>
                   <p className="text-xs text-muted-foreground">Transition from reading governance to working with it through hands-on assignments.</p>
@@ -98,81 +118,143 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Placeholder 1 */}
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border flex gap-6">
-              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden">
-                <div className="w-full h-full bg-primary/20 animate-pulse"></div>
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border hover:border-primary/40 flex gap-6">
+              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
+                <Image
+                  src="/team/pooja_ranjan.jpg"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <h4 className="font-bold">Team Member 1</h4>
+                  <h4 className="font-bold">Pooja Ranjan</h4>
                   <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted border border-border">Active</span>
                 </div>
-                <p className="text-primary text-sm font-medium mb-3">Role / Title</p>
-                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Responsibility</h5>
-                <p className="text-xs text-muted-foreground mb-4">Placeholder description of what this person focuses on and how they contribute to the platform.</p>
+                <p className="text-primary text-sm font-medium mb-3">Founder</p>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Ecosystem strategy</h5>
+                <p className="text-xs text-muted-foreground mb-4">Shapes the long-range direction of EIPsInsight and keeps the work anchored to Ethereum governance needs.</p>
                 <div className="flex gap-3">
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><ExternalLink className="w-3 h-3"/> LinkedIn</button>
+                  <Link href="https://github.com/poojaranjan">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/pooja-r-072899114/">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><LinkedInIcon className="w-3 h-3"/> LinkedIn</button>
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* Placeholder 2 */}
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border flex gap-6">
-              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden">
-                <div className="w-full h-full bg-primary/20 animate-pulse"></div>
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border hover:border-primary/40 flex gap-6">
+              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
+                <Image
+                  src="/team/yash.jpg"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <h4 className="font-bold">Team Member 2</h4>
+                  <h4 className="font-bold">Yash Kamal Chaturvedi</h4>
                   <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted border border-border">Active</span>
                 </div>
-                <p className="text-primary text-sm font-medium mb-3">Role / Title</p>
-                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Responsibility</h5>
-                <p className="text-xs text-muted-foreground mb-4">Placeholder description of what this person focuses on and how they contribute to the platform.</p>
+                <p className="text-primary text-sm font-medium mb-3">Operations Lead</p>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Operations and delivery</h5>
+                <p className="text-xs text-muted-foreground mb-4">Keeps programs, coordination, and day-to-day execution moving across research, platform work, and partnerships.</p>
                 <div className="flex gap-3">
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><ExternalLink className="w-3 h-3"/> LinkedIn</button>
+                  <Link href="https://www.linkedin.com/in/yash-kamal-chaturvedi/">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><LinkedInIcon className="w-3 h-3"/> LinkedIn</button>
+                  </Link>
                 </div>
               </div>
             </div>
             
             {/* Placeholder 3 */}
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border flex gap-6">
-              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden">
-                <div className="w-full h-full bg-primary/20 animate-pulse"></div>
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border hover:border-primary/40 flex gap-6">
+              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
+                <Image
+                  src="/team/Dhanush.jpg"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <h4 className="font-bold">Team Member 3</h4>
+                  <h4 className="font-bold">Dhanush Naik</h4>
                   <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted border border-border">Active</span>
                 </div>
-                <p className="text-primary text-sm font-medium mb-3">Role / Title</p>
-                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Responsibility</h5>
-                <p className="text-xs text-muted-foreground mb-4">Placeholder description of what this person focuses on and how they contribute to the platform.</p>
+                <p className="text-primary text-sm font-medium mb-3">Full Stack Engineer</p>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Platform engineering</h5>
+                <p className="text-xs text-muted-foreground mb-4">Builds the product surface, analytics experience, and internal systems that turn raw governance data into usable tooling.</p>
                 <div className="flex gap-3">
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><ExternalLink className="w-3 h-3"/> LinkedIn</button>
+                  <Link href="https://github.com/dhanushlnaik">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/dhanushlnaik/">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><LinkedInIcon className="w-3 h-3"/> LinkedIn</button>
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* Placeholder 4 */}
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border flex gap-6">
-              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden">
-                <div className="w-full h-full bg-primary/20 animate-pulse"></div>
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border hover:border-primary/40 flex gap-6">
+              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
+                <Image
+                  src="/team/SubhrajeetBhattacharjee.webp"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <h4 className="font-bold">Team Member 4</h4>
+                  <h4 className="font-bold">Subhrajeet Bhattacharjee</h4>
                   <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted border border-border">Active</span>
                 </div>
-                <p className="text-primary text-sm font-medium mb-3">Role / Title</p>
-                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Responsibility</h5>
-                <p className="text-xs text-muted-foreground mb-4">Placeholder description of what this person focuses on and how they contribute to the platform.</p>
+                <p className="text-primary text-sm font-medium mb-3">Full Stack Intern</p>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Full stack implementation</h5>
+                <p className="text-xs text-muted-foreground mb-4">Contributes across frontend and backend work to support feature delivery and improve the platform experience.</p>
                 <div className="flex gap-3">
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
-                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:bg-muted transition-colors"><ExternalLink className="w-3 h-3"/> LinkedIn</button>
+                  <Link href="https://github.com/SubhrajeetBhattacharjee">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/subhrajeet-bhattacharjee/">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><LinkedInIcon className="w-3 h-3"/> LinkedIn</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Placeholder 5 */}
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border hover:border-primary/40 flex gap-6">
+              <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
+                <Image
+                  src="/team/rajdeep.jpg"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-1">
+                  <h4 className="font-bold">Rajdeep Chakraborty</h4>
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted border border-border">Active</span>
+                </div>
+                <p className="text-primary text-sm font-medium mb-3">Full Stack Intern</p>
+                <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Full stack implementation</h5>
+                <p className="text-xs text-muted-foreground mb-4">Contributes across frontend and backend work to support feature delivery and improve the platform experience.</p>
+                <div className="flex gap-3">
+                  <Link href="https://github.com/rajdeepchakraborty-rc">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/rajdeepchakraborty69/">
+                  <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><LinkedInIcon className="w-3 h-3"/> LinkedIn</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -264,19 +346,39 @@ export default function AboutPage() {
             <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Partners</h3>
             <h2 className="text-2xl font-serif font-medium mb-6">Working alongside ecosystem operators.</h2>
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-muted/40 border border-border flex items-center justify-between">
+              <div className="p-5 rounded-2xl bg-muted/40 border border-border hover:border-primary/40">
+                <Link className="flex items-center gap-6" href="https://etherworld.co/">
+                <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
+                <Image
+                  src="/brand/partners/ew.png"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
+                </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">EtherWorld</h4>
                   <p className="text-xs text-muted-foreground">Media and ecosystem amplification.</p>
                 </div>
                 <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                </Link>
               </div>
-              <div className="p-5 rounded-2xl bg-muted/40 border border-border flex items-center justify-between">
+              <div className="p-5 rounded-2xl bg-muted/40 border border-border hover:border-primary/40">
+                <Link className="flex items-center gap-6" target="_blank" href="https://www.ethcatherders.com/">
+                <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
+                <Image
+                  src="/brand/partners/ech.png"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
+                </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">ECH (Ethereum Cat Herders)</h4>
                   <p className="text-xs text-muted-foreground">Operational support around standards.</p>
                 </div>
                 <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                </Link>
               </div>
             </div>
           </div>
@@ -290,10 +392,18 @@ export default function AboutPage() {
             EIPsInsight is a community resource. If you want to help, the best paths are straightforward: use it, critique it, contribute to it, or support the infrastructure behind it.
           </p>
           <div className="flex flex-wrap gap-4">
+            <Link target="_blank" href="https://github.com/AvarchLLC/eips-bootcamp">
             <button className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl border border-border hover:bg-muted transition-colors"><GithubIcon className="w-4 h-4"/> GitHub</button>
-            <button className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl border border-border hover:bg-muted transition-colors"><MessageSquare className="w-4 h-4"/> Discord</button>
+            </Link>
+            <Link target="_blank" href="https://discord.com/invite/tUXgfV822C">
+            <button className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl border border-border hover:bg-muted transition-colors"><DiscordIcon className="w-4 h-4"/> Discord</button>
+            </Link>
+            <Link target="_blank" href="/">
             <button className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl border border-border hover:bg-muted transition-colors"><Heart className="w-4 h-4"/> Donate</button>
+            </Link>
+            <Link target="_blank" href="mailto:dev@avarch.com">
             <button className="flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl border border-border hover:bg-muted transition-colors"><Mail className="w-4 h-4"/> Contact</button>
+            </Link>
           </div>
         </div>
 
