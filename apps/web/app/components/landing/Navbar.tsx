@@ -36,8 +36,12 @@ export function Navbar({ className, showNavLinks = true,}: NavbarProps) {
               />
             </div>
             <div>
-              <div className="text-foreground font-bold text-sm leading-none">EIPsInsight</div>
-              <div className="text-emerald-400 text-[11px] font-semibold mt-0.5">Bootcamp</div>
+              <div className="text-foreground font-bold text-2xl leading-none">
+                <span className="text-emerald-400 font-semibold mt-0.5">
+                Eth
+                </span>
+                Shala
+              </div>
             </div>
           </Link>
 

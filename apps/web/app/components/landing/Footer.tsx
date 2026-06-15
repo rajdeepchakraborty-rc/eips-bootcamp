@@ -25,8 +25,11 @@ export function Footer() {
                     unoptimized
                   />
               </div>
-              <div className="text-foreground font-bold text-xl tracking-tight">
-                EIPsInsight Bootcamp
+              <div className="text-foreground font-bold text-2xl leading-none">
+                <span className="text-emerald-400 font-semibold mt-0.5">
+                Eth
+                </span>
+                Shala
               </div>
             </div>
             

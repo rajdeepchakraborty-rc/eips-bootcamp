@@ -224,11 +224,11 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, toggleSidebar, }
                       ${collapsed ? 'w-0 opacity-0' : 'w-auto opacity-100'}
                     `}
                     >
-                    <div className="text-foreground font-bold text-sm leading-none">
-                      EIPsInsight
-                    </div>
-                    <div className="text-emerald-400 text-xs font-medium mt-0.5">
-                      Bootcamp
+                    <div className="text-foreground font-bold text-2xl leading-none">
+                      <span className="text-emerald-400 font-semibold mt-0.5">
+                      Eth
+                      </span>
+                      Shala
                     </div>
                 </div>
             </div>

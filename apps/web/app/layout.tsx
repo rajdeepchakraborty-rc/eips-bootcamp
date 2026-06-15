@@ -17,10 +17,10 @@ import { Web3Provider } from "./components/Web3Provider";
 
 export const metadata: Metadata = {
   title: {
-    default: "EIPsInsight Bootcamp",
-    template: "%s | EIPsInsight Bootcamp",
+    default: "EthShala",
+    template: "%s | EthShala",
   },
-  description: "EIPsInsight Bootcamp Platform",
+  description: "EthShala Platform",
 };
 
 export default function RootLayout({
