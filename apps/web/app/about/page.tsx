@@ -35,7 +35,7 @@ export default function AboutPage() {
             About
           </div>
           <h1 className="text-4xl md:text-5xl font-serif font-medium mb-6 leading-tight">
-            EIPsInsight Bootcamp makes Ethereum protocol governance accessible to everyone.
+            EthShala makes Ethereum protocol governance accessible to everyone.
           </h1>
           <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
             We build an educational platform, structured pathways, and governance movement trackers so builders, researchers, and newcomers can understand what is changing and why.
