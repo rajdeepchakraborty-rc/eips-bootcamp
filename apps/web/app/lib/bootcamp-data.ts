@@ -1,5 +1,5 @@
 /**
- * Mock Bootcamp Data
+ * Mock EthShala Data
  * Replace with API calls when backend is ready
  */
 

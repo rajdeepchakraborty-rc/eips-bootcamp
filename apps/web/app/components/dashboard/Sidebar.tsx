@@ -57,7 +57,7 @@ const capNav: NavItem[] = [
 const adminNav: NavItem[] = [
   { label: 'Admin Analytics', href: '/dashboard/admin/analytics', icon: <BarChart2 size={18} /> },
   { label: 'Applications', href: '/dashboard/admin/applications', icon: <ClipboardList size={18} /> },
-  { label: 'Manage Bootcamp', href: '/dashboard/admin/bootcamp', icon: <Layers size={18} /> },
+  { label: 'Manage EthShala', href: '/dashboard/admin/bootcamp', icon: <Layers size={18} /> },
   { label: 'Manage Assignments', href: '/dashboard/admin/assignments', icon: <FileText size={18} /> },
   { label: 'Manage Events', href: '/dashboard/admin/events', icon: <Zap size={18} /> },
 ];
@@ -209,10 +209,10 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, toggleSidebar, }
               ${collapsed ? 'justify-center w-full' : 'gap-3'}
               `}
               >
-              {/* EIPsInsight Logo Added */}
+              {/* EthShala Logo Added */}
                 <div className="relative bottom-1.5" >
                   <ThemedLogoGif
-                    alt="EIPsInsight"
+                    alt="EthShala"
                     width={45}
                     height={45}
                     unoptimized

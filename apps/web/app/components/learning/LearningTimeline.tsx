@@ -8,7 +8,7 @@ export const LearningTimeline = ({ timeline }: { timeline?: any[] }) => {
   return (
     <div className="bg-card border border-border rounded-2xl p-6 flex flex-col h-full hover:border-emerald-500/20 transition-all duration-300">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-foreground font-bold text-base">Bootcamp Timeline</h3>
+        <h3 className="text-foreground font-bold text-base">EthShala Timeline</h3>
         <Link href="/dashboard/bootcamp">
           <button className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors flex items-center gap-1">
             View All <ArrowRight size={12} />

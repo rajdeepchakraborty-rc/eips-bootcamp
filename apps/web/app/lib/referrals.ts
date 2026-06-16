@@ -62,7 +62,7 @@ export async function fetchReferralStats(userId: string): Promise<ReferralStats 
 
   return {
     referralCode: code.code,
-    referralLink: `https://eips-bootcamp.com/join?ref=${code.code}`,
+    referralLink: `https://ethshala.com/join?ref=${code.code}`,
     totalClicks: code.clicks,
     totalReferrals,
     pendingJoins,

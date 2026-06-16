@@ -174,7 +174,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-muted-foreground text-base leading-relaxed mb-8 max-w-[480px]">
-              EIPsInsight Bootcamp is your gateway to the world of Ethereum Improvement Proposals, core concepts, and the ideas shaping the Ethereum ecosystem.
+              EthShala is your gateway to the world of Ethereum Improvement Proposals, core concepts, and the ideas shaping the Ethereum ecosystem.
             </p>
 
             {/* CTAs */}
@@ -198,7 +198,7 @@ export function HeroSection() {
             <div className="flex items-center gap-3 bg-white/3 border border-border rounded-xl px-4 py-3 max-w-[460px]">
               <BookOpen size={16} className="text-emerald-400 flex-shrink-0" />
               <p className="text-muted-foreground text-sm">
-                From beginner to contributor — learn, explore, and grow with Ethereum.
+                From beginner to contributor - learn, explore, and grow with Ethereum.
               </p>
             </div>
           </div>

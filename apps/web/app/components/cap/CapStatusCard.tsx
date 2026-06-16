@@ -219,7 +219,7 @@ function RejectedCard() {
         }}
       >
         <p className="text-xs text-foreground/40 leading-relaxed">
-          💡 <span className="text-foreground/60">Tip:</span> Complete more bootcamp
+          💡 <span className="text-foreground/60">Tip:</span> Complete more EthShala modules
           modules, contribute to EIPs, and grow your community presence before
           reapplying.
         </p>

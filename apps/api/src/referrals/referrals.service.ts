@@ -102,7 +102,8 @@ export class ReferralsService {
 
     return {
       referralCode: refCode.code,
-      referralLink: `https://eipsinsight.xyz/ref/${refCode.code}`,
+      referralLink: `https://ethshala.com/ref/${refCode.code}`,
+
       totalClicks,
       totalReferrals,
       pendingJoins,

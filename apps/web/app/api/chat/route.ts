@@ -32,7 +32,7 @@ export async function POST(req: Request) {
   const result = await streamText({
     model: openai('gpt-4o-mini') as any,
     messages,
-    system: `You are the friendly and knowledgeable Site Assistant for the EIPsInsight Bootcamp.
+    system: `You are the friendly and knowledgeable Site Assistant for EthShala.
 Your goal is to help users navigate the Ethereum ecosystem, explain EIPs, ERCs, and governance concepts accurately.
 Rules:
 - Give a short, precise answer first.

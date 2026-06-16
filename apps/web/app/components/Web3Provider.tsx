@@ -25,7 +25,8 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 const config = getDefaultConfig({
-  appName: 'EIPsInsight Bootcamp',
+  appName: 'EthShala',
+
   projectId: 'c03554e26fbbf209dc9bd4f49488e0db', // Replace with your actual WalletConnect project ID from cloud.walletconnect.com
   chains: [mainnet, polygon, optimism, arbitrum, base, sepolia],
   ssr: true, // Next.js SSR compatibility

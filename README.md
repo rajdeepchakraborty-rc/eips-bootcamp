@@ -1,1 +1,1 @@
-This is EIPs Bootcamp
+This is EthShala

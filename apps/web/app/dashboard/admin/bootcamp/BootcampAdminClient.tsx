@@ -329,7 +329,7 @@ export default function BootcampAdminClient({ initialModules }: { initialModules
           <div className="text-center py-20 border border-border rounded-xl bg-white/[0.01]">
             <BookOpen size={32} className="mx-auto mb-3 text-muted-foreground" />
             <h3 className="text-lg font-medium text-foreground mb-1">No modules found</h3>
-            <p className="text-muted-foreground text-sm">Create your first bootcamp module to get started.</p>
+            <p className="text-muted-foreground text-sm">Create your first EthShala module to get started.</p>
           </div>
         )}
       </div>

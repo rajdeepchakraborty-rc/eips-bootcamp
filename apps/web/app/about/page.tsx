@@ -66,7 +66,7 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-muted-foreground text-sm">
               <p>Ethereum governance happens across repositories, pull requests, review queues, forum threads, upgrades, and informal coordination. The data is public, but the workflow is still hard to inspect as a system.</p>
-              <p>EIPsInsight Bootcamp exists to reduce that gap. We curate the moving parts, normalize them into structured education, and help people answer practical questions: what changed, what is stuck, who is active, what upgrade work depends on what, and where to go next.</p>
+              <p>EthShala exists to reduce that gap. We curate the moving parts, normalize them into structured education, and help people answer practical questions: what changed, what is stuck, who is active, what upgrade work depends on what, and where to go next.</p>
               <p>The goal is not just more documentation. The goal is operational clarity for anyone trying to understand or participate in Ethereum standards.</p>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function AboutPage() {
                 </div>
                 <p className="text-primary text-sm font-medium mb-3">Founder</p>
                 <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">Ecosystem strategy</h5>
-                <p className="text-xs text-muted-foreground mb-4">Shapes the long-range direction of EIPsInsight and keeps the work anchored to Ethereum governance needs.</p>
+                <p className="text-xs text-muted-foreground mb-4">Shapes the long-range direction of EthShala and keeps the work anchored to Ethereum governance needs.</p>
                 <div className="flex gap-3">
                   <Link href="https://github.com/poojaranjan">
                   <button className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/10 hover:text-primary transition-colors"><GithubIcon className="w-3 h-3"/> GitHub</button>
@@ -333,7 +333,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <div className="p-5 rounded-2xl bg-muted/40 border border-border">
                 <h4 className="font-bold text-sm mb-2">Ecosystem Support Program (EF ESP)</h4>
-                <p className="text-xs text-muted-foreground mb-3">Funds help maintain data pipelines, improve analytics, and keep EIPsInsight open-source.</p>
+                <p className="text-xs text-muted-foreground mb-3">Funds help maintain data pipelines, improve analytics, and keep EthShala open-source.</p>
                 <div className="flex gap-2">
                   <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-primary/20 text-primary">Significant</span>
                   <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full border border-border">Infrastructure</span>
@@ -389,7 +389,7 @@ export default function AboutPage() {
           <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Get Involved</h3>
           <h2 className="text-2xl font-serif font-medium mb-4">Support the platform, contribute feedback, or build on top of the work.</h2>
           <p className="text-sm text-muted-foreground mb-8 max-w-2xl">
-            EIPsInsight is a community resource. If you want to help, the best paths are straightforward: use it, critique it, contribute to it, or support the infrastructure behind it.
+            EthShala is a community resource. If you want to help, the best paths are straightforward: use it, critique it, contribute to it, or support the infrastructure behind it.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link target="_blank" href="https://github.com/AvarchLLC/eips-bootcamp">

@@ -96,7 +96,7 @@ const modules = [
 ];
 
 async function main() {
-  console.log('Seeding Bootcamp Data...');
+  console.log('Seeding EthShala Data...');
 
   for (const module of modules) {
     const { lessons, ...moduleData } = module;

@@ -18,7 +18,7 @@ export default function ReferralCodeCard({ stats }: Props) {
 
   const handleShare = () => {
     if (navigator.share) {
-      navigator.share({ title: "Join EIPsInsight", url: stats.referralLink });
+      navigator.share({ title: "Join EthShala", url: stats.referralLink });
     } else {
       handleCopy();
     }

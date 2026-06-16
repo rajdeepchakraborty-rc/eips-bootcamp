@@ -1,6 +1,6 @@
 /**
  * Bootcamp Module Types
- * TypeScript interfaces and types for the EIPsInsight Bootcamp
+ * TypeScript interfaces and types for the EthShala
  */
 
 /**
@@ -182,4 +182,5 @@ export interface Notification {
   message: string;
   timestamp: Date;
   read: boolean;
+}: boolean;
 }

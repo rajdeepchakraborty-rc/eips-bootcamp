@@ -1,13 +1,13 @@
-# Deployment Guide: EIPs Bootcamp
+# Deployment Guide: EthShala
 
-This guide outlines the strategies and steps for deploying the EIPs Bootcamp monorepo to production.
+This guide outlines the strategies and steps for deploying the EthShala monorepo to production.
 
 ## Architecture Overview
 
 The project is a monorepo containing:
-- **Frontend:** Next.js 15 (`apps/web`)
-- **Backend:** NestJS 11 (`apps/api`)
-- **Database:** PostgreSQL (via Prisma)
+- Frontend: Next.js 15 (apps/web)
+- Backend: NestJS 11 (apps/api)
+- Database: PostgreSQL (via Prisma)
 
 ---
 

@@ -186,7 +186,7 @@ export default function AssignmentsAdminClient({ initialAssignments }: { initial
           <div className="col-span-full text-center py-20 border border-border rounded-xl bg-white/[0.01]">
             <FileText size={32} className="mx-auto mb-3 text-muted-foreground" />
             <h3 className="text-lg font-medium text-foreground mb-1">No assignments found</h3>
-            <p className="text-muted-foreground text-sm">Create your first assignment for the bootcamp.</p>
+            <p className="text-muted-foreground text-sm">Create your first assignment for the EthShala.</p>
           </div>
         )}
       </div>

@@ -29,7 +29,7 @@ export function Navbar({ className, showNavLinks = true,}: NavbarProps) {
           <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
             <div className="relative bottom-1.5" >
               <ThemedLogoGif
-                alt="EIPsInsight"
+                alt="EthShala"
                 width={45}
                 height={45}
                 unoptimized
@@ -154,4 +154,4 @@ export function Navbar({ className, showNavLinks = true,}: NavbarProps) {
       )}
     </header>
   );
-}
+}}

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// EIPsInsight Dashboard — typed mock data
+// EthShala Dashboard — typed mock data
 // Replace fetch calls with real API endpoints
 // ─────────────────────────────────────────────
 

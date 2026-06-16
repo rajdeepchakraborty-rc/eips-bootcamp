@@ -21,7 +21,7 @@ export function ReferralCard({ referralsCount, xp, referralCode }: ReferralCardP
   const handleShare = () => {
     const link = `${window.location.origin}/apply?ref=${referralCode}`;
     if (navigator.share) {
-      navigator.share({ title: 'Join EIPsInsight', url: link }).catch(() => handleCopy());
+      navigator.share({ title: 'Join EthShala', url: link }).catch(() => handleCopy());
     } else {
       navigator.clipboard.writeText(link);
       setCopied(true);

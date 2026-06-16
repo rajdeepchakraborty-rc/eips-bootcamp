@@ -152,7 +152,8 @@ export function Chatbot() {
           <input
             value={input}
             onChange={handleInputChange}
-            placeholder="Ask about EIPsInsight..."
+            placeholder="Ask about EthShala..."
+
             className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder:text-muted-foreground focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
             disabled={isLoading}
           />
