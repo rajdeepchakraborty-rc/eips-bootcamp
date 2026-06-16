@@ -7,12 +7,12 @@ allowBuilds:
   '@nestjs/core': true
   '@prisma/client': true
   '@prisma/engines': true
-  bufferutil: set this to true or false
-  keccak: set this to true or false
+  bufferutil: true
+  keccak: true
   prisma: true
   sharp: true
   unrs-resolver: true
-  utf-8-validate: set this to true or false
+  utf-8-validate: true
 minimumReleaseAgeExclude:
   - '@ai-sdk/gateway@3.0.129'
   - '@ai-sdk/openai@3.0.71'

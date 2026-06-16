@@ -11,10 +11,10 @@
     "dev:api": "pnpm --filter api start:dev"
   },
   "devDependencies": {
-    "@prisma/client": "^6.9.0",
+    "@prisma/client": "^6.19.3",
     "@types/node": "^25.9.1",
     "dotenv": "^17.4.2",
-    "prisma": "^6.9.0",
+    "prisma": "^6.19.3",
     "turbo": "^2.9.14"
   }
 }
