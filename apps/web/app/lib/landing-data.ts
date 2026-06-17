@@ -110,7 +110,7 @@ export const whyCards: WhyCard[] = [
   {
     id: 'governance',
     title: 'Governance Is Underrepresented',
-    description: 'Most Ethereum education focuses on development. EthShala fills the gap for those who want to understand the protocol layer.',
+    description: 'Most Ethereum education focuses on development. EthShala Bootcamp fills the gap for those who want to understand the protocol layer.',
     icon: 'shield',
   },
   {
