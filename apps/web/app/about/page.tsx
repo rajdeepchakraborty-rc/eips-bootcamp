@@ -324,7 +324,7 @@ export default function AboutPage() {
                 </Link>
               </div>
               <div className="p-5 rounded-2xl bg-muted/40 border border-border hover:border-primary/40">
-                <Link target="_blank" className="flex items-center gap-6" target="_blank" href="https://www.ethcatherders.com/">
+                <Link target="_blank" className="flex items-center gap-6" href="https://www.ethcatherders.com/">
                 <div className="w-16 h-16 rounded-full bg-muted border border-border shrink-0 overflow-hidden relative">
                 <Image
                   src="/brand/partners/ech.png"
