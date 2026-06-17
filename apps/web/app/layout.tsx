@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     template: "%s | EthShala",
   },
   description: "EthShala Platform",
+  icons: {
+    icon: "/brand/ethshala_logo.svg",
+  },
 };
 
 import { Chatbot } from "./components/Chatbot";
