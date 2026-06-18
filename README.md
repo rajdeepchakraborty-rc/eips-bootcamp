@@ -1,1 +1,1 @@
-This is EthShala
+This is ETHShala

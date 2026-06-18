@@ -13,20 +13,20 @@ import { Badge } from "../components/ui/Badge";
 
 const ASSETS = [
   {
-    name: "EthShala Logo (Default)",
+    name: "ETHShala Logo (Default)",
     path: "/brand/ethshala_logo.svg",
-    description: "The primary brand mark for EthShala. Optimized for all backgrounds.",
+    description: "The primary brand mark for ETHShala. Optimized for all backgrounds.",
     type: "SVG",
   },
   {
-    name: "EthShala Logo (White)",
+    name: "ETHShala Logo (White)",
     path: "/brand/ethshala_logo_white.svg",
     description: "White version of the logo for dark backgrounds.",
     type: "SVG",
     background: "bg-[#121413]",
   },
   {
-    name: "EthShala Logo (Black)",
+    name: "ETHShala Logo (Black)",
     path: "/brand/ethshala_logo_black.svg",
     description: "Black version of the logo for light backgrounds.",
     type: "SVG",
@@ -59,7 +59,7 @@ export default function AssetsPage() {
         <div className="space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Brand Assets</h1>
           <p className="text-muted-foreground text-lg max-w-2xl">
-            Download the official EthShala logos and branding materials. These assets are intended for use in partnerships, community content, and media.
+            Download the official ETHShala logos and branding materials. These assets are intended for use in partnerships, community content, and media.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function AssetsPage() {
                 <div className="flex items-center gap-3 scale-125 pointer-events-none">
                   <div className="relative bottom-1.5 shrink-0">
                     <ThemedLogoGif
-                      alt="EthShala"
+                      alt="ETHShala"
                       width={45}
                       height={45}
                       unoptimized
@@ -92,7 +92,7 @@ export default function AssetsPage() {
               </div>
               <div className="p-6">
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  The black visual mark is paired with the standard EthShala wordmark for high contrast on light surfaces.
+                  The black visual mark is paired with the standard ETHShala wordmark for high contrast on light surfaces.
                 </p>
               </div>
             </Card>
@@ -105,7 +105,7 @@ export default function AssetsPage() {
                 <div className="flex items-center gap-3 scale-125 pointer-events-none">
                   <div className="relative bottom-1.5 shrink-0">
                     <ThemedLogoGif
-                      alt="EthShala"
+                      alt="ETHShala"
                       width={45}
                       height={45}
                       unoptimized

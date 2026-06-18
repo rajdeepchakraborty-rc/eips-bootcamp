@@ -175,7 +175,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-muted-foreground text-base leading-relaxed mb-8 max-w-[480px]">
-              EthShala is your gateway to the world of Ethereum Improvement Proposals, core concepts, and the ideas shaping the Ethereum ecosystem.
+              ETHShala is your gateway to the world of Ethereum Improvement Proposals, core concepts, and the ideas shaping the Ethereum ecosystem.
             </p>
 
             {/* CTAs */}

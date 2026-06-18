@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about the mission, the team, and the story behind EthShala - your gateway to mastering Ethereum Improvement Proposals.",
+  description: "Learn about the mission, the team, and the story behind ETHShala - your gateway to mastering Ethereum Improvement Proposals.",
 };
 
 import { Navbar } from '../components/landing/Navbar';
@@ -44,7 +44,7 @@ export default function AboutPage() {
             About
           </div>
           <h1 className="text-4xl md:text-5xl font-grotesk font-medium mb-6 leading-tight">
-            EthShala makes Ethereum protocol governance accessible to everyone.
+            ETHShala makes Ethereum protocol governance accessible to everyone.
           </h1>
           <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
             We build an educational platform, structured pathways, and governance movement trackers so builders, researchers, and newcomers can understand what is changing and why.
@@ -75,7 +75,7 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-muted-foreground text-sm">
               <p>Ethereum governance happens across repositories, pull requests, review queues, forum threads, upgrades, and informal coordination. The data is public, but the workflow is still hard to inspect as a system.</p>
-              <p>EthShala exists to reduce that gap. We curate the moving parts, normalize them into structured education, and help people answer practical questions: what changed, what is stuck, who is active, what upgrade work depends on what, and where to go next.</p>
+              <p>ETHShala exists to reduce that gap. We curate the moving parts, normalize them into structured education, and help people answer practical questions: what changed, what is stuck, who is active, what upgrade work depends on what, and where to go next.</p>
               <p>The goal is not just more documentation. The goal is operational clarity for anyone trying to understand or participate in Ethereum standards.</p>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
               name="Pooja Ranjan"
               role="Founder"
               focus="Ecosystem strategy"
-              description="Shapes the long-range direction of EthShala and keeps the work anchored to Ethereum governance needs."
+              description="Shapes the long-range direction of ETHShala and keeps the work anchored to Ethereum governance needs."
               imageSrc="/team/pooja_ranjan.jpg"
               socials={[
                 {
@@ -300,7 +300,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <div className="p-5 rounded-2xl bg-muted/40 border border-border">
                 <h4 className="font-bold text-sm mb-2">Ecosystem Support Program (EF ESP)</h4>
-                <p className="text-xs text-muted-foreground mb-3">Funds help maintain data pipelines, improve analytics, and keep EthShala open-source.</p>
+                <p className="text-xs text-muted-foreground mb-3">Funds help maintain data pipelines, improve analytics, and keep ETHShala open-source.</p>
                 <div className="flex gap-2">
                   <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-primary/20 text-primary">Significant</span>
                   <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full border border-border">Infrastructure</span>
@@ -356,7 +356,7 @@ export default function AboutPage() {
           <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Get Involved</h3>
           <h2 className="text-2xl font-grotesk font-medium mb-4">Support the platform, contribute feedback, or build on top of the work.</h2>
           <p className="text-sm text-muted-foreground mb-8 max-w-2xl">
-            EthShala is a community resource. If you want to help, the best paths are straightforward: use it, critique it, contribute to it, or support the infrastructure behind it.
+            ETHShala is a community resource. If you want to help, the best paths are straightforward: use it, critique it, contribute to it, or support the infrastructure behind it.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link target="_blank" href="https://github.com/AvarchLLC/eips-bootcamp">

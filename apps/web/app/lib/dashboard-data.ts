@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// EthShala Dashboard — typed mock data
+// ETHShala Dashboard — typed mock data
 // Replace fetch calls with real API endpoints
 // ─────────────────────────────────────────────
 

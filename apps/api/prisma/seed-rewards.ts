@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const mockRewards = [
   {
     id: 'hoodie',
-    title: 'EthShala Hoodie',
+    title: 'ETHShala Hoodie',
     description: 'Premium hoodie for true Ethereum builders.',
     cost: 1200,
     category: 'merchandise',
@@ -16,7 +16,7 @@ const mockRewards = [
   {
     id: 'genesis-nft',
     title: 'Genesis Role NFT',
-    description: 'Exclusive NFT for early EthShala contributors.',
+    description: 'Exclusive NFT for early ETHShala contributors.',
     cost: 2000,
     category: 'nfts',
     badge: 'NFT',
@@ -25,7 +25,7 @@ const mockRewards = [
   },
   {
     id: 'pro-pass',
-    title: 'EthShala Pro Pass',
+    title: 'ETHShala Pro Pass',
     description: 'Unlock premium courses and exclusive content.',
     cost: 1500,
     category: 'experiences',
@@ -35,7 +35,7 @@ const mockRewards = [
   },
   {
     id: 'cap',
-    title: 'EthShala Cap',
+    title: 'ETHShala Cap',
     description: 'Limited edition cap representing your journey.',
     cost: 800,
     category: 'merchandise',
@@ -75,7 +75,7 @@ const mockRewards = [
   },
   {
     id: 'mug',
-    title: 'EthShala Mug',
+    title: 'ETHShala Mug',
     description: 'Sip your coffee in style with our branded mug.',
     cost: 500,
     category: 'merchandise',

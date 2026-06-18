@@ -19,7 +19,7 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <div className="relative bottom-1.5" >
                 <ThemedLogoGif
-                  alt="EthShala"
+                  alt="ETHShala"
                   width={45}
                   height={45}
                   unoptimized

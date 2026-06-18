@@ -3,13 +3,13 @@ import { headers } from 'next/headers';
 import { redirect } from "next/navigation";
 import { apiFetch } from "@/app/lib/api";
 import DashboardShell from "@/app/components/dashboard/DashboardShell";
-import EthShalaAdminClient from "./EthShalaAdminClient";
+import ETHShalaAdminClient from "./EthShalaAdminClient";
 
 export const metadata = {
-  title: "Manage EthShala | Admin",
+  title: "Manage ETHShala | Admin",
 };
 
-export default async function AdminEthShalaPage() {
+export default async function AdminETHShalaPage() {
   const session = await auth.api.getSession({ headers: await headers() });
   const user = session?.user;
 
@@ -38,12 +38,12 @@ export default async function AdminEthShalaPage() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2 tracking-tight">EthShala Management</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2 tracking-tight">ETHShala Management</h1>
             <p className="text-muted-foreground text-sm">Create and organize learning modules and lessons.</p>
           </div>
         </div>
 
-        <EthShalaAdminClient initialModules={modules} />
+        <ETHShalaAdminClient initialModules={modules} />
       </div>
     </DashboardShell>
   );

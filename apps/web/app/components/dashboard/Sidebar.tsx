@@ -58,7 +58,7 @@ const capNav: NavItem[] = [
 const adminNav: NavItem[] = [
   { label: 'Admin Analytics', href: '/dashboard/admin/analytics', icon: <BarChart2 size={18} /> },
   { label: 'Applications', href: '/dashboard/admin/applications', icon: <ClipboardList size={18} /> },
-  { label: 'Manage EthShala', href: '/dashboard/admin/bootcamp', icon: <Layers size={18} /> },
+  { label: 'Manage ETHShala', href: '/dashboard/admin/bootcamp', icon: <Layers size={18} /> },
   { label: 'Manage Assignments', href: '/dashboard/admin/assignments', icon: <FileText size={18} /> },
   { label: 'Manage Events', href: '/dashboard/admin/events', icon: <Zap size={18} /> },
 ];
@@ -163,7 +163,7 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, toggleSidebar, }
           <Link href="/" className={`flex items-center transition-all duration-300 ${collapsed ? 'justify-center' : 'gap-2.5'}`}>
             <div className="relative shrink-0" >
               <ThemedLogoGif
-                alt="EthShala"
+                alt="ETHShala"
                 width={collapsed ? 32 : 36}
                 height={collapsed ? 32 : 36}
                 unoptimized

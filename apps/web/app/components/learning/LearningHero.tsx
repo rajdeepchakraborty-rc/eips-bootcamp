@@ -12,7 +12,7 @@ interface LearningHeroProps {
 export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User', stats, streakData }) => {
   const totalModules = stats?.totalModules || 0;
   const modulesCompleted = stats?.modulesCompleted || 0;
-  const EthShalaCompletion = totalModules > 0 ? Math.floor((modulesCompleted / totalModules) * 100) : 0;
+  const ETHShalaCompletion = totalModules > 0 ? Math.floor((modulesCompleted / totalModules) * 100) : 0;
   
   // Quick calculation for streak
   let currentStreak = 0;
@@ -110,7 +110,7 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User', s
         <div className="max-w-2xl">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">Welcome back, {userName}!</h1>
           <p className="text-muted-foreground text-sm sm:text-base mb-5">
-            You're <span className="font-semibold text-emerald-400">{EthShalaCompletion}%</span> through the EthShala. Keep your{' '}
+            You're <span className="font-semibold text-emerald-400">{ETHShalaCompletion}%</span> through the ETHShala. Keep your{' '}
             <span className="font-semibold text-orange-400">{currentStreak}-day streak</span> alive and unlock your potential.
           </p>
 
@@ -119,7 +119,7 @@ export const LearningHero: React.FC<LearningHeroProps> = ({ userName = 'User', s
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-emerald-400" />
               <span className="text-xs sm:text-sm text-muted-foreground">
-                <span className="text-emerald-400 font-semibold">{EthShalaCompletion}%</span> Progress
+                <span className="text-emerald-400 font-semibold">{ETHShalaCompletion}%</span> Progress
               </span>
             </div>
             <div className="flex items-center gap-2">

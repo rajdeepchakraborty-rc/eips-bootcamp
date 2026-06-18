@@ -1,6 +1,6 @@
 /**
  * Mock Assignments Data
- * Realistic assignment data for the EthShala
+ * Realistic assignment data for the ETHShala
  */
 
 import { Assignment, AssignmentStats } from '@/app/lib/assignments.types';

@@ -55,7 +55,7 @@ export default function CAPPage() {
                   CAP Program
                 </h1>
                 <p className="text-foreground/45 text-sm mt-1.5 max-w-lg leading-relaxed">
-                  Join the EthShala Campus Ambassador Program and help grow
+                  Join the ETHShala Campus Ambassador Program and help grow
                   Ethereum education on your campus.
                 </p>
               </div>

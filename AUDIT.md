@@ -1,6 +1,6 @@
-# Project Audit & Analysis: EthShala
+# Project Audit & Analysis: ETHShala
 
-This document provides a comprehensive analysis of the EthShala project, identifying technical debt, architectural gaps, and areas for improvement across the monorepo.
+This document provides a comprehensive analysis of the ETHShala project, identifying technical debt, architectural gaps, and areas for improvement across the monorepo.
 
 ---
 
