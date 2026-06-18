@@ -1,6 +1,6 @@
-# Deployment Guide: EthShala
+# Deployment Guide: ETHShala
 
-This guide outlines the strategies and steps for deploying the EthShala monorepo to production.
+This guide outlines the strategies and steps for deploying the ETHShala monorepo to production.
 
 ## Architecture Overview
 

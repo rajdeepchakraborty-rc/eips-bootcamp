@@ -25,16 +25,43 @@ import { Web3Provider } from "./components/Web3Provider";
 
 export const metadata: Metadata = {
   title: {
-    default: "EthShala",
-    template: "%s | EthShala",
+    default: "ETHShala | Master Ethereum Improvement Proposals",
+    template: "%s | ETHShala",
   },
-  description: "EthShala Platform",
+  description: "Learn, contribute, and master the core of Ethereum. ETHShala provides a gamified path to mastering EIPs through structured modules and community engagement.",
+  keywords: ["Ethereum", "EIP", "Blockchain", "Web3", "Learning", "Smart Contracts", "Governance"],
+  authors: [{ name: "ETHShala Team" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://ethshala.com",
+    title: "ETHShala | Master Ethereum Improvement Proposals",
+    description: "Learn, contribute, and master the core of Ethereum through our gamified EIP learning platform.",
+    siteName: "ETHShala",
+    images: [
+      {
+        url: "/brand/ethshala_logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "ETHShala Platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ETHShala | Master Ethereum Improvement Proposals",
+    description: "Master the core of Ethereum with ETHShala's gamified learning platform.",
+    images: ["/brand/ethshala_logo.svg"],
+    creator: "@ETHShala",
+  },
   icons: {
     icon: "/brand/ethshala_logo.svg",
+    apple: "/brand/ethshala_logo.svg",
   },
 };
 
 import { Chatbot } from "./components/Chatbot";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -60,6 +87,7 @@ export default function RootLayout({
           <Web3Provider>
             {children}
             <Chatbot />
+            <Toaster position="bottom-right" richColors closeButton />
           </Web3Provider>
         </ThemeProvider>
       </body>

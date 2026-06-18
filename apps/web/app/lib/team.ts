@@ -5,7 +5,7 @@ export const teamMembers = [
     role: "Founder",
     focus: "Ecosystem strategy",
     description:
-      "Shapes the long-range direction of EthShala and keeps the work anchored to Ethereum governance needs.",
+      "Shapes the long-range direction of ETHShala and keeps the work anchored to Ethereum governance needs.",
     imageSrc: "/team/pooja_ranjan.jpg",
     socials: [
       {

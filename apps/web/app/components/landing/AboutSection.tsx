@@ -19,7 +19,7 @@ export function AboutSection() {
           </h2>
           
           <p className="text-lg text-muted-foreground leading-relaxed text-left md:text-center">
-            EthShala is an initiative dedicated to opening the doors of Ethereum protocol development and governance. We believe that understanding Ethereum Improvement Proposals (EIPs) shouldn't be restricted to a select few.
+            ETHShala is an initiative dedicated to opening the doors of Ethereum protocol development and governance. We believe that understanding Ethereum Improvement Proposals (EIPs) shouldn't be restricted to a select few.
           </p>
 
           <p className="text-lg text-muted-foreground leading-relaxed text-left md:text-center">

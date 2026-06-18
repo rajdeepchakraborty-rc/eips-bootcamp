@@ -38,17 +38,30 @@ export async function getLearningData(): Promise<LearningData | null> {
     if (!dbUser) return null;
 
     // 1. Fetch raw data
-    const allModules = await prisma.module.findMany({ orderBy: { orderIndex: 'asc' } });
+    const allModules = await prisma.module.findMany({
+      include: {
+        lessons: {
+          orderBy: { orderIndex: 'asc' }
+        }
+      },
+      orderBy: { orderIndex: 'asc' }
+    });
     const allAssignments = await prisma.assignment.findMany({ orderBy: { createdAt: 'asc' } });
-    const userSubmissions = await prisma.assignmentSubmission.findMany({
-      where: { userId: dbUser.id },
-      include: { assignment: true },
-      orderBy: { submittedAt: 'desc' }
-    });
-    const xpTxs = await prisma.xPTransaction.findMany({
-      where: { userId: dbUser.id },
-      orderBy: { createdAt: 'desc' }
-    });
+    
+    const [userSubmissions, lessonProgress, xpTxs] = await Promise.all([
+      prisma.assignmentSubmission.findMany({
+        where: { userId: dbUser.id },
+        include: { assignment: true },
+        orderBy: { submittedAt: 'desc' }
+      }),
+      prisma.lessonProgress.findMany({
+        where: { userId: dbUser.id }
+      }),
+      prisma.xPTransaction.findMany({
+        where: { userId: dbUser.id },
+        orderBy: { createdAt: 'desc' }
+      })
+    ]);
 
     // Rank calculation (simple approximation: how many users have more XP)
     const userTotalXp = xpTxs.reduce((sum, tx) => sum + tx.amount, 0);
@@ -65,32 +78,49 @@ export async function getLearningData(): Promise<LearningData | null> {
     });
     const rank = usersWithMoreXpCount.length + 1;
 
-    // 2. Stats
+    // 2. Stats & Completion Logic
     const activeAssignments = userSubmissions.filter(s => s.status === 'IN_PROGRESS' || s.status === 'NOT_STARTED').length;
     
-    // Calculate modules completed: A module is complete if all its assignments are COMPLETED.
+    // Calculate modules completed: A module is complete if ALL lessons AND ALL assignments are COMPLETED.
     let modulesCompleted = 0;
-    const moduleStatusMap = new Map<string, string>(); // 'COMPLETED', 'IN_PROGRESS', 'NOT_STARTED'
-    
+    const moduleStatusMap = new Map<string, 'COMPLETED' | 'IN_PROGRESS' | 'NOT_STARTED'>();
+    const completedLessonIds = new Set(lessonProgress.map(lp => lp.lessonId));
+
     for (const mod of allModules) {
       const modAssignments = allAssignments.filter(a => a.module === mod.id);
-      if (modAssignments.length === 0) {
+      
+      const totalItems = mod.lessons.length + modAssignments.length;
+      if (totalItems === 0) {
         moduleStatusMap.set(mod.id, 'NOT_STARTED');
         continue;
       }
-      
-      let completedCount = 0;
-      let startedCount = 0;
+
+      let completedItems = 0;
+      let startedItems = 0;
+
+      // Check lessons
+      for (const lesson of mod.lessons) {
+        if (completedLessonIds.has(lesson.id)) {
+          completedItems++;
+          startedItems++;
+        }
+      }
+
+      // Check assignments
       for (const a of modAssignments) {
         const sub = userSubmissions.find(s => s.assignmentId === a.id);
-        if (sub?.status === 'COMPLETED') completedCount++;
-        if (sub) startedCount++;
+        if (sub?.status === 'COMPLETED') {
+          completedItems++;
+          startedItems++;
+        } else if (sub && sub.status !== 'NOT_STARTED') {
+          startedItems++;
+        }
       }
-      
-      if (completedCount === modAssignments.length) {
+
+      if (completedItems === totalItems) {
         modulesCompleted++;
         moduleStatusMap.set(mod.id, 'COMPLETED');
-      } else if (startedCount > 0) {
+      } else if (startedItems > 0) {
         moduleStatusMap.set(mod.id, 'IN_PROGRESS');
       } else {
         moduleStatusMap.set(mod.id, 'NOT_STARTED');
@@ -106,27 +136,44 @@ export async function getLearningData(): Promise<LearningData | null> {
     };
 
     // 3. In Progress (Continue Learning)
-    let inProgress = null;
-    const latestInProgress = userSubmissions.find(s => s.status === 'IN_PROGRESS');
-    if (latestInProgress) {
-      const mod = allModules.find(m => m.id === latestInProgress.assignment.module);
+    let inProgress: InProgressModule | null = null;
+    
+    // Priority 1: Specifically marked IN_PROGRESS assignment
+    const latestInProgressSub = userSubmissions.find(s => s.status === 'IN_PROGRESS');
+    if (latestInProgressSub) {
+      const mod = allModules.find(m => m.id === latestInProgressSub.assignment.module);
       inProgress = {
-        title: latestInProgress.assignment.title,
+        title: latestInProgressSub.assignment.title,
         moduleName: mod?.title || 'General',
-        progress: latestInProgress.progress || 50,
-        id: latestInProgress.assignmentId
+        progress: latestInProgressSub.progress || 50,
+        id: latestInProgressSub.assignmentId
       };
     } else {
-      // Find first module not completed
+      // Priority 2: First module that is NOT COMPLETED
       const firstIncompleteMod = allModules.find(m => moduleStatusMap.get(m.id) !== 'COMPLETED');
       if (firstIncompleteMod) {
-        const firstAssignment = allAssignments.find(a => a.module === firstIncompleteMod.id);
-        inProgress = {
-          title: firstAssignment?.title || firstIncompleteMod.title,
-          moduleName: firstIncompleteMod.title,
-          progress: 0,
-          id: firstAssignment?.id || ''
-        };
+        // Find first incomplete lesson in this module
+        const nextLesson = firstIncompleteMod.lessons.find(l => !completedLessonIds.has(l.id));
+        if (nextLesson) {
+          inProgress = {
+            title: nextLesson.title,
+            moduleName: firstIncompleteMod.title,
+            progress: 0,
+            id: nextLesson.id
+          };
+        } else {
+          // Lessons done, find first incomplete assignment
+          const modAssignments = allAssignments.filter(a => a.module === firstIncompleteMod.id);
+          const nextAssignment = modAssignments.find(a => !userSubmissions.some(s => s.assignmentId === a.id && s.status === 'COMPLETED'));
+          if (nextAssignment) {
+            inProgress = {
+              title: nextAssignment.title,
+              moduleName: firstIncompleteMod.title,
+              progress: 0,
+              id: nextAssignment.id
+            };
+          }
+        }
       }
     }
 
@@ -144,7 +191,7 @@ export async function getLearningData(): Promise<LearningData | null> {
     });
 
     // 5. Next Step
-    const nextStep = inProgress; // Simplify by making next step the in progress item
+    const nextStep = inProgress;
 
     // 6. Activity
     const activity = [
@@ -152,20 +199,28 @@ export async function getLearningData(): Promise<LearningData | null> {
         id: s.id,
         title: `Submitted ${s.assignment.title}`,
         time: s.submittedAt || s.createdAt,
-        type: 'assignment',
+        type: 'assignment' as const,
         xp: s.score || 0
+      })),
+      ...xpTxs.filter(tx => tx.reason.includes('Completed Lesson')).map(tx => ({
+        id: tx.id,
+        title: tx.reason,
+        time: tx.createdAt,
+        type: 'achievement' as const,
+        xp: tx.amount
       })),
       ...xpTxs.filter(tx => tx.reason.includes('Graded')).map(tx => ({
         id: tx.id,
         title: tx.reason,
         time: tx.createdAt,
-        type: 'achievement',
+        type: 'achievement' as const,
         xp: tx.amount
       }))
     ].sort((a, b) => b.time.getTime() - a.time.getTime()).slice(0, 5).map(a => ({
       ...a,
       time: a.time.toLocaleDateString()
     }));
+
 
     // 7. Deadlines
     const completedAssignmentIds = userSubmissions.filter(s => s.status === 'COMPLETED').map(s => s.assignmentId);
@@ -181,41 +236,50 @@ export async function getLearningData(): Promise<LearningData | null> {
       }));
 
     // 8. Skills
-    // Calculate skills based on tags of completed assignments
-    const tagCounts: Record<string, number> = {};
+    // Calculate skills based on tags and difficulty of completed assignments
+    const tagPoints: Record<string, number> = {};
+    const difficultyPoints: Record<string, number> = {
+      'Beginner': 10,
+      'Intermediate': 20,
+      'Advanced': 30
+    };
+
     for (const sub of userSubmissions) {
       if (sub.status === 'COMPLETED') {
-        const tagsStr = sub.assignment.tags as unknown as string;
-        let tags: string[] = [];
-        try {
-          if (typeof tagsStr === 'string') {
-            tags = JSON.parse(tagsStr);
-          } else if (Array.isArray(tagsStr)) {
-            tags = tagsStr;
-          }
-        } catch(e) {}
+        const tags = sub.assignment.tags || [];
+        const points = difficultyPoints[sub.assignment.difficulty] || 10;
         
         for (const tag of tags) {
-          tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+          const normalizedTag = tag.toLowerCase();
+          tagPoints[normalizedTag] = (tagPoints[normalizedTag] || 0) + points;
         }
       }
     }
     
-    // Map tags to skill categories
-    const technical = ['solidity', 'smart-contracts', 'web3', 'blockchain', 'ethereum'];
-    const soft = ['analysis', 'design', 'architecture', 'writing'];
-    
-    const skills = [
-      { name: 'Smart Contracts', progress: Math.min(100, (tagCounts['solidity'] || 0) * 20), category: 'technical' },
-      { name: 'Web3 Integration', progress: Math.min(100, (tagCounts['web3'] || 0) * 20), category: 'technical' },
-      { name: 'System Design', progress: Math.min(100, (tagCounts['architecture'] || 0) * 20), category: 'technical' },
-      { name: 'Technical Writing', progress: Math.min(100, (tagCounts['writing'] || 0) * 20), category: 'soft' },
-      { name: 'Security Analysis', progress: Math.min(100, (tagCounts['analysis'] || 0) * 20), category: 'soft' }
+    // Define skill categories and their associated tags
+    const skillMapping: { name: string; tags: string[]; category: 'technical' | 'soft' }[] = [
+      { name: 'Smart Contracts', tags: ['solidity', 'smart contracts', 'standards', 'implementation'], category: 'technical' },
+      { name: 'Web3 Integration', tags: ['web3', 'clients', 'frontend', 'integration'], category: 'technical' },
+      { name: 'System Design', tags: ['architecture', 'design', 'protocol', 'consensus'], category: 'technical' },
+      { name: 'Technical Writing', tags: ['writing', 'documentation', 'proposal', 'metadata', 'rationale'], category: 'soft' },
+      { name: 'Security Analysis', tags: ['security', 'analysis', 'review', 'compatibility', 'threat model'], category: 'soft' }
     ];
+    
+    const skills = skillMapping.map(skill => {
+      const points = skill.tags.reduce((sum, tag) => sum + (tagPoints[tag] || 0), 0);
+      // Goal: 100 points for 100% progress
+      return {
+        name: skill.name,
+        progress: Math.min(100, points),
+        category: skill.category
+      };
+    });
+
+
 
     // 9. Streak Heatmap
     // Just map xpTx dates to intensity
-    const streak = [];
+    const streak: StreakItem[] = [];
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     
@@ -230,7 +294,7 @@ export async function getLearningData(): Promise<LearningData | null> {
                txDate.getFullYear() === date.getFullYear();
       });
       
-      let intensity = 0;
+      let intensity: 0 | 1 | 2 | 3 | 4 = 0;
       if (txsOnDay.length > 0) {
         const xpEarned = txsOnDay.reduce((sum, tx) => sum + tx.amount, 0);
         if (xpEarned > 1000) intensity = 4;
@@ -241,6 +305,7 @@ export async function getLearningData(): Promise<LearningData | null> {
       
       streak.push({ date, intensity });
     }
+
 
     return {
       stats,

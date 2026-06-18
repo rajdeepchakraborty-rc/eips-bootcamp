@@ -1,6 +1,6 @@
 /**
- * EthShala Module Types
- * TypeScript interfaces and types for EthShala
+ * ETHShala Module Types
+ * TypeScript interfaces and types for ETHShala
  */
 
 export interface InProgressModule {

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────
-// EthShala — Landing page data
+// ETHShala — Landing page data
 // ─────────────────────────────────────────────
 
 export interface LearningTrack {
@@ -110,7 +110,7 @@ export const whyCards: WhyCard[] = [
   {
     id: 'governance',
     title: 'Governance Is Underrepresented',
-    description: 'Most Ethereum education focuses on development. EthShala Bootcamp fills the gap for those who want to understand the protocol layer.',
+    description: 'Most Ethereum education focuses on development. ETHShala Bootcamp fills the gap for those who want to understand the protocol layer.',
     icon: 'shield',
   },
   {
@@ -151,7 +151,7 @@ export const footerLinks = {
   followUs: [
     { label: 'YouTube', href: 'https://www.youtube.com/@etherworldco' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/company/ethshala' },
-    { label: 'X', href: 'https://x.com/EthShala' },
+    { label: 'X', href: 'https://x.com/ETHShala' },
     { label: 'EtherWorld', href: 'https://etherworld.co/' },
   ],
 };

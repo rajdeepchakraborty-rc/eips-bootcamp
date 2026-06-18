@@ -136,7 +136,7 @@ function ApprovedCard({ application }: { application: CAPApplication }) {
       <p className="text-foreground/45 text-sm max-w-sm mx-auto leading-relaxed">
         You are now part of the{" "}
         <span className="text-emerald-400 font-medium">
-          EthShala Campus Ambassador Program.
+          ETHShala Campus Ambassador Program.
         </span>{" "}
         Start spreading Ethereum education on your campus.
       </p>
@@ -219,7 +219,7 @@ function RejectedCard() {
         }}
       >
         <p className="text-xs text-foreground/40 leading-relaxed">
-          💡 <span className="text-foreground/60">Tip:</span> Complete more EthShala modules
+          💡 <span className="text-foreground/60">Tip:</span> Complete more ETHShala modules
           modules, contribute to EIPs, and grow your community presence before
           reapplying.
         </p>
