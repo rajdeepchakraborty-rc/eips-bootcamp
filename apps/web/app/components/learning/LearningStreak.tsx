@@ -22,25 +22,35 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
   );
 
   /**
-   * Generate FULL 1-year GitHub-style grid (no breaking change to logic)
-   */
+ * Generate GitHub-style 1 year grid
+ * Always keeps full 7-day columns
+ */
   const ensureData = () => {
     const data: any[] = [];
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    for (let i = 364; i >= 0; i--) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - i);
+    // Start 1 year ago
+    const startDate = new Date(today);
+    startDate.setDate(startDate.getDate() - 364);
 
-      const key = date.toDateString();
+    // Align start to Sunday (GitHub style)
+    startDate.setDate(startDate.getDate() - startDate.getDay());
+
+    const current = new Date(startDate);
+
+    while (current <= today) {
+      const key = current.toDateString();
 
       data.push({
-        date,
+        date: new Date(current),
         intensity: intensityMap.get(key) || 0,
       });
+
+      current.setDate(current.getDate() + 1);
     }
 
+    // Always remove incomplete last week padding
     return data;
   };
 
@@ -83,7 +93,7 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
   }
 
   /**
-   * FIXED: GitHub-style weekly grouping (no more 7-day bug)
+   * GitHub style weekly columns
    */
   const weeks: any[][] = [];
   let currentWeek: any[] = [];
@@ -91,9 +101,7 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
   finalData.forEach((day) => {
     currentWeek.push(day);
 
-    const dayOfWeek = new Date(day.date).getDay(); // 0 = Sunday
-
-    if (dayOfWeek === 6) {
+    if (currentWeek.length === 7) {
       weeks.push(currentWeek);
       currentWeek = [];
     }
