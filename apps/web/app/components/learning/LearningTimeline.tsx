@@ -11,7 +11,7 @@ export const LearningTimeline = ({ timeline }: { timeline?: any[] }) => {
     <Card className="flex flex-col h-full">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-foreground font-bold text-base">ETHShala Timeline</h3>
-        <Link href="/dashboard/bootcamp">
+        <Link href="/dashboard/my-modules">
           <button className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors flex items-center gap-1">
             View All <ArrowRight size={12} />
           </button>
