@@ -106,6 +106,9 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
       currentWeek = [];
     }
   });
+  
+  // Added weekday labels
+  const weekdays = ['Mon', 'Wed', 'Fri'];
 
   if (currentWeek.length) weeks.push(currentWeek);
 
@@ -176,41 +179,98 @@ export const LearningStreak = ({ streakData }: { streakData?: any[] }) => {
           </div>
 
           {/* Heatmap */}
-          <div className="pt-2 pl-4 custom-scrollbar">
-            <div className="flex gap-1.5 mb-4 min-w-max">
+          <div className="pt-4 flex justify-center overflow-visible">
+            <div className="flex">
 
-              {weeks.map((week, weekIndex) => (
-                <div key={weekIndex} className="flex flex-col gap-1.5">
+              {/* Weekday labels */}
+              <div className="flex flex-col gap-2 mr-3 pt-5 text-xs text-muted-foreground">
+                <span className="h-4"></span>
+                <span className="h-4">Mon</span>
+                <span className="h-3.5"></span>
+                <span className="h-4">Wed</span>
+                <span className="h-3"></span>
+                <span className="h-4">Fri</span>
+              </div>
 
-                  {week.map((day, dayIndex) => {
-                    const dateObj = new Date(day.date);
+              <div>
+
+                {/* Month labels */}
+                <div className="flex gap-1.5 mb-2 h-4">
+                  {weeks.map((week, index) => {
+                    const date = new Date(week[0].date);
+
+                    const currentMonth = date.getMonth();
+
+                    const previousMonth =
+                      index > 0
+                        ? new Date(weeks[index - 1][0].date).getMonth()
+                        : null;
+
+                    const showMonth =
+                      index === 0 || currentMonth !== previousMonth;
+
 
                     return (
                       <div
-                        key={dayIndex}
-                        className={`w-4 h-4 rounded-sm border transition-all duration-200 hover:ring-2 hover:ring-emerald-400/50 cursor-pointer group/day relative ${getColor(
-                          day.intensity
-                        )}`}
+                        key={index}
+                        className="w-4 text-[11px] text-muted-foreground"
                       >
-                        {/* Tooltip */}
-                        <div className="absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 rounded-md text-[11px] leading-tight text-white bg-black/90 backdrop-blur-md border border-white/10 shadow-xl whitespace-nowrap pointer-events-none opacity-0 group-hover/day:opacity-100 transition-opacity duration-150">
-                          {dateObj.toLocaleDateString(undefined, {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric',
-                          })}
-                          <div className="text-[10px] text-white/70 mt-0.5">
-                            {day.intensity > 0
-                              ? `Activity level ${day.intensity}`
-                              : 'No activity'}
-                          </div>
-                        </div>
+                        {showMonth
+                          ? date.toLocaleString('default', {
+                              month: 'short',
+                            })
+                          : ''}
                       </div>
                     );
                   })}
+                </div>
+
+
+                {/* Heatmap columns */}
+                <div className="flex gap-1.5">
+
+                  {weeks.map((week, weekIndex) => (
+                    <div
+                      key={weekIndex}
+                      className="flex flex-col gap-1.5"
+                    >
+
+                      {week.map((day, dayIndex) => {
+                        const dateObj = new Date(day.date);
+
+                        return (
+                          <div
+                            key={dayIndex}
+                            className={`w-4 h-4 rounded-sm border transition-all duration-200 hover:ring-2 hover:ring-emerald-400/50 cursor-pointer group/day relative ${getColor(
+                              day.intensity
+                            )}`}
+                          >
+
+                            {/* Tooltip */}
+                            <div className="absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-2 px-2 py-1 rounded-md text-[11px] leading-tight text-white bg-black/90 backdrop-blur-md border border-white/10 shadow-xl whitespace-nowrap pointer-events-none opacity-0 group-hover/day:opacity-100 transition-opacity duration-150">
+                              {dateObj.toLocaleDateString(undefined, {
+                                month: 'short',
+                                day: 'numeric',
+                                year: 'numeric',
+                              })}
+
+                              <div className="text-[10px] text-white/70 mt-0.5">
+                                {day.intensity > 0
+                                  ? `Activity level ${day.intensity}`
+                                  : 'No activity'}
+                              </div>
+                            </div>
+
+                          </div>
+                        );
+                      })}
+
+                    </div>
+                  ))}
 
                 </div>
-              ))}
+
+              </div>
 
             </div>
           </div>
