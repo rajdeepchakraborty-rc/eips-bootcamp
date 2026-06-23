@@ -47,14 +47,18 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
   const activeNotifications = notifications.filter(n => new Date(n.createdAt).getTime() > clearedAt);
 
   const handleClearNotifications = () => {
-    const now = Date.now();
-    setClearedAt(now);
-    localStorage.setItem('notificationsClearedAt', now.toString());
+    const maxTime = notifications.reduce((max, n) => {
+      const t = new Date(n.createdAt).getTime();
+      return t > max ? t : max;
+    }, Date.now());
+    
+    setClearedAt(maxTime);
+    localStorage.setItem('notificationsClearedAt', maxTime.toString());
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && searchQuery.trim()) {
-      router.push(`/dashboard/learning?q=${encodeURIComponent(searchQuery.trim())}`);
+      router.push(`/dashboard/marketplace?q=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
 

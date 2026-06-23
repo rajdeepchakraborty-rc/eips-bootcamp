@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { BookOpen, FileText, Vote, Search, GitBranch, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { learningTracks, type LearningTrack } from '../../lib/landing-data';
+import { PathfinderModal } from './PathfinderModal';
+import Link from 'next/link';
 
 // Level color mapping for badges
 const levelColors: Record<string, string> = {
@@ -317,7 +319,13 @@ function StatsPanel() {
 }
 
 // CTA section component
-function CTASection() {
+function CTASection({ 
+  onOpenPathfinder,
+  assignedLevel
+}: { 
+  onOpenPathfinder: () => void;
+  assignedLevel: string | null;
+}) {
   return (
     <div className="mt-16 sm:mt-24 rounded-2xl border border-emerald-500/20 bg-background backdrop-blur-sm p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
       <div className="flex items-start gap-4 flex-1">
@@ -325,16 +333,36 @@ function CTASection() {
           <Star size={20} />
         </div>
         <div>
-          <h3 className="text-foreground font-bold text-lg sm:text-xl mb-1">Not sure where to start?</h3>
+          <h3 className="text-foreground font-bold text-lg sm:text-xl mb-1">
+            {assignedLevel ? `You are assigned the ${assignedLevel} path!` : "Not sure where to start?"}
+          </h3>
           <p className="text-gray-400 text-sm sm:text-base">
-            Answer a few questions and we'll recommend the perfect learning path for you.
+            {assignedLevel 
+              ? "Ready to dive in? Check out the marketplace, or retake the quiz to explore other paths."
+              : "Answer a few questions and we'll recommend the perfect learning path for you."}
           </p>
         </div>
       </div>
-      <button className="flex-shrink-0 px-6 py-2.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 hover:border-emerald-500/50 font-semibold text-sm whitespace-nowrap transition-all duration-300 flex items-center gap-2">
-        Find My Path
-        <ChevronRight size={16} />
-      </button>
+      <div className="flex flex-col sm:flex-row items-center gap-3">
+        {assignedLevel && (
+          <Link href={`/dashboard/marketplace?level=${assignedLevel}`}>
+            <button className="flex-shrink-0 px-6 py-2.5 rounded-lg bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-colors flex items-center gap-2 text-sm whitespace-nowrap">
+              Start Journey
+            </button>
+          </Link>
+        )}
+        <button 
+          onClick={onOpenPathfinder}
+          className={`flex-shrink-0 px-6 py-2.5 rounded-lg transition-all duration-300 flex items-center gap-2 font-semibold text-sm whitespace-nowrap ${
+            assignedLevel 
+              ? "border border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white"
+              : "bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 hover:border-emerald-500/50"
+          }`}
+        >
+          {assignedLevel ? "Retake Quiz" : "Find My Path"}
+          {!assignedLevel && <ChevronRight size={16} />}
+        </button>
+      </div>
     </div>
   );
 }
@@ -343,7 +371,21 @@ function CTASection() {
 export function LearningTracks() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [isPathfinderOpen, setIsPathfinderOpen] = useState(false);
+  const [assignedLevel, setAssignedLevel] = useState<string | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const savedLevel = localStorage.getItem('pathfinderLevel');
+    if (savedLevel) {
+      setAssignedLevel(savedLevel);
+    }
+  }, []);
+
+  const handlePathfinderComplete = (level: string) => {
+    setAssignedLevel(level);
+    localStorage.setItem('pathfinderLevel', level);
+  };
 
   const totalTracks = learningTracks.length;
 
@@ -474,8 +516,17 @@ export function LearningTracks() {
         </div>
 
         {/* CTA Section */}
-        <CTASection />
+        <CTASection 
+          onOpenPathfinder={() => setIsPathfinderOpen(true)} 
+          assignedLevel={assignedLevel}
+        />
       </div>
+
+      <PathfinderModal 
+        isOpen={isPathfinderOpen} 
+        onClose={() => setIsPathfinderOpen(false)} 
+        onComplete={handlePathfinderComplete}
+      />
     </section>
   );
 }
