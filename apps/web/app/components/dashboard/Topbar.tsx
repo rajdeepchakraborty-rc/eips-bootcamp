@@ -21,6 +21,8 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
 
   const [xp, setXp] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [modules, setModules] = useState<any[]>([]);
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
   const [showNotifications, setShowNotifications] = useState(false);
   const [clearedAt, setClearedAt] = useState<number>(0);
@@ -35,6 +37,12 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
       getUserTotalXp().then(setXp);
       getRecentNotifications().then(setNotifications);
       
+      // Fetch modules for search
+      fetch(`/api/bootcamp/modules?userId=${user.id}`)
+        .then(res => res.json())
+        .then(setModules)
+        .catch(console.error);
+      
       // Poll XP every 15 seconds for real-time updates
       const intervalId = setInterval(() => {
         getUserTotalXp().then(setXp);
@@ -47,16 +55,28 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
   const activeNotifications = notifications.filter(n => new Date(n.createdAt).getTime() > clearedAt);
 
   const handleClearNotifications = () => {
-    const now = Date.now();
-    setClearedAt(now);
-    localStorage.setItem('notificationsClearedAt', now.toString());
+    const maxTime = notifications.reduce((max, n) => {
+      const t = new Date(n.createdAt).getTime();
+      return t > max ? t : max;
+    }, Date.now());
+    
+    setClearedAt(maxTime);
+    localStorage.setItem('notificationsClearedAt', maxTime.toString());
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && searchQuery.trim()) {
-      router.push(`/dashboard/learning?q=${encodeURIComponent(searchQuery.trim())}`);
+      router.push(`/dashboard/marketplace?q=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchFocused(false);
     }
   };
+
+  const searchResults = searchQuery.trim() 
+    ? modules.filter(m => 
+        m.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        m.description.toLowerCase().includes(searchQuery.toLowerCase())
+      ).slice(0, 5)
+    : [];
 
   return (
     <header className="sticky top-0 z-30 h-[60px] bg-background/95 backdrop-blur-xl border-b border-border flex items-center px-4 lg:px-6 gap-4">
@@ -69,7 +89,7 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
       </button>
 
       {/* Search */}
-      <div className="flex-1 max-w-[500px]">
+      <div className="flex-1 max-w-[500px] relative">
         <div className="relative group">
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-emerald-400 transition-colors" />
           <input
@@ -77,6 +97,8 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={handleSearch}
+            onFocus={() => setIsSearchFocused(true)}
+            onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
             placeholder="Search courses, modules, topics... (Press Enter)"
             className="w-full bg-accent border border-border rounded-lg pl-9 pr-16 py-2 text-sm text-muted-foreground placeholder:text-muted-foreground focus:outline-none focus:border-emerald-500/50 focus:bg-accent focus:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all duration-300"
           />
@@ -84,6 +106,38 @@ export function Topbar({ onMobileMenuOpen }: TopbarProps) {
             <kbd className="text-[10px] text-muted-foreground bg-accent border border-border rounded px-1.5 py-0.5 font-mono group-focus-within:border-emerald-500/30 group-focus-within:text-emerald-500/70 transition-colors">↵</kbd>
           </div>
         </div>
+
+        {/* Search Dropdown */}
+        {isSearchFocused && searchQuery.trim().length > 0 && (
+          <div className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-in fade-in slide-in-from-top-2">
+            {searchResults.length > 0 ? (
+              <div>
+                <div className="px-3 py-2 text-xs font-semibold text-muted-foreground bg-accent/50 flex items-center gap-2">
+                  <BookOpen size={12} />
+                  Courses & Modules
+                </div>
+                {searchResults.map(module => (
+                  <Link 
+                    key={module.id}
+                    href={module.isSubscribed ? `/dashboard/my-modules?moduleId=${module.id}` : `/dashboard/checkout?moduleId=${module.id}`}
+                    className="flex flex-col px-4 py-3 hover:bg-accent transition-colors border-b border-border last:border-0 group"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setIsSearchFocused(false);
+                    }}
+                  >
+                    <span className="text-sm font-medium text-foreground group-hover:text-emerald-400 transition-colors">{module.title}</span>
+                    <span className="text-xs text-muted-foreground line-clamp-1 mt-0.5">{module.description}</span>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="px-4 py-6 text-center text-sm text-muted-foreground">
+                No results found for "{searchQuery}"
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="ml-auto flex items-center gap-3 relative">

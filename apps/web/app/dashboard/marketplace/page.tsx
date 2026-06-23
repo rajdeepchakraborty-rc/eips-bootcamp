@@ -5,16 +5,34 @@ import { ChevronRight, ChevronLeft, BookOpen, Search, ShoppingCart } from 'lucid
 import { DashboardShell } from '@/app/components/dashboard/DashboardShell';
 import { ModuleCard } from '@/app/components/bootcamp/ModuleCard';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from '@/app/lib/auth-client';
 
 export default function MarketplacePage() {
+  return (
+    <React.Suspense fallback={
+      <DashboardShell>
+        <div className="flex items-center justify-center h-96">
+          <div className="text-emerald-500">Loading marketplace...</div>
+        </div>
+      </DashboardShell>
+    }>
+      <MarketplaceContent />
+    </React.Suspense>
+  );
+}
+
+function MarketplaceContent() {
   const { data: session } = useSession();
   const user = session?.user;
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams?.get('q') || '';
+  const levelParam = searchParams?.get('level');
+  
   const [modules, setModules] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
 
   const fetchModules = async () => {
     if (!user?.id) return;
@@ -36,6 +54,13 @@ export default function MarketplacePage() {
       fetchModules();
     }
   }, [user?.id]);
+
+  useEffect(() => {
+    const q = searchParams?.get('q');
+    if (typeof q === 'string') {
+      setSearchQuery(q);
+    }
+  }, [searchParams]);
 
   const handleModuleClick = (module: any) => {
     if (module.isSubscribed) {
@@ -64,6 +89,11 @@ export default function MarketplacePage() {
     });
     return groups;
   }, [filteredModules]);
+
+  const recommendedModules = useMemo(() => {
+    if (!levelParam || !modules.length) return [];
+    return modules.filter(m => m.category?.toLowerCase() === levelParam.toLowerCase());
+  }, [modules, levelParam]);
 
   return (
     <DashboardShell>
@@ -119,6 +149,26 @@ export default function MarketplacePage() {
                 />
               </div>
             </div>
+
+            {/* Recommended Section */}
+            {levelParam && recommendedModules.length > 0 && !searchQuery && (
+              <div className="mb-12">
+                <div className="bg-gradient-to-r from-emerald-500/20 to-transparent p-6 rounded-2xl border border-emerald-500/30">
+                  <h2 className="text-2xl font-bold text-emerald-400 mb-2">Recommended for your level ({levelParam})</h2>
+                  <p className="text-gray-300 mb-6">Based on your pathfinder results, we recommend starting with these modules.</p>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {recommendedModules.map((module: any) => (
+                      <ModuleCard
+                        key={`rec-${module.id}`}
+                        module={module}
+                        isMarketplaceMode={true}
+                        onClick={() => handleModuleClick(module)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Modules Grid Grouped by Category */}
             {Object.keys(groupedModules).length > 0 ? (
