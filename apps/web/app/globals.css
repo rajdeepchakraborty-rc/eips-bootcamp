@@ -88,3 +88,22 @@ code, pre, .eip-number {
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes scale-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}

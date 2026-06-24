@@ -185,8 +185,8 @@ export async function getLearningData(): Promise<LearningData | null> {
         title: mod.title,
         description: mod.description,
         status,
-        duration: mod.duration || '2 weeks',
-        xpReward: mod.xpReward || 0
+        duration: mod.duration,
+        xpReward: mod.xpReward
       };
     });
 
@@ -232,7 +232,7 @@ export async function getLearningData(): Promise<LearningData | null> {
         id: a.id,
         title: a.title,
         module: allModules.find(m => m.id === a.module)?.title || 'General',
-        deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString() // mock 7 days from now
+        deadline: new Date(a.deadline).toLocaleDateString()
       }));
 
     // 8. Skills
