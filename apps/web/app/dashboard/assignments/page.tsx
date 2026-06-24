@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Search } from 'lucide-react';
+import { ChevronLeft, Search, FileText } from 'lucide-react';
 import { DashboardShell } from '@/app/components/dashboard/DashboardShell';
 import { AssignmentStats } from '@/app/components/assignments/AssignmentStats';
 import { AssignmentFilters } from '@/app/components/assignments/AssignmentFilters';
@@ -133,16 +133,14 @@ export default function AssignmentsPage() {
           <div className="p-8 max-w-7xl mx-auto">
             {/* Page Header */}
             <div className="mb-12">
-                <Link href="/dashboard">
-              <button className="flex items-center gap-2 text-muted-foreground hover:text-emerald-400 transition-colors mb-4">
-                <ChevronLeft size={18} />
-                <span className="text-sm font-medium">Back to Dashboard</span>
-              </button>
-              </Link>
+                <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold mb-2">
+                  <FileText size={16} />
+                  ASSIGNMENTS
+                </div>
 
               <div className="mb-6">
                 <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                  Assignments
+                  My Assignments
                 </h1>
                 <p className="text-muted-foreground text-lg">
                   Complete challenges, submit EIPs, and earn XP rewards.

@@ -3,6 +3,7 @@
 'use client';
 
 import React from 'react';
+import { Gift } from 'lucide-react';
 
 export const RewardsHero: React.FC = () => {
   return (
@@ -10,10 +11,13 @@ export const RewardsHero: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
         {/* Left Content */}
         <div className="z-10">
+          <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold mb-2">
+            <Gift size={16} />
+            REWARDS
+          </div>
           <div className="flex items-center gap-3 mb-6">
-            <div className="text-4xl">🎁</div>
             <h1 className="text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
-              Rewards
+              My Rewards
             </h1>
           </div>
 

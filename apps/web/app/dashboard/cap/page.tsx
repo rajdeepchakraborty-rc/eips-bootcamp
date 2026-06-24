@@ -51,10 +51,10 @@ export default function CAPPage() {
                 <StarIcon />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-foreground tracking-tight">
+                <h1 className="text-5xl font-bold text-foreground tracking-tight">
                   CAP Program
                 </h1>
-                <p className="text-foreground/45 text-sm mt-1.5 max-w-lg leading-relaxed">
+                <p className="text-foreground/45 text-lg mt-1.5 max-w-lg leading-relaxed">
                   Join the ETHShala Campus Ambassador Program and help grow
                   Ethereum education on your campus.
                 </p>

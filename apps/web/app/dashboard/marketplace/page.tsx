@@ -72,12 +72,6 @@ export default function MarketplacePage() {
           <div className="p-8 max-w-7xl mx-auto">
             {/* Header */}
             <div className="mb-12">
-              <Link href="/dashboard">
-                <button className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 mb-6 transition-colors">
-                  <ChevronLeft size={20} />
-                  Back to Dashboard
-                </button>
-              </Link>
               <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold mb-2">
                 <ShoppingCart size={16} />
                 MARKETPLACE
